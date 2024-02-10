@@ -23,7 +23,7 @@ export function PageTabs({items, handleClick, activeItem}: PageTabsProps) {
                 {
                     items.map((item, index) => {
                         const active = activeItem?.key === item.key;
-                        return <Link onClick={(e) => {
+                        return <Link key={index} onClick={(e) => {
                             if (handleClick) {
                                 handleClick(e, item);
                             }
