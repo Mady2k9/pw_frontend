@@ -1,5 +1,5 @@
 .batchCardWrapper {
-    @apply card-shadow;
+    box-shadow: 0 1px 8px 0 #00000014;
 }
 
 .batchCardWrapperOnline {
