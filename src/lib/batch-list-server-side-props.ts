@@ -1,41 +1,44 @@
 import {
-    fetchBatchListingAll,
-    fetchBatchNotForAll,
     FetchFooter,
     FetchHeader,
-    FetchHomePage
 } from "@/api/older-api-methods";
+import type {GetServerSidePropsContext} from "next";
+import {batchPageSnapshot} from "@/api/page-apis";
+import {IPageData} from "@/api/interfaces/page";
 
-export default async function batchListingServerSideProps(params: any){
-    let HomePageData;
+export default async function batchListingServerSideProps(context: GetServerSidePropsContext) {
+    const {resolvedUrl} = context;
+    const urlWithoutQuery = resolvedUrl?.split('?')[0];
     let headerData;
     let footerData;
-    let batchlistingAll;
-    let batchNotForAll;
+    let pageData: IPageData | undefined = undefined;
     try {
         const result = await Promise.all([
-            FetchHomePage(),
             FetchHeader(),
             FetchFooter(),
-            fetchBatchListingAll(),
-            fetchBatchNotForAll(),
+            batchPageSnapshot(urlWithoutQuery)
         ]);
-        HomePageData = result[0];
-        headerData = result[1];
-        footerData = result[2];
-        batchlistingAll = result[3];
-        batchNotForAll = result[4];
+        headerData = result[0];
+        footerData = result[1];
+        pageData = result[2]?.data;
     } catch (error) {
         // console.log(error);
     }
+    if (!pageData) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/",
+            },
+            props: {},
+        }
+    }
     return {
         props: {
-            HomePageData: HomePageData || {},
             headerData: headerData?.data || {},
-            footerData: footerData || {},
-            batchlistingAll: batchlistingAll || {},
-            batchNotForAll: batchNotForAll || {},
-            params: params,
+            footerData: footerData?.data || {},
+            pageData: pageData,
+            params: context.params,
         },
     };
 }

@@ -1,11 +1,11 @@
-.batchCardWrapper {
+.commonItemCardWrapper {
     box-shadow: 0 1px 8px 0 #00000014;
 }
 
-.batchCardWrapperOnline {
+.commonItemCardWrapperOnline {
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF, #4C68CA);
 }
 
-.batchCardWrapperOffline {
+.commonItemCardWrapperOffline {
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF, #da3d3d);
 }

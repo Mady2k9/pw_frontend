@@ -22,11 +22,11 @@ interface MainBannerProps {
 export function MainBanner({items, stretched, leftIcon, rightIcon}: MainBannerProps) {
     return (
         <Carousel className="w-full relative" opts={{loop: true}}>
-            <CarouselContent>
+            <CarouselContent className={''}>
                 {items.map((_, index) => (
-                    <CarouselItem key={index}>
+                    <CarouselItem key={index} className={''}>
                         <Link href={_.link || '/'}>
-                            <Image alt={_.alt} src={_.image} className={'hidden md:block w-full'}/>
+                            <Image alt={_.alt} src={_.image} className={'hidden  md:block w-full'}/>
                             <Image alt={_.alt} src={_.mWebImage} className={'md:hidden  w-full'}/>
                         </Link>
                     </CarouselItem>
