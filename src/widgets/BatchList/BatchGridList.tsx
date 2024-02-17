@@ -101,7 +101,7 @@ export default function BatchGridList({ batches: _batches, cohort }: BatchGridLi
 
     {
       showLoadMore && <div className={'flex items-center justify-center mt-6 md:mt-8'}>
-        <Button loading={loading} onClick={() => {
+        <Button size={'lg'} loading={loading} onClick={() => {
           getBatches(router.query, false);
         }} variant={'secondary'}>Load More Batches</Button>
       </div>
