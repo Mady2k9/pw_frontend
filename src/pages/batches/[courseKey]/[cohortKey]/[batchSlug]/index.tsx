@@ -203,7 +203,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                 scrollToElement(document.getElementById(item)!, true);
               }} />
     <div className={'lg:pr-[400px] container py-4 md:py-6 flex flex-col space-y-4 md:space-y-0'}>
-      <div className={'lg:hidden mx-auto mb-4 md:mb-6 lg:mb-0        '}>
+      <div className={'lg:hidden mx-auto mb-4 md:mb-6 lg:mb-0 min-w-[320px]       '}>
         {BatchCard}
       </div>
       <div className={'flex flex-col space-y-4 md:space-y-6'}>
