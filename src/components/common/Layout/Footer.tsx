@@ -115,7 +115,7 @@ export function Footer({}: FooterProps) {
                             such a
                             wonderful and unique curriculum that is the best fit for every student.
                         </p>
-                        <div className={'flex gap-2  md:mt-5'}>
+                        <div className={'flex gap-2  mt-3 md:mt-5'}>
                             <Link href={'https://play.google.com/store/apps/details?id=xyz.penpencil.physicswala'}>
                                 <Image className={'w-[135px]'} src={PlaystoreDownload.src}
                                        alt={'Download App from Google Play store'}/>
