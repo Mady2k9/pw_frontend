@@ -8,7 +8,7 @@ export default function DownloadAppBanner({config}: { config: any }) {
         return <></>
     }
     return <div style={{background: config.backGroundColor}}
-         className={cn('overflow-hidden flex-col md:flex-row items-end flex rounded-lg', styles.wrapper)}>
+         className={cn('overflow-hidden flex-col md:flex-row items-center md:items-end flex rounded-lg', styles.wrapper)}>
         <div className={'p-4 md:p-10  flex-1'}>
             <h2 className={'text-2xl md:text-4xl font-bold mb-4'}>{config.sectionTitle}</h2>
             <div className={'flex flex-col space-y-2 mb-2'}>

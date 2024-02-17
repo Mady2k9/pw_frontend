@@ -187,18 +187,20 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     if (!props.batch) {
       return <></>;
     }
-    return <CommonItemCard exploreLink={props.batch.seoSlug}
-                           buyNowLink={`/study/batches/${props.batch.slug}/batch-overview`}
-                           isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth}
-                           usedFor={props.batch.byName}
-                           meta={props.batch.meta}
-                           startDate={props.batch.startDate}
-                           endDate={props.batch.endDate}
-                           language={props.batch.language}
-                           isNew={props.batch.markedAsNew}
-                           whatsappLink={props.batch.seoSlug}
-                           thumbnail={imageToImageUrl(props.batch.previewImage) || ''}
-                           title={props.batch.name} />;
+    return <div className={'w-full sm:w-auto'}>
+      <CommonItemCard exploreLink={props.batch.seoSlug}
+                      buyNowLink={`/study/batches/${props.batch.slug}/batch-overview`}
+                      isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth}
+                      usedFor={props.batch.byName}
+                      meta={props.batch.meta}
+                      startDate={props.batch.startDate}
+                      endDate={props.batch.endDate}
+                      language={props.batch.language}
+                      isNew={props.batch.markedAsNew}
+                      whatsappLink={props.batch.seoSlug}
+                      thumbnail={imageToImageUrl(props.batch.previewImage) || ''}
+                      title={props.batch.name} />
+    </div>;
   }, [props]);
   if (!props.pageData) {
     return <></>;
@@ -224,7 +226,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                 scrollToElement(document.getElementById(item)!, true);
               }} />
     <div className={'lg:pr-[400px] container py-4 md:py-6 flex flex-col space-y-4 md:space-y-0'}>
-      <div className={'lg:hidden mx-auto mb-4 md:mb-6 lg:mb-0 min-w-[320px]       '}>
+      <div className={'lg:hidden mb-4 md:mb-6 lg:mb-0 min-w-[320px] sm:mx-auto '}>
         {BatchCard}
       </div>
       <div className={'flex flex-col space-y-4 md:space-y-6'}>
@@ -241,7 +243,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
               {
                 WidgetView
               }
-            </div>
+            </div>;
           })
         }
         {props.pageData.faqs?.length > 0 && <FAQ items={props.pageData.faqs} />}

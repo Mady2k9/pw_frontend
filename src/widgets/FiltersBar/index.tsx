@@ -1,7 +1,7 @@
 import {Pill} from "@/components/ui/pill";
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {cn, queryStringToJson} from "@/lib/utils";
-import {X} from "lucide-react";
+import { ChevronDownIcon, X } from 'lucide-react';
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {Checkbox} from "@/components/ui/checkbox";
 import {Button} from "@/components/ui/button";
@@ -111,13 +111,14 @@ function SelectableFilter({filter, selectedFilters, setSelectedFilters}: Selecta
                     'px-0 mr-0 opacity-0 w-0': !isActive,
                 })}>{selectedValues.length}</Badge>
                 <span className={'!ml-0'}>{filter.name}</span>
+                <ChevronDownIcon className={'w-4 h-4'}/>
             </Pill>
         </PopoverTrigger>
         <PopoverContent>
             {
                 filter.options?.map((option: string, index: number) => {
                     const isSelected = localSelection.includes(option);
-                    return <div className={'flex capitalize cursor-pointer items-center gap-2'} key={index}
+                    return <div className={'flex capitalize cursor-pointer items-center gap-2 py-1 md:py-0'} key={index}
                                 onClick={() => {
                                     if (isSelected) {
                                         setLocalSelection((prev) => prev.filter((item) => item !== option));

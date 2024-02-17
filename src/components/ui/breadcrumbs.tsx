@@ -25,7 +25,7 @@ export function Breadcrumbs({items, inverted}: BreadcrumbsProps) {
                 })}>
                     <Link href={item.link || '#'} key={index}>
                         <div key={index}
-                             className={cn('text-sm capitalize line-clamp-1 cursor-pointer', {
+                             className={cn('text-sm hover:underline capitalize line-clamp-1 cursor-pointer', {
                                  'text-white': inverted,
                                  'text-primary': (index === items.length - 1) && !inverted,
                              })}>

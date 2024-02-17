@@ -65,7 +65,7 @@ export default function CommonItemCard({
                     {title}
                 </h4>
                 {
-                    !isNew &&
+                    isNew &&
                     <Badge className={'rounded mt-1 bg-[#FBDE47] text-black hover:bg-[#FBDE47] select-none'}>New</Badge>
                 }
                 {
