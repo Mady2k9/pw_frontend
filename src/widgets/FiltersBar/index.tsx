@@ -107,7 +107,7 @@ function SelectableFilter({filter, selectedFilters, setSelectedFilters}: Selecta
                 setLocalSelection(selectedFilters[filter.id]?.options || []);
             }} variant={isActive ? 'active' : 'default'}>
                 <Badge className={cn('text-xs transitionAll200 overflow-hidden', {
-                    'mr-2 px-2 opacity-100 w-[26px]': isActive,
+                    'mr-2 px-2 opacity-100': isActive,
                     'px-0 mr-0 opacity-0 w-0': !isActive,
                 })}>{selectedValues.length}</Badge>
                 <span className={'!ml-0'}>{filter.name}</span>
