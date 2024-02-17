@@ -55,12 +55,12 @@ export default function BatchDetailsFreeContent({items, overviewUrl}: { overview
             opts={{
                 align: "start",
             }}
-            className="w-full relative"
+            className="w-full relative pl-4"
         >
             <CarouselContent>
                 {items.map((_, index) => (
-                    <CarouselItem key={index} className={cn('basis-[60%] sm:basis-[35%]', {
-                        'pl-2': index > 0,
+                    <CarouselItem key={index} className={cn('basis-[60%] sm:basis-[35%] pl-0', {
+
                     })}>
                         <div className={'p-1'}>
                             <ContentCard item={_}/>
