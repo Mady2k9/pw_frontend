@@ -70,7 +70,7 @@ export default function BatchGridList({ batches: _batches, cohort }: BatchGridLi
     getBatches(router.query, true);
   }, [cohort.cohortId, router.query]);
   return <div className={''} id={'grid-list-wrapper' + cohort.cohortId}>
-    <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 -mx-2 px-2 w-full')}>
+    <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 md:-mx-2 md:px-2 w-full')}>
       {
         batches.map((item, index) => {
           return <CommonItemCard exploreLink={item.seoSlug}
