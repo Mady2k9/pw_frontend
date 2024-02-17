@@ -7,12 +7,12 @@ import { Image } from '@/components/ui/image';
 import { checkIfLectureIsLive, checkIfLectureIsPast, checkIfLectureIsUpcoming, cn, stringToBase64 } from '@/lib/utils';
 import { ClockIcon } from 'lucide-react';
 import { formatDateAndTime } from '@/lib/date.utils';
-import { useRouter } from 'next/router';
 
 export function ContentCard({ item }: { item: any }) {
-  const redirect_url = `${window.location.origin}/watch/?batchSlug=${item?.batchId}&batchSubjectId=${item?.batchSubjectId}&subjectSlug=${item?.batchSubjectId}&topicSlug=all&scheduleId=${item?._id}&isUnderMaintenance=false`;
+  const baseUrl = typeof window === 'undefined' ? '' : window.location.origin;
+  const redirect_url = `${baseUrl}/watch/?batchSlug=${item?.batchId}&batchSubjectId=${item?.batchSubjectId}&subjectSlug=${item?.batchSubjectId}&topicSlug=all&scheduleId=${item?._id}&isUnderMaintenance=false`;
   return <Link target={'_blank'}
-               href={`${window.location.origin}/study/auth?encoded_redirection_url=${stringToBase64(redirect_url)}`}>
+               href={`${baseUrl}/study/auth?encoded_redirection_url=${stringToBase64(redirect_url)}`}>
     <div
       className={'flex flex-col p-1.5 card-shadow rounded-md cursor-pointer hover:scale-[1.01] transitionAll200'}>
       <div className={'aspect-video rounded-md bg-gray-100'}>

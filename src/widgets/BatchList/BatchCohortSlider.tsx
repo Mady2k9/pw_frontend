@@ -20,16 +20,17 @@ export default function BatchCohortSlider({title, batches, cohort, showMoreLink}
             <div className={'flex flex-nowrap gap-4 py-4'}>
                 {
                     batches.slice(0, 3).map((item, index) => {
-                        return <CommonItemCard exploreLink={item.seoSlug} buyNowLink={`/study/batches/${item.slug}/batch-overview`} isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
-                                               key={index}
-                                               usedFor={item.byName}
-                                               language={item.language}
-                                               startDate={item.startDate}
-                                               endDate={item.endDate}
-                                               meta={item.meta}
-                                               isNew={item.markedAsNew}
-                                               whatsappLink={item.seoSlug}
-                                               thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name}/>
+                        return <div className={'min-w-[320px]'} key={index}>
+                            <CommonItemCard exploreLink={item.seoSlug} buyNowLink={`/study/batches/${item.slug}/batch-overview`} isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
+                                            usedFor={item.byName}
+                                            language={item.language}
+                                            startDate={item.startDate}
+                                            endDate={item.endDate}
+                                            meta={item.meta}
+                                            isNew={item.markedAsNew}
+                                            whatsappLink={item.seoSlug}
+                                            thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name}/>
+                        </div>
                     })
                 }
             </div>
