@@ -1,35 +1,33 @@
-import bgImage from '@/assets/background-images/course-hero-bg-web.webp';
-import bgMWebImage from '@/assets/background-images/course-hero-bg-Mweb.webp';
-import {Breadcrumbs} from "@/components/ui/breadcrumbs";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 
 export interface PageTabItemProps {
     title: string,
     link: string,
-    key: string | number
+    key: string,
 }
 
 interface PageTabsProps {
     items: PageTabItemProps[],
-    activeItem?: PageTabItemProps,
-    handleClick?: (e: any, item: PageTabItemProps) => void
+    activeItem?: string,
+    className?: string,
+    handleClick?: (e: any, item: string) => void
 }
 
-export function PageTabs({items, handleClick, activeItem}: PageTabsProps) {
+export function PageTabs({items, handleClick, className, activeItem}: PageTabsProps) {
     return (
-        <div className="sticky top-[60px] md:top-[80px] z-[2] bg-secondary overflow-y-auto">
-            <div className="container flex space-x-4 font-medium">
+        <div className={cn('sticky border-b top-[60px] md:top-[80px] z-[2] bg-secondary', className)}>
+            <div className="container flex space-x-4 md:space-x-6 font-medium  scrollbar-hide overflow-y-auto">
                 {
                     items.map((item, index) => {
-                        const active = activeItem?.key === item.key;
+                        const active = activeItem === item.key;
                         return <Link key={index} onClick={(e) => {
                             if (handleClick) {
-                                handleClick(e, item);
+                                handleClick(e, item.key);
                             }
                         }} href={item.link}
-                                     className={'text-sm text-[#757575] relative'}>
-                            <div className={cn(' py-4', {
+                                     className={'text-sm outline-none md:text-base text-[#757575] relative'}>
+                            <div className={cn('whitespace-nowrap py-4', {
                                 'text-primary': active
                             })}>
                                 {item.title}

@@ -1,4 +1,8 @@
 import {MainBanner} from "@/widgets/MainBanner";
+import {FetchHeader} from "@/api/older-api-methods";
+import {getHeaderData} from "@/api/page-apis";
+import type {GetServerSidePropsContext, InferGetServerSidePropsType} from "next";
+import {Layout} from "@/components/common/Layout";
 
 const banners = [
     {
@@ -16,8 +20,8 @@ const banners = [
         "altTag": "33"
     }
 ];
-export default function Home() {
-    return <div className={''}>
+export default function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+    return <Layout headerData={props.headerData.data}>
         <MainBanner stretched={true} items={banners.map((banner) => {
             return {
                 image: banner.dwebImage,
@@ -26,5 +30,31 @@ export default function Home() {
                 link: banner.redirectionUrl
             }
         })}/>
-    </div>;
+    </Layout>;
+}
+
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const headerData = await getHeaderData();
+    // let HomePageData;
+    // let headerData;
+    // let footerData;
+    //
+    // try {
+    //     const result = await Promise.all([
+    //         FetchHomePage(),
+    //         FetchHeader(),
+    //         FetchFooter(),
+    //     ]);
+    //     HomePageData = result[0];
+    //     headerData = result[1];
+    //     footerData = result[2];
+    // } catch (error) {
+    //     // console.log(error);
+    // }
+    return {
+        props: {
+            headerData
+        },
+    };
 }

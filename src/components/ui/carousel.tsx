@@ -5,7 +5,7 @@ import useEmblaCarousel, {
 
 import {cn} from "@/lib/utils"
 import {Button} from "@/components/ui/button"
-import {ArrowLeftIcon, ArrowRightIcon} from "@heroicons/react/20/solid";
+import {ArrowLeftIcon, ArrowRightIcon} from "lucide-react";
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -198,13 +198,16 @@ const CarouselPrevious = React.forwardRef<
 >(({className, variant = "outline", size = "icon", ...props}, ref) => {
     const {orientation, scrollPrev, canScrollPrev} = useCarousel()
 
+    if(!canScrollPrev){
+        return <></>
+    }
     return (
         <Button
             ref={ref}
             variant={variant}
             size={size}
             className={cn(
-                "absolute  h-8 w-8 md:h-10 md:w-10 rounded-full",
+                "absolute bg-white  border-none shadow active:bg-white focus:bg-white hover:bg-white  h-8 w-8 md:h-10 md:w-10 rounded-full",
                 orientation === "horizontal"
                     ? "-left-12 top-1/2 -translate-y-1/2"
                     : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -227,13 +230,16 @@ const CarouselNext = React.forwardRef<
 >(({className, variant = "outline", size = "icon", ...props}, ref) => {
     const {orientation, scrollNext, canScrollNext} = useCarousel()
 
+    if(!canScrollNext){
+        return <></>
+    }
     return (
         <Button
             ref={ref}
             variant={variant}
             size={size}
             className={cn(
-                "absolute  h-8 w-8 md:h-10 md:w-10 rounded-full",
+                "absolute bg-white border-none shadow active:bg-white focus:bg-white hover:bg-white h-8 w-8 md:h-10 md:w-10 rounded-full",
                 orientation === "horizontal"
                     ? "-right-12 top-1/2 -translate-y-1/2"
                     : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",

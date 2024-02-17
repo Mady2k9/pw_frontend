@@ -1,0 +1,84 @@
+import PlaceholderImage from "@/assets/images/placeholder-batch.webp";
+import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel";
+import BatchDescriptionCardWrapper from "@/widgets/BatchDescription/BatchDescriptionCardWrapper";
+import {Button} from "@/components/ui/button";
+import Link from "next/link";
+import {Image} from "@/components/ui/image";
+import {checkIfLectureIsLive, checkIfLectureIsPast, checkIfLectureIsUpcoming, cn} from "@/lib/utils";
+import {ClockIcon} from "lucide-react";
+import {formatDateAndTime} from "@/lib/date.utils";
+
+export function ContentCard({item}: { item: any }) {
+    return <div className={'flex flex-col p-1.5 card-shadow rounded-md'}>
+        <div className={'aspect-video rounded-md bg-gray-100'}>
+            <Image src={item.videoDetails?.image || PlaceholderImage.src} alt={item.title}
+                   className={'rounded-md w-full h-full'}/>
+        </div>
+        <div className={'flex justify-between items-center mt-1.5'}>
+            <div className={''}>
+                {checkIfLectureIsLive(item) && (
+                    <div
+                        className="text-[10px] leaading-[18px] font-[500] bg-[#C94A54] text-white px-[8px] py-[3px] rounded-[2px]">
+                        {' '}
+                        LIVE{' '}
+                    </div>
+                )}
+                {checkIfLectureIsUpcoming(item) && (
+                    <div
+                        className="text-[10px] leaading-[18px] font-[500] bg-[#C94A54] text-white px-[8px] py-[3px] rounded-[2px]">
+                        {' '}
+                        Upcoming{' '}
+                    </div>
+                )}
+                {checkIfLectureIsPast(item) && (
+                    <div
+                        className="text-[10px] leaading-[18px] font-[500] bg-[#C94A54] text-white px-[8px] py-[3px] rounded-[2px]">
+                        {' '}
+                        Ended{' '}
+                    </div>
+                )}
+            </div>
+            <div className={'flex gap-1'}>
+                <ClockIcon className={'w-4 h-4 stroke-lighter'}/>
+                <span className={'text-xs text-lighter font-medium'}>{formatDateAndTime(item.startTime)}</span>
+            </div>
+        </div>
+        <div className={'text-sm font-medium line-clamp-1 mt-1'}>
+            {item.topic}
+        </div>
+    </div>
+}
+
+export default function BatchDetailsFreeContent({items, overviewUrl}: { overviewUrl: string, items: any[] }) {
+    return <BatchDescriptionCardWrapper title={'Free Content'}>
+        <Carousel
+            opts={{
+                align: "start",
+            }}
+            className="w-full relative"
+        >
+            <CarouselContent>
+                {items.map((_, index) => (
+                    <CarouselItem key={index} className={cn('basis-[60%] sm:basis-[35%]', {
+                        'pl-2': index > 0,
+                    })}>
+                        <div className={'p-1'}>
+                            <ContentCard item={_}/>
+                        </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <div
+                className={'absolute right-0 bottom-0 top-0 w-[100px] bg-gradient-to-r from-transparent to-white'}/>
+            <CarouselPrevious className={'left-2 bg-white hover:bg-white'}/>
+            <CarouselNext className={'right-2 bg-white hover:bg-white'}/>
+        </Carousel>
+        {
+            <Link href={overviewUrl} target={'_blank'} className={'w-full'}>
+                <Button className={'w-full'} onClick={() => {
+                }}
+                        variant={'secondary'}>{'View All'}</Button>
+            </Link>
+        }
+    </BatchDescriptionCardWrapper>
+}

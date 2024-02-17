@@ -25,12 +25,14 @@ const config = {
                 navbar: "80px",
             },
             colors: {
+                light: '#3D3D3D',
+                lighter: '#757575',
+                success: '#17662F',
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
-                light: '#3D3D3D',
                 primary: {
                     DEFAULT: "hsl(var(--primary))",
                     foreground: "hsl(var(--primary-foreground))",
@@ -82,7 +84,7 @@ const config = {
             },
         },
     },
-    plugins: [require("tailwindcss-animate"),  require('tailwind-scrollbar-hide')],
+    plugins: [require("tailwindcss-animate"), require('tailwind-scrollbar-hide')],
 } satisfies Config
 
 export default config
