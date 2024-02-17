@@ -109,3 +109,11 @@ export function checkIfLectureIsPast(lecture: any) {
 
     return currentDate > endDate;
 }
+export function stringToBase64(str: string): string {
+    return btoa(str);
+}
+
+// Decode a Base64 string to its original string
+export function base64ToString(b64: string): string {
+    return atob(b64);
+}
