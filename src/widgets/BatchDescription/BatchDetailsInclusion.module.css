@@ -1,0 +1,4 @@
+.orientationVideoWrapper {
+    background: linear-gradient(180deg, #FFF6E5 0%, #FFFBF4 100%);
+    @apply p-4 rounded-md flex gap-2 items-center cursor-pointer;
+}

@@ -60,12 +60,12 @@ export function PageTitleBar({
                         breadcrumbs && <Breadcrumbs inverted={inverted} {...breadcrumbs} />
                     }
                     {title &&
-                        <h1 className={cn('text-2xl text-center md:text-start md:text-[40px] font-bold leading-[50px]', {
+                        <h1 className={cn('text-2xl text-start md:text-[40px] font-bold leading-[50px]', {
                             'text-white': inverted,
                         })}>{title}</h1>}
                     {
                         description &&
-                        <p className={cn('font-medium  text-center md:text-start  text-light', {
+                        <p className={cn('font-medium text-start  text-light', {
                             'text-white': inverted,
                         })}>{description}</p>
                     }
