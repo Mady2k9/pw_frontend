@@ -103,10 +103,10 @@ export default function CommonItemCard({
                 }
                 {
                     features?.length > 0 && <div className={'flex gap-1.5 line-clamp-1 text-xs items-center  text-light font-semibold'}>
-                        <Star className={'w-3.5 h-3.5 fill-zinc-500 stroke-zinc-500 stroke-2'}/>
+                        <Star className={'w-3.5 min-w-3.5 h-3.5 fill-zinc-500 line-clamp-1 stroke-zinc-500 stroke-2'}/>
                         {
                             features.map((m, index) => {
-                                return <span key={index}>{m.value} {m.key.toLowerCase().replace(/_/g, " ")} </span>
+                                return <span key={index} className={'line-clamp-1'}>{m.value} {m.key.toLowerCase().replace(/_/g, " ")} </span>
                             })
                         }
                     </div>
