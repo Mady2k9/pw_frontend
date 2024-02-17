@@ -31,7 +31,7 @@ export default function BatchMetaDescription({ batch }: { batch: IBatch }) {
         <Image
           src={`${pointerImage2.src}`}
           className={
-            'bg-center bg-cover bg-no-repeat sm:w-[30px] sm:h-[30px] w-6 h-6'
+            'bg-center min-w-[30px] bg-cover bg-no-repeat sm:w-[30px] sm:h-[30px] w-6 h-6'
           }
         />
         <div className="text-xs sm:text-[16px]  text-white flex-nowrap font-[500] sm:leading-[24px]">
