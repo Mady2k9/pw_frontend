@@ -139,7 +139,7 @@ export default function BatchListPage(props: IPageData & { params: any }) {
         {
             batchSection === 'LOADING' && <BatchLoadingGrid/>
         }
-        <div className={'mt-4 md:mt-8'}>
+        <div className={'mt-4 md:mt-8 container'}>
             {
                 Widgets.map((WidgetView: any, index) => {
                     return <div key={index}>

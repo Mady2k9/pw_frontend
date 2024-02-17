@@ -17,6 +17,8 @@ import BatchDetailsSchedule from '@/widgets/BatchDescription/BatchDetailsSchedul
 import { scrollToElement } from '@/lib/dom.utils';
 import BatchDetailsKnowYourTeachers from '@/widgets/BatchDescription/BatchDetailsKnowYourTeachers';
 import BatchDetailsFreeContent from '@/widgets/BatchDescription/BatchDetailsFreeContent';
+import ResultsSection from '@/widgets/ResultsSection';
+import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return batchDetailsServerSideProps(context);
@@ -103,16 +105,35 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           </div>,
         });
       } else {
-
+        console.log(tab);
       }
     });
   }
+
   return items;
+};
+const getExternalWidgets = (props: IPageData) => {
+  const result: ReactElement[] = [];
+  props.widgetOrder.forEach((widget) => {
+    if (widget === 'RESULTS') {
+      const resultData = props.widgetJson['RESULTS'];
+      result.push(<ResultsSection hideCategories={true} results={resultData.sectionProps}
+                                  title={resultData.sectionTitle}
+                                  description={resultData.sectionSubTitle} />);
+    } else if (widget === 'APP_DOWNLOAD') {
+      const downloadData = props.widgetJson['APP_DOWNLOAD'];
+      result.push(<DownloadAppBanner config={downloadData} />);
+    }
+  });
+  return result;
 };
 
 export default function BatchDescription(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const Widgets = useMemo(() => {
     return getWidgets(props);
+  }, [props]);
+  const ExternalWidgets = useMemo(() => {
+    return getExternalWidgets(props.pageData!);
   }, [props]);
   const [activeTab, setActiveTab] = useState<string>(Widgets[0]?.key);
 
@@ -214,8 +235,18 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
             </div>;
           })
         }
+        {
+          ExternalWidgets.map((WidgetView: any, index) => {
+            return <div key={index}>
+              {
+                WidgetView
+              }
+            </div>
+          })
+        }
         {props.pageData.faqs?.length > 0 && <FAQ items={props.pageData.faqs} />}
       </div>
+
     </div>
   </Layout>;
 }
