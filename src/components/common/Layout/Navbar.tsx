@@ -112,7 +112,7 @@ export function Navbar({ items }: NavbarProps) {
                 <SheetTrigger>
                   <MenuIcon className={'w-7 mr-3 h-7'}
                             onClick={() => toggleSidebar(!isSidebarOpen)} /></SheetTrigger>
-                <SheetContent side={'left'} className="w-full p-0">
+                <SheetContent side={'left'} className="w-full p-0 md:hidden ">
                   <Sidebar items={items}/>
                 </SheetContent>
               </Sheet>
