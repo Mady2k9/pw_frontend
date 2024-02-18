@@ -6,6 +6,9 @@ import { ITopMenuItem } from '@/api/interfaces/page';
 import { ChevronDownIcon, ChevronRightIcon, LinkIcon, MenuIcon } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useGlobal } from '@/contexts/global';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import Sidebar from '@/components/common/Layout/Sidebar';
 
 interface NavbarProps {
   items?: ITopMenuItem[];
@@ -92,6 +95,7 @@ const MenuItem = ({ item }: { item: ITopMenuItem }) => {
 };
 
 export function Navbar({ items }: NavbarProps) {
+  const { isSidebarOpen, toggleSidebar } = useGlobal();
   const handleLogin = () => {
     window.location.href = location.origin + '/study/auth/';
   };
@@ -103,8 +107,15 @@ export function Navbar({ items }: NavbarProps) {
         className={'fixed z-[20] top-0 left-0 flex items-center right-0 bottom-0 h-[60px] md:h-navbar bg-white'}>
         <div className={'container h-full flex justify-between items-center'}>
           <div className={'flex md:gap-2 h-full items-center'}>
-            <div className={'md:hidden'}>
-              <MenuIcon className={'w-6 mr-2 h-6'} />
+            <div className={'md:hidden flex flex-col items-center'}>
+              <Sheet>
+                <SheetTrigger>
+                  <MenuIcon className={'w-7 mr-3 h-7'}
+                            onClick={() => toggleSidebar(!isSidebarOpen)} /></SheetTrigger>
+                <SheetContent side={'left'} className="w-full p-0">
+                  <Sidebar />
+                </SheetContent>
+              </Sheet>
             </div>
             <Link href={'/'} className={'pr-3 h-full flex flex-col items-center justify-center'}>
               <Image className={'w-[35px] md:w-[55px]'} alt={'PW Logo'} src={PwLogoInverted.src} />

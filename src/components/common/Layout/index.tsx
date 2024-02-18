@@ -3,6 +3,8 @@ import { Footer } from '@/components/common/Layout/Footer';
 import { ReactNode } from 'react';
 import { ISeoTags, ITopMenuItem } from '@/api/interfaces/page';
 import SEO from '@/widgets/SEO';
+import { cn } from '@/lib/utils';
+import { useGlobal } from '@/contexts/global';
 
 interface LayoutProps {
   children: ReactNode;
