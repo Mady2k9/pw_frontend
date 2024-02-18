@@ -9,8 +9,9 @@ import { PopoverClose } from '@radix-ui/react-popover';
 import { Badge } from '@/components/ui/badge';
 import { NextRouter, useRouter } from 'next/router';
 import { scrollToElement, scrollWrapperLeftToElement } from '@/lib/dom.utils';
+import { Filter, FiltersJSON } from '@/lib/batch-list-server-side-props';
 
-export type FilterId = 'online' | 'offline' | 'new' | 'pricing' | 'languages';
+export type FilterId = 'online' | 'offline' | 'new' | 'pricing' | 'language';
 
 type SelectedFiltersState = {
   [key in FilterId]?: {
@@ -18,30 +19,6 @@ type SelectedFiltersState = {
     options?: string[]
   };
 };
-type Filter = {
-  id: FilterId; // Use FilterId type here
-  name: string;
-  options?: string[];
-};
-
-const FiltersJSON: Filter[] = [{
-  id: 'online',
-  name: 'Online',
-}, {
-  id: 'offline',
-  name: 'Offline',
-}, {
-  id: 'pricing',
-  name: 'Pricing',
-  options: ['free', 'paid'],
-}, {
-  id: 'languages',
-  name: 'Languages',
-  options: ['hindi', 'english', 'gujrati', 'other'],
-}, {
-  id: 'new',
-  name: 'Newly Launched',
-}];
 
 interface FilterProps {
   filter: Filter;

@@ -11,8 +11,9 @@ import ResultsSection from '@/widgets/ResultsSection';
 import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import BatchGridList from '@/widgets/BatchList/BatchGridList';
 import { BatchLoadingGrid } from '@/widgets/BatchList/BatchLoadingGrid';
+import { IBatch } from '@/api/interfaces/batch';
 
-const cohortToCohortTabs = ({ cohortKey, courseKey, cohortOptions }: {
+const cohortToCohortTabs = ({ courseKey, cohortOptions }: {
   courseKey: string,
   cohortKey?: string,
   cohortOptions?: ICohortOptions[]
@@ -67,7 +68,7 @@ function getWidgets(props: IPageData) {
   return result;
 }
 
-export default function BatchListPage(props: IPageData & { params: any }) {
+export default function BatchListPage(props: IPageData & { params: any, filteredBatches?: IBatch[] }) {
   const router = useRouter();
   const { courseKey, cohortKey } = router.query;
   const items = cohortToCohortTabs({
@@ -140,6 +141,7 @@ export default function BatchListPage(props: IPageData & { params: any }) {
       batchSection === 'COHORT' &&
       <div className={'container overflow-visible mt-4 md:mt-6 space-y-8'}>
         <BatchGridList cohort={activeCohort!}
+                       filteredBatches={props.filteredBatches?.length ? props.filteredBatches : undefined}
                        batches={props.batches[activeCohort!.cohortId] || []} />
       </div>
     }

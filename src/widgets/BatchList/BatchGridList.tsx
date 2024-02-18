@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import CommonItemCard from '../CommonItemCard';
 import { useEffect, useState } from 'react';
-import { cn, imageToImageUrl, uniqueBy } from '@/lib/utils';
+import { cn, imageToImageUrl, jsonToQueryString, uniqueBy } from '@/lib/utils';
 import { ICohortOptions } from '@/api/interfaces/page';
 import { useRouter } from 'next/router';
 import { fetchBatches } from '@/api/page-apis';
@@ -9,38 +9,26 @@ import { IBatch } from '@/api/interfaces/batch';
 import { BatchLoadingGrid } from '@/widgets/BatchList/BatchLoadingGrid';
 import { scrollToElement } from '@/lib/dom.utils';
 import { BatchNoDataGrid } from '@/widgets/BatchList/BatchNoDataGrid';
+import { extractFilters } from '@/lib/batch-list-server-side-props';
 
 export interface BatchGridListProps {
   batches: IBatch[],
   cohort: ICohortOptions,
+  filteredBatches?: IBatch[]
 }
 
-export default function BatchGridList({ batches: _batches, cohort }: BatchGridListProps) {
-  const [batches, setBatches] = useState(_batches || []);
+export default function BatchGridList({ batches: _batches, cohort, filteredBatches}: BatchGridListProps) {
+  const [batches, setBatches] = useState(filteredBatches || _batches || []);
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(true);
   const router = useRouter();
+  const [queryKey, setQueryKey] = useState(jsonToQueryString(extractFilters(router.query)));
   const getBatches = async (routerQuery: any, reset: boolean = false, clean: boolean = false) => {
-    const query: any = {
+    let query: any = {
       cohortIds: cohort.cohortId,
     };
     if (!clean) {
-
-      if (routerQuery.online === 'true') {
-        query['online'] = 'true';
-      }
-      if (routerQuery.offline === 'true') {
-        query['offline'] = 'true';
-      }
-      if (routerQuery.new === 'true') {
-        query['new'] = 'true';
-      }
-      if (routerQuery.languages?.length) {
-        query['languages'] = routerQuery.languages;
-      }
-      if (routerQuery.pricing?.length) {
-        query['pricing'] = routerQuery.pricing;
-      }
+      query = { ...query, ...extractFilters(routerQuery) };
     }
     setLoading(true);
     const start = reset ? 0 : batches.length;
@@ -67,8 +55,11 @@ export default function BatchGridList({ batches: _batches, cohort }: BatchGridLi
     });
   };
   useEffect(() => {
-    getBatches(router.query, true);
-  }, [cohort.cohortId, router.query]);
+    if (queryKey !== jsonToQueryString(extractFilters(router.query)) && cohort.cohortId) {
+      getBatches(router.query, true);
+      setQueryKey(jsonToQueryString(extractFilters(router.query)));
+    }
+  }, [cohort.cohortId, router.query, queryKey]);
   return <div className={''} id={'grid-list-wrapper' + cohort.cohortId}>
     <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 md:-mx-2 md:px-2 w-full')}>
       {
