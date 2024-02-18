@@ -22,7 +22,7 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(true);
   const router = useRouter();
-  const [queryKey, setQueryKey] = useState(jsonToQueryString(extractFilters(router.query)));
+  const [queryKey, setQueryKey] = useState(jsonToQueryString(router.query));
   const getBatches = async (routerQuery: any, reset: boolean = false, clean: boolean = false) => {
     let query: any = {
       cohortIds: cohort.cohortId,
@@ -55,9 +55,9 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
     });
   };
   useEffect(() => {
-    if (queryKey !== jsonToQueryString(extractFilters(router.query)) && cohort.cohortId) {
+    if (queryKey !== jsonToQueryString(router.query) && cohort.cohortId) {
       getBatches(router.query, true);
-      setQueryKey(jsonToQueryString(extractFilters(router.query)));
+      setQueryKey(jsonToQueryString(router.query));
     }
   }, [cohort.cohortId, router.query, queryKey]);
   return <div className={''} id={'grid-list-wrapper' + cohort.cohortId}>
