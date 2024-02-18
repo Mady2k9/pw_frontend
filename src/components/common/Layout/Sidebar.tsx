@@ -10,14 +10,15 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 interface NavbarProps {
   items?: ITopMenuItem[];
+  handleLogin:() => void;
 }
 
-export default function Sidebar({ items }: NavbarProps) {
+export default function Sidebar({ items, handleLogin }: NavbarProps) {
   const [selectedSubItem, setSelectedSubItem] = useState<ITopMenuItem | null>(null);
   const [expandedItemIndex, setExpandedItemIndex] = useState<number>(-1);
   return (
     <div className={'flex flex-col h-full md:hidden'}>
-      <div className={'h-[60px] relative animationFromTop delay-100 px-4 flex items-center'}>
+      <div className={'h-[60px] relative shadow animationFromTop delay-100 px-4 flex items-center'}>
         <Link href={'/'}
               className={cn('absolute transitionAll200 top-0 bottom-0 pr-3 h-full flex flex-col items-center justify-center', {
                 'left-4': selectedSubItem === null,
@@ -37,7 +38,7 @@ export default function Sidebar({ items }: NavbarProps) {
       </div>
       <div className={'flex-1 relative'}>
         <div
-          className={cn('overflow-y-auto flex flex-col transitionAll200 scrollbar-hide absolute left-0 right-0 bottom-0 top-0', {
+          className={cn('overflow-y-auto flex flex-col  transitionAll200 scrollbar-hide absolute left-0 right-0 bottom-0 top-0', {
             '-left-[100vw] opacity-0': selectedSubItem,
             'left-0 opacity-100': selectedSubItem === null,
           })}>
@@ -112,8 +113,8 @@ export default function Sidebar({ items }: NavbarProps) {
           </Accordion>
         </div>
       </div>
-      <div className={'p-4 animationFromBottom delay-100'}>
-        <Button className={'w-full'}>Login/Register</Button>
+      <div className={'p-4 shadow animationFromBottom delay-100'}>
+        <Button onClick={handleLogin} className={'w-full'}>Login/Register</Button>
       </div>
     </div>
   );
