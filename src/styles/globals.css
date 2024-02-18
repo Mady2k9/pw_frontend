@@ -206,3 +206,7 @@
 .animationFromTop{
     @apply animate-in slide-in-from-top-6 fade-in duration-700;
 }
+
+.animationFromLeft{
+    @apply animate-in slide-in-from-left-6 fade-in duration-700;
+}

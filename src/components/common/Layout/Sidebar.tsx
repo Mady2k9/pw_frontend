@@ -2,8 +2,13 @@ import { Image } from '@/components/ui/image';
 import PwLogoInverted from '@/assets/images/pw-logo.webp';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { ITopMenuItem } from '@/api/interfaces/page';
 
-export default function Sidebar() {
+interface NavbarProps {
+  items?: ITopMenuItem[];
+}
+
+export default function Sidebar({ items }: NavbarProps) {
   return (
     <div className={'flex flex-col h-full'}>
       <div className={'h-[60px] animationFromTop delay-100 px-4 flex items-center'}>
@@ -12,7 +17,11 @@ export default function Sidebar() {
         </Link>
       </div>
       <div className={'flex-1 overflow-y-auto scrollbar-hide'}>
-
+        {
+          items?.map((item, index) => {
+            return <div key={index} className={'py-3 px-4 border-b text-lg font-medium'}>{item.menuTitle}</div>;
+          })
+        }
       </div>
       <div className={'p-4 animationFromBottom delay-100'}>
         <Button className={'w-full'}>Login/Register</Button>
