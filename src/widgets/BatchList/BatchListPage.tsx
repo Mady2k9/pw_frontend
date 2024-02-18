@@ -100,10 +100,10 @@ export default function BatchListPage(props: IPageData & { params: any }) {
       title={<div className={'flex flex-wrap'}>
         {
           cohortKey &&
-          <span className={'capitalize mr-1'}>{slugToString(cohortKey as string)}</span>
+          <span className={'capitalize whitespace-nowrap mr-1.5'}>{slugToString(cohortKey as string)}</span>
         }
         <span
-          className={'text-primary  mr-1'}>{props.title}</span>
+          className={'text-primary whitespace-nowrap mr-1.5'}>{props.title}</span>
         <span>
           Courses
         </span>
