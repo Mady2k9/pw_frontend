@@ -12,9 +12,9 @@ export default function BatchMetaDescription({ batch }: { batch: IBatch }) {
       ?.filter((f: any) => f.value)
       .slice(0, 2);
   }, [batch.meta]);
-  return <div className="flex flex-col gap-[12px] text-white">
+  return <div className="flex flex-col gap-[14px] text-white">
     {batch.byName && (
-      <div className="flex flex-row items-center   gap-2">
+      <div className="flex flex-row items-center gap-2">
         <Image
           src={`${pointerImage1.src}`}
           className={

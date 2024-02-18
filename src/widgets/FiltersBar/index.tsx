@@ -133,26 +133,6 @@ function SelectableFilter({filter, selectedFilters, setSelectedFilters}: Selecta
             }
             <div className={'flex items-center justify-between'}>
                 <PopoverClose className={'mt-2'}>
-                    <Button onClick={() => {
-                        router.replace(pushToQueryParams(router, {
-                            ...selectedFilters,
-                            [filter.id]: {
-                                options: localSelection
-                            }
-                        }), undefined, {shallow: true});
-                        setSelectedFilters((prev: any) => {
-                            return {
-                                ...prev,
-                                [filter.id]: {
-                                    options: localSelection
-                                }
-                            }
-                        })
-                    }} size={'sm'}>
-                        Apply
-                    </Button>
-                </PopoverClose>
-                <PopoverClose className={'mt-2'}>
                     <Button variant={'link'} onClick={() => {
                         router.replace(pushToQueryParams(router, {
                             ...selectedFilters,
@@ -172,6 +152,27 @@ function SelectableFilter({filter, selectedFilters, setSelectedFilters}: Selecta
                         Clear
                     </Button>
                 </PopoverClose>
+                <PopoverClose className={'mt-2'}>
+                    <Button onClick={() => {
+                        router.replace(pushToQueryParams(router, {
+                            ...selectedFilters,
+                            [filter.id]: {
+                                options: localSelection
+                            }
+                        }), undefined, {shallow: true});
+                        setSelectedFilters((prev: any) => {
+                            return {
+                                ...prev,
+                                [filter.id]: {
+                                    options: localSelection
+                                }
+                            }
+                        })
+                    }} size={'sm'}>
+                        Apply
+                    </Button>
+                </PopoverClose>
+
             </div>
         </PopoverContent>
     </Popover>

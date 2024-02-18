@@ -16,7 +16,7 @@ interface PageTabsProps {
 
 export function PageTabs({items, handleClick, className, activeItem}: PageTabsProps) {
     return (
-        <div className={cn('sticky border-b top-[60px] md:top-[80px] z-[2] bg-secondary', className)}>
+        <div className={cn('sticky border-b top-[60px] md:top-[80px] z-[3] bg-secondary', className)}>
             <div className="container flex space-x-4 md:space-x-6 font-medium  scrollbar-hide overflow-y-auto">
                 {
                     items.map((item, index) => {

@@ -59,7 +59,7 @@ export default function BatchDetailsSchedule({subjects}: { subjects: ISubject[] 
                     </div>
                 })
             }
-            {subjects.length > 3 && <Button onClick={() => setShowMore(!showMore)}
+            {subjects.length > 3 && <Button size={'lg'} onClick={() => setShowMore(!showMore)}
                                             variant={'outline'}>{showMore ? 'Show Less' : `+${subjects.length - 3} more subjects`}</Button>}
         </>
     </BatchDescriptionCardWrapper>
