@@ -67,12 +67,11 @@ export default function Sidebar({ items }: NavbarProps) {
               selectedSubItem?.menuItems?.map((subItem, index) => {
                 const expandedItem = subItem
                 return <AccordionItem value={index + ''}
-                                      className={cn('py-3 border-b overflow-hidden',{
+                                      className={cn('border-b overflow-hidden',{
                                         'bg-zinc-100': expandedItemIndex === index,
                                       })} key={index}>
-                  <AccordionTrigger className={'px-4 py-0'}>
+                  <AccordionTrigger onClick={() => setExpandedItemIndex(expandedItemIndex === index ? -1 : index)} className={'px-4 py-3'}>
                     <div key={index}
-                         onClick={() => setExpandedItemIndex(expandedItemIndex === index ? -1 : index)}
                          className={'flex group gap-2 transitionAll200 items-center justify-between'}>
                       <div
                         className={'text-start gap-2'}>
