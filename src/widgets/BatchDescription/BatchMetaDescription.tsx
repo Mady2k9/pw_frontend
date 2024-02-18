@@ -12,13 +12,13 @@ export default function BatchMetaDescription({ batch }: { batch: IBatch }) {
       ?.filter((f: any) => f.value)
       .slice(0, 2);
   }, [batch.meta]);
-  return <div className="flex flex-col gap-[14px] text-white">
+  return <div className="flex flex-col gap-[12px] text-white">
     {batch.byName && (
       <div className="flex flex-row items-center gap-2">
         <Image
           src={`${pointerImage1.src}`}
           className={
-            'bg-center bg-cover bg-no-repeat sm:w-[30px] sm:h-[30px] h-6 w-6'
+            'bg-center bg-cover min-h-[30px] min-w-[30px] bg-no-repeat sm:w-[30px] sm:h-[30px] h-6 w-6'
           }
         />
         <div className="sm:text-[16px] text-white sm:leading-[24px] text-xs font-[500] ">
@@ -31,7 +31,7 @@ export default function BatchMetaDescription({ batch }: { batch: IBatch }) {
         <Image
           src={`${pointerImage2.src}`}
           className={
-            'bg-center min-w-[30px] bg-cover bg-no-repeat sm:w-[30px] sm:h-[30px] w-6 h-6'
+            'bg-center min-w-[30px] min-h-[30px] bg-cover bg-no-repeat sm:w-[30px] sm:h-[30px] w-6 h-6'
           }
         />
         <div className="text-xs sm:text-[16px]  text-white flex-nowrap font-[500] sm:leading-[24px]">
@@ -58,7 +58,7 @@ export default function BatchMetaDescription({ batch }: { batch: IBatch }) {
       <Image
         src={`${pointerImage3.src}`}
         className={
-          'bg-center bg-cover bg-no-repeat sm:w-[30px] sm:h-[30px] w-6 h-6 '
+          'bg-center bg-cover bg-no-repeat min-h-[30px] min-w-[30px] sm:w-[30px] sm:h-[30px] w-6 h-6 '
         }
       />
       <div className="text-xs  text-white sm:text-[16px] font-[500] sm:leading-[24px]">

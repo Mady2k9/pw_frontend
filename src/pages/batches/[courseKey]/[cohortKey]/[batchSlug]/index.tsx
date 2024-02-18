@@ -14,7 +14,7 @@ import { IPageData } from '@/api/interfaces/page';
 import BatchOtherDetails from '@/widgets/BatchDescription/BatchOtherDetails';
 import BatchDetailsInclusion from '@/widgets/BatchDescription/BatchDetailsInclusion';
 import BatchDetailsSchedule from '@/widgets/BatchDescription/BatchDetailsSchedule';
-import { scrollToElement } from '@/lib/dom.utils';
+import { scrollToElement, scrollWrapperLeftToElement } from '@/lib/dom.utils';
 import BatchDetailsKnowYourTeachers from '@/widgets/BatchDescription/BatchDetailsKnowYourTeachers';
 import BatchDetailsFreeContent from '@/widgets/BatchDescription/BatchDetailsFreeContent';
 import ResultsSection from '@/widgets/ResultsSection';
@@ -146,6 +146,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
           const id = entry.target.id;
           if (entry.isIntersecting) {
             visibleElements[id] = entry;
+            scrollWrapperLeftToElement(document.getElementById('page-tabs-wrapper')!, document.getElementById(`${entry.target.id}-tab`)!, false);
           } else {
             delete visibleElements[id];
           }

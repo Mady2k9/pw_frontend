@@ -124,7 +124,7 @@ export default function CommonItemCard({
       </div>
       <div className={'flex gap-2 !mt-3'}>
         {
-          exploreLink && <Link href={exploreLink} className={'w-full '}>
+          exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full '}>
             <Button variant={'outline'} className={'w-full  border-primary text-primary'}>
               EXPLORE
             </Button>

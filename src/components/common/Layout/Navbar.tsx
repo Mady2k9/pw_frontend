@@ -97,7 +97,8 @@ export function Navbar({ items }: NavbarProps) {
   };
   return (
     <>
-      <div className={'fixed z-[2] top-0 left-0 flex items-center right-0 bottom-0 h-[60px] md:h-navbar bg-white shadow'}/>
+      <div
+        className={'fixed z-[2] top-0 left-0 flex items-center right-0 bottom-0 h-[60px] md:h-navbar bg-white shadow'} />
       <nav
         className={'fixed z-[20] top-0 left-0 flex items-center right-0 bottom-0 h-[60px] md:h-navbar bg-white'}>
         <div className={'container h-full flex justify-between items-center'}>
