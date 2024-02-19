@@ -1,4 +1,4 @@
-import {Currency, formatCurrency} from "@/lib/utils";
+import { Currency, formatCurrency, formatNumber } from '@/lib/utils';
 import Image from "next/image";
 import DiscountImage from '@/assets/icons/discount.webp';
 
@@ -48,7 +48,7 @@ export default function PriceDisplay({currency, total, discount, amount}: PriceD
                 <div
                     className={'bg-[#DFF1E4]  flex space-x-1.5 text-xs px-2.5 py-1.5 rounded font-semibold'}>
                     <Image src={DiscountImage.src} alt={'Discount'} width={14} height={15}/>
-                    <span className={'whitespace-nowrap text-[#1B7938]'}>Discount of {discount}% applied</span>
+                    <span className={'whitespace-nowrap text-[#1B7938]'}>Discount of {formatNumber(discount)}% applied</span>
                 </div>
             </div>
         }
