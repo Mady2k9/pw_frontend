@@ -213,7 +213,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return <></>;
   }
 
-  return <Layout className={'pb-[60px]'} footerData={props.footerData} seoTags={props.pageData.seoTags}
+  return <Layout className={'pb-[60px] md:pb-0'} footerData={props.footerData} seoTags={props.pageData.seoTags}
                  headerData={props.headerData}>
     <PageTitleBar
       inverted={true} title={props.batch.name}
