@@ -19,6 +19,8 @@ import BatchDetailsKnowYourTeachers from '@/widgets/BatchDescription/BatchDetail
 import BatchDetailsFreeContent from '@/widgets/BatchDescription/BatchDetailsFreeContent';
 import ResultsSection from '@/widgets/ResultsSection';
 import DownloadAppBanner from '@/widgets/DownloadAppBanner';
+import PriceDisplay from '@/widgets/PriceDisplay';
+import { Button } from '@/components/ui/button';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return batchDetailsServerSideProps(context);
@@ -211,7 +213,8 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return <></>;
   }
 
-  return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData}>
+  return <Layout className={'pb-[60px]'} footerData={props.footerData} seoTags={props.pageData.seoTags}
+                 headerData={props.headerData}>
     <PageTitleBar
       inverted={true} title={props.batch.name}
       floatingCard={BatchCard}
@@ -255,5 +258,15 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
       </div>
 
     </div>
+    {
+      props.batch.fee &&
+      <div className={'fixed bottom-0 px-4 left-0 right-0 py-2 flex items-center card-shadow bg-white'}>
+        <div className={'flex-1'}>
+          <PriceDisplay compact={true} amount={props.batch.fee.amount} discount={props.batch.fee.discount}
+                        total={props.batch.fee.total} />
+        </div>
+        <Button className={'flex-1'}>Buy Now</Button>
+      </div>
+    }
   </Layout>;
 }
