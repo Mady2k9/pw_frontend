@@ -1,6 +1,7 @@
 import TeachersBg from '../../../../assets/Images/TeacherBg.png';
 import Image from '../../Atoms/Image/Image';
 import { getFullName } from '@/deprecated/shared/utility';
+
 const TeachersCard = ({ teacher }: { teacher: any }) => {
   return (
     <div className="min-w-[220px] h-[305px] flex items-center justify-center ">
@@ -23,9 +24,12 @@ const TeachersCard = ({ teacher }: { teacher: any }) => {
             {getFullName(teacher)}
           </div>
           <div className="sm:text-sm text-xs font-[500]">{teacher.subject}</div>
-          <div className="bg-[#EAECEF] text-[12px] leading-[18px] sm:text-sm rounded-[100px] py-[4px] mt-[9px] px-[18px]">
-            {teacher.experience}+ Years Exp
-          </div>
+          {
+            teacher.experience && <div
+              className="bg-[#EAECEF] text-[12px] leading-[18px] sm:text-sm rounded-[100px] py-[4px] mt-[9px] px-[18px]">
+              {teacher.experience}+ Years Exp
+            </div>
+          }
         </div>
       </div>
     </div>
