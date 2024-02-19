@@ -54,7 +54,7 @@ const getBreadcrumbs = ({ cohortKey, courseKey }: {
 
 function getWidgets(props: IPageData) {
   const result: ReactElement[] = [];
-  props.widgetOrder.forEach((widget) => {
+  props.widgetOrder?.forEach((widget) => {
     if (widget === 'RESULTS') {
       const resultData = props.widgetJson['RESULTS'];
       result.push(<ResultsSection hideCategories={true} results={resultData.sectionProps}
