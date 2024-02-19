@@ -31,7 +31,7 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
       query = { ...query, ...extractFilters(routerQuery) };
     }
     setLoading(true);
-    const start = reset ? 0 : batches.length;
+    const start = reset ? 0 : batches.length - 1;
 
     if (reset) {
       setBatches([]);
