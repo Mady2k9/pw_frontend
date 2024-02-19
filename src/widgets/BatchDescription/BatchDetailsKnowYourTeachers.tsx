@@ -6,7 +6,6 @@ import { Image } from '@/components/ui/image';
 import TeacherBgImage from '@/assets/background-images/teacher-bg.png';
 
 export function TeachersCard({ teacher }: { teacher: ITeacherId }) {
-  console.log(teacher);
   return <div className={'flex flex-col'}>
     <div
       className={'w-[80%] relative pt-4 flex flex-col bg-top bg-no-repeat justify-end overflow-hidden px-4 rounded-t-full aspect-[0.90] bg-[#FFF4CF] mx-auto'}
