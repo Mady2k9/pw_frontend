@@ -17,8 +17,8 @@ export default function PriceDisplay({currency, total, discount, amount}: PriceD
     return <div className={'flex items-center justify-between w-full'}>
         <div className={'flex items-center'}>
             {
-                total > 0 && <div className={'flex gap-1  flex-row items-center font-semibold text-primary'}>
-                    {formatCurrency(total, currency)}
+                <div className={'flex gap-1  flex-row items-center font-semibold text-primary'}>
+                    {total ? formatCurrency(total, currency) : 'FREE'}
                 </div>
             }
             {
