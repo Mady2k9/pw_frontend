@@ -196,6 +196,9 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                       meta={props.batch.meta}
                       startDate={props.batch.startDate}
                       fromDetails={true}
+                      amount={props.batch.fee?.amount}
+                      discount={props.batch.fee?.discount}
+                      updatedAmount={props.batch.fee?.total}
                       endDate={props.batch.endDate}
                       language={props.batch.language}
                       isNew={props.batch.markedAsNew}

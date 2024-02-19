@@ -35,6 +35,9 @@ interface CommonItemCardProps {
 
 export default function CommonItemCard({
                                          isOnline,
+                                         amount,
+                                         updatedAmount,
+                                         discount,
                                          title,
                                          isNew,
                                          startDate, endDate,
@@ -119,8 +122,8 @@ export default function CommonItemCard({
           </div>
         }
       </div>
-      <div className={'border-t pt-3 !mt-3'}>
-        <PriceDisplay amount={3999} discount={10} total={2999} />
+      <div className={'border-t pt-3 !mt-3 h-[42px]'}>
+        <PriceDisplay amount={amount} discount={discount} total={updatedAmount} />
       </div>
       <div className={'flex gap-2 !mt-3'}>
         {

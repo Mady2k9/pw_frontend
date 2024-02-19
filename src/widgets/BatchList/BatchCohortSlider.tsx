@@ -20,9 +20,12 @@ export default function BatchCohortSlider({title, batches, cohort, showMoreLink}
             <div className={'flex flex-nowrap gap-4 py-4'}>
                 {
                     batches.slice(0, 3).map((item, index) => {
-                        return <div className={'min-w-[320px]'} key={index}>
+                        return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
                             <CommonItemCard exploreLink={item.seoSlug} buyNowLink={`/study/batches/${item.slug}/batch-overview`} isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
                                             usedFor={item.byName}
+                                            amount={item.fee?.amount}
+                                            discount={item.fee?.discount}
+                                            updatedAmount={item.fee?.total}
                                             language={item.language}
                                             startDate={item.startDate}
                                             endDate={item.endDate}

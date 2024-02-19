@@ -17,7 +17,7 @@ export interface BatchGridListProps {
   filteredBatches?: IBatch[]
 }
 
-export default function BatchGridList({ batches: _batches, cohort, filteredBatches}: BatchGridListProps) {
+export default function BatchGridList({ batches: _batches, cohort, filteredBatches }: BatchGridListProps) {
   const [batches, setBatches] = useState(filteredBatches || _batches || []);
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(true);
@@ -70,6 +70,9 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
                                  key={index}
                                  usedFor={item.byName}
                                  meta={item.meta}
+                                 amount={item.fee?.amount}
+                                 discount={item.fee?.discount}
+                                 updatedAmount={item.fee?.total}
                                  startDate={item.startDate}
                                  endDate={item.endDate}
                                  language={item.language}
