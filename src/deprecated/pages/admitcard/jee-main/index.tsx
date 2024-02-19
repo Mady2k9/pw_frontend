@@ -16,7 +16,7 @@ const JEEMainAdmitCardPage = ({ headerData, footerData }: any) => {
       <NotificationWrapper />
       <Header headerData={headerData} showLogin={!loggedIn}></Header>
       <LandingPage></LandingPage>
-      <Footer footerData={footerData} />
+      <Footer footerData={footerData.data} />
     </div>
   );
 };

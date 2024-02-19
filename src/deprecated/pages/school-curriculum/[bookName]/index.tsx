@@ -14,7 +14,7 @@ function SchoolCurriculumBookPage({ footerData }: { footerData: any }) {
       <ExplorByClass />
       <SchoolCrDemo />
       <ExploreOurCatalogue />
-      <Footer footerData={footerData} />
+      <Footer footerData={footerData.data} />
     </>
   );
 }

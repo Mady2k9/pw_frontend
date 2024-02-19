@@ -323,7 +323,7 @@ const ListingPage = ({
           downloadAppData={batchListingData?.widgetJson?.APP_DOWNLOAD}
         />
       )}
-      <Footer footerData={params?.footerData} showFreeLearning />
+      <Footer footerData={params?.footerData?.data} showFreeLearning />
     </>
   );
 };

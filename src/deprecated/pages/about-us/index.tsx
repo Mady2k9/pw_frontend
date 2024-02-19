@@ -63,7 +63,7 @@ const AboutUsPage = ({
       <DownloadAppSection
         downloadAppData={HomePageData?.data?.widgetJson?.APP_DOWNLOAD}
       />
-      <Footer footerData={footerData} showFreeLearning={false} />
+      <Footer footerData={footerData.data} showFreeLearning={false} />
     </>
   );
 };

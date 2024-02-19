@@ -29,14 +29,15 @@ import HeroFeatureSection from '@/deprecated/shared/Components/Components/HeroFe
 import GTM from '@/deprecated/analytics//GTM';
 
 export default function HomePage({
-  HomePageData,
-  headerData,
-  footerData,
-}: {
+                                   HomePageData,
+                                   headerData,
+                                   footerData,
+                                 }: {
   HomePageData: any;
   headerData: any;
   footerData: any;
 }) {
+  console.log('HomePageData', HomePageData);
   const pageData = HomePageData?.data?.widgetJson;
   const seoData = HomePageData?.data?.seoTags;
   const router = useRouter();
@@ -139,7 +140,7 @@ export default function HomePage({
             'Physicswallah Live Courses for JEE, NEET & Class 6,7,8,9,10,11,12 | NCERT Solutions',
           locale: 'en_US',
           description:
-            "Physics Wallah is India's top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.",
+            'Physics Wallah is India\'s top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.',
           site_name: 'PW',
           url: 'https://www.pw.live/',
           images: [
@@ -147,7 +148,7 @@ export default function HomePage({
               url: 'https://www.pw.live/img/entrancei.jpg',
               width: '560',
               height: '292',
-              alt: "Physics Wallah is India's top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.",
+              alt: 'Physics Wallah is India\'s top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.',
             },
           ],
         }}
@@ -229,7 +230,7 @@ export default function HomePage({
         />
       )}
       <PhoneIcon page_source={PAGE_SOURCE} />
-      <Footer footerData={footerData} showFreeLearning />
+      <Footer footerData={footerData.data} showFreeLearning />
     </>
   );
 }

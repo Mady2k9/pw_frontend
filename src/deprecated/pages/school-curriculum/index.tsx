@@ -18,7 +18,7 @@ function SchoolCurriculumPage({ footerData }: { footerData: any }) {
       <NumbersSpeak />
       <Testonomial />
       <TeacherCta />
-      <Footer footerData={footerData} />
+      <Footer footerData={footerData.data} />
     </>
   );
 }
