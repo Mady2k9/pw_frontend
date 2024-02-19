@@ -11,7 +11,7 @@ interface ResultsSectionProps {
 
 export default function ResultsSection({ title, hideCategories, description, results }: ResultsSectionProps) {
   const Categories = results?.map((result) => {
-    return result.exam;
+    return result?.exam;
   });
   const [activePill, setActivePill] = useState<string>(Categories?.[0]);
   if (!results.length) {
