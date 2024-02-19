@@ -61,6 +61,7 @@ const config = {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
                 },
+                black500: 'rgba(0, 0, 0, 0.5)',
                 ...colors
             },
             borderRadius: {
