@@ -42,14 +42,13 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
     }
     query.start = start;
     fetchBatches(query).then((d) => {
-      if (!d.data.length) {
+      if (!d.data.length || d.data.length < 6) {
         setShowLoadMore(false);
       } else {
         setShowLoadMore(true);
       }
       setBatches((prev) => uniqueBy([...prev, ...d.data], '_id'));
-    }).catch(() => {
-      setShowLoadMore(false);
+
     }).finally(() => {
       setLoading(false);
     });
