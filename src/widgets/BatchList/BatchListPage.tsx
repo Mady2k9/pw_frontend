@@ -122,7 +122,7 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
     }
     {
       batchSection === 'ALL' &&
-      <div className={'container overflow-visible mt-4 md:mt-6 space-y-8'}>
+      <div className={'mt-4 md:mt-6 space-y-8'}>
         {
           props.options?.map((cohortOption, index) => {
             if (!props.batches[cohortOption.cohortId]) {
@@ -139,7 +139,7 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
     }
     {
       batchSection === 'COHORT' &&
-      <div className={'container overflow-visible mt-4 md:mt-6 space-y-8'}>
+      <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
         <BatchGridList cohort={activeCohort!}
                        filteredBatches={props.filteredBatches?.length ? props.filteredBatches : undefined}
                        batches={props.batches[activeCohort!.cohortId] || []} />
