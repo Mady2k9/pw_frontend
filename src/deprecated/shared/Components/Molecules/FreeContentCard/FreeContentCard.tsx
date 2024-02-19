@@ -40,7 +40,7 @@ const FreeContentCard = ({
   const handleShowVideo = () => {
     eventTracker.authPageVisit('free_content', PAGE_SOURCE);
     console.log('content', content)
-    const redirect_url = `${window.location.origin}/watch/?batchSlug=${content?.batchId}&batchSubjectId=${content?.batchSubjectId}&subjectSlug=${content?.batchSubjectId}&topicSlug=all&scheduleId=${content?._id}&isUnderMaintenance=false`;
+    const redirect_url = `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}watch/?batchSlug=${content?.batchId}&batchSubjectId=${content?.batchSubjectId}&subjectSlug=${content?.batchSubjectId}&topicSlug=all&scheduleId=${content?._id}&isUnderMaintenance=false`;
     window.open(
       `${
         process.env.NEXT_PUBLIC_PP_HOME_BASE_URL
