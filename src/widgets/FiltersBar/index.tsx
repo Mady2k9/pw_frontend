@@ -9,7 +9,7 @@ import { PopoverClose } from '@radix-ui/react-popover';
 import { Badge } from '@/components/ui/badge';
 import { NextRouter, useRouter } from 'next/router';
 import { scrollToElement, scrollWrapperLeftToElement } from '@/lib/dom.utils';
-import { Filter, FiltersJSON } from '@/lib/batch-list-server-side-props';
+import { extractFilters, Filter, FiltersJSON } from '@/lib/batch-list-server-side-props';
 
 export type FilterId = 'online' | 'offline' | 'new' | 'pricing' | 'language';
 
@@ -177,6 +177,7 @@ export default function FiltersBar() {
     }
     setSelectedFilters(_setF);
   }, [router.asPath]);
+  const resetFilters = Object.keys(extractFilters(router.query)).length > 0;
   return (
     <div className={'overflow-x-auto scrollbar-hide bg-white container'} id={'filter-bar-wrapper'}>
       <div className={'flex flex-nowrap gap-3 bg-white py-2 md:py-3 select-none items-center'}>
@@ -190,11 +191,11 @@ export default function FiltersBar() {
                                  setSelectedFilters={setSelectedFilters} />;
           })
         }
-        <div className={'border-l'}><Button onClick={() => {
+        {resetFilters && <div className={'border-l'}><Button onClick={() => {
           scrollWrapperLeftToElement(document.getElementById('filter-bar-wrapper')!, null, false);
           router.replace(pushToQueryParams(router, {}), undefined, { shallow: true });
           setSelectedFilters({});
-        }} variant={'link'}>Reset Filters</Button></div>
+        }} variant={'link'}>Reset Filters</Button></div>}
       </div>
     </div>
   );
