@@ -1,0 +1,149 @@
+{
+  "classes": [
+    {
+      "class": "Nursery",
+      "subjects": [
+        {
+          "name": "English",
+          "image": "/English.webp",
+          "Backcolor": "#FFF0E7"
+        },
+        {
+          "name": "Hindi",
+          "image": "/Hindischool.webp",
+          "Backcolor": "#FEF3FF"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        },
+        {
+          "name": "Environmental Studies",
+          "image": "/Evs.webp",
+          "Backcolor": "#FFF0E5"
+        }
+      ]
+    },
+    {
+      "class": "Lower KG",
+      "subjects": [
+        {
+          "name": "English",
+          "image": "/English.webp",
+          "Backcolor": "#FFF0E7"
+        },
+        {
+          "name": "Hindi",
+          "image": "/Hindischool.webp",
+          "Backcolor": "#FEF3FF"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        },
+        {
+          "name": "Environmental Studies",
+          "image": "/Evs.webp",
+          "Backcolor": "#FFF0E5"
+        }
+      ]
+    },
+    {
+      "class": "Upper KG",
+      "subjects": [
+        {
+          "name": "English",
+          "image": "/English.webp",
+          "Backcolor": "#FFF0E7"
+        },
+        {
+          "name": "Hindi",
+          "image": "/Hindischool.webp",
+          "Backcolor": "#FEF3FF"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        },
+        {
+          "name": "Environmental Studies",
+          "image": "/Evs.webp",
+          "Backcolor": "#FFF0E5"
+        }
+      ]
+    },
+    {
+      "class": "Grade 1",
+      "subjects": [
+        {
+          "name": "English",
+          "image": "/English.webp",
+          "Backcolor": "#FFF0E7"
+        },
+        {
+          "name": "Hindi",
+          "image": "/Hindischool.webp",
+          "Backcolor": "#FEF3FF"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        },
+        {
+          "name": "Environmental Studies",
+          "image": "/Evs.webp",
+          "Backcolor": "#FFF0E5"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        }
+      ]
+    },
+    {
+      "class": "Grade 2",
+      "subjects": [
+        {
+          "name": "English",
+          "image": "/English.webp",
+          "Backcolor": "#FFF0E7"
+        },
+        {
+          "name": "Hindi",
+          "image": "/Hindischool.webp",
+          "Backcolor": "#FEF3FF"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        },
+        {
+          "name": "Environmental Studies",
+          "image": "/Evs.webp",
+          "Backcolor": "#FFF0E5"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        },
+        {
+          "name": "Math",
+          "image": "/Mathematics.webp",
+          "Backcolor": "#E4FFF3"
+        }
+      ]
+    }
+  ]
+}

@@ -4,23 +4,16 @@ import styles from './BatchDetailsInclusion.module.css';
 import AlakhImage from '@/assets/icons/Alakh.webp';
 import { Image } from '@/components/ui/image';
 import {
-  Dialog, DialogClose,
+  Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { X } from 'lucide-react';
 
 export default function BatchDetailsInclusion({ description, orientationVideo }: {
   description: string,
   orientationVideo?: IOrientationVideo
 }) {
-  const handleShowVideo = () => {
-    console.log(orientationVideo);
-  };
+
   return <BatchDescriptionCardWrapper title={'This batch includes'}>
     <div dangerouslySetInnerHTML={{ __html: description }} />
     {
@@ -47,7 +40,6 @@ export default function BatchDetailsInclusion({ description, orientationVideo }:
                 <DialogTrigger asChild>
                   <div
                     className="absolute md:bottom-[-10px] md:right-[-10px] right-0  h-[48px] w-[48px] cursor-pointer"
-                    onClick={handleShowVideo}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

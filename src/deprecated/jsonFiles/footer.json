@@ -1,0 +1,482 @@
+{
+  "statusCode": 200,
+  "data": [
+    {
+      "section": 1,
+      "sectionTitle": null,
+      "menuItems": [
+        {
+          "menuTitle": "Company",
+          "menuItems": [
+            {
+              "menuTitle": "About Us",
+              "redirectionUrl": "https://www.pw.live/about-us"
+            },
+            {
+              "menuTitle": "Contact U",
+              "redirectionUrl": "https://www.pw.live/contact-us"
+            },
+            {
+              "menuTitle": "Careers",
+              "redirectionUrl": "https://pwhr.darwinbox.in/ms/candidate/a62d7a6e288992/careers"
+            },
+            {
+              "menuTitle": "Updates",
+              "redirectionUrl": "https://pwupdates.in/"
+            },
+            {
+              "menuTitle": "Contact Us",
+              "redirectionUrl": "https://www.pw.live/contact-us"
+            }
+          ]
+        },
+        {
+          "menuTitle": "Our Centers",
+          "menuItems": [
+            {
+              "menuTitle": "New Delhi",
+              "redirectionUrl": "https://www.pw.live/vidyapeeth-centres/new-delhi-dl"
+            },
+            {
+              "menuTitle": "Patna",
+              "redirectionUrl": "https://www.pw.live/vidyapeeth-centres/patna-br"
+            },
+            {
+              "menuTitle": "Kota",
+              "redirectionUrl": "https://www.pw.live/vidyapeeth-centres/kota-rj"
+            },
+            {
+              "menuTitle": "Noida",
+              "redirectionUrl": "https://www.pw.live/vidyapeeth-centres/noida-up"
+            },
+            {
+              "menuTitle": "Dhanbad",
+              "redirectionUrl": "https://www.pw.live/vidyapeeth-centres/dhanbad-jh"
+            },
+            {
+              "menuTitle": "Varanasi",
+              "redirectionUrl": "https://www.pw.live/vidyapeeth-centres/varanasi-up"
+            },
+            {
+              "menuTitle": "View All",
+              "redirectionUrl": "https://www.pw.live/vidyapeeth-centres"
+            }
+          ]
+        },
+        {
+          "menuTitle": "Popular Exams",
+          "menuItems": [
+            {
+              "menuTitle": "IIT JEE",
+              "redirectionUrl": "https://www.pw.live/online-course-physics-wallah-jee"
+            },
+            {
+              "menuTitle": "NEET",
+              "redirectionUrl": "https://www.pw.live/online-course-physics-wallah-neet"
+            },
+            {
+              "menuTitle": "GATE",
+              "redirectionUrl": "https://www.pw.live/online-course-physics-wallah-gate"
+            },
+            {
+              "menuTitle": "NDA",
+              "redirectionUrl": "https://www.pw.live/online-course-physics-wallah-defence-nda"
+            },
+            {
+              "menuTitle": "UPSC",
+              "redirectionUrl": "https://www.pw.live/online-course-physics-wallah-pw-only-ias-upsc-online"
+            },
+            {
+              "menuTitle": "School Prep",
+              "redirectionUrl": "https://www.pw.live/online-course-physics-wallah-school-preparation"
+            }
+          ]
+        },
+        {
+          "menuTitle": "Connect with us",
+          "menuItems": [
+            {
+              "menuTitle": "Email us",
+              "redirectionUrl": "https://www.pw.live/contact-us"
+            },
+            {
+              "menuTitle": "Talk to a counsellor",
+              "redirectionUrl": "https://www.pw.live/contact-us"
+            }
+          ]
+        },
+        {
+          "menuTitle": "Quick Links",
+          "menuItems": [
+            {
+              "menuTitle": "PW Prerna",
+              "redirectionUrl": "https://www.pw.live/prerna"
+            },
+            {
+              "menuTitle": "PW SIP",
+              "redirectionUrl": "https://www.pw.live/sip"
+            },
+            {
+              "menuTitle": "Partner with us",
+              "redirectionUrl": "https://www.crunchbase.com/organization/pw-partners"
+            }
+          ]
+        },
+        {
+          "menuTitle": "Our Products",
+          "menuItems": [
+            {
+              "menuTitle": "PW Learning App",
+              "redirectionUrl": "https://play.google.com/store/apps/details?id=xyz.penpencil.physicswala&hl=en&gl=US&pli=1"
+            },
+            {
+              "menuTitle": "PW Parent App",
+              "redirectionUrl": "https://play.google.com/store/apps/details?id=xyz.penpencil.physicswala&hl=en&gl=US&pli=1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": 2,
+      "sectionTitle": "Free Learning Resources",
+      "menuItems": [
+        {
+          "menuTitle": "Notes",
+          "menuItems": [
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            }
+          ]
+        },
+        {
+          "menuTitle": "Study Resources",
+          "menuItems": [
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            }
+          ]
+        },
+        {
+          "menuTitle": "NCERT Solutions",
+          "menuItems": [
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            }
+          ]
+        },
+        {
+          "menuTitle": "State Boards",
+          "menuItems": [
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            }
+          ]
+        },
+        {
+          "menuTitle": "Our Channels",
+          "menuItems": [
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            },
+            {
+              "menuTitle": "RS Aggarwal Solutions for Maths",
+              "redirectionUrl": "some url"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "section": 3,
+      "menuItems": [
+        {
+          "menuTitle": "Know about physicswallah",
+          "description": "Physicswallah india's top... Physicswallah india's top... Physicswallah india's top... We successfully provide... We successfully provide... We successfully provide... We successfully provide..."
+        },
+        {
+          "menuTitle": "We stand out because",
+          "description": "We successfully provide... We successfully provide... We successfully provide... We successfully provide... We successfully provide..."
+        },
+        {
+          "menuTitle": "We stand out because",
+          "description": "We successfully provide... We successfully provide... We successfully provide... We successfully provide... We successfully provide..."
+        },
+        {
+          "menuTitle": "We stand out because",
+          "description": "We successfully provide... We successfully provide... We successfully provide... We successfully provide... We successfully provide..."
+        }
+      ]
+    }
+  ]
+}

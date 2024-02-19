@@ -1,0 +1,113 @@
+{
+  "statusCode": 200,
+  "data": {
+    "titleHeader": "Inclusions",
+
+    "firstSection": {
+      "title": "Inclusions",
+      "bulletPoint": [
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Video Solutions and detailed analysis for every paper"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "One-to-one telephonic PTM, based on SPD"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Access to AITS (All India Test Series) at physical centers for AIR batch selection"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Access to AITS (All India Test Series) at physical centers for AIR batch selection"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Access to AITS (All India Test Series) at physical centers for AIR batch selection"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Access to AITS (All India Test Series) at physical centers for AIR batch selection"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Access to AITS (All India Test Series) at physical centers for AIR batch selection"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Access to AITS (All India Test Series) at physical centers for AIR batch selection"
+        }
+      ],
+      "Information": [
+        {
+          "value": "24",
+          "details": "Total Tests",
+          "borderColor": "#5A4BDA"
+        },
+        {
+          "value": "8",
+          "details": "Short Tests",
+          "borderColor": "#037CBF"
+        },
+        {
+          "value": "15",
+          "details": "All india Tests",
+          "borderColor": "#DA7E4B"
+        },
+        {
+          "value": "14",
+          "details": "JEE Mains & Advance",
+          "borderColor": "#A44BDA"
+        }
+      ]
+    },
+    "sectionTwo": {
+      "title": "Test",
+      "TestSeriesDetails": [
+        {
+          "name": "Practice Test 1",
+          "type": "free",
+          "Questions": "90 Questions",
+          "marks": "300 marks",
+          "time": "180 minuts",
+          "startDate": "Started on 12 Dec 2023"
+        },
+        {
+          "name": "Practice Test 2",
+          "type": "",
+          "Questions": "90 Questions",
+          "marks": "300 marks",
+          "time": "180 minuts",
+          "startDate": "Started on 12 Dec 2023"
+        },
+        {
+          "name": "Practice Test 3",
+          "type": "",
+          "Questions": "90 Questions",
+          "marks": "300 marks",
+          "time": "180 minuts",
+          "startDate": "Started on 12 Dec 2023"
+        },
+        {
+          "name": "Practice Test 4",
+          "type": "",
+          "Questions": "90 Questions",
+          "marks": "300 marks",
+          "time": "180 minuts",
+          "startDate": "Started on 12 Dec 2023"
+        }
+      ]
+    },
+    "sectionThree": {
+      "title": "Why Choose Us",
+      "bulletImage": [
+        { "Image": "/imageTest.webp" },
+        { "Image": "/imageTest.webp" },
+        { "Image": "/imageTest.webp" },
+        { "Image": "/imageTest.webp" },
+        { "Image": "/imageTest.webp" }
+      ]
+    }
+  }
+}

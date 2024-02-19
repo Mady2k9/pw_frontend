@@ -1,0 +1,263 @@
+{
+  "statusCode": 200,
+  "data": [
+    {
+      "sectionTitle": "",
+      "sectionSubtitile": "",
+      "sectionProps": [
+        {
+          "mwebBannerImages": "banner-mweb.webp",
+          "dwebBannerImages": "carousel-banner.webp",
+          "redirectionUrl": "https://www.pw.live/vidyapeeth-centres",
+          "displayOrder": 1
+        },
+        {
+          "mwebBannerImages": "banner-mweb.webp",
+          "dwebBannerImages": "banner-mweb.webp",
+          "redirectionUrl": "https://www.pw.live/vidyapeeth-centres",
+          "displayOrder": 1
+        },
+        {
+          "mwebBannerImages": "banner-mweb.webp",
+          "dwebBannerImages": "banner-image.webp",
+          "redirectionUrl": "https://www.pw.live/vidyapeeth-centres",
+          "displayOrder": 1
+        }
+      ],
+      "type": "COROUSEL"
+    },
+    {
+      "sectionTitle": "Bharat’s Biggest & Most Trusted Educational Platform",
+      "sectionSubtitile": "Unlock your potential by signing up with Physics Wallah-The most affordable learning solution.",
+      "sectionProps": [
+        {
+          "mwebBackGroundImage": "",
+          "dwebBackGroundImage": "bg-second-comp.webp",
+          "mwebFrontImage": "hero-section-Mweb.webp",
+          "dwebFrontImage": "hero-section-dweb.webp"
+        }
+      ],
+      "type": "HEROSECTION"
+    },
+    {
+      "sectionTitle": "Most Loved Features",
+      "sectionSubtitile": "Offerings that help you excel in your preparation journey",
+      "sectionProps": [
+        {
+          "title": "Saarthi",
+          "subTitle": "Your personal coach",
+          "description": "Saarthi is your Personal Coach and assistant. Connect with our faculties to get your doubts clarified at any hour of the day.",
+          "mwebBackGroundImage": "string",
+          "dwebBackGroundImage": "/most-loved-card.webp",
+          "redirectionUrl": "string",
+          "displayOrder": "number"
+        },
+        {
+          "title": "Saarthi",
+          "subTitle": "Your personal coach",
+          "description": "Saarthi is your Personal Coach and assistant. Connect with our faculties to get your doubts clarified at any hour of the day.",
+          "mwebBackGroundImage": "string",
+          "dwebBackGroundImage": "/most-loved-card.webp",
+          "redirectionUrl": "string",
+          "displayOrder": "number"
+        },
+        {
+          "title": "Saarthi",
+          "subTitle": "Your personal coach",
+          "description": "Saarthi is your Personal Coach and assistant. Connect with our faculties to get your doubts clarified at any hour of the day.",
+          "mwebBackGroundImage": "string",
+          "dwebBackGroundImage": "/most-loved-card.webp",
+          "redirectionUrl": "string",
+          "displayOrder": "number"
+        },
+        {
+          "title": "Saarthi",
+          "subTitle": "Your personal coach",
+          "description": "Saarthi is your Personal Coach and assistant. Connect with our faculties to get your doubts clarified at any hour of the day.",
+          "mwebBackGroundImage": "string",
+          "dwebBackGroundImage": "/most-loved-card.webp",
+          "redirectionUrl": "string",
+          "displayOrder": "number"
+        }
+      ],
+      "type": "FEATURES"
+    },
+    {
+      "sectionTitle": " A Platform Trusted by Students Across Bharat",
+      "sectionSubtitile": "Numbers speak louder than words; Witness the Excellence for Yourself",
+      "sectionProps": [
+        {
+          "title": "Happy Students",
+          "stats": "10 Million",
+          "icon": "/TrustedPlatform.svg",
+          "color": "string",
+          "displayOrder": "1"
+        },
+        {
+          "title": "Mock Tests",
+          "stats": "24000",
+          "icon": "/TrustedPlatform.svg",
+          "color": "string",
+          "displayOrder": "2"
+        },
+        {
+          "title": "Video Lectures",
+          "stats": "14000",
+          "icon": "/TrustedPlatform.svg",
+          "color": "string",
+          "displayOrder": "3"
+        },
+        {
+          "title": "Practice Papers",
+          "stats": "80000",
+          "icon": "/TrustedPlatform.svg",
+          "color": "string",
+          "displayOrder": "4"
+        }
+      ],
+      "Type": "STATS"
+    },
+    {
+      "sectionTitle": "Results",
+      "sectionSubtitile": "results subtitle",
+      "sectionProps": [
+        {
+          "exam": "string",
+          "mwebBannerImages": "academic-Result-Mweb.webp",
+          "dwebBannerImages": "AcademicResults.png",
+          "icon": "string",
+          "displayOrder": "number"
+        },
+        {
+          "exam": "string",
+          "mwebBannerImages": "Banner_mweb.webp",
+          "dwebBannerImages": "carousel-banner.webp",
+          "icon": "string",
+          "displayOrder": "number"
+        },
+        {
+          "exam": "string",
+          "mwebBannerImages": "academic-Result-Mweb.webp",
+          "dwebBannerImages": "AcademicResults.png",
+          "icon": "string",
+          "displayOrder": "number"
+        },
+        {
+          "exam": "string",
+          "mwebBannerImages": "",
+          "dwebBannerImages": "",
+          "icon": "string",
+          "displayOrder": "number"
+        }
+      ],
+      "Type": "RESULTS"
+    },
+    {
+      "sectionTitle": "Testimonials",
+      "sectionSubtitile": "testimonial subtitle",
+      "sectionProps": [
+        {
+          "studentName": "Vijay Kumar",
+          "exam": "IIT-JEE",
+          "rank": "AIR 1",
+          "mwebBannerImages": "",
+          "dwebBannerImages": "/studentform.webp",
+          "video": "string",
+          "testimonial": "Studying abroad with [Study Abroad Program Name] was a life-changing experience for me. The program provided an exceptional blend of academic excellence, cultural immersion, and personal growth.",
+          "displayOrder": "number"
+        },
+        {
+          "studentName": "Vijay Kumar",
+          "exam": "IIT-JEE",
+          "rank": "AIR 1",
+          "mwebBannerImages": "",
+          "dwebBannerImages": "/studentform.webp",
+          "video": "string",
+          "testimonial": "Studying abroad with [Study Abroad Program Name] was a life-changing experience for me. The program provided an exceptional blend of academic excellence, cultural immersion, and personal growth.",
+          "displayOrder": "number"
+        },
+        {
+          "studentName": "Vijay Kumar",
+          "exam": "IIT-JEE",
+          "rank": "AIR 1",
+          "mwebBannerImages": "",
+          "dwebBannerImages": "/studentform.webp",
+          "video": "string",
+          "testimonial": "Studying abroad with [Study Abroad Program Name] was a life-changing experience for me. The program provided an exceptional blend of academic excellence, cultural immersion, and personal growth.",
+          "displayOrder": "number"
+        },
+        {
+          "studentName": "Vijay Kumar",
+          "exam": "IIT-JEE",
+          "rank": "AIR 1",
+          "mwebBannerImages": "",
+          "dwebBannerImages": "/studentform.webp",
+          "video": "string",
+          "testimonial": "Studying abroad with [Study Abroad Program Name] was a life-changing experience for me. The program provided an exceptional blend of academic excellence, cultural immersion, and personal growth.",
+          "displayOrder": "number"
+        }
+      ],
+      "Type": "TESTIMONIALS"
+    },
+    {
+      "sectionTitle": "Study Resources",
+      "sectionSubtitile": "study resources subtitle",
+      "sectionProps": [
+        {
+          "title": "Notes",
+          "description": "Comprehensive and concise study notes, distilling complex concepts into easily understandable content for effective learning.",
+          "mwebImage": "string",
+          "dwebImage": "resource.webp",
+          "bgColor": "#FFF9EE"
+        },
+        {
+          "title": "Notes",
+          "description": "Comprehensive and concise study notes, distilling complex concepts into easily understandable content for effective learning.",
+          "mwebImage": "string",
+          "dwebImage": "resourc2.webp",
+          "bgColor": "#F1FAFF"
+        },
+        {
+          "title": "NCERT Solutions",
+          "description": "Comprehensive and concise study notes, distilling complex concepts into easily understandable content for effective learning.",
+          "mwebImage": "string",
+          "dwebImage": "resource.webp",
+          "bgColor": "#FFF9EE"
+        }
+      ],
+      "Type": "STUDYRESOURCES"
+    },
+    {
+      "sectionTitle": "Youtube stats",
+      "sectionSubtitile": "you tube subtitle",
+      "sectionProps": [
+        {
+          "channelName": "Physics Wallah Foundation",
+          "subscribers": "3.2M",
+          "displayOrder": "number"
+        },
+        {
+          "channelName": "Competition Wallah",
+          "subscribers": "3.2M",
+          "displayOrder": "number"
+        },
+        {
+          "channelName": "Physics Wallah Foundation",
+          "subscribers": "3.2M",
+          "displayOrder": "number"
+        },
+        {
+          "channelName": "Competition Wallah",
+          "subscribers": "3.2M",
+          "displayOrder": "number"
+        },
+        {
+          "channelName": "JEE Wallah",
+          "subscribers": "3.2M",
+          "displayOrder": "number"
+        }
+      ],
+      "Type": "YOUTUBESTATS"
+    }
+  ]
+}

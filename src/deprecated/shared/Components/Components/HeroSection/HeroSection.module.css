@@ -1,0 +1,395 @@
+/* for students */
+.anims {
+  border-right: 2px solid #c1c6ce;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typewriters 1500ms steps(40) 1500ms 1 normal both,
+    blinkTextCursor 50ms steps(10) 50ms 4 normal,
+    hides 200ms steps(10) 500ms 10 normal both;
+}
+.animsc {
+  animation: shows 500ms steps(44) 500ms 1 normal both;
+}
+
+@keyframes typewriters {
+  from {
+    width: 0;
+  }
+  to {
+    width: 145px;
+  }
+}
+@keyframes shows {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+@keyframes hides {
+  from {
+    border-right-color: #c1c6ceff;
+  }
+  to {
+    border-right-color: #c1c6ce00;
+  }
+}
+/* --------------------------------------------------- */
+
+/* for alakh sir -line 1 */
+
+.anima {
+  border-right: 2px solid #4437b8ff;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typewriter1 1500ms steps(60) 4s 1 normal both,
+    blinkTextCursor 50ms steps(10) 50ms 4 normal,
+    hide1 200ms steps(10) 500ms 31 normal both;
+}
+.animac {
+  animation: show1 400ms steps(44) 3s 1 normal both;
+}
+@keyframes typewriter1 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 206px;
+  }
+}
+@keyframes show1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+@keyframes hide1 {
+  from {
+    border-right-color: #4437b8ff;
+  }
+  to {
+    border-right-color: #4437b800;
+  }
+}
+/* --------------------------------------------------- */
+
+/* for alakh sir -line 2 */
+
+.animb {
+  border-right: 2px solid #c1c6ce;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typewriter2 1500ms steps(60) 5500ms 1 normal both,
+    blinkTextCursor 100ms steps(2) 100ms 8 normal,
+    hide2 200ms steps(10) 500ms 10 normal both;
+}
+.animbc {
+  animation: show2 100ms steps(24) 5000ms 1 normal both;
+}
+.animbh {
+  animation: height2 200ms steps(44) 4500ms 1 normal both;
+}
+@keyframes typewriter2 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 206px;
+  }
+}
+@keyframes show2 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+@keyframes height2 {
+  from {
+    height: 0;
+  }
+  to {
+    height: 30px;
+  }
+  from {
+    padding: 0px 0px 0px 0px;
+  }
+  to {
+    padding: 2px 4px 6px 8px;
+  }
+}
+@keyframes hide2 {
+  from {
+    border-right-color: #c1c6ceff;
+  }
+  to {
+    border-right-color: #c1c6ce00;
+  }
+}
+/* --------------------------------------------------- */
+
+/* for alakh sir -line 3 */
+
+.animc {
+  border-right: 2px solid #c1c6ce;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typewriter3 1500ms steps(60) 8500ms 1 normal both,
+    blinkTextCursor 50ms steps(10) 50ms 4 normal,
+    hide3 200ms steps(10) 500ms 36 normal both;
+}
+.animcc {
+  animation: show3 100ms steps(24) 7000ms 1 normal both;
+}
+.animch {
+  animation: height3 200ms steps(44) 6500ms 1 normal both;
+}
+@keyframes typewriter3 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 206px;
+  }
+}
+@keyframes show3 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+@keyframes height3 {
+  from {
+    height: 0;
+  }
+  to {
+    height: 30px;
+  }
+  from {
+    padding: 0px 0px 0px 0px;
+  }
+  to {
+    padding: 2px 4px 6px 8px;
+  }
+}
+@keyframes hide3 {
+  from {
+    border-right-color: #c1c6ceff;
+  }
+  to {
+    border-right-color: #c1c6ce00;
+  }
+}
+/* --------------------------------------------------- */
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: #c1c6ceff;
+  }
+  to {
+    border-right-color: #c1c6ce00;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  /* for students */
+  .anims {
+    border-right: 2px solid #c1c6ce;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+      typewriters 1500ms steps(60) 1500ms 1 normal both,
+      blinkTextCursor 100ms steps(10) 100ms 10 normal,
+      hides 200ms steps(10) 500ms 10 normal both;
+  }
+  .animsc {
+    animation: shows 500ms steps(44) 1000ms 1 normal both;
+  }
+
+  @keyframes typewriters {
+    from {
+      width: 0;
+    }
+    to {
+      width: 125px;
+    }
+  }
+  @keyframes shows {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 100;
+    }
+  }
+  @keyframes hides {
+    from {
+      border-right-color: #c1c6ceff;
+    }
+    to {
+      border-right-color: #c1c6ce00;
+    }
+  }
+  /* --------------------------------------------------- */
+
+  /* for alakh sir -line 1 */
+
+  .anima {
+    border-right: 2px solid #4437b8ff;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+      typewriter1 1500ms steps(60) 3500ms 1 normal both,
+      blinkTextCursor 100ms steps(10) 100ms 10 normal,
+      hide1 200ms steps(10) 500ms 10 normal both;
+  }
+  .animac {
+    animation: show1 400ms steps(44) 3s 1 normal both;
+  }
+  @keyframes typewriter1 {
+    from {
+      width: 0;
+    }
+    to {
+      width: 179px;
+    }
+  }
+  @keyframes show1 {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 100;
+    }
+  }
+  @keyframes hide1 {
+    from {
+      border-right-color: #4437b8ff;
+    }
+    to {
+      border-right-color: #4437b800;
+    }
+  }
+  /* --------------------------------------------------- */
+}
+
+@keyframes grow {
+  0% {
+    max-height: var(--lineHeight);
+  }
+  100% {
+    max-height: calc(var(--lineHeight) * var(--lines));
+  }
+}
+
+@keyframes carriageReturn {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: calc(var(--lineHeight) * var(--lines));
+  }
+}
+
+@keyframes type {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes caret {
+  0% {
+    color: var(--bgColor);
+  }
+  100% {
+    color: black;
+  }
+}
+
+.typewriter {
+  --bgColor: #140d52;
+  --lines: 10;
+  --lineHeight: 1.9rem;
+  --timePerLine: 4s;
+  --widthCh: 25;
+  --width: calc(var(--widthCh) * 1ch);
+  /* do not touch the time property!!! */
+  --time: calc(var(--lines) * var(--timePerLine));
+  animation: grow var(--time) steps(var(--lines));
+  animation-fill-mode: forwards;
+  background: var(--bgColor);
+  line-height: 1.5rem;
+  max-height: var(--lineHeight);
+  overflow: hidden;
+  position: relative;
+  width: var(--width);
+  /* word-break: break-all; */
+}
+
+.typewriter::before {
+  content: '';
+  animation:
+    type var(--timePerLine) linear infinite,
+    carriageReturn var(--time) steps(var(--lines)) var(--lines),
+    caret 0.5s steps(2) infinite;
+  background: var(--bgColor);
+  border-left: 1px solid;
+  top: 0;
+  height: 2.1rem;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+/* for alakh sir -line 1 */
+
+.anima {
+  border-right: 2px solid #4437b8ff;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typewriter1 1500ms steps(60) 3500ms 1 normal both,
+    blinkTextCursor 100ms steps(10) 100ms 10 normal,
+    hide1 200ms steps(10) 500ms 10 normal both;
+}
+.animac {
+  animation: show1 400ms steps(44) 3s 1 normal both;
+}
+@keyframes typewriter1 {
+  from {
+    width: 0;
+  }
+  to {
+    width: 179px;
+  }
+}
+@keyframes show1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+@keyframes hide1 {
+  from {
+    border-right-color: #4437b8ff;
+  }
+  to {
+    border-right-color: #4437b800;
+  }
+}
+/* --------------------------------------------------- */

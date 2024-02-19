@@ -1,0 +1,49 @@
+.slideBarRemove::-webkit-scrollbar {
+  display: none;
+}
+.slideBarRemove {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollHidden {
+  padding: 12px;
+  align-items: center;
+  display: none;
+}
+.leftscrollHidden {
+  padding: 12px;
+  align-items: center;
+  display: none;
+}
+.swipeButton {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  scroll-behavior: smooth;
+  display: none;
+}
+.leftswipeButton {
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  scroll-behavior: smooth;
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .scrollHidden {
+    display: block;
+  }
+  .leftscrollHidden {
+    display: block;
+  }
+  .swipeButton {
+    display: flex;
+  }
+  .leftswipeButton {
+    display: flex;
+  }
+}

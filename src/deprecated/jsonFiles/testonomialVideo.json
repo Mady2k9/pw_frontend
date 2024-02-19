@@ -1,0 +1,28 @@
+{
+  "Videocards": [
+    {
+      "image": "/unsplash.webp",
+      "backgroundColor": "#FFF0E7",
+      "name": "Kritika Gupta",
+      "class": "Parent, K-2"
+    },
+    {
+      "image": "/unsplash.webp",
+      "backgroundColor": "#FEF3FF",
+      "name": "Jane Smith",
+      "class": "Mage"
+    },
+    {
+      "image": "/unsplash.webp",
+      "backgroundColor": "#FFFBE6",
+      "name": "Jane Smith",
+      "class": "Mage"
+    },
+    {
+      "image": "/unsplash.webp",
+      "backgroundColor": "#FFFBE6",
+      "name": "Jane Smith",
+      "class": "Mage"
+    }
+  ]
+}

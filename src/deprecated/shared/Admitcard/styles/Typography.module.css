@@ -1,0 +1,46 @@
+.root {
+}
+
+.display1 {
+  @apply text-7xl;
+}
+
+.display2 {
+  @apply text-6xl;
+}
+
+.heading1 {
+  @apply text-5xl;
+}
+
+.heading2 {
+  @apply text-3xl;
+}
+
+.heading3 {
+  @apply text-2xl;
+}
+
+.heading4 {
+  @apply text-xl;
+}
+
+.subHeading {
+  @apply text-lg;
+}
+
+.regular {
+  @apply text-base;
+}
+
+.small {
+  @apply text-sm;
+}
+
+.tiny {
+  @apply text-xs;
+}
+
+.label {
+  @apply text-[0.625rem];
+}

@@ -1,19 +1,18 @@
 import { Navbar } from '@/components/common/Layout/Navbar';
-import { Footer } from '@/components/common/Layout/Footer';
 import { ReactNode } from 'react';
-import { ISeoTags, ITopMenuItem } from '@/api/interfaces/page';
+import { IFooterData, ISeoTags, ITopMenuItem } from '@/api/interfaces/page';
 import SEO from '@/widgets/SEO';
-import { cn } from '@/lib/utils';
-import { useGlobal } from '@/contexts/global';
+import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 
 interface LayoutProps {
   children: ReactNode;
   headerData?: ITopMenuItem[];
+  footerData?: IFooterData[];
   seoTags?: ISeoTags;
   className?: string;
 }
 
-export function Layout({ children, className, seoTags, headerData }: LayoutProps) {
+export function Layout({ children, className, seoTags, headerData, footerData }: LayoutProps) {
   return (
     <main className={className || ''}>
       {seoTags && <SEO
@@ -25,7 +24,8 @@ export function Layout({ children, className, seoTags, headerData }: LayoutProps
       <Navbar items={headerData} />
       <div key={'navbar-placeholder'} className={'h-[60px] md:h-navbar'} />
       {children}
-      <Footer />
+      {/*<Footer  />*/}
+      <Footer footerData={footerData}/>
     </main>
   );
 

@@ -1,0 +1,10 @@
+.batchCardBorder {
+}
+
+.batchCardWrapperOnline {
+  background: linear-gradient(0deg, #ffffff, #ffffff, #4c68ca);
+}
+
+.batchCardWrapperOffline {
+  background: linear-gradient(0deg, #ffffff, #ffffff, #da3d3d);
+}

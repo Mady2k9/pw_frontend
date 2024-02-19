@@ -1,0 +1,32 @@
+  .body {
+    background: #f5f5f5;
+  }
+  .card {
+    position: relative;
+    -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    border-radius: 6px;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 32px;
+  }
+  .shimmerBG {
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #ddd;
+    background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+    width: 100%;
+}
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+  }

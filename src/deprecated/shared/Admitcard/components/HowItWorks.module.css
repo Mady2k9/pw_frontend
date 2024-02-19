@@ -1,0 +1,31 @@
+.scroll {
+}
+
+@media screen and (min-width: 768px) {
+  .scroll {
+    transform-origin: top;
+    animation: watcher linear;
+    -webkit-animation: watcher linear;
+    -moz-animation: watcher linear 5s infinite;
+    animation-timeline: view(100px) !important;
+    -webkit-animation-timeline: view(100px) !important;
+    -moz-scroll-timeline: view(100px) !important;
+  }
+}
+
+@keyframes watcher {
+  from {
+    border-right: 2px solid #d9dce1;
+  }
+  to {
+    border-right: 2px solid #c58f27;
+  }
+}
+@-moz-keyframes watcher {
+  from {
+    border-right: 2px solid #d9dce1;
+  }
+  to {
+    border-right: 2px solid #c58f27;
+  }
+}

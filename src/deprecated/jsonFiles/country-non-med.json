@@ -1,0 +1,105 @@
+{
+  "Inclusions": {
+    "countryName": "Inclusions",
+    "imageHeader": "../../non-med/nm_w_australia.webp",
+    "mobImageHeader": "../../non-med/nm_m_australia.webp",
+    "titleHeader": "Inclusions",
+    "whyStudy": {
+      "title": "Inclusions",
+      "bulletPoint": [
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Video Solutions and detailed analysis for every paper"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "One-to-one telephonic PTM, based on SPD"
+        },
+        {
+          "bulletImage": "/StarTest.webp",
+          "content": "Access to AITS (All India Test Series) at physical centers for AIR batch selection"
+        }
+      ]
+    },
+    "colleges": {
+      "title": "Test",
+      "collegeDetails": [
+        {
+          "name": "Practice Test 1",
+          "type": "free",
+          "website": "www.unsw.edu.au",
+          "phone": "90 Questions",
+          "email": "300 marks",
+          "time": "180 minuts",
+          "startDate": "Started on 12 Dec 2023",
+          "tag": [
+            {
+              "type": ""
+            }
+          ]
+        },
+        {
+          "name": "Practice Test 2",
+          "address": "Melbourne",
+          "website": "www.monash.edu",
+          "phone": "90 Questions",
+          "email": "300 marks",
+          "time": "180 minuts",
+          "startDate": "Started on 12 Dec 2023",
+          "tag": [
+            {
+              "type": ""
+            }
+          ]
+        }
+      ]
+    },
+
+    "requirement": {
+      "title": "Why Choose Us",
+      "bulletImage": [
+        { "Image": "/imageTest.webp" },
+        { "Image": "/imageTest.webp" },
+        { "Image": "/imageTest.webp" },
+        { "Image": "/imageTest.webp" },
+        { "Image": "/imageTest.webp}" }
+      ]
+    },
+    "tabs": [
+      {
+        "name": "Inclusions",
+        "key": "inclusions"
+      },
+      {
+        "name": "Test",
+        "key": "test"
+      },
+      {
+        "name": "Why Choose Us",
+        "key": "why_choose_us"
+      },
+      {
+        "name": "What You Will Experience",
+        "key": "what_you_will_experience"
+      }
+    ],
+    "faqs": [
+      {
+        "title": "How can PW Unigo assist me in studying in Australia?",
+        "description": "At PW Unigo, we are dedicated to making your dream of studying in Australia a reality. We provide expert guidance on university selection, visa application, and scholarship opportunities. Our personalized approach ensures you receive comprehensive support at every step of your journey."
+      },
+      {
+        "title": "What are the English language proficiency requirements for Australian universities, and how can I meet them?",
+        "description": "Most Australian universities require proof of English language proficiency through tests like IELTS or TOEFL. PW Unigo guides you by providing resources to prepare for these exams and provides tips for achieving the required scores. We also guide you on alternative pathways if you don't meet the initial requirements."
+      },
+      {
+        "title": "Are scholarships available for international students in Australia, and how can PW Unigo assist in securing financial aid?",
+        "description": "Yes, Australia offers various scholarships and financial aid options for international students. PW Unigo assists you in identifying suitable scholarships, preparing compelling scholarship applications, and maximizing your chances of receiving financial support for your studies in Australia."
+      },
+      {
+        "title": "Can PW Unigo help me with accommodation arrangements in Australia?",
+        "description": "Absolutely! PW Unigo offers support in finding suitable accommodation in Australia, whether it's on-campus housing, private rentals, or homestays. We help you secure safe and comfortable living arrangements, so you can focus on your studies and adjust seamlessly to life in Australia."
+      }
+    ]
+  }
+}

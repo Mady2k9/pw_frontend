@@ -1,0 +1,87 @@
+/* Keyframes for the grow-and-shrink animation with WebKit prefix */
+@-webkit-keyframes growAndShrink {
+  0% {
+    opacity: 0;
+    transform: scale(0.05);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Keyframes for the grow-and-shrink animation */
+@keyframes growAndShrink {
+  0% {
+    opacity: 0;
+    transform: scale(0.05);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* Keyframes for the grow-and-shrink animation with WebKit prefix */
+@-webkit-keyframes reverseGrowAndShrink {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    width: 360px;
+    height: 192px;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.05);
+  }
+}
+
+/* Keyframes for the grow-and-shrink animation */
+@keyframes reverseGrowAndShrink {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    width: 360px;
+    height: 192px;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.05);
+  }
+}
+
+/* Style for the box with WebKit prefix */
+.phoneBox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  transform: scale(0.05);
+}
+
+.phoneBoxActive {
+  opacity: 1;
+  width: 360px;
+  height: 192px;
+  transform: scale(1);
+  -webkit-animation: growAndShrink 600ms ease-in-out forwards; /* apply the animation with WebKit prefix */
+  animation: growAndShrink 600ms ease-in-out forwards; /* apply the animation */
+  transform-origin: right bottom;
+}
+
+.phoneBoxInActive {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  transform: scale(0.05);
+  transform-origin: left top;
+  -webkit-animation: reverseGrowAndShrink 500ms ease-in-out forwards; /* apply the animation with WebKit prefix */
+  animation: reverseGrowAndShrink 500ms ease-in-out forwards; /* apply the animation */
+}

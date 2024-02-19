@@ -1,0 +1,33 @@
+.wrapper {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  will-change: opacity;
+}
+
+.transition {
+  animation: delay 0.5s 0s 1 ease-in-out both;
+}
+
+.transition1 {
+  animation: delay 0.5s 0.5s 1 ease-in-out both;
+}
+
+.transition2 {
+  animation: delay 0.5s 1s 1 ease-in-out both;
+}
+
+.transition3 {
+  animation: delay 0.5s 1.5s 1 ease-in-out both;
+}
+
+@keyframes delay {
+  from {
+    transform: translateY(30%);
+    opacity: 0;
+    overflow: hidden;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 100;
+  }
+}
