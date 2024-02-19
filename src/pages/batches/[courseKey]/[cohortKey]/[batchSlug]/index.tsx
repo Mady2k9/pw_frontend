@@ -260,7 +260,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     </div>
     {
       props.batch.fee &&
-      <div className={'fixed bottom-0 px-4 left-0 right-0 py-2 flex items-center card-shadow bg-white'}>
+      <div className={'fixed md:hidden bottom-0 px-4 left-0 right-0 py-2 flex items-center card-shadow bg-white'}>
         <div className={'flex-1'}>
           <PriceDisplay compact={true} amount={props.batch.fee.amount} discount={props.batch.fee.discount}
                         total={props.batch.fee.total} />
