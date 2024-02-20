@@ -6,6 +6,7 @@ import PublishingPartners from '@/deprecated/shared/Components/SchoolCurriculum/
 import TeacherCta from '@/deprecated/shared/Components/SchoolCurriculum/TeacherCta/TeacherCta';
 import Testonomial from '@/deprecated/shared/Components/SchoolCurriculum/Testonomial/Testonomial';
 import SchoolHeader from '@/deprecated/shared/Components/SchoolCurriculum/header/SchoolHeader';
+
 import React from 'react';
 
 function SchoolCurriculumPage({ footerData }: { footerData: any }) {

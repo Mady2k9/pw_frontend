@@ -18,7 +18,7 @@ function SchoolCrDownloadPdf() {
   };
   return (
     <div
-      className="flex flex-row bg-[#FFF] rounded-lg w-[200px] p-3 items-center gap-[10px] cursor-pointer transition-transform transform  hover:translate-y-1 animate__animated"
+      className="flex flex-row bg-[#FFF] rounded-lg w-[200px] h-[48px] p-3 items-center gap-[10px] cursor-pointer transition-transform transform  hover:translate-y-1 animate__animated"
       style={{
         boxShadow: `${isHovered ? '' : '0px 4px 0px 0px #1B2124'}`,
         border: '1px solid var(--PW-Gray-Palette-900-PW-Neutral, #1B2124)',

@@ -4,6 +4,9 @@ import schoolCardData from '../../../../jsonFiles/schoolcardData.json';
 import Image from '../../Atoms/Image/Image';
 import PoupCard from './PoupCard';
 import { useRouter } from 'next/router';
+import arrowSmall from '../../../../assets/Images/Schools/arrow-small-right.webp';
+import stars from '../../../../assets/Images/Schools/Group-1.webp';
+import satrsMweb from '../../../../assets/Images/Schools/Group-2.webp';
 
 export default function Modal() {
   const partnersData = schoolCardData?.schoolCardData || [];
@@ -18,7 +21,7 @@ export default function Modal() {
 
   const handleContinueClick = () => {
     router.push(
-      `/school-curriculum/desc?tab=${encodeURIComponent(
+      `/school-curriculum/${encodeURIComponent(
         childState !== null ? childState : 'Bloom'
       )}`
     );
@@ -29,7 +32,7 @@ export default function Modal() {
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed z-50 inset-0 overflow-y-auto"
+        className="fixed z-[73] inset-0 overflow-y-auto"
         initialFocus={cancelButtonRef}
         onClose={setOpen}
       >
@@ -101,7 +104,7 @@ export default function Modal() {
                       {partnersData.map((partner, index) => (
                         <div
                           key={index}
-                          className="mx-auto max-w-5xl pt-[32px] flex  flex-row gap-5 my-3 overflow-x-scroll"
+                          className="mx-auto max-w-5xl pt-[32px] flex  flex-row gap-5  overflow-x-scroll"
                         >
                           <PoupCard
                             data={partner.sectionProps}
@@ -130,10 +133,10 @@ export default function Modal() {
                   </div>
                 </div>
               </div>
-              <div className=" px-4 py-3 sm:px-6 sm:flex flex sm:flex-row  items-center justify-center mb-4">
+              <div className=" px-4 sm:px-6 sm:flex flex sm:flex-row  items-center justify-center mb-4">
                 <div
                   className={
-                    'w-[200px] h-[52px] text-[#fff] rounded-lg bg-[#1B2124] flex items-center justify-center cursor-pointer transition-transform transform  hover:translate-y-1 animate__animated'
+                    'md:w-[200px] w-[164px] h-[48px] text-[#fff] font-semibold text-sm rounded-lg bg-[#1B2124] flex items-center justify-center cursor-pointer transition-transform transform  hover:translate-y-1 animate__animated'
                   }
                   onClick={handleContinueClick}
                   style={{
@@ -144,18 +147,25 @@ export default function Modal() {
                 >
                   Continue
                   <Image
-                    bgImagetitle={'/arrow-small-right.webp'}
+                    bgImagetitle={arrowSmall.src}
                     className={
                       'w-5 h-5 bg-center bg-no-repeat bg-cover rounded-lg ml-3'
                     }
                   />
+                  
                 </div>
               </div>
               <div>
                 <Image
-                  bgImagetitle={'/StatsStars.webp'}
+                  bgImagetitle={stars.src}
                   className={
-                    'w-[190px] h-[170px] bg-center bg-cover bg-no-repeat absolute xl:bottom-[-27px] xl:right-[-70px] bottom-[-10px] right-[-137px]'
+                    'w-[190px] h-[140px] bg-center bg-cover bg-no-repeat absolute xl:bottom-[-10px] xl:right-[-35px] sm:block hidden'
+                  }
+                />
+                <Image
+                  bgImagetitle={satrsMweb.src}
+                  className={
+                    'w-[58px] h-[75px] bg-center bg-cover bg-no-repeat absolute  bottom-[-10px] right-[-0px] sm:hidden block'
                   }
                 />
               </div>

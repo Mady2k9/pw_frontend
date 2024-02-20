@@ -1,0 +1,43 @@
+.wrapper {
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+  will-change: opacity;
+}
+
+.transition {
+  animation: slideLeftToRight 2s ease-in-out both;
+}
+
+.transition1 {
+  animation: slideRightToLeft 10s ease-in-out both;
+}
+
+.transition2 {
+  animation: slideLeftToRight 15s ease-in-out both;
+}
+
+.transition3 {
+  animation: slideRightToLeft 20s ease-in-out both;
+}
+
+@keyframes slideLeftToRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRightToLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}

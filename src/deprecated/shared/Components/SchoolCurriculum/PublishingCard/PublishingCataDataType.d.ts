@@ -1,5 +1,5 @@
 interface PublishingCardProps {
-  data: {
+  sectionProps: {
     title: string;
     description: string;
     mwebImage: string;

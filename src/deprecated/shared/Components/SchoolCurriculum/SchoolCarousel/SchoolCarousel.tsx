@@ -47,14 +47,14 @@ const SchoolCarousel = ({
         swipedData + (containerRef.current?.clientWidth || 0) <
           (containerRef.current?.scrollWidth || 0) && (
           <div
-            className="absolute top-0 right-0 h-full w-[160px] md:flex flex-col hidden justify-center items-end"
-            style={{
-              backgroundImage:
-                'linear-gradient(267deg, #FFF 24.98%, rgba(255, 255, 255, 0.00) 97.47%',
-            }}
+            className="absolute top-0 right-[2px] h-full w-[160px] md:flex flex-col hidden justify-center items-end"
+            // style={{
+            //   backgroundImage:
+            //     'linear-gradient(267deg, #FFF 24.98%, rgba(255, 255, 255, 0.00) 97.47%',
+            // }}
           >
             <div>
-              <div className=" px-4 py-3 sm:px-6 sm:flex flex sm:flex-row  items-center justify-center mb-4">
+              <div className=" py-3  sm:flex flex sm:flex-row  items-center justify-center mb-4">
                 <div
                   className={
                     'w-[36px] h-[32px]  rounded-lg bg-[#FFFFFF] border-[#1B2124] border flex items-center justify-center cursor-pointer transition-transform transform  hover:translate-y-1 animate__animated'
@@ -79,13 +79,13 @@ const SchoolCarousel = ({
         )
       ) : (
         <div
-          className="absolute top-0 right-0 h-full w-[160px] md:flex flex-col hidden justify-center items-end "
-          style={{
-            backgroundImage:
-              'linear-gradient(267deg, #FFF 24.98%, rgba(255, 255, 255, 0.00) 97.47%',
-          }}
+          className="absolute top-0 right-[2px] h-full w-[160px] md:flex flex-col hidden justify-center items-end "
+          // style={{
+          //   backgroundImage:
+          //     'linear-gradient(267deg, #FFF 24.98%, rgba(255, 255, 255, 0.00) 97.47%',
+          // }}
         >
-          <div className=" px-4 py-3 sm:px-6 sm:flex flex sm:flex-row  items-center justify-center mb-4">
+          <div className="  py-3  sm:flex flex sm:flex-row  items-center justify-center mb-4">
             <div
               className={
                 'w-[36px] h-[32px]  rounded-lg bg-[#FFFFFF] border-[#1B2124] border flex items-center justify-center cursor-pointer transition-transform transform  hover:translate-y-1 animate__animated'
@@ -109,11 +109,11 @@ const SchoolCarousel = ({
       )}
       {swipedData != 0 && (
         <div
-          className="absolute top-0 left-0 h-full w-[160px] md:flex flex-col  justify-center items-start hidden"
-          style={{
-            backgroundImage:
-              'linear-gradient(267deg, rgba(255, 255, 255, 0.00)  24.98%, #fff 97.47%',
-          }}
+          className="absolute top-0 left-[-21px] h-full w-[160px] md:flex flex-col  justify-center items-start hidden"
+          // style={{
+          //   backgroundImage:
+          //     'linear-gradient(267deg, rgba(255, 255, 255, 0.00)  24.98%, #fff 97.47%',
+          // }}
         >
           <div className=" px-4 py-3 sm:px-6 sm:flex flex sm:flex-row  items-center justify-center mb-4 absolute z-10">
             <div

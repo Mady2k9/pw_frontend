@@ -1,12 +1,15 @@
 import React from 'react';
 import SchoolHerodata from './SchoolHerodata';
+import BloomMweb from '../../../../assets/Images/Schools/BloomMweb.webp';
+
 type SchoolHeroProps = {
   content: string;
   label: string;
   bgImg: string;
+  smbgImmg?:string;
 };
 
-const SchoolHero: React.FC<SchoolHeroProps> = ({ content, label, bgImg }) => {
+const SchoolHero: React.FC<SchoolHeroProps> = ({ content, label, bgImg ,smbgImmg}) => {
   return (
     <>
       <div
@@ -16,7 +19,7 @@ const SchoolHero: React.FC<SchoolHeroProps> = ({ content, label, bgImg }) => {
         <SchoolHerodata content={content} label={label} />
       </div>
       <div
-        style={{ backgroundImage: `url(/RectangleSchool.webp)` }}
+        style={{ backgroundImage: `url(${smbgImmg})` }}
         className="  bg-center  bg-cover bg-no-repeat h-[556px] px-2 sm:hidden block "
       >
         <SchoolHerodata content={content} label={label} />

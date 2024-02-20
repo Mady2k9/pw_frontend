@@ -1,22 +1,60 @@
 import React from 'react';
 import ExploreCard from './ExploreCard';
-import Carousel from '@/deprecated/shared/Components/Atoms/Carousel/Carousel';
+// import {Carousel} from '@/components/ui/carousel';
+import { SchoolDatas } from './SchoolDataType';
+import Carousel from '../../../Atoms/Carousel/Carousel';
+interface Subject {
+  name: string;
+  image: string;
+  Backcolor: string;
+  redirectionUrl: string;
+}
 
-function ExploreSubjectCard({ classItem }: { classItem: any }) {
-  const array = [<ExploreCard key={1} classItem={classItem} />];
+interface SchoolClass {
+  class: string;
+  subjects: Subject[];
+}
+interface ExploreSubjectCardProps {
+  classItem: SchoolClass;
+  cohortId: string;
+  cohertSlug: string;
+  schoolclass: string;
+}
 
+function ExploreSubjectCard({
+  classItem,
+  cohortId,
+  cohertSlug,
+  schoolclass,
+}: ExploreSubjectCardProps) {
+  const array = [
+    <ExploreCard
+      key={''}
+      classItem={classItem}
+      cohortId={cohortId}
+      cohertSlug={cohertSlug}
+      schoolclass={schoolclass}
+    />,
+  ];
+  console.log(schoolclass, 'cohertSlug');
   return (
-    <>
+    <div className="md:mt-[24px] mt-[16px] ">
       {classItem.subjects.length > 4 ? (
-        <div className="mx-auto xl:max-w-6xl w-full pt-[24px] md:py-4 py-2">
+        <div className="mx-auto xl:max-w-6xl w-full   py-2">
           <Carousel array={array} className="gap-5" />
         </div>
       ) : (
-        <div className="flex flex-row justify-start md:mt-6 mt-3 gap-5 overflow-x-scroll md:py-4 py-2">
-          <ExploreCard classItem={classItem} />
+        <div className="flex flex-row justify-start w-full  gap-5 overflow-x-scroll slideBarRemove">
+          <ExploreCard
+            key={classItem.class}
+            classItem={classItem}
+            cohortId={cohortId}
+            cohertSlug={cohertSlug}
+            schoolclass={schoolclass}
+          />
         </div>
       )}
-    </>
+    </div>
   );
 }
 

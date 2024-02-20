@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '@/deprecated/shared/Components/SchoolCurriculum/ReusableButton/ReusableButton';
+import Button from '../ReusableButton/ReusableButton'
 import Image from '../../Atoms/Image/Image';
 import Modal from '../Modal/Modal';
 import TeacherBg from '../../../../assets/Images/teachers-bg.webp';
@@ -25,13 +25,13 @@ function TeacherCta() {
     setCardVisible(!isCardVisible);
   };
   return (
-    <div className="mx-auto xl:max-w-6xl w-full  xl:px-0 px-3 md:mt-16 md:mb-28 ">
+    <div className="mx-auto xl:max-w-6xl w-full  px-3 md:mt-16 md:mb-28 mt-[32px] mb-[40px]">
       <div
         style={{
           backgroundImage: `url(${TeacherBg.src})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          border: '1px solid #1B2124',
+          //  border: '1px solid #1B2124',
           boxShadow: '0px 4px 0px 0px #000',
         }}
         className="rounded-xl relative"

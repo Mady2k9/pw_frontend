@@ -1,6 +1,12 @@
 import React from 'react';
-//import SchoolHero from '../SchoolHero/SchoolHero';
-import TabComponent from '@/deprecated/shared/Components/SchoolCurriculumListing/Tabs/Tabs';
+//import SchoolHero from '../SchoolHero/SchoolHero';/Users/madhuresh/Downloads/Assets 3/Hero_Spark.webp /Users/madhuresh/Downloads/Assets 3/Hero_euNext.webp
+import TabComponent from '../Tabs/Tabs';
+import HeroBloom from '../../../../assets/Images/Schools/Rectangle7.webp';
+import Spark from '../../../../assets/Images/Schools/Hero_Spark.webp';
+import euNext from '../../../../assets/Images/Schools/Hero_euNext.webp';
+import euNextMweb from '../../../../assets/Images/Schools/euNextmweb.webp';
+import SparkMweb from '../../../../assets/Images/Schools/SparkMweb.webp';
+import BloomMweb from '../../../../assets/Images/Schools/BloomMweb.webp';
 
 function SchoolNavbar() {
   const tabs = [
@@ -13,7 +19,8 @@ function SchoolNavbar() {
       Education Policy (NEP) 2020. Tailored for Nursery, Lower KG, Upper
       KG, Grade 1, and Grade 2 students, this series covers a wide range
       of subjects, ensuring a holistic and engaging learning experience.`,
-      bgImg: '/Rectangle7.webp',
+      bgImg: HeroBloom.src,
+      smbgImmg: BloomMweb.src,
     },
     {
       id: 'tab2',
@@ -24,7 +31,8 @@ function SchoolNavbar() {
       Education Policy (NEP) 2020. Tailored for Nursery, Lower KG, Upper
       KG, Grade 1, and Grade 2 students, this series covers a wide range
       of subjects, ensuring a holistic and engaging learning experience.`,
-      bgImg: '/Rectangle7.webp',
+      bgImg: euNext.src,
+      smbgImmg:euNextMweb.src,
     },
     {
       id: 'tab3',
@@ -35,9 +43,11 @@ function SchoolNavbar() {
       Education Policy (NEP) 2020. Tailored for Nursery, Lower KG, Upper
       KG, Grade 1, and Grade 2 students, this series covers a wide range
       of subjects, ensuring a holistic and engaging learning experience.`,
-      bgImg: '/Rectangle7.webp',
+      bgImg: Spark.src,
+      smbgImmg:SparkMweb.src,
     },
   ];
+
   return (
     <>
       <TabComponent tabs={tabs} />

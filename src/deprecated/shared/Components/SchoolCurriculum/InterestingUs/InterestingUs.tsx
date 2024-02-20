@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import Image from '../../Atoms/Image/Image';
-import Button from '@/deprecated/shared/Components/SchoolCurriculum/ReusableButton/ReusableButton';
+import React, { useEffect, useRef, useState } from 'react';
+import { Image } from '@/components/ui/image';
+import Button from '../ReusableButton/ReusableButton';
+
 import Modal from '../Modal/Modal';
 import SendImageBoy from '../../../../assets/Images/BoyLerning.gif';
 import SendImageStudent from '../../../../assets/Images/Student.gif';
 import SendImageStudy from '../../../../assets/Images/Study.gif';
 import AnimationsStyle from './InterestingUs.module.css';
+import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
+import TransitionWrapperLeft from '../../SchoolCurriculumListing/SchoolTransitionWrapper/TransitionWrapperLeft';
+import TransitionWrapperRight from '../../SchoolCurriculumListing/SchoolTransitionWrapper/TransitionWrapperRight';
+import Frame from '../../../../assets/Images/Schools/Frame.webp';
+
 
 function InterestingUs() {
   const [isCardVisible, setCardVisible] = useState(false);
@@ -14,7 +20,7 @@ function InterestingUs() {
   };
 
   return (
-    <div className="flex w-full items-center max-w-6xl px-8 flex-col mx-auto pt-16">
+    <div className="flex w-full items-center max-w-6xl px-8 flex-col mx-auto pt-[28px] md:pt-12">
       <div className="flex flex-col md:flex-row items-center relative">
         <div className="font-bold md:leading-[48px] md:text-[30px] leading-[30px] text-[20px] text-[#1B2124] text-center hidden sm:block">
           Making Learning <span className="text-[#FF6D0A]">Interesting</span>{' '}
@@ -25,13 +31,13 @@ function InterestingUs() {
           <span className="text-[#FF6D0A]">Interesting</span> <br />
           With Us
         </div>
-        <div className="absolute sm:top-[14px] sm:right-[-125px] top-[64px] right-[-70px]">
-          <img src="/Frame.webp" alt="easy too" className="w-[55px] h-[17px]" />
+        <div className="absolute sm:top-[17px] sm:right-[-127px] top-[64px] right-[-70px]">
+          <img src={Frame.src} alt="easy too" className="w-[55px] h-[17px]" />
           <div
-            className={`sm:mt-[-50px] sm:ml-[18px] mt-[-51px] ml-[20px] animate-spin relative `}
+            className={`sm:mt-[-50px] sm:ml-[18px] mt-[-47px] ml-[20px] animate-spin relative `}
             style={{
               transform: 'rotate(15.00deg)',
-              animation: `rotateAnimation  5s linear infinite`,
+              animation: `rotateAnimation  2s linear infinite`,
             }}
           >
             <style>
@@ -55,78 +61,79 @@ function InterestingUs() {
           </div>
         </div>
       </div>
-      <div className="font-medium md:leading-[28px] md:text-[18px] leading-[20px] text-[14px] text-[#1B2124] pt-3 text-center">
+      <div className="font-medium md:leading-[28px] md:text-[18px] leading-[20px] text-[14px] text-[#1B2124] pt-2 text-center">
         Preparing students for a bright future by making learning engaging &
         accessible
       </div>
       {/* "visual"  */}
-      <div className="my-4 flex flex-col gap-1">
-        <div
-          className={`flex flex-col sm:flex-row items-center justify-around ${AnimationsStyle.animateleftToRight}`}
-        >
-          <div className="w-4/5 ms-6">
-            <Image
-              bgImagetitle={`${SendImageBoy.src}`}
-              className={
-                'md:w-[370px] md:h-[275px] w-[200px] h-[160px] bg-bottom bg-cover bg-no-repeat my-[13px]'
-              }
-            />
-          </div>
-          <div className="w-full flex flex-col gap-3 pe-5 items-center justify-center">
-            <div className="font-bold md:leading-[32px] md:text-[24px] leading-[28px] text-[20px] text-[#1B2124]">
-              Visual Learning Experience for Every Chapter & Concept
+      <div className="my-6 flex flex-col gap-1 ">
+        <TransitionWrapperLeft>
+          <div
+            className={`flex flex-col sm:flex-row items-center justify-around`}
+          >
+            <div className="w-4/5 ms-6">
+             
+              <Image src={`${SendImageBoy.src}`} className={
+                  'md:w-[358px] md:h-[256px] w-[200px] h-[120px] bg-bottom bg-cover bg-no-repeat'
+                } alt='SendImageBoy'/>
             </div>
+            <div className="w-full flex flex-col gap-4 pe-5 items-center justify-center">
+              <div className="font-bold md:leading-[32px] md:text-[24px] leading-[28px] text-[18px] text-[#1B2124]">
+                Visual Learning Experience for Every Chapter & Concept
+              </div>
 
-            <div className="text-[#3d3d3d] bg-white md:leading-[28px] md:text-[18px] leading-[20px] text-[14px] font-medium">
-              Immerse in a dynamic and engaging e-learning experience that
-              caters to students’ individual learning styles
+              <div className="text-[#3d3d3d] bg-white md:leading-[28px] md:text-[18px] leading-[20px] text-[14px] font-medium">
+                Immerse in a dynamic and engaging e-learning experience that
+                caters to students’ individual learning styles
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          className={`flex flex-col sm:flex-row items-center justify-around  ${AnimationsStyle.animaterightToLeft}`}
-        >
-          <div className="w-full flex flex-col gap-3 pe-5 justify-center">
-            <div className="font-bold md:leading-[32px] md:text-[24px] leading-[28px] text-[20px] text-[#1B2124]">
-              Workbooks & Reading Material for Practice
-            </div>
+        </TransitionWrapperLeft>
 
-            <div className="text-[#3d3d3d] bg-white md:leading-[28px] md:text-[18px] leading-[20px] text-[14px] font-medium">
-              Equipped with comprehensive workbooks and curated reading material
-              that ensures ample practice
-            </div>
-          </div>
-          <div className="md:w-3/5 order-first md:order-last">
-            <Image
-              bgImagetitle={`${SendImageStudent.src}`}
-              className={
-                'md:w-[370px] md:h-[275px] w-[200px] h-[160px] bg-bottom bg-cover bg-no-repeat my-[13px]'
-              }
-            />
-          </div>
-        </div>
-        <div
-          className={`flex flex-col sm:flex-row items-center justify-around ${AnimationsStyle.animateleftToRight}`}
-        >
-          <div className="md:w-4/5 ms-6">
-            <Image
-              bgImagetitle={`${SendImageStudy.src}`}
-              className={
-                'md:w-[370px] md:h-[275px] w-[200px] h-[160px] bg-bottom bg-cover bg-no-repeat my-[13px]'
-              }
-            />
-          </div>
-          <div className="w-full flex flex-col gap-3 pe-5 justify-center">
-            <div className="font-bold md:leading-[32px] md:text-[24px] leading-[28px] text-[20px] text-[#1B2124]">
-              Chapter-wise Quizzes & Tests
-            </div>
+        <TransitionWrapperRight>
+          <div
+            className={`flex flex-col sm:flex-row items-center justify-around  `}
+          >
+            <div className="w-full flex flex-col gap-3 pe-5 justify-center">
+              <div className="font-bold md:leading-[32px] md:text-[24px] leading-[28px] text-[18px] text-[#1B2124]">
+                Workbooks & Reading Material for Practice
+              </div>
 
-            <div className="text-[#3d3d3d] bg-white md:leading-[28px] md:text-[18px] leading-[20px] text-[14px] font-medium">
-              Enhance understanding and retention of each chapter with our
-              interactive chapter-wise quizzes and tests
+              <div className="text-[#3d3d3d] bg-white md:leading-[28px] md:text-[18px] leading-[20px] text-[14px] font-medium">
+                Equipped with comprehensive workbooks and curated reading
+                material that ensures ample practice
+              </div>
+            </div>
+            <div className="md:w-3/5 order-first md:order-last">
+              <Image src={`${SendImageStudent.src}`}  className={
+                  'md:w-[358px] md:h-[256px] w-[200px] h-[120px] bg-bottom bg-cover bg-no-repeat '
+                }
+                alt="SendImageStudent"/>
             </div>
           </div>
-        </div>
+        </TransitionWrapperRight>
+        <TransitionWrapperLeft>
+          <div
+            className={`flex flex-col sm:flex-row items-center justify-around `}
+          >
+            <div className="md:w-4/5 ms-6">
+             
+              <Image src={`${SendImageStudy.src}`} alt='SendImageStudy' className={
+                  'md:w-[358px] md:h-[256px] w-[200px] h-[120px] bg-bottom bg-cover bg-no-repeat '
+                } />
+            </div>
+            <div className="w-full flex flex-col gap-3 pe-5 justify-center">
+              <div className="font-bold md:leading-[32px] md:text-[24px] leading-[28px] text-[20px] text-[#1B2124]">
+                Chapter-wise Quizzes & Tests
+              </div>
+
+              <div className="text-[#3d3d3d] bg-white md:leading-[28px] md:text-[18px] leading-[20px] text-[14px] font-medium">
+                Enhance understanding and retention of each chapter with our
+                interactive chapter-wise quizzes and tests
+              </div>
+            </div>
+          </div>
+        </TransitionWrapperLeft>
       </div>
       <Button
         className={

@@ -3,6 +3,7 @@ export interface CardData {
   backgroundColor: string;
   name: string;
   class: string;
+  videoLink: string;
 }
 export interface VideoCards {
   Videocards: CardData[];

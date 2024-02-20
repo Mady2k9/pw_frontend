@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Image from '../../Atoms/Image/Image';
+import { Image } from '@/components/ui/image';
+import Vector from '../../../../assets/Images/Schools/Vector-1.webp';
 interface PublishingCardProps {
   data: {
     title: string;
@@ -57,24 +58,20 @@ function PoupCard({ data, onStateChange }: PublishingCardProps) {
               </div>
 
               {selectedCard === index && (
-                <Image
-                  bgImagetitle={'/Vector-1.webp'}
-                  className={
-                    'h-[32px] w-[32px] bg-center bg-no-repeat bg-cover rounded-lg '
-                  }
-                />
+               
+                <Image src={`${Vector.src}`}  alt ='webp' className={
+                       'h-[32px] w-[32px] bg-center bg-no-repeat bg-cover rounded-lg '
+                     }/>
               )}
             </div>
 
             <div className="font-medium leading-[24px] text-[16px]  my-3 text-[#3D3D3D]">
               {item.description}
             </div>
-            <Image
-              bgImagetitle={item.mwebImage}
-              className={
+           
+            <Image src={`${item.mwebImage}`}  alt ='webp' className={
                 'xl:w-[277px] xl:h-[162px] w-[200px] h-[126px] bg-center bg-no-repeat bg-cover rounded-lg '
-              }
-            />
+              }/>
           </div>
         </div>
       ))}

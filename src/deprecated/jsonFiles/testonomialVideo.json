@@ -3,26 +3,30 @@
     {
       "image": "/unsplash.webp",
       "backgroundColor": "#FFF0E7",
-      "name": "Kritika Gupta",
-      "class": "Parent, K-2"
+      "name": "Kritika Gupta1",
+      "class": "Parent, K-2",
+      "videoLink": "https://www.youtube.com/embed/47H01638-9w?si=6zAj5IrAToauPPQp"
     },
     {
       "image": "/unsplash.webp",
       "backgroundColor": "#FEF3FF",
-      "name": "Jane Smith",
-      "class": "Mage"
+      "name": "Jane Smith2",
+      "class": "Mage",
+      "videoLink": "https://www.youtube.com/embed/t0cf1iRxFzk?si=N_cdc3oPLdriR0yX"
     },
     {
       "image": "/unsplash.webp",
       "backgroundColor": "#FFFBE6",
-      "name": "Jane Smith",
-      "class": "Mage"
+      "name": "Jane Smith3",
+      "class": "Mage",
+      "videoLink": "https://www.youtube.com/embed/42lWYxAQ_lQ?si=oSqhSbsPZxzB5goU"
     },
     {
       "image": "/unsplash.webp",
       "backgroundColor": "#FFFBE6",
-      "name": "Jane Smith",
-      "class": "Mage"
+      "name": "Jane Smith4",
+      "class": "Mage",
+      "videoLink": "https://www.youtube.com/embed/42lWYxAQ_lQ?si=oSqhSbsPZxzB5goU"
     }
   ]
 }

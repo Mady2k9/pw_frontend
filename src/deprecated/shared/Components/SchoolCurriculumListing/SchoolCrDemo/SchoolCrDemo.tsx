@@ -1,5 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Image from '../../Atoms/Image/Image';
+// import Image from '../../Atoms/Image/Image';
+import {Image} from '@/components/ui/image';
+import playbuttonwebp from '../../../../assets/Images/Schools/playbuttonwebp.webp';
+import dots from '../../../../assets/Images/Schools/Dots.webp'
+import StarVector from '../../../../assets/Images/Schools/StarVector.webp';
+import VectorLeft from '../../../../assets/Images/Schools/Vector-left.webp';
+import VectorRight from '../../../../assets/Images/Schools/Vector-right.webp';
+import Pexels from '../../../../assets/Images/Schools/Pexels.webp';
+import PexelsMweb from '../../../../assets/Images/Schools/PexelsMweb.webp';
 import dynamic from 'next/dynamic';
 const DynamicVideoComponent = dynamic(
   () => import('../../Molecules/VideoComponentPopup/VideoComponentPopup'),
@@ -62,66 +70,73 @@ function SchoolCrDemo() {
       <div className="font-bold xl:text-[32px] xl:leading-[48px] text-[20px] leading-[30px] text-[#1B2124] text-center ">
         Digital Resources Demo Video
       </div>
-      <div className="mx-auto xl:max-w-6xl w-full  xl:px-0  px-3 pt-6 relative ">
+      <div className="mx-auto xl:max-w-6xl w-full     px-3 pt-6 relative ">
         <div
-          style={{ backgroundImage: `url(/Pexels.webp)` }}
+          style={{ backgroundImage: `url(${Pexels.src})` }}
           className="bg-center  bg-cover bg-no-repeat   h-[480px] w-full rounded-lg sm:flex items-center justify-center hidden "
         >
-          <img
+          {/* <img
             onClick={handleShowVideo}
             src="/playbuttonwebp.webp"
             alt="/playbuttonwebp.webp"
             className={
               'md:w-[72px] md:h-[72px] w-[48px]  h-[48px] bg-center bg-contain bg-no-repeat cursor-pointer hover:rounded-full hover:bg-[#FFD2B3] hover:shadow-2xl  ease-in-out duration-300'
             }
-          />
+          /> */}
+           <Image src={`${playbuttonwebp.src}`}
+          onClick={handleShowVideo} 
+          className={
+            'md:w-[72px] md:h-[72px] w-[48px]  h-[48px] bg-center bg-contain bg-no-repeat cursor-pointer hover:rounded-full hover:bg-[#FFD2B3] hover:shadow-2xl  ease-in-out duration-300'
+          }/>
+          
         </div>
         <div
-          style={{ backgroundImage: `url(/PexelsMweb.webp)` }}
+          style={{ backgroundImage: `url(${PexelsMweb.src})` }}
           className="bg-center  bg-cover bg-no-repeat   h-[216px] w-[96%] mx-auto rounded-lg flex items-center justify-center sm:hidden"
         >
           <Image
             onClick={handleShowVideo}
-            bgImagetitle={'/playbuttonwebp.webp'}
+            src={`${playbuttonwebp.src}`}
             className={
               'md:w-[57px] md:h-[57px] w-[48px] h-[48px] bg-center bg-contain bg-no-repeat cursor-pointer '
             }
           />
         </div>
       </div>
-      <div>
+      <div className="">
         <Image
-          bgImagetitle={'/Dots.webp'}
+          src={`${dots.src}`}
           className={
-            'xl:h-[89px] xl:w-[131px] h-[42px] w-[34px] bg-center bg-contain bg-no-repeat absolute xl:bottom-[200px] xl:left-[64px] bottom-[90px] md:left-[-11px] left-[-5px] 2xl:left-[580px]'
+            'xl:h-[89px] md:w-[19px] xl:w-[28px] h-[42px] w-[28px] bg-center bg-contain bg-no-repeat absolute xl:bottom-[200px] xl:left-[118px] bottom-[90px] md:left-[-4px] left-[-5px] 2xl:left-[670px]'
+          }
+        />
+        
+        <Image
+          src={`${dots.src}`}
+          className={
+            'xl:h-[89px]  h-[42px] w-[28px] md:w-[19px] xl:w-[28px] bg-center bg-contain bg-no-repeat absolute xl:top-[192px] xl:right-[109px] md:top-[113px] lg:right-[-5px] md:right-[-4px] top-[120px] right-[-4px] 2xl:right-[675px]'
           }
         />
         <Image
-          bgImagetitle={'/Dots.webp'}
-          className={
-            'xl:h-[89px] xl:w-[131px] h-[42px] w-[62px] bg-center bg-contain bg-no-repeat absolute xl:top-[230px] xl:right-[67px] md:top-[113px] lg:right-[-5px] md:right-[-25px] top-[120px] right-[-18px] 2xl:right-[600px]'
-          }
-        />
-        <Image
-          bgImagetitle={'/StarVector.webp'}
+          src={`${StarVector.src}`}
           className={
             'xl:h-[124px] xl:w-[124px] md:h-[80px] md:w-[43px] bg-center bg-contain bg-no-repeat absolute top-[30px] left-[0px] hidden sm:block  2xl:left-[575px]'
           }
         />
         <Image
-          bgImagetitle={'/Vector-left.webp'}
+          src={`${VectorLeft.src}`}
           className={
             'h-[40px] w-[40px] bg-center bg-contain bg-no-repeat absolute top-[30px] left-[-5px] block sm:hidden'
           }
         />
         <Image
-          bgImagetitle={'/StarVector.webp'}
+          src={`${StarVector.src}`}
           className={
             'xl:h-[124px] xl:w-[124px] md:h-[80px] md:w-[43px] bg-center bg-contain bg-no-repeat absolute xl:bottom-[30px] md:bottom-[-22px] right-[0px] 2xl:right-[575px] sm:block hidden'
           }
         />
         <Image
-          bgImagetitle={'/Vector-right.webp'}
+          src ={`${VectorRight.src}`}
           className={
             'h-[40px] w-[40px] bg-center bg-contain bg-no-repeat absolute bottom-[20px] right-[-5px] block sm:hidden'
           }
