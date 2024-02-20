@@ -46,7 +46,7 @@ function ExploreCard({
       schoolclass: schoolclass,
     };
     localStorage.setItem('clickedSubjects', JSON.stringify(newData));
-    let baseUrl = `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}school-curriculum/Bloom/onboringPage`;
+    let baseUrl = `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}school-curriculum/${tabUrl}/onboringPage`;
     if (localStorage.getItem('user')) {
       baseUrl = subject.redirectionUrl;
     }
