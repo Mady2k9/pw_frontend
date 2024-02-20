@@ -69,6 +69,7 @@ function getWidgets(props: IPageData) {
 }
 
 export default function BatchListPage(props: IPageData & { params: any, filteredBatches?: IBatch[] }) {
+  const PAGE_SOURCE='Listing page';
   const router = useRouter();
   const { courseKey, cohortKey } = router.query;
   const items = cohortToCohortTabs({
@@ -164,7 +165,7 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
     }
     {
       props.faqs?.length > 0 && <div className={'container'}>
-        <FAQ items={props.faqs} />
+        <FAQ items={props.faqs} pageSource={PAGE_SOURCE} />
       </div>
     }
 
