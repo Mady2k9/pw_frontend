@@ -148,26 +148,26 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
           const id = entry.target.id;
           if (entry.isIntersecting) {
             visibleElements[id] = entry;
-            scrollWrapperLeftToElement(document.getElementById('page-tabs-wrapper')!, document.getElementById(`${entry.target.id}-tab`)!, false);
           } else {
             delete visibleElements[id];
           }
           const visibleEntries = Object.values(visibleElements);
           if (visibleEntries.length > 0) {
             const topMostElement = visibleEntries.reduce((prev, current) => {
-              return (prev.target.getBoundingClientRect().top > current.target.getBoundingClientRect().top) ? prev : current;
+              return (prev.target.getBoundingClientRect().top < current.target.getBoundingClientRect().top) ? prev : current;
             });
+            scrollWrapperLeftToElement(document.getElementById('page-tabs-wrapper')!, document.getElementById(`${topMostElement.target.id}-tab`), false);
+
             setActiveTab(topMostElement.target.id);
           }
         });
       },
       {
         root: null,
-        rootMargin: '120px 0px -120px 0px ',
+        rootMargin: `-120px 0px 0px 0px`,
         threshold: 0.1,
       },
     );
-
     Widgets.forEach((tab) => {
       const slug = tab.key;
       const element = document.getElementById(slug);
@@ -213,7 +213,8 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return <></>;
   }
 
-  return <Layout  seoSchema={props.pageData.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData} seoTags={props.pageData.seoTags}
+  return <Layout seoSchema={props.pageData.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
+                 seoTags={props.pageData.seoTags}
                  headerData={props.headerData}>
     <PageTitleBar
       inverted={true} title={props.batch.name}
