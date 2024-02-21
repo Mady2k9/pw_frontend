@@ -146,7 +146,9 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
       </div>
     }
     {
-      batchSection === 'LOADING' && <BatchLoadingGrid />
+      batchSection === 'LOADING' && <div className={'container'}>
+        <BatchLoadingGrid />
+      </div>
     }
     <div className={'mt-4 md:mt-8 container'}>
       {

@@ -96,6 +96,7 @@ export interface IPageMetaTags {
 export interface IWidgetJson {
     APP_DOWNLOAD: IWidget;
     RESULTS: IWidget;
+    TEST_SERIES: IWidget;
     EXAM_CATEGORIES: IWidget;
     CAROUSEL: IWidget;
     HERO_SECTION: IWidget;

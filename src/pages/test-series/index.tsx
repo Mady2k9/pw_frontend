@@ -37,6 +37,21 @@ const getWidgets = (pageData: IPageData) => {
                               })} />,
         });
         break;
+      case 'TEST_SERIES':
+        const data = pageData?.widgetJson[widget];
+        widgets.push({
+          widget: <FeaturesSection title={data?.sectionTitle}
+                                   description={data?.sectionSubTitle}
+                                   features={data?.sectionProps?.map((section: any) => {
+                                     return {
+                                       icon: '',
+                                       title: '',
+                                       description: '',
+                                     };
+                                   }) || []}
+          />,
+        });
+        break;
       case 'APP_DOWNLOAD':
         const downloadData = pageData?.widgetJson[widget];
         widgets.push({
@@ -84,6 +99,7 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
   if (!props.pageData) {
     return router.replace('');
   }
+  console.log(props.pageData);
   return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData}>
     <PageTitleBar breadcrumbs={{
       items: [{
@@ -101,28 +117,6 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
     </div>
 
     <div className={'flex flex-col gap-4 md:gap-6'}>
-      <FeaturesSection title={'Why PW Test Series?'}
-                       description={'Discover the key features of our PW Test Series'}
-                       features={[{
-                         title: 'Designed by Top Faculties',
-                         description: 'Attempt exclusive tests designed by the best faculties across the country',
-                       }, {
-                         title: 'Latest Pattern',
-                         description: 'Stay up to date with the latest test patterns with our test series',
-                       }, {
-                         title: 'Elaborate Results',
-                         description: 'Get detailed test performance reports and dashboard',
-                       }, {
-                         title: 'State & All India Rank',
-                         description: 'See where you stand amongst your peers in your state and country',
-                       }, {
-                         title: '24x7 Doubt Support',
-                         description: 'Get your doubts solved by our expert faculty 24x7.',
-                       }, {
-                         title: 'Personalized Study Plan',
-                         description: 'Get a personalized study plan based on your performance.',
-                       }]}
-      />
       <ResultsSection results={[]} title={'Academic Excellence : Results'}
                       description={'Giving wings to a millions dreams, a million more to go'} />
       <div
