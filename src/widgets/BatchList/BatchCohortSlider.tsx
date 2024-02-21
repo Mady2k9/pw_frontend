@@ -22,7 +22,7 @@ export default function BatchCohortSlider({ title, batches, cohort, showMoreLink
       <h4 className={'text-xl md:text-3xl font-bold'}>{title}</h4>
     </div>
     <div className={'overflow-x-auto container scrollbar-hide w-full'}>
-      <div className={'flex flex-nowrap gap-4 py-4 pr-4'}>
+      <div className={'flex flex-nowrap gap-4 py-4'}>
         {
           batches.slice(0, 3).map((item, index) => {
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
