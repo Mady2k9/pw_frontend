@@ -34,9 +34,9 @@ export default function ExamCategoryCard({ name, slug, icon, color, exams, actio
           <div className={'flex flex-wrap'} id={slug}>
             {
               (showMore ? exams : ExamsToDisplay).map((exam, index) => (
-                <Link href={exam.slug}  key={index}>
+                <Link href={exam.slug} key={index}>
                   <Pill
-                        className={'mr-2 mb-2 animationFromBottom !slide-in-from-bottom-2 fade-in'}><span>{exam.name}</span></Pill>
+                    className={'mr-2 mb-2 animationFromBottom !slide-in-from-bottom-2 fade-in'}><span>{exam.name}</span></Pill>
                 </Link>
               ))
             }
@@ -56,7 +56,7 @@ export default function ExamCategoryCard({ name, slug, icon, color, exams, actio
             }
           </div>
         </div>
-        <div className={'flex cursor-pointer items-center group'}>
+        <Link href={slug} className={'flex cursor-pointer items-center group'}>
                     <span className={'group-hover:text-primary group-hover:underline font-medium transitionAll200 '}>
                         {actionName}
                     </span>
@@ -64,7 +64,7 @@ export default function ExamCategoryCard({ name, slug, icon, color, exams, actio
             className={'bg-zinc-100 ml-4 rounded-2xl px-3 py-1.5 group-hover:bg-primary transitionAll200'}>
             <ArrowRightIcon className={'w-5 h-5 group-hover:stroke-white transitionAll200'} />
           </div>
-        </div>
+        </Link>
       </div>
       <div className={'relative w-[90px] md:w-[100px]'}>
         <div className={'absolute -z-[1] left-0  -top-5 -bottom-5 aspect-square opacity-10'}
