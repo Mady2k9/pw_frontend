@@ -12,11 +12,11 @@ const AcademicResults = ({
   const [sectionProps, setSectionProps] = useState([]);
   const allmwebImage: any = [];
   academicResultData?.sectionProps?.map((exam: any) => {
-    exam.mwebImage.map((image: any) => allmwebImage.push(image));
+    exam.mwebImage?.map((image: any) => allmwebImage.push(image));
   });
   const alldwebImage: any = [];
   academicResultData?.sectionProps?.map((exam: any) => {
-    exam.dwebImage.map((image: any) => alldwebImage.push(image));
+    exam.dwebImage?.map((image: any) => alldwebImage.push(image));
   });
 
   const academicResultArray = [
