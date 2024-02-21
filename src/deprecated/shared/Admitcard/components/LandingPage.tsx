@@ -12,7 +12,6 @@ import { Payload } from '../types';
 import useNotify, { NotificationEnums } from './common/useNotify';
 import { updateCohort } from '../api/updateCohort';
 import { getProfileData } from '../api/getProfileData';
-// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import { updateUsers } from '../api/users';
 import { updateRecentCohort } from '../api/updateRecentCohort';
@@ -68,7 +67,7 @@ const LandingPage = () => {
   };
 
   const redirectToBatch = () => {
-    const url = `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}study/batches/zoom-testing-010383/batch-overview`;
+    const url = `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}study/batches/jee-preparation-bundle-819638/batch-overview?came_from=my-batches`;
     window.open(url, '_parent');
   };
 
@@ -126,7 +125,6 @@ const LandingPage = () => {
     };
     if (localStorage.getItem('TOKEN') || otoken) {
       const token: string = localStorage.getItem('TOKEN') || otoken;
-
       const formSubmitResponse = await submitDetails(newPayload, token);
       if (formSubmitResponse.success) {
         setFormLoading(false);

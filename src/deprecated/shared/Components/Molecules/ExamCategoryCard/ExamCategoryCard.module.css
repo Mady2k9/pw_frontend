@@ -1,16 +1,17 @@
 .cardContainer {
-  box-shadow: 0 1px 8px 0 #00000014;
+    box-shadow: 0 1px 8px 0 #00000014;
 }
 
 .exploreCategoryButton:hover .exploreCategoryArrow:last-child {
-  background-color: #5a4bda;
+    background-color: #5A4BDA;
 }
 
 .exploreCategoryButton:hover .exploreCategoryArrow:first-child {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .exploreCategoryButton:hover .exploreCategoryArrow:last-child svg path {
-  fill: white;
+    fill: white;
 }
+

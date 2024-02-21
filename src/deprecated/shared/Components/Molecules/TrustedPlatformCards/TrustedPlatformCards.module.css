@@ -1,13 +1,16 @@
-.parent:hover .child:first-child {
-  margin-block: 40px;
-  /* transition: margin-block 1s; */
-}
-.parent .child:first-child {
-  margin-block: 95px;
-  /* transition: margin-block 1s; */
+
+    .parent:hover .child:first-child {
+        margin-block: 40px;
+        /* transition: margin-block 1s; */
+         }
+    .parent .child:first-child {
+        margin-block: 95px;
+        /* transition: margin-block 1s; */
+    }
+
+.parent:hover .child:last-child{
+    opacity: 1;
+    /* transition: opacity 1s; */
 }
 
-.parent:hover .child:last-child {
-  opacity: 1;
-  /* transition: opacity 1s; */
-}
+

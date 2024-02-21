@@ -43,7 +43,7 @@ const getBreadcrumbs = ({ cohortKey, courseKey, batchDetails }: {
     if (batchDetails) {
       items.push({
         label: `${batchDetails.name}`,
-        link: `${batchDetails.seoSlug}`,
+        link: `/batches/${stringToSlug(courseKey)}/${stringToSlug(cohortKey)}/${batchDetails.seoSlug}`,
       });
     }
   }

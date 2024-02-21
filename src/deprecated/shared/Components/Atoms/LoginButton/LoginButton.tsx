@@ -1,30 +1,20 @@
+import { useRouter } from 'next/router';
 import eventTracker from '../../EventTracker/eventTracker';
 
 const LoginButton = ({
   text,
   className,
-  redirectionUrl,
 }: {
   text: string;
   className: string;
-  redirectionUrl?: string;
 }) => {
+  const router = useRouter();
   const handleClick = () => {
     eventTracker.authPageVisit(text, 'home_page');
     const baseUrl = window.location;
-    if (redirectionUrl) {
-      window.open(
-        `${
-          process.env.NEXT_PUBLIC_PP_HOME_BASE_URL
-        }study/auth?redirect_url=${`${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}${redirectionUrl}`}`,
-        '_parent'
-      );
-    } else
-      window.open(
-        `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}study/auth?redirect_url=${baseUrl}`,
-        '_parent'
-      );
-    // router.push('/study');
+    router.push(
+      `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}study/auth?redirect_url=${baseUrl}`
+    );
   };
 
   return (

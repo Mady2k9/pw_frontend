@@ -3,8 +3,9 @@ import CommonItemCard from '../CommonItemCard';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { useMemo } from 'react';
 import Link from 'next/link';
-import { imageToImageUrl } from '@/lib/utils';
+import { imageToImageUrl, stringToSlug } from '@/lib/utils';
 import { ICohortOptions } from '@/api/interfaces/page';
+import { useRouter } from 'next/router';
 
 export interface BatchCohortSliderProps {
   title: string,
@@ -14,6 +15,8 @@ export interface BatchCohortSliderProps {
 }
 
 export default function BatchCohortSlider({ title, batches, cohort, showMoreLink }: BatchCohortSliderProps) {
+  const router = useRouter();
+  const courseKey = router.query.courseKey as string;
   return <div className={''} id={'short-list-wrapper' + cohort.cohortId}>
     <div className={'container '}>
       <h4 className={'text-xl md:text-3xl font-bold'}>{title}</h4>
@@ -23,7 +26,8 @@ export default function BatchCohortSlider({ title, batches, cohort, showMoreLink
         {
           batches.slice(0, 3).map((item, index) => {
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
-              <CommonItemCard exploreLink={item.seoSlug} buyNowLink={`/study/batches/${item.slug}/batch-overview`}
+              <CommonItemCard exploreLink={`/batches/${courseKey}/${stringToSlug(cohort.option)}/${item.seoSlug}`}
+                              buyNowLink={`/study/batches/${item.slug}/batch-overview`}
                               isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
                               usedFor={item.byName}
                               amount={item.fee?.amount}

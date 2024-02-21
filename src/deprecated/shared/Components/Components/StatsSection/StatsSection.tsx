@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import TrustedPlatforCard from '../../Molecules/TrustedPlatformCards/TrustedPlatformCards';
+import LoginButton from '../../Atoms/LoginButton/LoginButton';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
-import { StatsSectionProps } from './StatsDataType.d';
-import Button from '../../Atoms/Button/Button';
 
-const StatsSection = ({ statsData }: { statsData: StatsSectionProps }) => {
+const StatsSection = ({ statsData }: { statsData: any }) => {
+  const bgColor = ['#FFF3E3', '#FEE', '#E4FAFF', '#ECE7FF'];
   const compareByDisplayOrder = (a: any, b: any) =>
     a?.displayOrder - b?.displayOrder;
   const sortedStatsData = statsData?.sectionProps?.sort(compareByDisplayOrder);
@@ -16,20 +16,16 @@ const StatsSection = ({ statsData }: { statsData: StatsSectionProps }) => {
             <div key={key}>
               <TrustedPlatforCard
                 statsCardData={cardData}
-                bgColor={cardData.backGroundColor}
+                bgColor={bgColor[key]}
               />
             </div>
           ))}
         </div>
       </TransitionWrapper>
       <TransitionWrapper>
-        <Button
-          className={` px-[28px] py-[14px] w-[240px] sm:text-lg rounded-md transition-all duration-200 items-center font-semibold leading-[27px] text-[17px]`}
-          title={statsData?.cta.text}
-          backGroundColor={statsData?.cta.backGroundColor}
-          textColor={statsData?.cta.textColor}
-          hoverColor={statsData?.cta.hoverColor}
-          ctaRedirectionUrl={statsData?.cta.ctaRedirectionUrl}
+        <LoginButton
+          text={'Get Started'}
+          className={'px-[28px] py-[14px] w-[240px]'}
         />
       </TransitionWrapper>
     </div>

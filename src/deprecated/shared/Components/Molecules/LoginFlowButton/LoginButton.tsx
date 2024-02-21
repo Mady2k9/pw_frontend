@@ -9,18 +9,13 @@ const LoginButton = ({
 }: {
   ButtonText: string;
   className: string;
-  redirectionUrl: string;
+  redirectionUrl?: string;
   onClick?: () => void;
 }) => {
   return (
-    // <a href={redirectionUrl} rel="noreferrer">
-    <Button
-      className={className}
-      title={ButtonText}
-      onClick={onClick}
-      ctaRedirectionUrl={redirectionUrl}
-    />
-    // </a>
+    <a href={redirectionUrl} rel="noreferrer">
+      <Button className={className} title={ButtonText} onClick={onClick} />
+    </a>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, memo } from 'react';
 import { Transition } from '@headlessui/react';
 import { InformationCircleIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import cn from 'clsx';
@@ -8,24 +8,8 @@ import {
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
 import Loader from './Loader';
-import Button from '@/deprecated/shared/Components/Atoms/Button/Button';
-// Sample code for notification
-// <Button onClick={() => {
-//     showNotification({
-//         description: "Description  " + new Date().getTime(),
-//         type: NotificationEnums.ERROR,
-//         title: "New Title",
-//         onClose: () => {
-//             console.log('closed');
-//         },
-//         content: <div className={'bg-pink-600'}>
-//             Error
-//         </div>
-//     })
-// }}>
-//     Hllo
-// </Button>
-export default function SuccessNotification({
+
+function SuccessNotification({
   index,
   type,
   totalCount,
@@ -135,3 +119,5 @@ export default function SuccessNotification({
     </>
   );
 }
+
+export default memo(SuccessNotification);

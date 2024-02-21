@@ -60,25 +60,26 @@ function createDynamicGetters(obj: DefaultFirebaseConfig) {
   const result: Partial<DefaultFirebaseConfig> = {};
   // console.log(typeof defaultConfig.is_mqtt_enabled_poll_web);
   for (const key in obj) {
+    
     // @ts-ignore
     if (typeof defaultConfig[key] === 'boolean') {
-
+      
       // @ts-ignore
       result[key] = getBoolean(remoteConfig, key);
-
+      
       // @ts-ignore
     } else if (typeof defaultConfig[key] === 'string') {
-
+      
       // @ts-ignore
       result[key] = getString(remoteConfig, key);
-
+      
       // @ts-ignore
     } else if (typeof defaultConfig[key] === 'number') {
-
+      
       // @ts-ignore
       result[key] = getNumber(remoteConfig, key);
     } else {
-
+      
       // @ts-ignore
       result[key] = getValue(remoteConfig, key)?.value;
     }

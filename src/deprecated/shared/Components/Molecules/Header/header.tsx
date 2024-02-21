@@ -11,23 +11,21 @@ import LoginButton from '../../Atoms/LoginButton/LoginButton';
 import eventTracker from '../../EventTracker/eventTracker';
 import PwLogo from '../../../../assets/Images/pw-logo.webp';
 import Profile from '@/deprecated/shared/Admitcard/components/Profile';
-import PwLogoInverted from '../../../../assets/Images/pw-logo-inverted.webp';
 import Link from 'next/link';
 
 export interface headerProps {
   showLogin?: boolean;
   headerData: HeaderItemsData[];
-  showAboutUs?: boolean;
-  redirectionUrl?: string;
 }
 export type ToggleMenuFunction = () => void;
-const Header: React.FC<headerProps> = ({
-  showLogin,
-  headerData,
-  showAboutUs,
-  redirectionUrl,
-}) => {
+const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
   const [open, setOpen] = useState(false);
+  //const [headerData, setHeaderData] = useState<HeaderItemsData[]>();
+  // const useCache = useChacheDemo();
+  // useEffect(() => {
+  //   setHeaderData(useCache.headerData?.data);
+  // }, [useCache?.headerData?.data]);
+
   const toggleMenu: ToggleMenuFunction = () => {
     setOpen(!open);
   };
@@ -35,15 +33,12 @@ const Header: React.FC<headerProps> = ({
   const eventTrigger = (cta_name: string, page_source: string) => {
     eventTracker.topNavigationClick(cta_name, page_source);
   };
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <div
-        className={`sticky top-0 w-full ${
-          showAboutUs ? 'bg-transparent border-none ' : ' bg-white'
-        } border-b-[1px] ${open ? '' : 'z-40'}`}
-        onMouseEnter={() => setIsOpen(!isOpen)}
-        onMouseLeave={() => setIsOpen(isOpen)}
+        className={`sticky top-0 w-full bg-white border-b-[1px] ${
+          open ? '' : 'z-40'
+        }`}
       >
         <div className={'flex justify-center'}>
           <nav className=" flex w-full items-center max-w-6xl justify-between h-[60px] sm:h-[80px] px-4 xl:px-0 ">
@@ -53,18 +48,16 @@ const Header: React.FC<headerProps> = ({
                   className="lg:hidden w-[32px] h-[32px] cursor-pointer"
                   onClick={toggleMenu}
                 >
-                  <MenuIcon fill={`${showAboutUs ? 'white' : ' black'}`} />
+                  <MenuIcon />
                 </div>
-                <a href="https://pw.live" aria-label="pw-logo">
+                <Link href="https://pw.live" aria-label="pw-logo">
                   <Image
-                    bgImagetitle={
-                      showAboutUs ? `${PwLogoInverted.src}` : `${PwLogo.src}`
-                    }
+                    bgImagetitle={`${PwLogo.src}`}
                     className={
                       'w-[40px] h-[40px] xl:w-[52px] xl:h-[55px] lg:w-[52px] lg:h-[55px] md:w-[42px] md:h-[41px] bg-center bg-no-repeat bg-contain'
                     }
                   />
-                </a>
+                </Link>
               </div>
               <div className="hidden lg:inline-block">
                 <div className="flex items-center  gap-3.5 ml-4">
@@ -83,11 +76,7 @@ const Header: React.FC<headerProps> = ({
                               eventTrigger(data?.menuTitle, 'home_page')
                             }
                           >
-                            <div
-                              className={`font-semibold text-base ${
-                                showAboutUs ? 'text-white ' : 'text-[#1B2124]'
-                              } `}
-                            >
+                            <div className="font-semibold text-base text-[#1B2124]">
                               {data?.menuTitle}
                             </div>
                           </span>
@@ -107,7 +96,6 @@ const Header: React.FC<headerProps> = ({
                       className={
                         'px-[15px] py-[5px] sm:px-[24px] sm:py-[12px] text-sm sm:text-lg'
                       }
-                      redirectionUrl={redirectionUrl}
                     />
                   </div>
                   {/* <div className="lg:hidden">

@@ -1,15 +1,15 @@
 .root {
-  @apply my-2;
+    @apply my-2;
 }
 
 .faqWrapper {
-  @apply mt-3;
+    @apply mt-3;
 }
 
 .faqItemButton {
-  @apply bg-[#F0F4FA] w-full p-3 rounded-lg flex justify-between;
+    @apply bg-[#F0F4FA] w-full p-3 rounded-lg flex justify-between;
 }
 
 .faqItemContent {
-  @apply bg-[#FAFAFA] p-3;
+    @apply bg-[#FAFAFA] p-3;
 }
