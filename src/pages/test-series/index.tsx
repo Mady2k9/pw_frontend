@@ -39,15 +39,14 @@ const getWidgets = (pageData: IPageData) => {
         break;
       case 'TEST_SERIES':
         const data = pageData?.widgetJson[widget];
-        console.log(pageData);
         widgets.push({
           widget: <FeaturesSection title={data?.sectionTitle}
                                    description={data?.sectionSubTitle}
                                    features={data?.sectionProps?.map((section: any) => {
                                      return {
-                                       icon: '',
-                                       title: '',
-                                       description: '',
+                                       icon: section.icon,
+                                       title: section.title,
+                                       description: section.subTitle,
                                      };
                                    }) || []}
           />,
