@@ -25,7 +25,9 @@ export function Layout({ children, className, seoTags, headerData, footerData }:
       <div key={'navbar-placeholder'} className={'h-[60px] md:h-navbar'} />
       {children}
       {/*<Footer  />*/}
-      <Footer footerData={footerData}/>
+      {
+        footerData && <Footer footerData={footerData}/>
+      }
     </main>
   );
 
