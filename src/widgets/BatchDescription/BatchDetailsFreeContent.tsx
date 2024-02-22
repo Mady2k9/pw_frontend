@@ -9,14 +9,16 @@ import { ClockIcon } from 'lucide-react';
 import { formatDateAndTime } from '@/lib/date.utils';
 import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
 import { useRouter } from 'next/router';
+import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 
-export function ContentCard({ item, batch_name, batch_id, batch_price, isOnline }: { item: any , batch_name: string, batch_id: string, batch_price:{amount: number,
+export function ContentCard({ item, batch_name, batch_id, batch_price, isOnline, page_source }: { item: any , batch_name: string, batch_id: string, batch_price:{amount: number,
   discount: number,
   tax: number,
-  total: number}, isOnline: boolean }) {
+  total: number}, isOnline: boolean, page_source: string }) {
     const router= useRouter();
     const getClassAndExam = router.asPath.split('/')
   const handleFreeContentGAEvent = () =>{
+    eventTracker.authPageVisit('Free Content', page_source)
     batchEventTracker.freeContentVideo(batch_name, (isOnline? 'Online': 'Offline'), batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''));
   }
   const baseUrl = typeof window === 'undefined' ? '' : window.location.origin;
@@ -43,10 +45,16 @@ export function ContentCard({ item, batch_name, batch_id, batch_price, isOnline 
   </Link>;
 }
 
-export default function BatchDetailsFreeContent({ items, overviewUrl, batch_name, batch_id, batch_price, isOnline }: { overviewUrl: string, items: any[], batch_name: string, batch_id: string, batch_price:{amount: number,
+export default function BatchDetailsFreeContent({ items, overviewUrl, batch_name, batch_id, batch_price, isOnline, page_source }: { overviewUrl: string, items: any[], batch_name: string, batch_id: string, batch_price:{amount: number,
   discount: number,
   tax: number,
-  total: number}, isOnline: boolean }) {
+  total: number}, isOnline: boolean,  page_source: string }) {
+    const router= useRouter();
+    const getClassAndExam = router.asPath.split('/')
+    const handleGAEvent = () => {
+      eventTracker.authPageVisit('Free Content', page_source)
+      batchEventTracker.freeContentVideo(batch_name, (isOnline? 'Online': 'Offline'), batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''));
+    }
   return <BatchDescriptionCardWrapper title={'Free Content'}>
     <Carousel
       opts={{
@@ -58,7 +66,7 @@ export default function BatchDetailsFreeContent({ items, overviewUrl, batch_name
         {items.map((_, index) => (
           <CarouselItem key={index} className={cn('basis-[80%] sm:basis-[35%] pl-0', {})}>
             <div className={'p-1 py-2'}>
-              <ContentCard item={_} batch_name={batch_name} batch_id={batch_id} batch_price={batch_price} isOnline={isOnline}/>
+              <ContentCard item={_} batch_name={batch_name} batch_id={batch_id} batch_price={batch_price} isOnline={isOnline} page_source={page_source}/>
             </div>
           </CarouselItem>
         ))}
@@ -70,8 +78,7 @@ export default function BatchDetailsFreeContent({ items, overviewUrl, batch_name
     </Carousel>
     {
       <Link href={overviewUrl} target={'_blank'} className={'w-full'}>
-        <Button className={'w-full'} onClick={() => {
-        }}
+        <Button className={'w-full'} onClick={handleGAEvent}
                 variant={'secondary'}>{'View All'}</Button>
       </Link>
     }

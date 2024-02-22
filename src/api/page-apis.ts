@@ -21,6 +21,7 @@ export async function getTestListSnapshot(slug: string): Promise<{ data: IPageDa
 export async function batchPageSnapshot(slug: string, type: 'BATCH_LISTING' | 'BATCH_DESCRIPTION' = 'BATCH_LISTING'): Promise<{
   data: IPageData
 }> {
+  console.log(`${baseUrl}/gcms/batch-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=${type}&slug=${slug}`);
   return fetch(
     `${baseUrl}/gcms/batch-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=${type}&slug=${slug}`,
   ).then((res) => res.json());

@@ -31,10 +31,13 @@ const eventTracker = {
     } else if (cta_name == 'Get Started') {
       cta_text = 'get_started';
     }
+    else if(cta_name == 'Free Content'){
+      cta_text='free_content'
+    }
     const body = {
       device_id: deviceId,
       cta_click: cta_text,
-      page_referrer: page_source,
+      page_source: page_source,
     };
     logEvent(EventType.AUTH_PAGE_VISIT, body, false);
   },

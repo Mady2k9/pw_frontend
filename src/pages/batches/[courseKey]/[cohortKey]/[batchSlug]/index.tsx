@@ -26,7 +26,7 @@ import PhoneIcon from '@/deprecated/shared/Components/Molecules/PhoneIcon/PhoneI
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return batchDetailsServerSideProps(context);
 }
-
+const PAGE_SOURCE= 'Details Page'
 const getBreadcrumbs = ({ cohortKey, courseKey, batchDetails }: {
   courseKey: string,
   cohortKey?: string,
@@ -114,9 +114,10 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
             <BatchDetailsFreeContent overviewUrl={`/study/batches/${props.batch.slug}/batch-overview`}
                                      items={props.batch.freeContent}
                                      batch_name={props.batch.name}
-                                     batch_price={props.batch.fee}
-                                     batch_id={props.batch._id}
-                                     isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
+                                   batch_price={props.batch.fee}
+                                   batch_id={props.batch._id}
+                                   page_source={PAGE_SOURCE}
+                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
       } else {
@@ -236,7 +237,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                    batchDetails: props.batch,
                  })}
                  seoTags={props.pageData.seoTags}
-                 headerData={props.headerData}>
+  headerData={props.headerData} page_source={PAGE_SOURCE}>
     <PageTitleBar
       inverted={true} title={props.batch.name}
       floatingCard={BatchCard}
