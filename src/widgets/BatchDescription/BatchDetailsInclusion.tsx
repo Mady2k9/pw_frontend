@@ -23,17 +23,14 @@ export default function BatchDetailsInclusion({ description, orientationVideo, b
   },
   batch_id: string;
 }) {
-<<<<<<< HEAD
   const router= useRouter();
 const getClassAndExam = router.asPath.split('/')
 const handleOrientationVideoGAEvent = () =>{
   batchEventTracker.PwOrientationVideoClick(batch_name, batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))
 }
-=======
 
   console.log(orientationVideo?.introSection);
   const orientationThumbnail = orientationVideo?.introSection?.introVideoImageUrl;
->>>>>>> 077dcf31ca2308810f1a00cd1ed7ff1c0ddf9535
   return <BatchDescriptionCardWrapper title={'This batch includes'}>
     <div dangerouslySetInnerHTML={{ __html: description }} />
     {
