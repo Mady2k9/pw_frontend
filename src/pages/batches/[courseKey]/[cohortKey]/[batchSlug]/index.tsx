@@ -21,6 +21,7 @@ import ResultsSection from '@/widgets/ResultsSection';
 import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import PriceDisplay from '@/widgets/PriceDisplay';
 import { Button } from '@/components/ui/button';
+import PhoneIcon from '@/deprecated/shared/Components/Molecules/PhoneIcon/PhoneIcon';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return batchDetailsServerSideProps(context);
@@ -79,6 +80,7 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
                                    batch_name={props.batch.name}
                                    batch_price={props.batch.fee}
                                    batch_id={props.batch._id}
+                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth}
                                     />
           </div>,
         });
@@ -90,7 +92,8 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           widget: <div id={`${stringToSlug(tab)}`}>
             <BatchDetailsSchedule subjects={props.batch?.subjects}  batch_name={props.batch.name}
                                    batch_price={props.batch.fee}
-                                   batch_id={props.batch._id} />
+                                   batch_id={props.batch._id}
+                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
       } else if (tab === 'Teachers' && props.batch?.teacherData?.length) {
@@ -112,7 +115,8 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
                                      items={props.batch.freeContent}
                                      batch_name={props.batch.name}
                                    batch_price={props.batch.fee}
-                                   batch_id={props.batch._id} />
+                                   batch_id={props.batch._id}
+                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
       } else {
@@ -217,6 +221,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                       thumbnail={imageToImageUrl(props.batch.previewImage) || ''}
                       title={props.batch.name}
                       page_source={PAGE_SOURCE}
+                      batchId={props.batch._id}
                        />
     </div>;
   }, [props]);
@@ -249,6 +254,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
       <div className={'lg:hidden mb-4 md:mb-6 lg:mb-0 min-w-[320px] sm:mx-auto '}>
         {BatchCard}
       </div>
+      <PhoneIcon page_source={PAGE_SOURCE} />
       <div className={'flex flex-col space-y-4 md:space-y-6'}>
         {
           Widgets.map((widget, index) => {
