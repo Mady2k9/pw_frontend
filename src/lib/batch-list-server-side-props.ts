@@ -69,7 +69,7 @@ export default async function batchListingServerSideProps(context: GetServerSide
   } catch (error) {
     // console.log(error);
   }
-  if (!pageData) {
+  if (!pageData || !headerData?.data || !footerData?.data) {
     return {
       redirect: {
         permanent: false,
