@@ -11,10 +11,7 @@ const LoginButton = ({
   const router = useRouter();
   const handleClick = () => {
     eventTracker.authPageVisit(text, 'home_page');
-    const baseUrl = window.location;
-    router.push(
-      `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}study/auth?redirect_url=${baseUrl}`
-    );
+    window.open(`/study/auth`)
   };
 
   return (
