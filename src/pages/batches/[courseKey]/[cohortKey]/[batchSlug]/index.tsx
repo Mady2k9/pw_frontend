@@ -26,7 +26,7 @@ import PhoneIcon from '@/deprecated/shared/Components/Molecules/PhoneIcon/PhoneI
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return batchDetailsServerSideProps(context);
 }
-
+const PAGE_SOURCE= 'Details Page'
 const getBreadcrumbs = ({ cohortKey, courseKey, batchDetails }: {
   courseKey: string,
   cohortKey?: string,
@@ -116,6 +116,7 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
                                      batch_name={props.batch.name}
                                    batch_price={props.batch.fee}
                                    batch_id={props.batch._id}
+                                   page_source={PAGE_SOURCE}
                                    isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
@@ -151,7 +152,6 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return getExternalWidgets(props.pageData!);
   }, [props]);
   const [activeTab, setActiveTab] = useState<string>(Widgets[0]?.key);
-  const PAGE_SOURCE= 'Details Page'
   useEffect(() => {
     let visibleElements: Record<string, IntersectionObserverEntry> = {};
 
@@ -230,8 +230,8 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
   }
 
   return <Layout seoSchema={props.pageData.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
-                 seoTags={props.pageData.seoTags}
-                 headerData={props.headerData}>
+  seoTags={props.pageData.seoTags}
+  headerData={props.headerData} page_source={PAGE_SOURCE}>
     <PageTitleBar
       inverted={true} title={props.batch.name}
       floatingCard={BatchCard}

@@ -9,12 +9,14 @@ import { cn } from '@/lib/utils';
 import { useGlobal } from '@/contexts/global';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Sidebar from '@/components/common/Layout/Sidebar';
+import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 
 interface NavbarProps {
   items?: ITopMenuItem[];
+  page_source: string 
 }
 
-const MenuItem = ({ item }: { item: ITopMenuItem }) => {
+const MenuItem = ({ item,  }: { item: ITopMenuItem}) => {
   const link = item.menuRedirectionUrl || '';
   const isExternal = link?.includes('https');
   const hasSubmenu = item?.menuItems?.length > 0;
@@ -101,9 +103,10 @@ const MenuItem = ({ item }: { item: ITopMenuItem }) => {
   </Link>;
 };
 
-export function Navbar({ items }: NavbarProps) {
+export function Navbar({ items, page_source }: NavbarProps) {
   const { isSidebarOpen, toggleSidebar } = useGlobal();
   const handleLogin = () => {
+    eventTracker.authPageVisit('Login/Register', page_source);
     window.open('/study/auth/', '_self');
   };
   return (

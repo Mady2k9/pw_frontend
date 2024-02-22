@@ -11,9 +11,10 @@ interface LayoutProps {
   seoTags?: ISeoTags;
   seoSchema?: ISeoSchema[];
   className?: string;
+  page_source: string;
 }
 
-export function Layout({ children, className, seoTags, headerData, footerData, seoSchema }: LayoutProps) {
+export function Layout({ children, className, seoTags, headerData, footerData, seoSchema, page_source }: LayoutProps) {
   return (
     <main className={className || ''}>
       {seoTags && <SEO
@@ -23,7 +24,7 @@ export function Layout({ children, className, seoTags, headerData, footerData, s
         keyword={seoTags?.pageMetaTags?.metaKeywords?.join(',')}
         canonical={seoTags?.canonicalLink}
       />}
-      <Navbar items={headerData} />
+      <Navbar items={headerData} page_source={page_source} />
       <div key={'navbar-placeholder'} className={'h-[60px] md:h-navbar'} />
       {children}
       {/*<Footer  />*/}

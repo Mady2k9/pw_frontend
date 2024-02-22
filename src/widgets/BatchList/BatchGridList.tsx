@@ -81,7 +81,9 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
                                  isNew={item.markedAsNew}
                                  whatsappLink={item.seoSlug}
                                  thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name} 
-                                 page_source={page_source}/>;
+                                 page_source={page_source}
+                                 batchId={item._id}/>
+                                
         })
       }
     </div>
