@@ -10,6 +10,9 @@ import { FetchFooter } from '@/api/older-api-methods';
 import React, { useEffect, useRef, useState } from 'react';
 import Caraousel from '@/deprecated/shared/Components/Molecules/Caraousel/Caraousel';
 import carausel1 from '../../assets/Images/Schools/Banner.png'
+import Header from '@/deprecated/shared/Components/Molecules/Header/header';
+import SchoolsMarQue from '@/deprecated/shared/Components/SchoolCurriculum/SchoolsMarQue/SchoolsMarQue';
+
 const CaraouselImages =[
   {
     dwebImage:carausel1.src,
@@ -60,14 +63,17 @@ function SchoolCurriculumPage({ footerData }: { footerData: any }) {
   return (
     
     <>
-      <SchoolHeader isHomePage={true} />
-      {/* <Herosection /> */}
+      {/* <SchoolHeader isHomePage={true} /> */}
+      <Herosection />
+      {/* <Header headerData={[]} showLogin /> */}
+
 
       <Caraousel carouselData={CaraouselImages} containerClass={''} mwebImageClassName={''} dwebImageClassName={''} setIntervalTime={5000} showSecondaryArrow />
       <InterestingUs isInViewport={isInViewport} refValue={animations}/>     
       <PublishingPartners />
       <NumbersSpeak />
-      <Testonomial />
+      <Testonomial />  
+      <SchoolsMarQue />  
       <TeacherCta isInViewport={isInViewport} refValue={animations}/>
       {/* <Footer footerData={footerData.data} /> */}
     </>
@@ -84,7 +90,6 @@ export async function getServerSideProps() {
     ]); 
     footerData = result[0];
   } catch (error) {
-    // console.log(error);
   }
   return {
     props: {

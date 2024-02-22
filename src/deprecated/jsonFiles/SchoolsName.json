@@ -1,0 +1,43 @@
+{
+  
+  "SchoolsNameData": [
+    {
+      "image": "/ShristiSchool.webp",      
+      "heading": "Shrishti International School, Jaipur"
+    },
+    {
+      "image": "/PunnyaSchool.webp",      
+      "heading": "Punnya The Experiential School, Uttrakhand"
+    },
+    {
+      "image": "/AIIMSSchool.webp",      
+      "heading": "AIIMS School, Handwara, Jammu and Kashmir"
+
+    },
+    {
+      "image": "/ShiningBuds_.webp",      
+      "heading": "Shining buds Montessori school, Assam"
+
+    },
+    {
+      "image": "/TagorePublicSchool.webp",      
+      "heading": "Tagore Public School, Gurugram"
+
+    },
+    {
+      "image": "/HeeraPublicSchool.webp",      
+      "heading": "Heera Public School"
+
+    },
+    {
+      "image": "/TagorePublicSchool.webp",      
+      "heading": "Tagore Public School, Gurugram"
+
+    },
+    {
+      "image": "/HeeraPublicSchool.webp",      
+      "heading": "Heera Public School"
+
+    }
+  ]
+}

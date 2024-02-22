@@ -120,7 +120,13 @@ function TestonomialCard() {
                       >
 
                         Read More
-                        {isCardVisible && <TestonomialCardPop data={cardData.Details} />}
+                        {isCardVisible && <TestonomialCardPop 
+                        data={{
+                          details: cardData.Details,
+                          parentImage: cardData.parentImage,
+                          parentName : cardData?.name,
+                          classData : cardData?.class,
+                                }} />}
                       </span>
                     </>
                   ) : (

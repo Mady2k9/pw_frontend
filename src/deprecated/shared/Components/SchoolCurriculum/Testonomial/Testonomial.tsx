@@ -21,18 +21,18 @@ function Testonomial() {
         }}
         className=" max-w-6xl  rounded  sm:p-6 mx-4 sm:mx-6 xl:mx-auto p-4 md:gap-8 gap-5 flex flex-col sm:flex-row border border-black">
         <div className="relative">
-          {/* <Image
+          <Image
             // onClick={handleShowVideo}
             src={ScreenshotTestonomial.src}
             className={
               'w-full h-[166px] sm:h-[270px] cursor-pointer sm:w-[400px] xl:w-[480px] rounded bg-no-repeat bg-cover bg-center'
             }
-          /> */}
-          <Image src={ScreenshotTestonomial.src}
+          />
+          {/* <Image src={ScreenshotTestonomial.src}
           alt='ScreenshotTestonomial'
           className={
             'w-full h-[166px] sm:h-[270px] cursor-pointer sm:w-[400px] xl:w-[480px] rounded bg-no-repeat bg-cover bg-center'
-          } />
+          } /> */}
           <Image
             // onClick={handleShowVideo}
             src={playbuttonwebp.src}
