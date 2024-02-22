@@ -11,7 +11,7 @@ import {
 import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
 import { useRouter } from 'next/router';
 
-export default function BatchDetailsInclusion({ description, orientationVideo, batch_name, batch_price, batch_id }: {
+export default function BatchDetailsInclusion({ description, orientationVideo, batch_name, batch_price, batch_id, isOnline }: {
   description: string,
   orientationVideo?: IOrientationVideo,
   batch_name:string,
@@ -22,11 +22,12 @@ export default function BatchDetailsInclusion({ description, orientationVideo, b
   total: number
   },
   batch_id: string;
+  isOnline: boolean;
 }) {
   const router= useRouter();
 const getClassAndExam = router.asPath.split('/')
 const handleOrientationVideoGAEvent = () =>{
-  batchEventTracker.PwOrientationVideoClick(batch_name, batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))
+  batchEventTracker.PwOrientationVideoClick(batch_name,(isOnline?'Online': 'Offline'), batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))
 }
 
   console.log(orientationVideo?.introSection);

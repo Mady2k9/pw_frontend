@@ -34,6 +34,7 @@ interface CommonItemCardProps {
   whatsappLink?: string,
   isNew?: boolean,
   page_source?: string;
+  batchId?: string;
 }
 
 export default function CommonItemCard({
@@ -53,6 +54,7 @@ export default function CommonItemCard({
                                          language,
                                          fromDetails,
                                          page_source,
+                                         batch_id,
                                        }: CommonItemCardProps) {
   const encodedUrl = useMemo(() => {
     if (typeof window === 'undefined') {
@@ -65,10 +67,10 @@ export default function CommonItemCard({
   const getClassAndExam = router.asPath.split('/')
 
   const handleExploreGaEvent =(batch_name:string , amount:number | undefined, updatedAmount:number | undefined, exam:string, classname:string )=>{
-    batchEventTracker.batchCardExploreClick(batch_name ,amount, updatedAmount,exam, classname)
+    batchEventTracker.batchCardExploreClick(batch_name, (isOnline? 'Online': 'Offline') ,amount, updatedAmount,batch_id, exam, classname)
   }
   const handleBuyNowGaEvent =(batch_name:string , amount:number | undefined, updatedAmount:number | undefined, exam:string, classname:string ) =>{
-    batchEventTracker.pwliveBuynowClick(batch_name, amount, updatedAmount, exam, classname, (page_source? page_source :''))
+    batchEventTracker.pwliveBuynowClick(batch_name,(isOnline? 'Online': 'Offline'), amount, updatedAmount, batch_id, exam, classname, (page_source? page_source :''))
   }
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
