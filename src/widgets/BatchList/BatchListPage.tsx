@@ -12,6 +12,7 @@ import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import BatchGridList from '@/widgets/BatchList/BatchGridList';
 import { BatchLoadingGrid } from '@/widgets/BatchList/BatchLoadingGrid';
 import { IBatch } from '@/api/interfaces/batch';
+import HtmlContentWidget from '../HtmlContentWidget/HtmlContentWidget';
 
 const cohortToCohortTabs = ({ courseKey, cohortOptions }: {
   courseKey: string,
@@ -161,8 +162,11 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
         })
       }
     </div>
+
     {
-      props?.content && <div className={'container'} dangerouslySetInnerHTML={{ __html: props?.content }} />
+      props?.content && <div className={'container'} >
+        <HtmlContentWidget content={props?.content} />
+      </div>
     }
     {
       props.faqs?.length > 0 && <div className={'container'}>
