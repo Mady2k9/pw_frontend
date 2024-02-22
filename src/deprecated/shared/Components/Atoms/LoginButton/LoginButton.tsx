@@ -13,7 +13,7 @@ const LoginButton = ({
     eventTracker.authPageVisit(text, 'home_page');
     const baseUrl = window.location;
     if(baseUrl.href?.includes('admit-card')){
-      window.open('/study/auth?redirect_url=${baseUrl}', '_self');
+      window.open(`/study/auth?redirect_url=${baseUrl}`, '_self');
     }else{
       window.open('/study/auth/', '_self');
     }
