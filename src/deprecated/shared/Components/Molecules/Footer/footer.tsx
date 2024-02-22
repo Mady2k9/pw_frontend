@@ -14,6 +14,9 @@ export interface footerProps {
 }
 const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
   footerData = footerData?.data || footerData;
+  if(!footerData?.filter){
+    return <></>
+  }
   const footerlastSectionData = footerData?.filter(
     (value: { section: number }) => value?.section === 3
   )?.[0]?.menuItems;
