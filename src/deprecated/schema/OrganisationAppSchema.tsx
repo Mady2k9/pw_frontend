@@ -35,7 +35,7 @@ function OrganisationAppSchema() {
       "@type": "Brand",
       "logo": {
               "@type": "ImageObject",
-              "url": "https://www.pw.live/version14/assets/img/Group18923.png",
+              "url": "https://d2bps9p1kiy4ka.cloudfront.net/5b09189f7285894d9130ccd0/baea2846-ed40-4951-8683-84bd031d350a.png",
               "height": "45",
               "width": "45"
       },
