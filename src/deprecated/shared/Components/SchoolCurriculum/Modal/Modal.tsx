@@ -159,7 +159,7 @@ export default function Modal() {
                 <Image
                   bgImagetitle={stars.src}
                   className={
-                    'w-[190px] h-[140px] bg-center bg-cover bg-no-repeat absolute xl:bottom-[-10px] xl:right-[-35px] sm:block hidden'
+                    'w-[190px] h-[140px] bg-center bg-cover bg-no-repeat absolute xl:bottom-[-20px] xl:right-[-35px] sm:block hidden'
                   }
                 />
                 <Image

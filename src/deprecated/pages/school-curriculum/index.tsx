@@ -6,22 +6,88 @@ import PublishingPartners from '@/deprecated/shared/Components/SchoolCurriculum/
 import TeacherCta from '@/deprecated/shared/Components/SchoolCurriculum/TeacherCta/TeacherCta';
 import Testonomial from '@/deprecated/shared/Components/SchoolCurriculum/Testonomial/Testonomial';
 import SchoolHeader from '@/deprecated/shared/Components/SchoolCurriculum/header/SchoolHeader';
-
-import React from 'react';
-
+import { FetchFooter } from '@/api/older-api-methods';
+import React, { useEffect, useRef, useState } from 'react';
+import Caraousel from '@/deprecated/shared/Components/Molecules/Caraousel/Caraousel';
+import carausel1 from '../../assets/Images/Schools/Banner.png'
+const CaraouselImages =[
+  {
+    dwebImage:carausel1.src,
+    mwebImage:carausel1.src,
+    altTag: "test1",
+    redirectionUrl: '',
+    displayOrder: 1,
+  },
+  {
+    dwebImage:carausel1.src,
+    mwebImage:carausel1.src,
+    altTag: "test1",
+    redirectionUrl: '',
+    displayOrder: 1,
+  },
+  {
+    dwebImage:carausel1.src,
+    mwebImage:carausel1.src,
+    altTag: "test1",
+    redirectionUrl: '',
+    displayOrder: 1,
+  }
+]
 function SchoolCurriculumPage({ footerData }: { footerData: any }) {
+  const [isInViewport, setIsInViewport] = useState(false);
+  const animations = useRef(null);
+
+  const handleIntersection = (entries: any) => {
+    entries.forEach((entry: { isIntersecting: any }) => {
+      if (entry.isIntersecting) {
+        setIsInViewport(true);
+      }
+    });
+  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleIntersection);
+    if (animations.current) {
+      observer.observe(animations.current);
+    }
+   
+   
+    return () => {
+      observer.disconnect();
+     
+    };
+  }, []);
+  console.log(footerData,'footerData');
   return (
+    
     <>
       <SchoolHeader isHomePage={true} />
-      <Herosection />
-      <InterestingUs />
+      {/* <Herosection /> */}
+
+      <Caraousel carouselData={CaraouselImages} containerClass={''} mwebImageClassName={''} dwebImageClassName={''} setIntervalTime={5000} showSecondaryArrow />
+      <InterestingUs isInViewport={isInViewport} refValue={animations}/>     
       <PublishingPartners />
       <NumbersSpeak />
       <Testonomial />
-      <TeacherCta />
-      <Footer footerData={footerData.data} />
+      <TeacherCta isInViewport={isInViewport} refValue={animations}/>
+      {/* <Footer footerData={footerData.data} /> */}
     </>
   );
 }
 
 export default SchoolCurriculumPage;
+
+export async function getServerSideProps() { 
+  let footerData;
+  try {
+    const result = await Promise.all([
+      FetchFooter(),
+    ]); 
+    footerData = result[0];
+  } catch (error) {
+    // console.log(error);
+  }
+  return {
+    props: {
+      footerData: footerData || {},
+    },
+  }}

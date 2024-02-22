@@ -4,6 +4,8 @@ export interface CardData {
   name: string;
   class: string;
   videoLink: string;
+  Details : string;
+  parentImage : string;
 }
 export interface VideoCards {
   Videocards: CardData[];

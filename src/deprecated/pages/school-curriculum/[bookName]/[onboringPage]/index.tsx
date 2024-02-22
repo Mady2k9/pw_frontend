@@ -2,6 +2,7 @@ import React from 'react';
 import { FetchHomePage, FetchHeader, FetchFooter } from '@/api/older-api-methods';
 import SchoolHeader from '@/deprecated/shared/Components/SchoolCurriculum/header/SchoolHeader';
 import Verifications from '@/deprecated/shared/Components/SchoolsonboringPage/Verifications/Verifications';
+import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 
 function OnboringPage({ footerData }: { footerData: any }) {
   return (

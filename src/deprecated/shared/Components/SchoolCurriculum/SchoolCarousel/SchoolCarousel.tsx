@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useRef, useState } from 'react';
-import Image from '../../Atoms/Image/Image';
-import SwipeRightIcon from '../../../../assets/Images/VectorRight.webp';
+import { Image } from '@/components/ui/image';
+import SwipeRightIcon from '../../../../assets/Images/Schools/VectorRight.webp';
+import SwipeleftIcon from '../../../../assets/Images/Schools/ArrowRight.webp';
 const SchoolCarousel = ({
   array,
   className,
@@ -47,7 +48,7 @@ const SchoolCarousel = ({
         swipedData + (containerRef.current?.clientWidth || 0) <
           (containerRef.current?.scrollWidth || 0) && (
           <div
-            className="absolute top-0 right-[2px] h-full w-[160px] md:flex flex-col hidden justify-center items-end"
+            className="absolute top-0 right-[-17px] h-full w-[160px] md:flex flex-col hidden justify-center items-end"
             // style={{
             //   backgroundImage:
             //     'linear-gradient(267deg, #FFF 24.98%, rgba(255, 255, 255, 0.00) 97.47%',
@@ -67,7 +68,8 @@ const SchoolCarousel = ({
                   onMouseLeave={() => setHovered(false)}
                 >
                   <Image
-                    bgImagetitle={`${SwipeRightIcon.src}`}
+                    src={`${SwipeRightIcon.src}`}
+                    alt='right'
                     className={
                       'w-[10px] h-[10px] bg-center bg-no-repeat bg-cover rounded-lg '
                     }
@@ -98,7 +100,8 @@ const SchoolCarousel = ({
               onMouseLeave={() => setHovered(false)}
             >
               <Image
-                bgImagetitle={`${SwipeRightIcon.src}`}
+                src={`${SwipeRightIcon.src}`}
+                alt='right'
                 className={
                   'w-[10px] h-[10px] bg-center bg-no-repeat bg-cover rounded-lg '
                 }
@@ -109,7 +112,7 @@ const SchoolCarousel = ({
       )}
       {swipedData != 0 && (
         <div
-          className="absolute top-0 left-[-21px] h-full w-[160px] md:flex flex-col  justify-center items-start hidden"
+          className="absolute top-0 left-[-36px] h-full w-[160px] md:flex flex-col  justify-center items-start hidden"
           // style={{
           //   backgroundImage:
           //     'linear-gradient(267deg, rgba(255, 255, 255, 0.00)  24.98%, #fff 97.47%',
@@ -128,9 +131,10 @@ const SchoolCarousel = ({
               onMouseLeave={() => setHovered(false)}
             >
               <Image
-                bgImagetitle={`${SwipeRightIcon.src}`}
+                 src={`${SwipeleftIcon.src}`}
+                 alt='left'
                 className={
-                  'w-[10px] h-[10px] bg-center bg-no-repeat bg-cover rounded-lg '
+                  'w-[20px] h-[20px] bg-center bg-no-repeat bg-cover rounded-lg '
                 }
               />
             </div>
