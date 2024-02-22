@@ -1,7 +1,7 @@
-import batchEventTracker from '../../BatchEventTracker/BatchEventtracker';
 import { useMemo } from 'react';
 import { getFullName } from '@/deprecated/shared/utility';
 import { formatDate } from '@/deprecated/shared/Components/BatchCard/BatchPrice';
+import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
 
 const BatchSchedulecard = ({
   subject,
@@ -11,7 +11,6 @@ const BatchSchedulecard = ({
   colorTheme: { background: string; bullet: string };
 }) => {
   const handleClick = () => {
-    console.log(subject);
     batchEventTracker.scheduleDownLoad();
     const pdfUrl = subject.fileId?.baseUrl + subject.fileId?.key;
     window.open(pdfUrl, '_blank');

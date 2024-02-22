@@ -26,6 +26,7 @@ const items = [{
 export default function TestSeriesListPage(props: any) {
     const [activeTab, setActiveTab] = useState<string>(items[0].key);
     const batchListingData = props?.batchlistingAll?.data;
+    const PAGE_SOURCE = 'Listing page'
     return <>
         <SEO
             title={batchListingData?.seoTags?.pageMetaTags?.metaTitle}
@@ -47,8 +48,8 @@ export default function TestSeriesListPage(props: any) {
             setActiveTab(item);
         }}/>
         <div className={'container py-4 space-y-8 md:space-y-10'}>
-            <TestSeriesShortList title={'Class 11 IIT-JEE Batches'} testSeries={[]} showMoreLink={'/'}/>
-            <TestSeriesShortList title={'Class 12 IIT-JEE Batches'} testSeries={[]} showMoreLink={'/'}/>
+            <TestSeriesShortList title={'Class 11 IIT-JEE Batches'} testSeries={[]} showMoreLink={'/'} page_source={PAGE_SOURCE}/>
+            <TestSeriesShortList title={'Class 12 IIT-JEE Batches'} testSeries={[]} showMoreLink={'/'} page_source={PAGE_SOURCE}/>
         </div>
         {/*<ResultsSection title={'Academic Excellence : Results'}*/}
         {/*                description={'Giving wings to a millions dreams, a million more to go'}/>*/}

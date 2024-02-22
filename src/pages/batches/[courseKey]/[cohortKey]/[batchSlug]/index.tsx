@@ -73,7 +73,11 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           key: stringToSlug(tab),
           widget: <div id={`${stringToSlug(tab)}`}>
             <BatchDetailsInclusion description={props.batch?.shortDescription}
-                                   orientationVideo={props.batch.orientationVideo} />
+                                   orientationVideo={props.batch.orientationVideo}
+                                   batch_name={props.batch.name}
+                                   batch_price={props.batch.fee}
+                                   batch_id={props.batch._id}
+                                    />
           </div>,
         });
       } else if (tab === 'Batch Schedule' && props.batch?.subjects.length) {
@@ -82,7 +86,9 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           link: `#${stringToSlug(tab)}`,
           key: stringToSlug(tab),
           widget: <div id={`${stringToSlug(tab)}`}>
-            <BatchDetailsSchedule subjects={props.batch?.subjects} />
+            <BatchDetailsSchedule subjects={props.batch?.subjects}  batch_name={props.batch.name}
+                                   batch_price={props.batch.fee}
+                                   batch_id={props.batch._id} />
           </div>,
         });
       } else if (tab === 'Teachers' && props.batch?.teacherData?.length) {
@@ -136,7 +142,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return getExternalWidgets(props.pageData!);
   }, [props]);
   const [activeTab, setActiveTab] = useState<string>(Widgets[0]?.key);
-
+  const PAGE_SOURCE= 'Details Page'
   useEffect(() => {
     let visibleElements: Record<string, IntersectionObserverEntry> = {};
 
@@ -204,7 +210,9 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                       isNew={props.batch.markedAsNew}
                       whatsappLink={props.batch.seoSlug}
                       thumbnail={imageToImageUrl(props.batch.previewImage) || ''}
-                      title={props.batch.name} />
+                      title={props.batch.name}
+                      page_source={PAGE_SOURCE}
+                       />
     </div>;
   }, [props]);
   if (!props.pageData) {

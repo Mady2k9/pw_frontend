@@ -4,10 +4,11 @@ import CommonItemCard from "../CommonItemCard";
 export interface BatchShortListProps {
     title: string,
     testSeries: any[],
-    showMoreLink?: string
+    showMoreLink?: string,
+    page_source?: string,
 }
 
-export default function TestSeriesShortList({title, testSeries, showMoreLink}: BatchShortListProps) {
+export default function TestSeriesShortList({title, testSeries, showMoreLink, page_source}: BatchShortListProps) {
     return <div className={''}>
         <h4 className={'text-xl md:text-3xl  font-bold'}>{title}</h4>
         <div className={'overflow-y-auto w-full pl-1.5'}>
@@ -16,7 +17,7 @@ export default function TestSeriesShortList({title, testSeries, showMoreLink}: B
                     [1, 2, 4].map((item, index) => {
                         return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
                             <CommonItemCard exploreLink={'/'} buyNowLink={'/'} isOnline={index != 1} key={index}
-                                       thumbnail={''} title={'Lakshaya JEE Mains & Advanced 2023'}/>
+                                       thumbnail={''} title={'Lakshaya JEE Mains & Advanced 2023'} page_source={page_source}/>
                         </div>
                     })
                 }

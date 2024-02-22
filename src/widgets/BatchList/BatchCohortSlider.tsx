@@ -11,9 +11,10 @@ export interface BatchCohortSliderProps {
   batches: any[],
   cohort: ICohortOptions,
   showMoreLink?: string
+  page_source?: string,
 }
 
-export default function BatchCohortSlider({ title, batches, cohort, showMoreLink }: BatchCohortSliderProps) {
+export default function BatchCohortSlider({ title, batches, cohort, showMoreLink, page_source }: BatchCohortSliderProps) {
   return <div className={''} id={'short-list-wrapper' + cohort.cohortId}>
     <div className={'container '}>
       <h4 className={'text-xl md:text-3xl font-bold'}>{title}</h4>
@@ -35,7 +36,8 @@ export default function BatchCohortSlider({ title, batches, cohort, showMoreLink
                               meta={item.meta}
                               isNew={item.markedAsNew}
                               whatsappLink={item.seoSlug}
-                              thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name} />
+                              thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name}
+                              page_source={page_source} />
             </div>;
           })
         }

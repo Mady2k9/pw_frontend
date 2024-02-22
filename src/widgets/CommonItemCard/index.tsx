@@ -33,6 +33,7 @@ interface CommonItemCardProps {
   isOnline?: boolean,
   whatsappLink?: string,
   isNew?: boolean,
+  page_source?: string;
 }
 
 export default function CommonItemCard({
@@ -51,6 +52,7 @@ export default function CommonItemCard({
                                          meta,
                                          language,
                                          fromDetails,
+                                         page_source,
                                        }: CommonItemCardProps) {
   const encodedUrl = useMemo(() => {
     if (typeof window === 'undefined') {
@@ -64,6 +66,9 @@ export default function CommonItemCard({
 
   const handleExploreGaEvent =(batch_name:string , amount:number | undefined, updatedAmount:number | undefined, exam:string, classname:string )=>{
     batchEventTracker.batchCardExploreClick(batch_name ,amount, updatedAmount,exam, classname)
+  }
+  const handleBuyNowGaEvent =(batch_name:string , amount:number | undefined, updatedAmount:number | undefined, exam:string, classname:string ) =>{
+    batchEventTracker.pwliveBuynowClick(batch_name, amount, updatedAmount, exam, classname, (page_source? page_source :''))
   }
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
@@ -143,7 +148,7 @@ export default function CommonItemCard({
         }
         {
           buyNowLink && <Link href={buyNowLink} target={'_blank'} className={'w-full '}>
-            <Button className={'w-full'}>
+            <Button className={'w-full'} onClick={()=>handleBuyNowGaEvent(title, amount , updatedAmount , (getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))}>
               BUY NOW
             </Button>
           </Link>

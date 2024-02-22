@@ -15,9 +15,10 @@ export interface BatchGridListProps {
   batches: IBatch[],
   cohort: ICohortOptions,
   filteredBatches?: IBatch[]
+  page_source?:string;
 }
 
-export default function BatchGridList({ batches: _batches, cohort, filteredBatches }: BatchGridListProps) {
+export default function BatchGridList({ batches: _batches, cohort, filteredBatches, page_source }: BatchGridListProps) {
   const [batches, setBatches] = useState(filteredBatches || _batches || []);
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(true);
@@ -77,7 +78,8 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
                                  language={item.language}
                                  isNew={item.markedAsNew}
                                  whatsappLink={item.seoSlug}
-                                 thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name} />;
+                                 thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name} 
+                                 page_source={page_source}/>;
         })
       }
     </div>

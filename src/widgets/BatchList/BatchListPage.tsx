@@ -133,7 +133,8 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
                                       cohort={cohortOption}
                                       title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
                                       batches={props.batches[cohortOption.cohortId] || []}
-                                      showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />;
+                                      showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`}
+                                      page_source={PAGE_SOURCE} />;
           })
         }
       </div>
@@ -143,7 +144,8 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
         <BatchGridList cohort={activeCohort!}
                        filteredBatches={props.filteredBatches?.length ? props.filteredBatches : undefined}
-                       batches={props.batches[activeCohort!.cohortId] || []} />
+                       batches={props.batches[activeCohort!.cohortId] || []}
+                       page_source={PAGE_SOURCE} />
       </div>
     }
     {
