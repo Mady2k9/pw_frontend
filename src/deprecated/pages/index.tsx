@@ -20,13 +20,8 @@ import Header from '@/deprecated/shared/Components/Molecules/Header/header';
 import { WidgetEnum } from '@/deprecated/shared/Components/Enums/WidgetEnum';
 import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 import { useEffect } from 'react';
-import Head from 'next/head';
-import SoftwareAppSchema from '@/deprecated/schema/SoftwareAppSchema';
-import OrganisationAppSchema from '@/deprecated/schema/OrganisationAppSchema';
 import ComponentWrapper from '@/deprecated/shared/Components/Molecules/ComponentWrapper/ComponentWrapper';
 import HeroFeatureSection from '@/deprecated/shared/Components/Components/HeroFeatureSection/HeroFeatureSection';
-import GoogleTagManager from '@/deprecated/analytics/GoogleTagManager';
-import GTM from '@/deprecated/analytics/GTM';
 
 export default function HomePage({
   HomePageData,
@@ -97,31 +92,6 @@ export default function HomePage({
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={OrganisationAppSchema()}
-          key="OrganisationAppSchema"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={SoftwareAppSchema()}
-          key="SoftwareAppSchema"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={GoogleTagManager()}
-          key="GoogleTagManager"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={GTM()}
-          key="GTM"
-        />
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script src="//cdnt.netcoresmartech.com/smartechclient.js"/>
-
-      </Head>
       <SEO
         title={seoData?.pageMetaTags?.metaTitle}
         description={seoData?.pageMetaTags?.metaDescription}
