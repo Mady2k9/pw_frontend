@@ -11,7 +11,12 @@ const LoginButton = ({
   const router = useRouter();
   const handleClick = () => {
     eventTracker.authPageVisit(text, 'home_page');
-    window.open('/study/auth/', '_self');
+    const baseUrl = window.location;
+    if(baseUrl.href?.includes('admit-card')){
+      window.open('/study/auth?redirect_url=${baseUrl}', '_self');
+    }else{
+      window.open('/study/auth/', '_self');
+    }
   };
 
   return (
