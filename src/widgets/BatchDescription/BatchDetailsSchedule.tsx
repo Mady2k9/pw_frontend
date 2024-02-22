@@ -3,10 +3,22 @@ import { cn, getFullName, imageToImageUrl } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import formatDate from '@/lib/date.utils';
 import { useState } from 'react';
+import batchEventTracker from "@/lib/BatchEventTracker/BatchEventTracker";
+import { useRouter } from "next/router";
 import BatchDescriptionCardWrapper from './BatchDescriptionCardWrapper';
 
-export default function BatchDetailsSchedule({ subjects }: { subjects: ISubject[] }) {
-  const [showMore, setShowMore] = useState(false);
+export default function BatchDetailsSchedule({subjects, batch_name, batch_id, batch_price}: { subjects: ISubject[], batch_name: string, batch_id: string, batch_price:{amount: number,
+    discount: number,
+    tax: number,
+    total: number} }) {
+    const [showMore, setShowMore] = useState(false);
+    const router= useRouter();
+const getClassAndExam = router.asPath.split('/')
+const handleDownload = (subject: any) =>{
+    batchEventTracker.scheduleDownLoad(batch_name, batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))
+    const pdfUrl = imageToImageUrl(subject.fileId);
+    window.open(pdfUrl, '_blank');
+}
   return <BatchDescriptionCardWrapper title={'Batch Schedules'}>
 
     <>
@@ -55,10 +67,7 @@ export default function BatchDetailsSchedule({ subjects }: { subjects: ISubject[
               </div>
               {imageToImageUrl(subject.fileId) &&
                 <div className={'flex flex-col items-center justify-center'}>
-                  <Button className={'bg-zinc-800'} onClick={() => {
-                    const pdfUrl = imageToImageUrl(subject.fileId);
-                    window.open(pdfUrl, '_blank');
-                  }}>
+                  <Button className={'bg-zinc-800'} onClick={() => {handleDownload(subject) }}>
                     Download
                   </Button>
                 </div>

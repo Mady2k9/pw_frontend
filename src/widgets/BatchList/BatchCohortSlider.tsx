@@ -12,9 +12,10 @@ export interface BatchCohortSliderProps {
   batches: any[],
   cohort: ICohortOptions,
   showMoreLink?: string
+  page_source?: string,
 }
 
-export default function BatchCohortSlider({ title, batches, cohort, showMoreLink }: BatchCohortSliderProps) {
+export default function BatchCohortSlider({ title, batches, cohort, showMoreLink, page_source }: BatchCohortSliderProps) {
   const router = useRouter();
   const courseKey = router.query.courseKey as string;
   return <div className={''} id={'short-list-wrapper' + cohort.cohortId}>
@@ -39,7 +40,8 @@ export default function BatchCohortSlider({ title, batches, cohort, showMoreLink
                               meta={item.meta}
                               isNew={item.markedAsNew}
                               whatsappLink={item.seoSlug}
-                              thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name} />
+                              thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name}
+                              page_source={page_source} />
             </div>;
           })
         }
