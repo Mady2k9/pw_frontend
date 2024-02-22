@@ -266,7 +266,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
             </div>;
           })
         }
-        {props.pageData.faqs?.length > 0 && <FAQ items={props.pageData.faqs} />}
+        {props.pageData.faqs?.length > 0 && <FAQ items={props.pageData.faqs} pageSource={PAGE_SOURCE} />}
       </div>
 
     </div>
