@@ -81,7 +81,7 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
                                    batch_price={props.batch.fee}
                                    batch_id={props.batch._id}
                                    isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth}
-                                    />
+            />
           </div>,
         });
       } else if (tab === 'Batch Schedule' && props.batch?.subjects.length) {
@@ -90,10 +90,10 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           link: `#${stringToSlug(tab)}`,
           key: stringToSlug(tab),
           widget: <div id={`${stringToSlug(tab)}`}>
-            <BatchDetailsSchedule subjects={props.batch?.subjects}  batch_name={props.batch.name}
-                                   batch_price={props.batch.fee}
-                                   batch_id={props.batch._id}
-                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
+            <BatchDetailsSchedule subjects={props.batch?.subjects} batch_name={props.batch.name}
+                                  batch_price={props.batch.fee}
+                                  batch_id={props.batch._id}
+                                  isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
       } else if (tab === 'Teachers' && props.batch?.teacherData?.length) {
@@ -114,9 +114,9 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
             <BatchDetailsFreeContent overviewUrl={`/study/batches/${props.batch.slug}/batch-overview`}
                                      items={props.batch.freeContent}
                                      batch_name={props.batch.name}
-                                   batch_price={props.batch.fee}
-                                   batch_id={props.batch._id}
-                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
+                                     batch_price={props.batch.fee}
+                                     batch_id={props.batch._id}
+                                     isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
       } else {
@@ -151,7 +151,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return getExternalWidgets(props.pageData!);
   }, [props]);
   const [activeTab, setActiveTab] = useState<string>(Widgets[0]?.key);
-  const PAGE_SOURCE= 'Details Page'
+  const PAGE_SOURCE = 'Details Page';
   useEffect(() => {
     let visibleElements: Record<string, IntersectionObserverEntry> = {};
 
@@ -222,7 +222,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                       title={props.batch.name}
                       page_source={PAGE_SOURCE}
                       batchId={props.batch._id}
-                       />
+      />
     </div>;
   }, [props]);
   if (!props.pageData) {
@@ -230,6 +230,11 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
   }
 
   return <Layout seoSchema={props.pageData.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
+                 breadcrumbs={getBreadcrumbs({
+                   courseKey: courseKey as string,
+                   cohortKey: cohortKey as string,
+                   batchDetails: props.batch,
+                 })}
                  seoTags={props.pageData.seoTags}
                  headerData={props.headerData}>
     <PageTitleBar

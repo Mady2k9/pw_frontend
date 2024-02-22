@@ -37,7 +37,7 @@ export interface IContent {
 export interface IItemListElement {
     "@type": string;
     position: number;
-    item?: IItem;
+    item?: IItem | string;
     name?: string;
 }
 
