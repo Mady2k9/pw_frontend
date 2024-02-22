@@ -12,7 +12,7 @@ export function TeachersCard({ teacher }: { teacher: ITeacherId }) {
       style={{
         backgroundImage: `url(${TeacherBgImage.src})`,
       }}>
-      <Image src={imageToImageUrl(teacher.imageId)} className={'h-full w-full bg-contain'}/>
+      <Image src={imageToImageUrl(teacher.imageId)} className={'h-full w-full bg-bottom bg-contain'}/>
     </div>
     <div className={'card-shadow rounded-md items-center flex flex-col p-2 bg-white text-center'}>
       <div className={'font-semibold line-clamp-1'}>{getFullName(teacher)}</div>
