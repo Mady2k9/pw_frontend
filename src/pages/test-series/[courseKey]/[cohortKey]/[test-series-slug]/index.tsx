@@ -32,12 +32,12 @@ export async function getServerSideProps({params}: { params: any }) {
 
 export default function TestSeriesDescription() {
     const [activeTab, setActiveTab] = useState<string>(items[0].key);
-
+    const PAGE_SOURCE= 'Details Page'
     return <div>
         <PageTitleBar
             inverted={true} title={'Lakshya JEE 2024 Test Series -12th JEE'}
             floatingCard={<CommonItemCard exploreLink={'/'} buyNowLink={'/'}
-                                          thumbnail={''} title={'Lakshaya JEE Mains & Advanced 2023'}/>}
+                                          thumbnail={''} title={'Lakshaya JEE Mains & Advanced 2023'} page_source={PAGE_SOURCE}/>}
             breadcrumbs={{
                 items: [
                     {
