@@ -275,6 +275,7 @@ const Form: React.FC<FormProps> = (
           <p className="w-full text-xl font-semibold">Enter your details</p>
         </div>
         <Button
+          variant={'outline'}
           onClick={() => {
             const ele = document?.getElementById('howitworks');
             if (ele) {
@@ -284,7 +285,7 @@ const Form: React.FC<FormProps> = (
             }
           }}
         >
-          <div className="border border-black rounded-full h-5 w-5 font-semibold text-[#3D3D3D]">
+          <div className="border border-black rounded-full h-5 w-5 mr-1 font-semibold text-[#3D3D3D]">
             ?
           </div>
           <p className="font-semibold text-[#3D3D3D]">How it Works</p>
