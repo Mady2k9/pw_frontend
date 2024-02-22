@@ -11,7 +11,7 @@ const LoginButton = ({
   const router = useRouter();
   const handleClick = () => {
     eventTracker.authPageVisit(text, 'home_page');
-    window.open(`/study/auth`)
+    window.open('/study/auth/', '_self');
   };
 
   return (
