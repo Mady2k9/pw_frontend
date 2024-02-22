@@ -77,17 +77,18 @@ const batchEventTracker = {
     };
     logEvent(EventType.SCHEDULE_DOWNLOAD, body, false);
   },
-  freeContentVideo: () => {
+  freeContentVideo: (batch_name: string, actual_amount: number , discounted_amount: number, batch_id: string, exam: string, className: string) => {
     const body = {
       UserId: helper.isUserloggedIn()
         ? JSON.parse(localStorage?.getItem('user') || '{}').id
         : '',
       user_type: helper.isUserloggedIn() ? 'logged_in' : 'non_logged_in',
-      batch_name: '',
+      batch_name: batch_name,
       batch_category: '',
-      batch_price: '',
-      exam: '',
-      class: '',
+      batch_price: {actual_amount: actual_amount, discounted_amount: discounted_amount},
+      batch_id:batch_id,
+      exam: exam,
+      class: className,
     };
     logEvent(EventType.FREE_CONTENT_VIDE0, body, false);
   },

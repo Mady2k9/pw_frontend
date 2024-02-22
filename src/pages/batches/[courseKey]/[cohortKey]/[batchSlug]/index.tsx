@@ -109,7 +109,10 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           key: stringToSlug(tab),
           widget: <div id={`${stringToSlug(tab)}`}>
             <BatchDetailsFreeContent overviewUrl={`/study/batches/${props.batch.slug}/batch-overview`}
-                                     items={props.batch.freeContent} />
+                                     items={props.batch.freeContent}
+                                     batch_name={props.batch.name}
+                                   batch_price={props.batch.fee}
+                                   batch_id={props.batch._id} />
           </div>,
         });
       } else {
