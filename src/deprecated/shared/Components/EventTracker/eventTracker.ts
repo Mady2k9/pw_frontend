@@ -15,19 +15,6 @@ const eventTracker = {
 
     logEvent(EventType.PW_LANDING_PAGE, body, false);
   },
-  callCtaClick: (page_source: string, call_number: number) => {
-    const body = {
-      UserId: helper.isUserloggedIn()
-        ? JSON.parse(localStorage?.getItem('user') || '{}').id
-        : '',
-      user_type: helper.isUserloggedIn() ? 'logged_in' : 'non_logged_in',
-      device_id: deviceId,
-      call_number: call_number,
-      source: 'need_help',
-      page_source: page_source,
-    };
-    logEvent(EventType.CALL_CTA_CLICK, body, false);
-  },
   topNavigationClick: (cta_name: string, page_source: string) => {
     const body = {
       device_id: deviceId,
@@ -43,8 +30,6 @@ const eventTracker = {
       cta_text = 'login';
     } else if (cta_name == 'Get Started') {
       cta_text = 'get_started';
-    } else if (cta_name == 'free_content') {
-      cta_text = 'free_content';
     }
     const body = {
       device_id: deviceId,

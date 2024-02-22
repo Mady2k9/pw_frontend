@@ -6,6 +6,7 @@ import {batchPageSnapshot} from "@/api/page-apis";
 
 export default async function batchDetailsServerSideProps(context: GetServerSidePropsContext) {
     const {resolvedUrl} = context;
+    const batchSlug = context.params?.batchSlug as string;
     const urlWithoutQuery = resolvedUrl?.split('?')[0];
     let headerData;
     let footerData;
@@ -15,7 +16,7 @@ export default async function batchDetailsServerSideProps(context: GetServerSide
         const result = await Promise.all([
             FetchHeader(),
             FetchFooter(),
-            batchPageSnapshot(urlWithoutQuery, 'BATCH_DESCRIPTION')
+            batchPageSnapshot(batchSlug, 'BATCH_DESCRIPTION')
         ]);
         headerData = result[0];
         footerData = result[1];

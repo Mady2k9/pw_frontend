@@ -10,12 +10,10 @@ export const getToken = async (
     ttl: 1000 * 60 * 60 * 24 * 7,
     latitude: 0,
     longitude: 0,
-    // organizationId: '5eb393ee95fab7468a79d189',
     organizationId: process.env.NEXT_PUBLIC_PP_ORG_ID,
     username: username,
   };
   const url = `${process.env.NEXT_PUBLIC_PP_API_BASE_URL}v3/oauth/token`;
-  // const url = `https://stage-api.penpencil.co/v3/oauth/token`;
   const response = await fetch(url, {
     method: 'POST',
     headers: {

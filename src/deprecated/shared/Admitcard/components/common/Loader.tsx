@@ -9,26 +9,18 @@ const Loader = ({
 }) => {
   return (
     <div className={s['loader-ring']} style={{ transform: `scale(${scale})` }}>
-      <div
-        style={{
-          borderColor: `${color || '#fff'} transparent transparent transparent`,
-        }}
-      ></div>
-      <div
-        style={{
-          borderColor: `${color || '#fff'} transparent transparent transparent`,
-        }}
-      ></div>
-      <div
-        style={{
-          borderColor: `${color || '#fff'} transparent transparent transparent`,
-        }}
-      ></div>
-      <div
-        style={{
-          borderColor: `${color || '#fff'} transparent transparent transparent`,
-        }}
-      ></div>
+      {[1, 2, 3, 4].map((item) => {
+        return (
+          <div
+            key={item}
+            style={{
+              borderColor: `${
+                color || '#fff'
+              } transparent transparent transparent`,
+            }}
+          />
+        );
+      })}
     </div>
   );
 };

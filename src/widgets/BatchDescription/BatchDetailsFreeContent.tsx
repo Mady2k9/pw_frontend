@@ -20,35 +20,13 @@ export function ContentCard({ item }: { item: any }) {
                className={'rounded-md w-full h-full'} />
       </div>
       <div className={'flex justify-between items-center mt-1.5'}>
-        <div className={''}>
-          {checkIfLectureIsLive(item) && (
-            <div
-              className="text-[10px] leaading-[18px] font-[500] bg-[#C94A54] text-white px-[8px] py-[3px] rounded-[2px]">
-              {' '}
-              LIVE{' '}
-            </div>
-          )}
-          {checkIfLectureIsUpcoming(item) && (
-            <div
-              className="text-[10px] leaading-[18px] font-[500] bg-[#C94A54] text-white px-[8px] py-[3px] rounded-[2px]">
-              {' '}
-              Upcoming{' '}
-            </div>
-          )}
-          {checkIfLectureIsPast(item) && (
-            <div
-              className="text-[10px] leaading-[18px] font-[500] bg-[#C94A54] text-white px-[8px] py-[3px] rounded-[2px]">
-              {' '}
-              Ended{' '}
-            </div>
-          )}
-        </div>
+
         <div className={'flex gap-1'}>
           <ClockIcon className={'w-4 h-4 stroke-lighter'} />
           <span className={'text-xs text-lighter font-medium'}>{formatDateAndTime(item.startTime)}</span>
         </div>
       </div>
-      <div className={'text-sm font-medium line-clamp-1 mt-1'}>
+      <div className={'text-sm font-medium line-clamp-2 mt-1 h-[40px]'}>
         {item.topic}
       </div>
     </div>
@@ -65,7 +43,7 @@ export default function BatchDetailsFreeContent({ items, overviewUrl }: { overvi
     >
       <CarouselContent>
         {items.map((_, index) => (
-          <CarouselItem key={index} className={cn('basis-[60%] sm:basis-[35%] pl-0', {})}>
+          <CarouselItem key={index} className={cn('basis-[80%] sm:basis-[35%] pl-0', {})}>
             <div className={'p-1 py-2'}>
               <ContentCard item={_} />
             </div>

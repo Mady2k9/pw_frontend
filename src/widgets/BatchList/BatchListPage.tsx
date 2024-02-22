@@ -12,6 +12,7 @@ import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import BatchGridList from '@/widgets/BatchList/BatchGridList';
 import { BatchLoadingGrid } from '@/widgets/BatchList/BatchLoadingGrid';
 import { IBatch } from '@/api/interfaces/batch';
+import HtmlContentWidget from '../HtmlContentWidget/HtmlContentWidget';
 
 const cohortToCohortTabs = ({ courseKey, cohortOptions }: {
   courseKey: string,
@@ -54,7 +55,7 @@ const getBreadcrumbs = ({ cohortKey, courseKey }: {
 
 function getWidgets(props: IPageData) {
   const result: ReactElement[] = [];
-  props.widgetOrder.forEach((widget) => {
+  props.widgetOrder?.forEach((widget) => {
     if (widget === 'RESULTS') {
       const resultData = props.widgetJson['RESULTS'];
       result.push(<ResultsSection hideCategories={true} results={resultData.sectionProps}
@@ -149,7 +150,9 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
       </div>
     }
     {
-      batchSection === 'LOADING' && <BatchLoadingGrid />
+      batchSection === 'LOADING' && <div className={'container'}>
+        <BatchLoadingGrid />
+      </div>
     }
     <div className={'mt-4 md:mt-8 container'}>
       {
@@ -162,8 +165,11 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
         })
       }
     </div>
+
     {
-      props?.content && <div className={'container'} dangerouslySetInnerHTML={{ __html: props?.content }} />
+      props?.content && <div className={'container'} >
+        <HtmlContentWidget content={props?.content} />
+      </div>
     }
     {
       props.faqs?.length > 0 && <div className={'container'}>

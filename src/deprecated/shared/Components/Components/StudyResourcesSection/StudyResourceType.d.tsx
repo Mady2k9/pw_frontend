@@ -8,7 +8,5 @@ export interface studyresourcesProps {
     mwebImage: string;
     bgColor: string;
     redirectionUrl: string;
-    cardColor: string;
-    cardHoverColor: string;
   }[];
 }

@@ -2,7 +2,7 @@ import {cn} from "@/lib/utils";
 import {Skeleton} from "@/components/ui/skeleton";
 
 export function BatchLoadingGrid(){
-    return <div className={'grid grid-cols-1 mt-4 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 -mx-2 px-2 w-full'}>
+    return <div className={'grid grid-cols-1 mt-4 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full'}>
         {
             [1, 2, 3].map((_, index) => {
                 return <div

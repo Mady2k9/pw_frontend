@@ -7,18 +7,9 @@ export interface ExplorePwCenterType {
   sectionProps: {
     redirectionUrl: string;
     videoUrl: string;
-    videoOverlayColor: string;
     title: string;
     subtitle: string;
     centers: exploreCityCardsType[];
-  };
-  cta: {
-    text: string;
-    textColor: string;
-    backGroundColor: string;
-    ctaRedirectionUrl: string;
-    altText: string;
-    hoverColor: string;
   };
   expiredAt: string;
 }

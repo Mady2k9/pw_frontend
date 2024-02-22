@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import Marquee from 'react-fast-marquee';
 import YouTubeCards from '../../Molecules/YouTubeCards/YouTubeCards';
 import { YouTubeCardsSectionProps } from './YouTubeDataType.d';
-import Button from '../../Atoms/Button/Button';
+import LoginButton from '../../Atoms/LoginButton/LoginButton';
 
 const YouTubeCardsSection = ({
   youtubeData,
@@ -45,13 +45,9 @@ const YouTubeCardsSection = ({
           ))}
         </div>
       </Marquee>
-      <Button
-        className={` px-[28px] py-[14px] w-[240px] sm:text-lg rounded-md transition-all duration-200 items-center font-semibold leading-[27px] text-[17px]`}
-        title={youtubeData?.cta.text}
-        backGroundColor={youtubeData?.cta.backGroundColor}
-        textColor={youtubeData?.cta.textColor}
-        hoverColor={youtubeData?.cta.hoverColor}
-        ctaRedirectionUrl={youtubeData?.cta.ctaRedirectionUrl}
+      <LoginButton
+        text={'Get Started'}
+        className={'px-[28px] py-[14px] w-[240px] text-base sm:text-lg'}
       />
     </div>
   );

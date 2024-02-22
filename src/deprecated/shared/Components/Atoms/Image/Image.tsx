@@ -4,9 +4,7 @@ function Image({
   bgImagetitle,
   className,
   onClick,
-  placeholder,
 }: {
-  placeholder?: string;
   bgImagetitle: string;
   className: string;
   onClick?: () => void;
@@ -14,7 +12,7 @@ function Image({
   return (
     <div
       className={className}
-      style={{ backgroundImage: `url(${bgImagetitle || placeholder})` }}
+      style={{ backgroundImage: `url(${bgImagetitle})` }}
       onClick={onClick}
     />
   );

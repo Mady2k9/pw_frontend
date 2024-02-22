@@ -4,7 +4,6 @@ import { exploreCityCardsType } from '../../Molecules/ExplorePwCityCards/Explore
 import { ExplorePwCenterType } from './ExplorePwCenterType';
 import eventTracker from '../../EventTracker/eventTracker';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
-import Button from '../../Atoms/Button/Button';
 
 const ExplorePwCenter = ({
   explorePWCenterData,
@@ -19,25 +18,12 @@ const ExplorePwCenter = ({
   const sortedCenterData = explorePWCenterData?.sectionProps?.centers?.sort(
     compareByDisplayOrder
   );
-
-  const handleClick = () => {
-    centreEventTrigger('home_page');
-  };
-
   return (
     <>
       <TransitionWrapper delay={1}>
-        <div
-          className="my-10"
-          style={{
-            backgroundColor: `${explorePWCenterData?.sectionProps?.videoOverlayColor}`,
-          }}
-        >
+        <div className="my-10 bg-black">
           <div
-            className={`sm:h-[650px] h-[500px] m-auto sm:flex bg-center bg-no-repeat bg-cover bg-opacity-70 overflow-hidden relative`}
-            style={{
-              backgroundColor: `${explorePWCenterData?.sectionProps?.videoOverlayColor}`,
-            }}
+            className={`sm:h-[650px] h-[500px] m-auto sm:flex bg-center bg-no-repeat bg-cover bg-black bg-opacity-70 overflow-hidden relative`}
           >
             <video
               src={explorePWCenterData?.sectionProps?.videoUrl}
@@ -52,10 +38,10 @@ const ExplorePwCenter = ({
             <div className="w-full mx-auto">
               <TransitionWrapper>
                 <div className="mx-auto text-[#fff] text-center z-[1] px-4 sm:h-[260px] h-[180px] flex flex-col justify-center">
-                  <div className="sm:text-[32px] sm:leading-[48px] text-[20px] leading-[30px] font-[700] mb-[14px] z-[1]">
+                  <div className="sm:text-[32px] text-[#fff] sm:leading-[48px] text-[20px] leading-[30px] font-[700] mb-[14px] z-[1]">
                     {explorePWCenterData?.sectionTitle}
                   </div>
-                  <div className="sm:text-[18px] sm:leading-[28px] text-[14px] leading-[20px] font-[500] z-[1]">
+                  <div className=" text-[#fff] sm:text-[18px] sm:leading-[28px] text-[14px] leading-[20px] font-[500] z-[1]">
                     {explorePWCenterData?.sectionSubTitle}
                   </div>
                 </div>
@@ -94,17 +80,14 @@ const ExplorePwCenter = ({
                   )}
                 </div>
                 <div className=" text-center">
-                  <Button
-                    className={`rounded-md transition-all duration-200 font-semibold text- w-[100%] lg:w-[240px] py-3.5`}
-                    title={explorePWCenterData?.cta.text}
-                    backGroundColor={explorePWCenterData?.cta.backGroundColor}
-                    textColor={explorePWCenterData?.cta.textColor}
-                    hoverColor={explorePWCenterData?.cta.hoverColor}
-                    ctaRedirectionUrl={
-                      explorePWCenterData?.cta.ctaRedirectionUrl
-                    }
-                    onClick={handleClick}
-                  />
+                  <a
+                    href="https://www.pw.live/vidyapeeth-centres"
+                    onClick={() => centreEventTrigger('home_page')}
+                  >
+                    <button className="rounded-md transition-all duration-200 hover:bg-[#4437B8] bg-[#5A4BDA] text-white font-semibold text- w-[100%] lg:w-[240px] py-3.5">
+                      View More
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>

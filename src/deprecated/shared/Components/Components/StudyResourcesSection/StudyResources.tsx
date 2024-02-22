@@ -3,6 +3,8 @@ import StudyResourcesCard from '../../Molecules/StudyResourceCard/StudyResources
 import Style from './StudyResources.module.css';
 import { studyresourcesProps } from './StudyResourceType.d';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
+const color = ['#F1FAFF', '#FFF9EE', '#E8FFF6'];
+const hoverColor = ['#DAF2FF', '#FFEFD2', '#D3FFEE'];
 const StudyResource = ({
   resourceData,
 }: {
@@ -25,8 +27,8 @@ const StudyResource = ({
               mainTitle={data?.title}
               discription={data?.description}
               StudyResourcesCardImage={data?.dwebImage}
-              hoverColor={data?.cardHoverColor}
-              bgColor={data?.cardColor}
+              hoverColor={hoverColor[key]}
+              bgColor={color[key]}
               redirectionUrl={data?.redirectionUrl}
               mwebImage={data?.mwebImage}
               dwebImage={data?.dwebImage}

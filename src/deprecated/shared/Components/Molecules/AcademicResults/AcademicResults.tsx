@@ -10,38 +10,41 @@ const AcademicResults = ({
   showClassesScrollData?: boolean;
 }) => {
   const [sectionProps, setSectionProps] = useState([]);
-
-  const allImg: any = [];
+  const allmwebImage: any = [];
   academicResultData?.sectionProps?.map((exam: any) => {
-    exam?.imageOption?.map((imageOption: any) => allImg.push(imageOption));
+    exam.mwebImage?.map((image: any) => allmwebImage.push(image));
   });
-  const compareByDisplayOrder = (a: any, b: any) =>
-    a?.displayOrder - b?.displayOrder;
-  const sortedResultData = academicResultData?.sectionProps?.sort(
-    compareByDisplayOrder
-  );
+  const alldwebImage: any = [];
+  academicResultData?.sectionProps?.map((exam: any) => {
+    exam.dwebImage?.map((image: any) => alldwebImage.push(image));
+  });
+
   const academicResultArray = [
     {
       exam: 'ALL',
-      imageOption: allImg,
+      mwebImage: allmwebImage,
+      dwebImage: alldwebImage,
       displayOrder: 0,
     },
-    ...sortedResultData,
+    ...academicResultData.sectionProps,
   ];
   const [selectedExam, setSelectedExam] = useState(academicResultArray[0]);
   useEffect(() => {
     const arr: any = [];
-    selectedExam?.imageOption?.map((img: any) => {
+    selectedExam?.mwebImage?.map((img: string, index: number) => {
       arr.push({
-        mwebImage: img.mWebImage,
-        dwebImage: img.dWebImage,
+        mwebImage: img,
+        dwebImage: selectedExam.dwebImage[index],
         displayOrder: selectedExam.displayOrder,
-        redirectionUrl: img.redirectionUrl,
         exam: selectedExam.exam,
       });
     });
     setSectionProps(arr);
   }, [selectedExam]);
+  const compareByDisplayOrder = (a: any, b: any) =>
+    a?.displayOrder - b?.displayOrder;
+  const sortedResultData = academicResultArray?.sort(compareByDisplayOrder);
+
   return (
     <>
       <div className="w-full flex flex-col items-center  justify-center ">
@@ -50,9 +53,9 @@ const AcademicResults = ({
             <TransitionWrapper>
               <div className="w-[100%] snap-none md:px-0 px-[2px] z-10 ">
                 <div
-                  className={`flex flex-row  md:my-[16px] my-[16px] flex-nowrap md:items-center md:justify-start`}
+                  className={`flex flex-row  md:my-[16px] my-[16px] flex-nowrap md:items-center md:justify-center`}
                 >
-                  {academicResultArray.map((cohort: any) => {
+                  {sortedResultData.map((cohort: any) => {
                     return (
                       <div
                         key={cohort?.exam}

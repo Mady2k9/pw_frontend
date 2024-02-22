@@ -1,6 +1,6 @@
 import cn from 'clsx';
 import s from '../../styles/FAQ.module.css';
-import React from 'react';
+import React, { memo } from 'react';
 import { Disclosure, Transition } from '@headlessui/react';
 import ChevronDown from '../../icons/ChevronDown';
 import ChevronUp from '../../icons/ChevronUp';
@@ -71,4 +71,4 @@ const FAQ: React.FC<FAQProps> = (props) => {
   );
 };
 
-export default FAQ;
+export default memo(FAQ);

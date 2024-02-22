@@ -27,8 +27,8 @@ export default function FAQ({items,pageSource}: FAQProps) {
                     items.map((item, index) => {
                         return <AccordionItem value={index + ''}
                                               className={'mb-4 border-none rounded-xl overflow-hidden'} key={index}>
-                            <AccordionTrigger onClick={handleGaEvent} className={'bg-[#F1F5FE] px-4 hover:bg-[#deeaf8] transitionAll200'}>
-                                <h3 className={'no-underline text-lg font-semibold text-start'}>{item.question || item.title}</h3>
+                            <AccordionTrigger className={'bg-[#F1F5FE] px-4 hover:bg-[#deeaf8] transitionAll200'}>
+                                <h3 className={'no-underline  md:text-lg font-semibold text-start'}>{item.question || item.title}</h3>
                             </AccordionTrigger>
                             <AccordionContent className={'p-4 bg-zinc-50'}>
                                 <div dangerouslySetInnerHTML={{__html: item.answer || item.description}}/>

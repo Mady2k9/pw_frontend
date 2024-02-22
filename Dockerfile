@@ -1,4 +1,4 @@
-FROM node:18
+FROM public.ecr.aws/i3c5v1i2/node:18
 
 EXPOSE 3000
 WORKDIR /app

@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import CommonItemCard from '../CommonItemCard';
 import { useEffect, useState } from 'react';
-import { cn, imageToImageUrl, jsonToQueryString, uniqueBy } from '@/lib/utils';
+import { cn, imageToImageUrl, jsonToQueryString, stringToSlug, uniqueBy } from '@/lib/utils';
 import { ICohortOptions } from '@/api/interfaces/page';
 import { useRouter } from 'next/router';
 import { fetchBatches } from '@/api/page-apis';
@@ -23,6 +23,8 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(true);
   const router = useRouter();
+  const courseKey = router.query.courseKey as string;
+
   const [queryKey, setQueryKey] = useState(jsonToQueryString(router.query));
   const getBatches = async (routerQuery: any, reset: boolean = false, clean: boolean = false) => {
     let query: any = {
@@ -32,7 +34,7 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
       query = { ...query, ...extractFilters(routerQuery) };
     }
     setLoading(true);
-    const start = reset ? 0 : batches.length;
+    const start = reset ? 0 : batches.length - 1;
 
     if (reset) {
       setBatches([]);
@@ -64,7 +66,7 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
     <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
       {
         batches.map((item, index) => {
-          return <CommonItemCard exploreLink={item.seoSlug}
+          return <CommonItemCard exploreLink={`/batches/${courseKey}/${stringToSlug(cohort.option)}/${item.seoSlug}`}
                                  buyNowLink={`/study/batches/${item.slug}/batch-overview`}
                                  isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
                                  key={index}

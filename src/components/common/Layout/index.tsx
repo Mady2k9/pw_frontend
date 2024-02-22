@@ -1,6 +1,6 @@
 import { Navbar } from '@/components/common/Layout/Navbar';
 import { ReactNode } from 'react';
-import { IFooterData, ISeoTags, ITopMenuItem } from '@/api/interfaces/page';
+import { IFooterData, ISeoSchema, ISeoTags, ITopMenuItem } from '@/api/interfaces/page';
 import SEO from '@/widgets/SEO';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 
@@ -9,13 +9,15 @@ interface LayoutProps {
   headerData?: ITopMenuItem[];
   footerData?: IFooterData[];
   seoTags?: ISeoTags;
+  seoSchema?: ISeoSchema[];
   className?: string;
 }
 
-export function Layout({ children, className, seoTags, headerData, footerData }: LayoutProps) {
+export function Layout({ children, className, seoTags, headerData, footerData, seoSchema }: LayoutProps) {
   return (
     <main className={className || ''}>
       {seoTags && <SEO
+        seoSchema={seoSchema}
         title={seoTags?.pageMetaTags?.metaTitle}
         description={seoTags?.pageMetaTags?.metaDescription}
         keyword={seoTags?.pageMetaTags?.metaKeywords?.join(',')}
@@ -25,7 +27,9 @@ export function Layout({ children, className, seoTags, headerData, footerData }:
       <div key={'navbar-placeholder'} className={'h-[60px] md:h-navbar'} />
       {children}
       {/*<Footer  />*/}
-      <Footer footerData={footerData}/>
+      {
+        footerData && <Footer showFreeLearning={true} footerData={footerData}/>
+      }
     </main>
   );
 

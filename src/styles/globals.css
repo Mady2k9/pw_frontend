@@ -194,10 +194,8 @@
         font-style: italic;
     }
 
-
 }
 *{
-    color: #1B2124;
 }
 .animationFromBottom{
     @apply animate-in slide-in-from-bottom-6 fade-in duration-700;

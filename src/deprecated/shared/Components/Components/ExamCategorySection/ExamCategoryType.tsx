@@ -6,10 +6,4 @@ export interface ExamCategoryType {
   sectionSubTitle: string;
   sectionTitle: string;
   _id: string;
-  cta: {
-    text: string;
-    textColor: string;
-    backGroundColor: string;
-    altText: string;
-  };
 }

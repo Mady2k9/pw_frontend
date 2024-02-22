@@ -10,7 +10,7 @@ const ExamCategoryCard = ({
   examCategoryCardData,
   bgColor,
 }: {
-  examCategoryCardData: any;
+  examCategoryCardData: ExamCategoryCardType;
   bgColor: string;
 }) => {
   const [visibleCohorts, setVisibleCohorts] = useState(
@@ -26,8 +26,6 @@ const ExamCategoryCard = ({
     else setVisibleCohorts(examCategoryCardData.options.length <= 4 ? 4 : 3);
     setShowMoreButton(!showMoreButton);
   };
-
-  const ctaExploreCategory = 'Explore Category';
 
   const batchEventTrigger = (
     exam: string,
@@ -66,19 +64,15 @@ const ExamCategoryCard = ({
             ?.map((options: CardOptionsType, key: number) => {
               return (
                 <a
-                  onClick={(e) => {
+                  onClick={() =>
                     batchEventTrigger(
                       '',
                       examCategoryCardData?.categoryName,
                       options?.className,
                       'exam_cards'
-                    );
-                  }}
-                  href={`/batches/${examCategoryCardData?.categoryName
-                    ?.toLowerCase()
-                    ?.replace(' ', '-')}/${options?.className
-                    .replace(' ', '-')
-                    .toLowerCase()}`}
+                    )
+                  }
+                  href={options?.redirectionUrl}
                   key={key}
                   className="md:text-[14px] cursor-pointer text-[12px] md:mr-[8px] mr-[5px] leading-[20px] my-[5px] lg:px-[20px] px-[12px] md:py-[10px] py-[7px] text-[#3D3D3D] text-center border border-1 border-[#D9DCE1] rounded-[28px] "
                 >
@@ -110,16 +104,14 @@ const ExamCategoryCard = ({
               'exam_cards'
             )
           }
-          href={`/batches/${examCategoryCardData?.categoryName
-            ?.toLowerCase()
-            ?.replace(' ', '-')}`}
+          href={examCategoryCardData?.redirectionUrl}
           className={` lg:mt-[20px] md:mt-[16px] mt-[12px] flex flex-row items-center ${styles.exploreCategoryButton} hover:text-[#5A4BDA] duration-200 text-[#1B2124]`}
         >
           <div
-            onClick={() => handlePushUrl(examCategoryCardData?.categoryName)}
+            // onClick={() => handlePushUrl(examCategoryCardData?.categoryName)}
             className={`${styles.exploreCategoryArrow} cursor-pointer  pr-[12px] lg:text-[16px] text-[14px] md:leading-[24px] leading-[20px]  `}
           >
-            {examCategoryCardData.cta.text}
+            Explore Category
           </div>
           <div
             className={`${styles.exploreCategoryArrow} bg-[#F8F8F8] duration-200  md:px-[12px] px-[10px] md:py-[4px] py-[4px] rounded-[100px] flex items-center `}

@@ -9,23 +9,16 @@ const DynamicCounselling = dynamic(() => import('./Counseller'), {
   ssr: false,
 });
 import dynamic from 'next/dynamic';
-import eventTracker from '../../EventTracker/eventTracker';
 
-export default function PhoneIcon({ page_source }: { page_source?: string }) {
+export default function PhoneIcon() {
   const [open, setOpen] = React.useState<boolean | null>(null);
-  const handlOnClick = () => {
-    if (!open && page_source) {
-      eventTracker.callCtaClick(page_source, 7019243492);
-    }
-    setOpen(!open);
-  };
   return (
     <div className="cursor-pointer  md:right-6 right-[10px] z-20 bottom-[10px] fixed  rounded-md max-w-sm">
       <div
         className={
           'md:h-[64px] relative md:w-[64px] w-10 h-10 rounded-full bg-[#4437B8] p-3 md:p-4'
         }
-        onClick={handlOnClick}
+        onClick={() => setOpen(!open)}
       >
         <div className={'relative w-full h-full'}>
           <Image

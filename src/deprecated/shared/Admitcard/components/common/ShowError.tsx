@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import ExclamationTriangleIcon from '@heroicons/react/24/solid/ExclamationTriangleIcon';
 
 const ShowError = ({ field, error }: { field: string; error: any }) => {
@@ -14,4 +14,4 @@ const ShowError = ({ field, error }: { field: string; error: any }) => {
   );
 };
 
-export default ShowError;
+export default memo(ShowError);
