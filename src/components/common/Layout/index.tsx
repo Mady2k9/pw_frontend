@@ -14,9 +14,20 @@ interface LayoutProps {
   breadcrumbs?: { label: string, link: string }[];
   className?: string;
   page_source: string;
+  productUrl?: string;
 }
 
-export function Layout({ children, breadcrumbs,className, seoTags, headerData, footerData, seoSchema, page_source }: LayoutProps) {
+export function Layout({
+                         children,
+                         breadcrumbs,
+                         className,
+                         seoTags,
+                         headerData,
+                         footerData,
+                         seoSchema,
+                         page_source,
+                         productUrl,
+                       }: LayoutProps) {
   if (seoSchema && breadcrumbs) {
     const index = seoSchema?.findIndex((schema) => schema.type === 'Breadcrumb');
     if (index > -1) {
@@ -42,6 +53,22 @@ export function Layout({ children, breadcrumbs,className, seoTags, headerData, f
       };
     }
   }
+  if (productUrl && seoSchema) {
+    let index = seoSchema?.findIndex((schema) => schema.type === 'Product');
+    if (index > -1) {
+      if (seoSchema[index].content?.offers) {
+        seoSchema[index].content.offers.url = productUrl;
+      }
+    }
+    index = seoSchema?.findIndex((schema) => schema.type === 'Article');
+    if (index > -1) {
+      if (seoSchema[index].content?.mainEntityOfPage) {
+        seoSchema[index].content.mainEntityOfPage.url = productUrl;
+      }
+    }
+
+  }
+  console.log(seoSchema);
   return (
     <main className={className || ''}>
       {seoTags && <SEO

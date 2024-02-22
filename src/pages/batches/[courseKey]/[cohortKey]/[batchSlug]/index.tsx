@@ -231,6 +231,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
   }
 
   return <Layout seoSchema={props.pageData.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
+                 productUrl={`${process.env.NEXT_PUBLIC_APP_BASE_URL}/batches/${stringToSlug(courseKey  as string)}/${stringToSlug(cohortKey as string)}/${props?.batch.seoSlug}`}
                  breadcrumbs={getBreadcrumbs({
                    courseKey: courseKey as string,
                    cohortKey: cohortKey as string,

@@ -18,7 +18,7 @@ export interface IPageData {
 }
 
 export interface ISeoSchema {
-    content: IContent | IContent[];
+    content: IContent | IContent[] | any;
     type: string;
     status: boolean;
 }
