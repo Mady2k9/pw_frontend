@@ -12,11 +12,11 @@ export function TeachersCard({ teacher }: { teacher: ITeacherId }) {
       style={{
         backgroundImage: `url(${TeacherBgImage.src})`,
       }}>
-      <Image src={imageToImageUrl(teacher.imageId)} className={''} alt={getFullName(teacher)} />
+      <Image src={imageToImageUrl(teacher.imageId)} className={'h-full w-full bg-bottom bg-contain'}/>
     </div>
     <div className={'card-shadow rounded-md items-center flex flex-col p-2 bg-white text-center'}>
-      <div className={'font-semibold'}>{getFullName(teacher)}</div>
-      <div className="sm:text-sm text-xs font-lighter h-4 line-clamp-1">{teacher.subject}</div>
+      <div className={'font-semibold line-clamp-1'}>{getFullName(teacher)}</div>
+      <div className="sm:text-sm text-xs font-lighter h-4.5 line-clamp-1">{teacher.subject}</div>
       {
         teacher.experience ? <div
           className="bg-[#EAECEF] h-[28px] text-[12px] leading-[18px] sm:text-sm rounded-[100px] py-[4px] mt-[9px] px-[18px]">

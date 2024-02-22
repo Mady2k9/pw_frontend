@@ -8,17 +8,34 @@ import {
   DialogContent,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
+import { useRouter } from 'next/router';
 
-export default function BatchDetailsInclusion({ description, orientationVideo }: {
+export default function BatchDetailsInclusion({ description, orientationVideo, batch_name, batch_price, batch_id }: {
   description: string,
-  orientationVideo?: IOrientationVideo
+  orientationVideo?: IOrientationVideo,
+  batch_name:string,
+  batch_price:{
+  amount: number,
+  discount: number,
+  tax: number,
+  total: number
+  },
+  batch_id: string;
 }) {
+  const router= useRouter();
+const getClassAndExam = router.asPath.split('/')
+const handleOrientationVideoGAEvent = () =>{
+  batchEventTracker.PwOrientationVideoClick(batch_name, batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))
+}
 
+  console.log(orientationVideo?.introSection);
+  const orientationThumbnail = orientationVideo?.introSection?.introVideoImageUrl;
   return <BatchDescriptionCardWrapper title={'This batch includes'}>
     <div dangerouslySetInnerHTML={{ __html: description }} />
     {
       orientationVideo && orientationVideo.introSection?.introVideoUrl &&
-      <div className={styles.orientationVideoWrapper}>
+      <div className={styles.orientationVideoWrapper} onClick={handleOrientationVideoGAEvent}>
         <div className={'flex-1'}>
           <h2 className={'text-lg font-semibold'}>{orientationVideo?.introSection?.customTitle}</h2>
           <p className={'text-sm text-lighter font-medium'}>
@@ -28,13 +45,13 @@ export default function BatchDetailsInclusion({ description, orientationVideo }:
         </div>
         <div className="flex flex-col items-center justify-center whitespace-nowrap ">
           <div className="relative w-[65px] h-[70px] items-center flex ">
-            <Image
+            {<Image
               src={`${AlakhImage.src}`}
               alt={'alakh-image'}
               className={
-                'h-full w-full bg-center bg-contain bg-no-repeat opacity-50 md:block hidden'
+                'h-full w-full bg-center bg-no-repeat opacity-50 md:block hidden bg-cover'
               }
-            />
+            />}
             {orientationVideo?.isIntroSectionEnabled && (
               <Dialog>
                 <DialogTrigger asChild>

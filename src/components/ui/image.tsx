@@ -14,7 +14,7 @@ export function Image({className, src, placeholder, alt, onClick}: ImageProps) {
     }
     return (
         <div
-            className={cn(className || '', 'bg-center bg-no-repeat bg-cover')}
+            className={cn( 'bg-center bg-no-repeat bg-cover',className || '',)}
             style={{backgroundImage: `url(${src || placeholder})`}}
             onClick={onClick ? () => onClick() : undefined}
         />

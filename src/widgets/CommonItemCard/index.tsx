@@ -13,6 +13,8 @@ import { useMemo } from 'react';
 import { CalendarDays, Star } from 'lucide-react';
 import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
+import { useRouter } from 'next/router';
+import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
 
 interface CommonItemCardProps {
   thumbnail?: string,
@@ -31,6 +33,7 @@ interface CommonItemCardProps {
   isOnline?: boolean,
   whatsappLink?: string,
   isNew?: boolean,
+  page_source?: string;
 }
 
 export default function CommonItemCard({
@@ -49,6 +52,7 @@ export default function CommonItemCard({
                                          meta,
                                          language,
                                          fromDetails,
+                                         page_source,
                                        }: CommonItemCardProps) {
   const encodedUrl = useMemo(() => {
     if (typeof window === 'undefined') {
@@ -57,6 +61,15 @@ export default function CommonItemCard({
     return encodeURIComponent(window.location.origin + whatsappLink);
   }, [whatsappLink]);
   const features = (meta && meta.filter((m) => m.value).slice(0, 2)) || [];
+  const router = useRouter()
+  const getClassAndExam = router.asPath.split('/')
+
+  const handleExploreGaEvent =(batch_name:string , amount:number | undefined, updatedAmount:number | undefined, exam:string, classname:string )=>{
+    batchEventTracker.batchCardExploreClick(batch_name ,amount, updatedAmount,exam, classname)
+  }
+  const handleBuyNowGaEvent =(batch_name:string , amount:number | undefined, updatedAmount:number | undefined, exam:string, classname:string ) =>{
+    batchEventTracker.pwliveBuynowClick(batch_name, amount, updatedAmount, exam, classname, (page_source? page_source :''))
+  }
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
       [styles.commonItemCardWrapperOnline]: isOnline,
@@ -128,14 +141,14 @@ export default function CommonItemCard({
       <div className={'flex gap-2 !mt-3'}>
         {
           exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full '}>
-            <Button variant={'outline'} className={'w-full  border-primary text-primary'}>
+            <Button variant={'outline'} className={'w-full  border-primary text-primary'} onClick={()=>handleExploreGaEvent(title, amount , updatedAmount , (getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))}>
               EXPLORE
             </Button>
           </Link>
         }
         {
           buyNowLink && <Link href={buyNowLink} target={'_blank'} className={'w-full '}>
-            <Button className={'w-full'}>
+            <Button className={'w-full'} onClick={()=>handleBuyNowGaEvent(title, amount , updatedAmount , (getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))}>
               BUY NOW
             </Button>
           </Link>
