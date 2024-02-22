@@ -97,7 +97,7 @@ const MenuItem = ({ item }: { item: ITopMenuItem }) => {
 export function Navbar({ items }: NavbarProps) {
   const { isSidebarOpen, toggleSidebar } = useGlobal();
   const handleLogin = () => {
-    window.open('/study/auth/');
+    window.open('/study/auth/', '_self');
   };
   return (
     <>
