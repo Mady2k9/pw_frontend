@@ -14,6 +14,8 @@ export default function BatchDetailsInclusion({ description, orientationVideo }:
   orientationVideo?: IOrientationVideo
 }) {
 
+  console.log(orientationVideo?.introSection);
+  const orientationThumbnail = orientationVideo?.introSection?.introVideoImageUrl;
   return <BatchDescriptionCardWrapper title={'This batch includes'}>
     <div dangerouslySetInnerHTML={{ __html: description }} />
     {
@@ -28,13 +30,13 @@ export default function BatchDetailsInclusion({ description, orientationVideo }:
         </div>
         <div className="flex flex-col items-center justify-center whitespace-nowrap ">
           <div className="relative w-[65px] h-[70px] items-center flex ">
-            <Image
+            {<Image
               src={`${AlakhImage.src}`}
               alt={'alakh-image'}
               className={
-                'h-full w-full bg-center bg-contain bg-no-repeat opacity-50 md:block hidden'
+                'h-full w-full bg-center bg-no-repeat opacity-50 md:block hidden bg-cover'
               }
-            />
+            />}
             {orientationVideo?.isIntroSectionEnabled && (
               <Dialog>
                 <DialogTrigger asChild>

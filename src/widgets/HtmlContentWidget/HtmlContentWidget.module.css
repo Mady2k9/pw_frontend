@@ -1,0 +1,65 @@
+.containerText h2 {
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.containerText h3 {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.containerText h4 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.containerText p {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #757575;
+}
+.containerText a {
+    @apply text-primary hover:underline;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .containerText h2 {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    .containerText h3 {
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .containerText h4 {
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .containerText p {
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 500;
+        margin-bottom: 9px;
+        color: #757575;
+    }
+
+}
+
