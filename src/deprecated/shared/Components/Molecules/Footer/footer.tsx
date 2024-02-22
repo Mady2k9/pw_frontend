@@ -65,13 +65,13 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
+                      <Image
                         onClick={() =>
                           googleStoreEvent('google_play', 'footer')
                         }
                         className={'h-[40px] w-full rounded-lg'}
-                        src={GooglePlayeStoreIcon.src}
-                        alt="Download App on Playstore"
+                        bgImagetitle={GooglePlayeStoreIcon.src}
+                        // alt="Download App on Playstore"
                       />
                     </a>
 
@@ -81,11 +81,11 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
+                      <Image
                         onClick={() => appStoreEvent('app_store', 'footer')}
                         className={'h-[40px] w-full rounded-lg'}
-                        src={appleStoreIcon.src}
-                        alt="Download App on Appstore"
+                        bgImagetitle={appleStoreIcon.src}
+                        // alt="Download App on Appstore"
                       />
                     </a>
                   </div>
