@@ -106,6 +106,9 @@ export function Navbar({ items }: NavbarProps) {
   const handleLogin = () => {
     window.open('/study/auth/', '_self');
   };
+  if(!items){
+    return <></>
+  }
   return (
     <>
       <div
