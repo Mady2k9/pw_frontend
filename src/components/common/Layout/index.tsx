@@ -28,7 +28,7 @@ export function Layout({ children, className, seoTags, headerData, footerData, s
       {children}
       {/*<Footer  />*/}
       {
-        footerData && <Footer footerData={footerData}/>
+        footerData && <Footer showFreeLearning={true} footerData={footerData}/>
       }
     </main>
   );
