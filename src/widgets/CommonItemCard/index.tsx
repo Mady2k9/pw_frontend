@@ -78,7 +78,7 @@ export default function CommonItemCard({
                                 target={'_blank'}><Image src={WhatsAppIcon.src} alt={'Whatsapp Link'}
                                                          className={cn('cursor-pointer', {
                                                            'w-8 ': fromDetails,
-                                                           ' mt-1 w-5': !fromDetails,
+                                                           ' mt-1 w-5 h-5': !fromDetails,
                                                          })} /></Link>
         }
       </div>
