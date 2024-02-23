@@ -6,12 +6,4 @@ export interface YouTubeCardsSectionProps {
     subscribers: number;
     displayOrder: number;
   }[];
-  cta: {
-    text: string;
-    textColor: string;
-    backGroundColor: string;
-    ctaRedirectionUrl: string;
-    altText: string;
-    hoverColor: string;
-  };
 }

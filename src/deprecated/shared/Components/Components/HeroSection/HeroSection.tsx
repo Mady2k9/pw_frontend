@@ -1,13 +1,16 @@
 import React, { memo, useEffect, useState } from 'react';
 import { HeroSectionProps } from './HeroSectionType';
+import LoginButton from '../../Atoms/LoginButton/LoginButton';
 import Style from './HeroSection.module.css';
-
+import Image from '../../Atoms/Image/Image';
+import studentMweb from '../../../../assets/Images/hero-student-m.webp';
+import studentWeb from '../../../../assets/Images/hero-student-w.webp';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
-import Button from '../../Atoms/Button/Button';
+import HeroSectionBgImage from '../../../../assets/Images/bgSecondComp.webp';
 
 const HeroSection = ({
-  HeroSectionData,
-}: {
+                       HeroSectionData,
+                     }: {
   HeroSectionData: HeroSectionProps;
 }) => {
   const [lineCounter, setLineCounter] = useState(1);
@@ -28,115 +31,109 @@ const HeroSection = ({
       }, 10);
     }
   }, []);
-  function createHtml() {
-    return { __html: HeroSectionData?.sectionTitle };
-  }
-  //console.log('HeroSectionData', HeroSectionData);
   return (
     <>
       <div
         className="mx-auto"
         style={{
-          backgroundColor: `${HeroSectionData?.sectionProps?.gradientCss}`,
+          backgroundImage: `url(${HeroSectionBgImage.src})`,
         }}
       >
-        <div className="max-w-6xl flex items-center  sm:py-[60px] py-[30px] justify-between flex-col xl:flex-row m-auto">
-          <div className="lg:w-1/2 w-full">
-            <div className="text-center xl:text-left w-full xl:w-[68%]">
-              <TransitionWrapper>
-                <div dangerouslySetInnerHTML={createHtml()} />
-              </TransitionWrapper>
-              <TransitionWrapper>
-                <div className="text-sm md:text-[16px] px-4 md:px-0 text-center xl:text-start text-[#3D3D3D] mb-3.5 xl:mb-10">
-                  {HeroSectionData?.sectionSubTitle}
-                </div>
-              </TransitionWrapper>
-              <TransitionWrapper>
-                <Button
-                  className={` px-[28px] py-[14px] w-[240px] sm:text-lg rounded-md transition-all duration-200 items-center font-semibold leading-[27px] text-[17px]`}
-                  title={HeroSectionData?.cta.text}
-                  backGroundColor={HeroSectionData?.cta.backGroundColor}
-                  textColor={HeroSectionData?.cta.textColor}
-                  hoverColor={HeroSectionData?.cta.hoverColor}
-                  ctaRedirectionUrl={HeroSectionData?.cta.ctaRedirectionUrl}
-                />
-              </TransitionWrapper>
-            </div>
+        {/* <div className="2xl:max-w-6xl mx-auto bg-purple-200"> */}
+        <div
+          className="max-w-6xl flex items-center  sm:py-[60px] py-[30px] justify-between flex-col xl:flex-row m-auto">
+          <div className="text-center xl:text-left xl:w-[36%] w-full">
+            <TransitionWrapper>
+              <h1
+                className="font-bold text-2xl px-[50px] md:px-0 text-[#1B2124]  xl:text-[40px] md:text-[32px] md:leading-[48px] xl:leading-[50px] mb-[6px]">
+                {/* {HeroSectionData?.sectionTitle} */}
+                Bharat’s{' '}
+                <span className="text-[#5A4BDA]">
+                    Biggest & Most Trusted
+                  </span>{' '}
+                Educational Platform
+              </h1>
+            </TransitionWrapper>
+            <TransitionWrapper>
+
+              <div
+                className="text-sm md:text-[16px] px-4 md:px-0 text-center xl:text-start text-[#3D3D3D] mb-3.5 xl:mb-10">
+                {HeroSectionData?.sectionSubTitle}
+              </div>
+            </TransitionWrapper>
+            <TransitionWrapper>
+              <LoginButton
+                text={'Get Started'}
+                className={'px-[28px] py-[14px] w-[240px]'}
+              />
+            </TransitionWrapper>
+
           </div>
 
-          <div className="lg:w-1/2 w-full">
-            <div className="sm:py-4 py-6">
-              <TransitionWrapper>
-                <div className="relative px-[20px] lg:px-0 sm:text-[14px] sm:leading-[20px] text-[12px] leading-[18px] font-[500]">
-                  <div className=" sm:block hidden">
+          <div className="sm:py-4 py-6">
+            <TransitionWrapper>
+              <div
+                className="relative justify-items-center sm:text-[14px] sm:leading-[20px] text-[12px] leading-[18px] font-[500]">
+                <TransitionWrapper>
+                  <Image
+                    bgImagetitle={studentMweb.src}
+                    className={
+                      'sm:hidden block h-[225px] w-[320px] bg-center bg-no-repeat bg-contain'
+                    }
+                  />
+                  <Image
+                    bgImagetitle={studentWeb.src}
+                    className={
+                      'sm:block hidden h-[318px] w-[600px] bg-center bg-no-repeat bg-contain'
+                    }
+                  />
+                </TransitionWrapper>
+
+                <div
+                  className={`${Style.animsc} bg-white p-2  sm:h-[36px] h-[34px] absolute sm:right-[180px] sm:top-[85px] right-[85px] top-[48px] rounded-md z-0 shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
+                >
+                  <div className="w-[20px] h-full absolute flex right-[-13px] top-0 z-[-1]">
                     <div
-                      className="h-[360px]"
-                      style={{
-                        background: `url(${HeroSectionData?.sectionProps.dWeb[1].icon}), url(${HeroSectionData?.sectionProps.dWeb[0].icon})`,
-                        backgroundPosition: 'left bottom, right top',
-                        backgroundSize: '250px 250px',
-                        backgroundRepeat: 'no-repeat',
-                      }}
-                    />
-                    <div
-                      className={`${Style.animsc} bg-white p-2 text-[${HeroSectionData?.sectionProps.dWeb[0].textColor}]  sm:h-[36px] h-[34px] absolute sm:right-[172px] sm:top-[92px] right-[129px] top-[48px] rounded-md z-0 shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
-                    >
-                      <div className="w-[20px] h-full absolute flex right-[-13px] top-0 z-[-1]">
-                        <div className="bg-white sm:w-[14px] sm:h-[14px] w-[12px] h-[12px] rounded-sm my-auto rotate-45"></div>
-                      </div>
-                      <p className={`${Style.anims}`}>
-                        {HeroSectionData?.sectionProps.dWeb[0].text}
-                      </p>
-                    </div>
-                    <div
-                      className={`${Style.animac} bg-[#140D52] sm:h-[40px] h-[34px] text-[${HeroSectionData?.sectionProps.dWeb[1].textColor}] absolute sm:left-[168px] sm:top-[190px] left-[130px] top-[252px] rounded-md z-0 shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
-                    >
-                      <div className="w-[20px] h-full absolute flex left-[-6px] top-0 z-[-1]">
-                        <div className="bg-[#140D52] sm:w-[14px] sm:h-[14px] w-[12px] h-[12px] rounded-sm my-auto rotate-45"></div>
-                      </div>
-                      <p
-                        className={`${Style.typewriter} p-2 bg-[#140D52] rounded-md z-0 shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
-                      >
-                        {HeroSectionData?.sectionProps.dWeb[1].text}
-                      </p>
-                    </div>
+                      className="bg-white sm:w-[14px] sm:h-[14px] w-[12px] h-[12px] rounded-sm my-auto rotate-45"></div>
                   </div>
-                  <div className="sm:hidden block">
-                    <div
-                      className="h-[360px]"
-                      style={{
-                        background: `url(${HeroSectionData?.sectionProps.mWeb[1].icon}), url(${HeroSectionData?.sectionProps.mWeb[0].icon})`,
-                        backgroundPosition: 'left bottom, right top',
-                        backgroundSize: '150px 150px',
-                        backgroundRepeat: 'no-repeat',
-                      }}
-                    />
-                    <div
-                      className={`${Style.animsc} bg-white p-2 text-[${HeroSectionData?.sectionProps.mWeb[0].textColor}]  sm:h-[36px] h-[34px] absolute sm:right-[172px] sm:top-[92px] right-[129px] top-[48px] rounded-md z-0 shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
-                    >
-                      <div className="w-[20px] h-full absolute flex right-[-13px] top-0 z-[-1]">
-                        <div className="bg-white sm:w-[14px] sm:h-[14px] w-[12px] h-[12px] rounded-sm my-auto rotate-45"></div>
-                      </div>
-                      <p className={`${Style.anims}`}>
-                        {HeroSectionData?.sectionProps.mWeb[0].text}
-                      </p>
-                    </div>
-                    <div
-                      className={`${Style.animac} bg-[#140D52] text[${HeroSectionData?.sectionProps.mWeb[1].textColor}] absolute sm:left-[168px] sm:top-[190px] left-[130px] top-[252px] rounded-md z-0 shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
-                    >
-                      <div className="w-[20px] h-full absolute flex left-[-6px] top-0 z-[-1]">
-                        <div className="bg-[#140D52] sm:w-[14px] sm:h-[14px] w-[12px] h-[12px] rounded-sm my-auto rotate-45"></div>
-                      </div>
-                      <p
-                        className={`${Style.typewriter} p-2 bg-[#140D52] rounded-md shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
-                      >
-                        {HeroSectionData?.sectionProps.mWeb[1].text}
-                      </p>
-                    </div>
-                  </div>
+                  <p className={`${Style.anims}`}>Alakh Sir, What is PW?</p>
                 </div>
-              </TransitionWrapper>
-            </div>
+
+                {
+                  lineCounter > 0 && <div
+                    className={`${Style.animac} animate-[#ff00ff] bg-[#140D52] p-2 sm:h-[36px] h-[34px] text-white absolute sm:left-[170px] sm:top-[158px] left-[85px] top-[115px] rounded-md z-0 shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
+                  >
+                    <div className="w-[20px] h-full absolute flex left-[-6px] top-0 z-[-1]">
+                      <div
+                        className="bg-[#140D52] sm:w-[14px] sm:h-[14px] w-[12px] h-[12px] rounded-sm my-auto rotate-45"></div>
+                    </div>
+                    <p className={`${Style.anima}`}>
+                      PW is India’s leading Edtech
+                    </p>
+                  </div>
+                }
+                {
+                  lineCounter > 1 && <div
+                    className={`${Style.animbc} animate-[#ff00ff] bg-[#140D52] px-2 pt-1 pb-2 sm:h-[30px] h-[28px] text-white absolute sm:left-[170px] sm:top-[185px] left-[85px] top-[141px] rounded-md z-[1] shadow-[0_0_8px_0_rgba(0,0,0,0.08)] sm:w-[222px] w-[195px]`}
+                  >
+                    <div
+                      className={`w-[20px] h-full absolute flex left-[-6px] top-0 z-[-1]`}
+                    ></div>
+                    <p className={`${Style.animb}`}>
+                      Company that is democratizing
+                    </p>
+                  </div>
+                }
+                {
+                  lineCounter > 2 && <div
+                    className={`${Style.animcc} animate-[#ff00ff] bg-[#140D52] px-2 pt-1 pb-2 sm:h-[30px] h-[28px] text-white absolute sm:left-[170px] sm:top-[208px] left-[85px] top-[161px] rounded-md z-[1] shadow-[0_0_8px_0_rgba(0,0,0,0.08)] sm:w-[222px] w-[195px]`}
+                  >
+                    <div className="w-[20px] h-full absolute flex left-[-6px] top-0 z-[-1]"></div>
+                    <p className={`${Style.animc}`}>education at Scale.</p>
+                  </div>
+                }
+              </div>
+            </TransitionWrapper>
           </div>
         </div>
       </div>

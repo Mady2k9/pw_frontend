@@ -26,7 +26,7 @@ const Profile = () => {
     <div className="relative dropdown">
       <button className="flex" onClick={handleProfileClick}>
         <Image
-          src={PWLogo}
+          src={PWLogo.src}
           alt="Profile Picture"
           height={34}
           width={34}

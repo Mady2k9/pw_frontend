@@ -18,7 +18,7 @@ export interface IPageData {
 }
 
 export interface ISeoSchema {
-    content: IContent | IContent[];
+    content: IContent | IContent[] | any;
     type: string;
     status: boolean;
 }
@@ -37,7 +37,7 @@ export interface IContent {
 export interface IItemListElement {
     "@type": string;
     position: number;
-    item?: IItem;
+    item?: IItem | string;
     name?: string;
 }
 
@@ -96,6 +96,12 @@ export interface IPageMetaTags {
 export interface IWidgetJson {
     APP_DOWNLOAD: IWidget;
     RESULTS: IWidget;
+    TEST_SERIES: IWidget;
+    EXAM_CATEGORIES: IWidget;
+    CAROUSEL: IWidget;
+    HERO_SECTION: IWidget;
+    STATS: IWidget;
+    TEST_PASS: IWidget;
 }
 
 export interface IWidget {

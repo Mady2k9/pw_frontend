@@ -19,11 +19,14 @@ import BatchDetailsKnowYourTeachers from '@/widgets/BatchDescription/BatchDetail
 import BatchDetailsFreeContent from '@/widgets/BatchDescription/BatchDetailsFreeContent';
 import ResultsSection from '@/widgets/ResultsSection';
 import DownloadAppBanner from '@/widgets/DownloadAppBanner';
+import PriceDisplay from '@/widgets/PriceDisplay';
+import { Button } from '@/components/ui/button';
+import PhoneIcon from '@/deprecated/shared/Components/Molecules/PhoneIcon/PhoneIcon';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return batchDetailsServerSideProps(context);
 }
-
+const PAGE_SOURCE= 'Details Page'
 const getBreadcrumbs = ({ cohortKey, courseKey, batchDetails }: {
   courseKey: string,
   cohortKey?: string,
@@ -41,7 +44,7 @@ const getBreadcrumbs = ({ cohortKey, courseKey, batchDetails }: {
     if (batchDetails) {
       items.push({
         label: `${batchDetails.name}`,
-        link: `${batchDetails.seoSlug}`,
+        link: `/batches/${stringToSlug(courseKey)}/${stringToSlug(cohortKey)}/${batchDetails.seoSlug}`,
       });
     }
   }
@@ -73,7 +76,12 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           key: stringToSlug(tab),
           widget: <div id={`${stringToSlug(tab)}`}>
             <BatchDetailsInclusion description={props.batch?.shortDescription}
-                                   orientationVideo={props.batch.orientationVideo} />
+                                   orientationVideo={props.batch.orientationVideo}
+                                   batch_name={props.batch.name}
+                                   batch_price={props.batch.fee}
+                                   batch_id={props.batch._id}
+                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth}
+            />
           </div>,
         });
       } else if (tab === 'Batch Schedule' && props.batch?.subjects.length) {
@@ -82,7 +90,10 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           link: `#${stringToSlug(tab)}`,
           key: stringToSlug(tab),
           widget: <div id={`${stringToSlug(tab)}`}>
-            <BatchDetailsSchedule subjects={props.batch?.subjects} />
+            <BatchDetailsSchedule subjects={props.batch?.subjects} batch_name={props.batch.name}
+                                  batch_price={props.batch.fee}
+                                  batch_id={props.batch._id}
+                                  isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
       } else if (tab === 'Teachers' && props.batch?.teacherData?.length) {
@@ -101,7 +112,12 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
           key: stringToSlug(tab),
           widget: <div id={`${stringToSlug(tab)}`}>
             <BatchDetailsFreeContent overviewUrl={`/study/batches/${props.batch.slug}/batch-overview`}
-                                     items={props.batch.freeContent} />
+                                     items={props.batch.freeContent}
+                                     batch_name={props.batch.name}
+                                   batch_price={props.batch.fee}
+                                   batch_id={props.batch._id}
+                                   page_source={PAGE_SOURCE}
+                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
       } else {
@@ -114,7 +130,7 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
 };
 const getExternalWidgets = (props: IPageData) => {
   const result: ReactElement[] = [];
-  props.widgetOrder.forEach((widget) => {
+  props.widgetOrder?.forEach((widget) => {
     if (widget === 'RESULTS') {
       const resultData = props.widgetJson['RESULTS'];
       result.push(<ResultsSection hideCategories={true} results={resultData.sectionProps}
@@ -136,7 +152,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return getExternalWidgets(props.pageData!);
   }, [props]);
   const [activeTab, setActiveTab] = useState<string>(Widgets[0]?.key);
-
+  const PAGE_SOURCE = 'Details Page';
   useEffect(() => {
     let visibleElements: Record<string, IntersectionObserverEntry> = {};
 
@@ -146,26 +162,26 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
           const id = entry.target.id;
           if (entry.isIntersecting) {
             visibleElements[id] = entry;
-            scrollWrapperLeftToElement(document.getElementById('page-tabs-wrapper')!, document.getElementById(`${entry.target.id}-tab`)!, false);
           } else {
             delete visibleElements[id];
           }
           const visibleEntries = Object.values(visibleElements);
           if (visibleEntries.length > 0) {
             const topMostElement = visibleEntries.reduce((prev, current) => {
-              return (prev.target.getBoundingClientRect().top > current.target.getBoundingClientRect().top) ? prev : current;
+              return (prev.target.getBoundingClientRect().top < current.target.getBoundingClientRect().top) ? prev : current;
             });
+            scrollWrapperLeftToElement(document.getElementById('page-tabs-wrapper')!, document.getElementById(`${topMostElement.target.id}-tab`), false);
+
             setActiveTab(topMostElement.target.id);
           }
         });
       },
       {
         root: null,
-        rootMargin: '120px 0px -120px 0px ',
+        rootMargin: `-120px 0px 0px 0px`,
         threshold: 0.1,
       },
     );
-
     Widgets.forEach((tab) => {
       const slug = tab.key;
       const element = document.getElementById(slug);
@@ -204,14 +220,25 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                       isNew={props.batch.markedAsNew}
                       whatsappLink={props.batch.seoSlug}
                       thumbnail={imageToImageUrl(props.batch.previewImage) || ''}
-                      title={props.batch.name} />
+                      title={props.batch.name}
+                      page_source={PAGE_SOURCE}
+                      batchId={props.batch._id}
+      />
     </div>;
   }, [props]);
   if (!props.pageData) {
     return <></>;
   }
 
-  return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData}>
+  return <Layout seoSchema={props.pageData.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
+                 productUrl={`${process.env.NEXT_PUBLIC_APP_BASE_URL}/batches/${stringToSlug(courseKey  as string)}/${stringToSlug(cohortKey as string)}/${props?.batch.seoSlug}`}
+                 breadcrumbs={getBreadcrumbs({
+                   courseKey: courseKey as string,
+                   cohortKey: cohortKey as string,
+                   batchDetails: props.batch,
+                 })}
+                 seoTags={props.pageData.seoTags}
+  headerData={props.headerData} page_source={PAGE_SOURCE}>
     <PageTitleBar
       inverted={true} title={props.batch.name}
       floatingCard={BatchCard}
@@ -234,6 +261,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
       <div className={'lg:hidden mb-4 md:mb-6 lg:mb-0 min-w-[320px] sm:mx-auto '}>
         {BatchCard}
       </div>
+      <PhoneIcon page_source={PAGE_SOURCE} />
       <div className={'flex flex-col space-y-4 md:space-y-6'}>
         {
           Widgets.map((widget, index) => {
@@ -251,9 +279,19 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
             </div>;
           })
         }
-        {props.pageData.faqs?.length > 0 && <FAQ items={props.pageData.faqs} />}
+        {props.pageData.faqs?.length > 0 && <FAQ items={props.pageData.faqs} pageSource={PAGE_SOURCE} />}
       </div>
 
     </div>
+    {
+      props.batch.fee &&
+      <div className={'fixed md:hidden bottom-0 px-4 left-0 right-0 py-2 flex items-center card-shadow bg-white'}>
+        <div className={'flex-1'}>
+          <PriceDisplay compact={true} amount={props.batch.fee.amount} discount={props.batch.fee.discount}
+                        total={props.batch.fee.total} />
+        </div>
+        <Button className={'flex-1'}>Buy Now</Button>
+      </div>
+    }
   </Layout>;
 }

@@ -1,7 +1,7 @@
-.scrollBarNone {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+.scrollBarNone{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
-.scrollBarNone::-webkit-scrollbar {
-  display: none;
+.scrollBarNone::-webkit-scrollbar{
+    display: none;
 }

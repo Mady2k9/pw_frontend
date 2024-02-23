@@ -20,28 +20,21 @@ import Header from '@/deprecated/shared/Components/Molecules/Header/header';
 import { WidgetEnum } from '@/deprecated/shared/Components/Enums/WidgetEnum';
 import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 import { useEffect } from 'react';
-import Head from 'next/head';
-import SoftwareAppSchema from '@/deprecated/schema/SoftwareAppSchema';
-import OrganisationAppSchema from '@/deprecated/schema/OrganisationAppSchema';
-import GoogleTagManager from '@/deprecated/analytics//GoogleTagManager';
 import ComponentWrapper from '@/deprecated/shared/Components/Molecules/ComponentWrapper/ComponentWrapper';
 import HeroFeatureSection from '@/deprecated/shared/Components/Components/HeroFeatureSection/HeroFeatureSection';
-import GTM from '@/deprecated/analytics//GTM';
 
 export default function HomePage({
-                                   HomePageData,
-                                   headerData,
-                                   footerData,
-                                 }: {
+  HomePageData,
+  headerData,
+  footerData,
+}: {
   HomePageData: any;
   headerData: any;
   footerData: any;
 }) {
-  console.log('HomePageData', HomePageData);
   const pageData = HomePageData?.data?.widgetJson;
   const seoData = HomePageData?.data?.seoTags;
   const router = useRouter();
-  const PAGE_SOURCE = 'home_page';
   useEffect(() => {
     verifyToken().then((resp) => {
       if (resp == 200) router.push('/study');
@@ -96,37 +89,9 @@ export default function HomePage({
     //   window.removeEventListener('scroll', handleScroll);
     // };
   }, []);
+
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={OrganisationAppSchema()}
-          key="OrganisationAppSchema"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={SoftwareAppSchema()}
-          key="SoftwareAppSchema"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={GoogleTagManager()}
-          key="GoogleTagManager"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={GTM()}
-          key="GTM"
-        />
-        {/*<script src="//cdnt.netcoresmartech.com/smartechclient.js"></script>*/}
-        {/*<script>*/}
-        {/*  smartech('create',*/}
-        {/*  'ADGMOT35CHFLVDHBJNIG50K96924VTU0A9D6T0V8SJJV89KVC9EG');*/}
-        {/*  smartech('register', '6ff79e6140cd0fd5d1c68cbc03f76f50');*/}
-        {/*  smartech('identify', '');*/}
-        {/*</script>*/}
-      </Head>
       <SEO
         title={seoData?.pageMetaTags?.metaTitle}
         description={seoData?.pageMetaTags?.metaDescription}
@@ -140,7 +105,7 @@ export default function HomePage({
             'Physicswallah Live Courses for JEE, NEET & Class 6,7,8,9,10,11,12 | NCERT Solutions',
           locale: 'en_US',
           description:
-            'Physics Wallah is India\'s top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.',
+            "Physics Wallah is India's top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.",
           site_name: 'PW',
           url: 'https://www.pw.live/',
           images: [
@@ -148,7 +113,7 @@ export default function HomePage({
               url: 'https://www.pw.live/img/entrancei.jpg',
               width: '560',
               height: '292',
-              alt: 'Physics Wallah is India\'s top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.',
+              alt: "Physics Wallah is India's top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.",
             },
           ],
         }}
@@ -208,9 +173,7 @@ export default function HomePage({
         />
       </ComponentWrapper>
 
-      <DownloadAppSection
-        downloadAppData={pageData?.[WidgetEnum.APP_DOWNLOAD]}
-      />
+      <DownloadAppSection />
 
       {pageData?.[WidgetEnum.TESTIMONIALS] && (
         <TestinomialSections
@@ -229,9 +192,34 @@ export default function HomePage({
           youtubeData={pageData?.[WidgetEnum.YOUTUBE_STATS]}
         />
       )}
-      <PhoneIcon page_source={PAGE_SOURCE} />
-      <Footer footerData={footerData.data} showFreeLearning />
+      <PhoneIcon />
+      <Footer footerData={footerData} showFreeLearning />
     </>
   );
 }
 
+export async function getServerSideProps() {
+  let HomePageData;
+  let headerData;
+  let footerData;
+
+  try {
+    const result = await Promise.all([
+      FetchHomePage(),
+      FetchHeader(),
+      FetchFooter(),
+    ]);
+    HomePageData = result[0];
+    headerData = result[1];
+    footerData = result[2];
+  } catch (error) {
+    // console.log(error);
+  }
+  return {
+    props: {
+      HomePageData: HomePageData || {},
+      headerData: headerData?.data || {},
+      footerData: footerData || {},
+    },
+  };
+}

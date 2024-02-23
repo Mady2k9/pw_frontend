@@ -10,13 +10,6 @@ export enum EventType {
   'CENTRE_LISTING_VISIT' = 'centre_listing_visit',
   'DOWNLOAD_APP_CLICK' = 'download_app_click',
   'FOOTER_CLICK' = 'footer_click',
-  'PW_LIVE_EXPLORE_CLICK' = 'pwlive_explore_click',
-  'FAQ_CLICK' = 'faq_click',
-  'PWLIVE_BUYNOW_CLICK' = 'pwlive_buynow_click',
-  'CALL_CTA_CLICK' = 'call_cta_click',
-  'PWLIVE_ORIENTATION_VIDEO' = 'pwlive_orientation_video',
-  'SCHEDULE_DOWNLOAD' = 'schedule_download',
-  'FREE_CONTENT_VIDE0' = 'free_content_video',
 }
 
 export interface PwEvent {

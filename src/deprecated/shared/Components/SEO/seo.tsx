@@ -34,11 +34,6 @@ interface SEOProps {
     images?: OgImage[];
   };
   children?: ReactNode;
-  seoSchema?: {
-    type: string;
-    content: object;
-    status: boolean;
-  }[];
 }
 
 const ogImage = ({ url, width, height, alt }: OgImage, index: number) => {
@@ -82,7 +77,6 @@ const SEO: FC<SEOProps> = ({
   openGraph,
   robots,
   children,
-  seoSchema,
 }) => {
   /**
    * @see https://nextjs.org/docs/api-reference/next/head
@@ -99,6 +93,7 @@ const SEO: FC<SEOProps> = ({
       ? `${config.titleTemplate.replace(/%s/g, title)}`
       : config.title;
   }, [title]);
+
   return (
     <Head>
       <title key="title">{pageTitle}</title>
@@ -110,7 +105,7 @@ const SEO: FC<SEOProps> = ({
       <meta key="keywords" name="keywords" content={keyword} />
       <link key="canonical" rel="canonical" href={canonical} />
       <link rel="icon" type="image/x-icon" href={icon} />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="viewport" content={viewport} />
 
       <meta
         key="og:type"
@@ -176,21 +171,7 @@ const SEO: FC<SEOProps> = ({
       <meta name="twitter:image:src" content={twitterImageUrl} />
       <meta property="twitter:image:height" content={twitterImageHeight} />
       <meta property="twitter:image:width" content={twitterImageWidth} />
-      {seoSchema ? (
-        seoSchema.map((item: any, index: number) => {
-          return (
-            <script
-              key={index}
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify(item?.content),
-              }}
-            />
-          );
-        })
-      ) : (
-        <></>
-      )}
+
       {/* below ensures that all pages in staging and dev environments are not indexed or crawled */}
       {[App_Envs_Enum.Development, App_Envs_Enum.Staging].includes(
         process.env.NEXT_PUBLIC_NODE_ENV as App_Envs_Enum

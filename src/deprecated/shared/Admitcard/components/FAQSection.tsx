@@ -53,8 +53,7 @@ const FAQSection = ({ variant }: { variant: PredictorVariant }) => {
   const OrgID = process.env.NEXT_PUBLIC_PP_ORG_ID;
 
   const fetchFaq = async () => {
-    const getFaqUrl = (faqCatId: string) =>
-      `v1/faq-category/${faqCatId}/list?organizationId=${OrgID}`;
+    const getFaqUrl = (faqCatId: string) => `v1/faq-category/${faqCatId}/list`;
     const response = await fetch(`${BASE_URL}${getFaqUrl(getFaqId())}`).then(
       (res) => res.json()
     );

@@ -5,8 +5,8 @@ import Image from '../../Atoms/Image/Image';
 import { MostLovedProps } from './MostLovedType';
 
 const MostLovedFeature = ({
-  mostLovedData,
-}: {
+                            mostLovedData,
+                          }: {
   mostLovedData: MostLovedProps;
 }) => {
   const [swipedData, setSwipedData] = useState(0);
@@ -51,8 +51,8 @@ const MostLovedFeature = ({
           ref={containerRef}
           className={`${Style.slideBarRemove} xl:max-w-[1162px] m-auto flex gap-5 overflow-x-scroll`}
         >
-          {mostLovedData?.sectionProps?.map((data, index: number) => (
-            <MostLovedCard cardData={data}  key={index}/>
+          {mostLovedData?.sectionProps?.map((data, index) => (
+            <MostLovedCard key={index} cardData={data} />
           ))}
         </div>
       </div>
@@ -60,7 +60,7 @@ const MostLovedFeature = ({
         <div>
           {containerRef?.current ? (
             swipedData + (containerRef?.current?.clientWidth || 0) <
-              (containerRef?.current?.scrollWidth || 0) && (
+            (containerRef?.current?.scrollWidth || 0) && (
               <>
                 <div
                   className={` absolute right-[-80px] h-[470px] w-[140px]  bg-white opacity-[99%] blur top-[150px] ${Style.scrollHidden} `}

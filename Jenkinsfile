@@ -1,7 +1,7 @@
 def getEnvName() {
     if (env.BRANCH_NAME == 'main') {
         return 'production'
-    }  
+    }
     else if (env.BRANCH_NAME == 'pre-prod') {
         return 'pre-prod'
     }
@@ -12,6 +12,7 @@ def getEnvName() {
         return 'development'
     }
 }
+
 
 pipeline {
   agent {
@@ -30,5 +31,6 @@ pipeline {
                 build wait: false, job: "/${env.envName}/${env.serviceName}", parameters: [string(name: 'ServiceName', value: "${env.serviceName}"), string(name: 'RepoUrl', value: "${GIT_URL}")]
             }
         }
+
     }
 }

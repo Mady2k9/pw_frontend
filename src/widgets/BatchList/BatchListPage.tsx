@@ -12,6 +12,7 @@ import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import BatchGridList from '@/widgets/BatchList/BatchGridList';
 import { BatchLoadingGrid } from '@/widgets/BatchList/BatchLoadingGrid';
 import { IBatch } from '@/api/interfaces/batch';
+import HtmlContentWidget from '../HtmlContentWidget/HtmlContentWidget';
 
 const cohortToCohortTabs = ({ courseKey, cohortOptions }: {
   courseKey: string,
@@ -54,7 +55,7 @@ const getBreadcrumbs = ({ cohortKey, courseKey }: {
 
 function getWidgets(props: IPageData) {
   const result: ReactElement[] = [];
-  props.widgetOrder.forEach((widget) => {
+  props.widgetOrder?.forEach((widget) => {
     if (widget === 'RESULTS') {
       const resultData = props.widgetJson['RESULTS'];
       result.push(<ResultsSection hideCategories={true} results={resultData.sectionProps}
@@ -69,6 +70,7 @@ function getWidgets(props: IPageData) {
 }
 
 export default function BatchListPage(props: IPageData & { params: any, filteredBatches?: IBatch[] }) {
+  const PAGE_SOURCE = 'Listing page';
   const router = useRouter();
   const { courseKey, cohortKey } = router.query;
   const items = cohortToCohortTabs({
@@ -132,7 +134,8 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
                                       cohort={cohortOption}
                                       title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
                                       batches={props.batches[cohortOption.cohortId] || []}
-                                      showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />;
+                                      showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`}
+                                      page_source={PAGE_SOURCE} />;
           })
         }
       </div>
@@ -142,11 +145,14 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
         <BatchGridList cohort={activeCohort!}
                        filteredBatches={props.filteredBatches?.length ? props.filteredBatches : undefined}
-                       batches={props.batches[activeCohort!.cohortId] || []} />
+                       batches={props.batches[activeCohort!.cohortId] || []}
+                       page_source={PAGE_SOURCE} />
       </div>
     }
     {
-      batchSection === 'LOADING' && <BatchLoadingGrid />
+      batchSection === 'LOADING' && <div className={'container'}>
+        <BatchLoadingGrid />
+      </div>
     }
     <div className={'mt-4 md:mt-8 container'}>
       {
@@ -159,12 +165,15 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
         })
       }
     </div>
+
     {
-      props?.content && <div className={'container'} dangerouslySetInnerHTML={{ __html: props?.content }} />
+      props?.content && <div className={'container mt-4 md:mt-6'}>
+        <HtmlContentWidget content={props?.content} />
+      </div>
     }
     {
-      props.faqs?.length > 0 && <div className={'container'}>
-        <FAQ items={props.faqs} />
+      props.faqs?.length > 0 && <div className={'container  mt-4 md:mt-6'}>
+        <FAQ items={props.faqs} pageSource={PAGE_SOURCE} />
       </div>
     }
 

@@ -31,7 +31,7 @@ const getErrorMessage = (field: FORM_FIELDS) => {
 
 const Form: React.FC<FormProps> = (
   { onSubmit, payload, setPayload, setUserData },
-  ref,
+  ref
 ) => {
   const [error, setError] = useState<Payload>({
     phone: '',
@@ -71,10 +71,9 @@ const Form: React.FC<FormProps> = (
           value.length === 10 && new RegExp(/^[6-9]{1}[0-9]{9}$/).test(value)
         );
       case FORM_FIELDS.DOB:
-        console.log('DOB>>>', value.substring(0, 4));
         return (
           new RegExp(/^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/).test(
-            value,
+            value
           ) && Number(value.substring(0, 4)) <= 2010
         );
       case FORM_FIELDS.OTP:
@@ -286,7 +285,7 @@ const Form: React.FC<FormProps> = (
             }
           }}
         >
-          <div className="border border-black rounded-full h-5 w-5 font-semibold text-[#3D3D3D]">
+          <div className="border border-black rounded-full h-5 w-5 mr-1 font-semibold text-[#3D3D3D]">
             ?
           </div>
           <p className="font-semibold text-[#3D3D3D]">How it Works</p>

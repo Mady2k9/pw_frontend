@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 const ChevronDown = ({ ...props }) => {
   const height = props.height || 24;
   return (
@@ -18,4 +20,4 @@ const ChevronDown = ({ ...props }) => {
   );
 };
 
-export default ChevronDown;
+export default memo(ChevronDown);
