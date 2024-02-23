@@ -1,5 +1,4 @@
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
-import Herosection from '@/deprecated/shared/Components/SchoolCurriculum/Herosection/Herosection';
 import InterestingUs from '@/deprecated/shared/Components/SchoolCurriculum/InterestingUs/InterestingUs';
 import NumbersSpeak from '@/deprecated/shared/Components/SchoolCurriculum/NumbersSpeak/NumbersSpeak';
 import PublishingPartners from '@/deprecated/shared/Components/SchoolCurriculum/PublishingPartners/PublishingPartners';
@@ -10,8 +9,9 @@ import { FetchFooter } from '@/api/older-api-methods';
 import React, { useEffect, useRef, useState } from 'react';
 import Caraousel from '@/deprecated/shared/Components/Molecules/Caraousel/Caraousel';
 import carausel1 from '../../assets/Images/Schools/Banner.png'
-import Header from '@/deprecated/shared/Components/Molecules/Header/header';
 import SchoolsMarQue from '@/deprecated/shared/Components/SchoolCurriculum/SchoolsMarQue/SchoolsMarQue';
+import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
+import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
 
 const CaraouselImages =[
   {
@@ -63,12 +63,8 @@ function SchoolCurriculumPage({ footerData }: { footerData: any }) {
   return (
     
     <>
-      {/* <SchoolHeader isHomePage={true} /> */}
-      <Herosection />
-      {/* <Header headerData={[]} showLogin /> */}
-
-
-      <Caraousel carouselData={CaraouselImages} containerClass={''} mwebImageClassName={''} dwebImageClassName={''} setIntervalTime={5000} showSecondaryArrow />
+      <SchoolHeader  />
+      <Caraousel carouselData={CaraouselImages} containerClass={'mx-auto'} mwebImageClassName={'bg-cover w-full h-full'} dwebImageClassName={'bg-cover w-full h-full'} setIntervalTime={5000} showSecondaryArrow />
       <InterestingUs isInViewport={isInViewport} refValue={animations}/>     
       <PublishingPartners />
       <NumbersSpeak />
@@ -76,23 +72,34 @@ function SchoolCurriculumPage({ footerData }: { footerData: any }) {
       <SchoolsMarQue />  
       <TeacherCta isInViewport={isInViewport} refValue={animations}/>
       {/* <Footer footerData={footerData.data} /> */}
+      <Footer footerData={footerData} showFreeLearning={false} />
     </>
   );
 }
 
 export default SchoolCurriculumPage;
 
-export async function getServerSideProps() { 
+export async function getServerSideProps() {
+  let headerData;
   let footerData;
+  let HomePageData;
   try {
     const result = await Promise.all([
+      FetchHeader(),
       FetchFooter(),
-    ]); 
-    footerData = result[0];
+      FetchHomePage(),
+    ]);
+    headerData = result[0];
+    footerData = result[1];
+    HomePageData = result[2];
   } catch (error) {
+    console.log(error);
   }
   return {
     props: {
+      headerData: headerData?.data || {},
       footerData: footerData || {},
+      HomePageData: HomePageData || {},
     },
-  }}
+  };
+}

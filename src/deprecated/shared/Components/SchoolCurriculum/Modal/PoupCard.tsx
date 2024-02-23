@@ -30,11 +30,14 @@ function PoupCard({ data, onStateChange }: PublishingCardProps) {
     setSelectedCard(0);
   }, []);
   return (
-    <>
+    <div
+                          // key={index}
+                          className="w-full flex"
+                        >
       {data?.map((item, index) => (
         <div
           key={index}
-          className={`border relative bg-white rounded-lg mb-4 `}
+          className={`border relative bg-white rounded-lg mb-4 w-[360px]`}
           style={{
             border: '1px solid var(--PW-Gray-Palette-900-PW-Neutral, #1B2124)',
             boxShadow: '0px 4px 0px 0px #000',
@@ -59,7 +62,7 @@ function PoupCard({ data, onStateChange }: PublishingCardProps) {
 
               {selectedCard === index && (
                
-                <Image src={`${Vector.src}`}  alt ='webp' className={
+                <img src={`${Vector.src}`}  alt ='webp' className={
                        'h-[32px] w-[32px] bg-center bg-no-repeat bg-cover rounded-lg '
                      }/>
               )}
@@ -75,7 +78,7 @@ function PoupCard({ data, onStateChange }: PublishingCardProps) {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

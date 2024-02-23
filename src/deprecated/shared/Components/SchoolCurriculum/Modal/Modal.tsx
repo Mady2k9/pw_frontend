@@ -27,7 +27,7 @@ export default function Modal() {
     );
     setOpen(false);
   };
-
+console.log(partnersData,'partnersData');
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -75,8 +75,8 @@ export default function Modal() {
             sm:my-8 sm:align-middle relative "
             >
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-start ">
-                  <div>
+                <div className="flex sm:items-start ">
+                  
                     <div className="mt-3 text-start sm:mt-0 sm:text-left">
                       <Dialog.Title
                         as="h2"
@@ -101,19 +101,19 @@ export default function Modal() {
                           </svg>
                         </div>
                       </Dialog.Title>
-                      {partnersData.map((partner, index) => (
+                      {/* {partnersData.map((partner, index) => ( */}
                         <div
-                          key={index}
-                          className="mx-auto max-w-5xl pt-[32px] flex  flex-row gap-5  overflow-x-scroll"
+                          // key={index}
+                          className="mx-auto max-w-5xl pt-[32px] flex  flex-row gap-5  overflow-x-scroll slideBarRemove"
                         >
                           <PoupCard
-                            data={partner.sectionProps}
+                            data={partnersData[0].sectionProps}
                             onStateChange={handleChildStateChange}
                           />
                         </div>
-                      ))}
+                      {/* ))} */}
                     </div>
-                  </div>
+                 
                   <div
                     className="sm:block hidden absolute top-6 right-7"
                     onClick={() => setOpen(false)}

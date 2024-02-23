@@ -13,6 +13,10 @@ export interface footerProps {
   footerData: any;
 }
 const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
+  footerData = footerData?.data || footerData;
+  if(!footerData?.filter){
+    return <></>
+  }
   const footerlastSectionData = footerData?.filter(
     (value: { section: number }) => value?.section === 3
   )?.[0]?.menuItems;
@@ -110,7 +114,7 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
             </div>
 
             <div className="xl:w-[50%]  grid xl:grid-cols-3 gap-5 md:grid-cols-3 md:place-items-start grid-cols-2 md:pt-6 xl:pt-0 xl:mr-[60px]">
-              {footerFirstSectionData[0]?.menuItems?.map(
+              {footerFirstSectionData?.[0]?.menuItems?.map(
                 (menuItems: MenuItems) => {
                   return (
                     <div key={menuItems?.menuTitle}>

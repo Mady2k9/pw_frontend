@@ -13,7 +13,7 @@ interface SchoolsMarQuecardProps {
     <div>
         
     <Image src= {SubscriberValue} alt='Schoolsimage'        
-     className={' w-[80px] bg-center bg-no-repeat bg-cover mx-auto'}/>    
+     className={' md:w-[80px] w-[46px] bg-center bg-no-repeat bg-cover mx-auto'}/>    
         <div className="font-[600]  text-[#1B2124]  text-[14px] leading-[20px] text-center pb-[8px] w-[140px]">
         {mainTitle}
         </div>
