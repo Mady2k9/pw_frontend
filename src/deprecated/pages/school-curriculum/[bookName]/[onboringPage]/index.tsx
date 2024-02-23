@@ -1,15 +1,15 @@
 import React from 'react';
 import { FetchHomePage, FetchHeader, FetchFooter } from '@/api/older-api-methods';
-import SchoolHeader from '@/deprecated/shared/Components/SchoolCurriculum/header/SchoolHeader';
 import Verifications from '@/deprecated/shared/Components/SchoolsonboringPage/Verifications/Verifications';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
+import SchoolHeader from '@/deprecated/shared/Components/SchoolCurriculum/header/SchoolHeader';
 
 function OnboringPage({ footerData }: { footerData: any }) {
   return (
     <>
-      <SchoolHeader isHomePage={true} />
+      <SchoolHeader  />
       <Verifications />
-      {/* <Footer footerData={footerData} /> */}
+       <Footer footerData={footerData} />
     </>
   );
 }

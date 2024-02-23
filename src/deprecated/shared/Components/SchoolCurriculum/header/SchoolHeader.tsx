@@ -70,7 +70,7 @@ const Header: React.FC<headerProps> = ({
                 >
                   <MenuIcon fill={`${showAboutUs ? 'white' : ' black'}`} />
                 </div>
-                <a href="https://pw.live" aria-label="pw-logo">
+                <a href="https://pwlive-stage.penpencil.co/school-curriculum" aria-label="pw-logo">
                   <Image
                     bgImagetitle={
                       showAboutUs ? `${PwLogoInverted.src}` : `${PwLogo.src}`
