@@ -8,6 +8,7 @@ export const FetchHomePage = async () => {
     ).then((res) => res.json());
 };
 export const FetchHeader = async () => {
+    console.log(`${BASE_URL}/widget/header?orgId=${orgId}&appId=${appId}`);
     return await fetch(
         `${BASE_URL}/widget/header?orgId=${orgId}&appId=${appId}`
     ).then((res) => res.json());

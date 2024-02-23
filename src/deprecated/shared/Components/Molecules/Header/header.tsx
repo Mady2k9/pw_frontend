@@ -25,7 +25,9 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
   // useEffect(() => {
   //   setHeaderData(useCache.headerData?.data);
   // }, [useCache?.headerData?.data]);
-
+  if(!headerData){
+    return <></>
+  }
   const toggleMenu: ToggleMenuFunction = () => {
     setOpen(!open);
   };

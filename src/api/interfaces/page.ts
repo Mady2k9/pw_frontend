@@ -18,7 +18,7 @@ export interface IPageData {
 }
 
 export interface ISeoSchema {
-    content: IContent | IContent[];
+    content: IContent | IContent[] | any;
     type: string;
     status: boolean;
 }
@@ -37,7 +37,7 @@ export interface IContent {
 export interface IItemListElement {
     "@type": string;
     position: number;
-    item?: IItem;
+    item?: IItem | string;
     name?: string;
 }
 

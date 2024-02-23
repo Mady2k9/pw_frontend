@@ -31,5 +31,6 @@ pipeline {
                 build wait: false, job: "/${env.envName}/${env.serviceName}", parameters: [string(name: 'ServiceName', value: "${env.serviceName}"), string(name: 'RepoUrl', value: "${GIT_URL}")]
             }
         }
+
     }
 }

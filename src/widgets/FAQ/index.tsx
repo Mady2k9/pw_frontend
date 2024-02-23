@@ -18,7 +18,7 @@ export default function FAQ({items,pageSource}: FAQProps) {
        if(pageSource)
        batchEventTracker.faqClick(pageSource)
     }
-    return <div className={'py-4  md:py-8'}>
+    return <div className={''} onClick={handleGaEvent}>
         <h2 className={'text-xl md:text-4xl font-bold '}>Frequently Asked Questions </h2>
         <div className={'mt-4 md:mt-6'}>
             <Accordion type="single" collapsible>

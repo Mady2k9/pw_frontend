@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { IFooterData, ISeoSchema, ISeoTags, ITopMenuItem } from '@/api/interfaces/page';
 import SEO from '@/widgets/SEO';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
+import { useRouter } from 'next/router';
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,10 +11,64 @@ interface LayoutProps {
   footerData?: IFooterData[];
   seoTags?: ISeoTags;
   seoSchema?: ISeoSchema[];
+  breadcrumbs?: { label: string, link: string }[];
   className?: string;
+  page_source: string;
+  productUrl?: string;
 }
 
-export function Layout({ children, className, seoTags, headerData, footerData, seoSchema }: LayoutProps) {
+export function Layout({
+                         children,
+                         breadcrumbs,
+                         className,
+                         seoTags,
+                         headerData,
+                         footerData,
+                         seoSchema,
+                         page_source,
+                         productUrl,
+                       }: LayoutProps) {
+  if (seoSchema && breadcrumbs) {
+    const index = seoSchema?.findIndex((schema) => schema.type === 'Breadcrumb');
+    if (index > -1) {
+      seoSchema[index].content = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://pw.live',
+          },
+          ...breadcrumbs.map((item, index) => {
+            return {
+              '@type': 'ListItem',
+              'position': index + 2,
+              'name': item.label,
+              'item': 'https://pw.live' + item.link,
+            };
+          }),
+        ],
+      };
+    }
+  }
+  if (productUrl && seoSchema) {
+    let index = seoSchema?.findIndex((schema) => schema.type === 'Product');
+    if (index > -1) {
+      if (seoSchema[index].content?.offers) {
+        seoSchema[index].content.offers.url = productUrl;
+      }
+    }
+    index = seoSchema?.findIndex((schema) => schema.type === 'Article');
+    if (index > -1) {
+      if (seoSchema[index].content?.mainEntityOfPage) {
+        seoSchema[index].content.mainEntityOfPage.url = productUrl;
+      }
+    }
+
+  }
+  console.log(seoSchema);
   return (
     <main className={className || ''}>
       {seoTags && <SEO
@@ -23,12 +78,12 @@ export function Layout({ children, className, seoTags, headerData, footerData, s
         keyword={seoTags?.pageMetaTags?.metaKeywords?.join(',')}
         canonical={seoTags?.canonicalLink}
       />}
-      <Navbar items={headerData} />
+      <Navbar items={headerData} page_source={page_source} />
       <div key={'navbar-placeholder'} className={'h-[60px] md:h-navbar'} />
       {children}
       {/*<Footer  />*/}
       {
-        footerData && <Footer showFreeLearning={true} footerData={footerData}/>
+        footerData && <Footer showFreeLearning={true} footerData={footerData} />
       }
     </main>
   );

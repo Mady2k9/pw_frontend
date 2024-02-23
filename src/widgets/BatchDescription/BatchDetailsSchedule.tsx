@@ -7,15 +7,16 @@ import batchEventTracker from "@/lib/BatchEventTracker/BatchEventTracker";
 import { useRouter } from "next/router";
 import BatchDescriptionCardWrapper from './BatchDescriptionCardWrapper';
 
-export default function BatchDetailsSchedule({subjects, batch_name, batch_id, batch_price}: { subjects: ISubject[], batch_name: string, batch_id: string, batch_price:{amount: number,
+export default function BatchDetailsSchedule({subjects, batch_name, batch_id, batch_price, isOnline}: { subjects: ISubject[], batch_name: string, batch_id: string, batch_price:{amount: number,
     discount: number,
     tax: number,
-    total: number} }) {
+    total: number},
+isOnline: boolean }) {
     const [showMore, setShowMore] = useState(false);
     const router= useRouter();
 const getClassAndExam = router.asPath.split('/')
 const handleDownload = (subject: any) =>{
-    batchEventTracker.scheduleDownLoad(batch_name, batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))
+    batchEventTracker.scheduleDownLoad(batch_name, (isOnline?'Online': 'Offline'), batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))
     const pdfUrl = imageToImageUrl(subject.fileId);
     window.open(pdfUrl, '_blank');
 }
