@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image } from '@/components/ui/image';
+import Image from '../../Atoms/Image/Image';
 import Vector from '../../../../assets/Images/Schools/Vector-1.webp';
 interface PublishingCardProps {
   data: {
@@ -30,14 +30,11 @@ function PoupCard({ data, onStateChange }: PublishingCardProps) {
     setSelectedCard(0);
   }, []);
   return (
-    <div
-                          // key={index}
-                          className="w-full flex"
-                        >
+    <>
       {data?.map((item, index) => (
         <div
           key={index}
-          className={`border relative bg-white rounded-lg mb-4 w-[360px]`}
+          className={`border relative bg-white rounded-lg mb-4 `}
           style={{
             border: '1px solid var(--PW-Gray-Palette-900-PW-Neutral, #1B2124)',
             boxShadow: '0px 4px 0px 0px #000',
@@ -61,24 +58,28 @@ function PoupCard({ data, onStateChange }: PublishingCardProps) {
               </div>
 
               {selectedCard === index && (
-               
-                <img src={`${Vector.src}`}  alt ='webp' className={
-                       'h-[32px] w-[32px] bg-center bg-no-repeat bg-cover rounded-lg '
-                     }/>
+                <Image
+                  bgImagetitle={Vector.src}
+                  className={
+                    'h-[32px] w-[32px] bg-center bg-no-repeat bg-cover rounded-lg '
+                  }
+                />
               )}
             </div>
 
             <div className="font-medium leading-[24px] text-[16px]  my-3 text-[#3D3D3D]">
               {item.description}
             </div>
-           
-            <Image src={`${item.mwebImage}`}  alt ='webp' className={
+            <Image
+              bgImagetitle={item.mwebImage}
+              className={
                 'xl:w-[277px] xl:h-[162px] w-[200px] h-[126px] bg-center bg-no-repeat bg-cover rounded-lg '
-              }/>
+              }
+            />
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 }
 

@@ -56,13 +56,13 @@ const Header: React.FC<headerProps> = ({
       <div
         className={`sticky top-0 w-full ${
           showAboutUs ? 'bg-transparent border-none ' : ' bg-white'
-        } border-b-[1px] ${open ? '' : 'z-40'}`}
+        } border-b-[1px] ${open ? '' : 'z-[72]'}`}
         onMouseEnter={() => setIsOpen(!isOpen)}
         onMouseLeave={() => setIsOpen(isOpen)}
       >
         <div className={'flex justify-center'}>
           <nav className=" flex w-full items-center max-w-6xl justify-between h-[60px] sm:h-[80px] px-4 xl:px-0 ">
-            <div className="flex items-center gap-5 ">
+            <div className="flex items-center gap-3 ">
               <div className="flex gap-[16px] items-center ">
                 <div
                   className="lg:hidden w-[32px] h-[32px] cursor-pointer"
@@ -82,7 +82,7 @@ const Header: React.FC<headerProps> = ({
                 </a>
               </div>
               <div className="hidden lg:inline-block">
-                <div className="flex items-center  gap-3.5 ml-4">
+                <div className="flex items-center  gap-3.5 ml-4 font-bold md:text-xl text-base ">
                 School Curriculum
                 </div>
               </div>
