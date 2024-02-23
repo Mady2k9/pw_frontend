@@ -1,6 +1,6 @@
 import React from 'react';
 import SchoolCrDownloadPdf from '../SchoolCrDownloadPdf/SchoolCrDownloadPdf';
-import CatalogueBg from '../../../../assets/Images/Catalogue.webp';
+import CatalogueBg from '../../../../assets/Images/Schools/Catalogue.webp';
 import CatalogueBgMweb from '../../../../assets/Images/Schools/Testamonial2.webp';
 
 function ExploreOurCatalogue() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image } from '@/components/ui/image';
-import rightStars from '../../../../assets/Images/right-star.png';
+import rightStars from '../../../../assets/Images/Schools/right-star.webp';
 import leftStars from '../../../../assets/Images/Schools/StatsStars.webp';
 import styles from './NumberSpeak.module.css';
 function NumbersSpeak() {

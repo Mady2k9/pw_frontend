@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../ReusableButton/ReusableButton'
 import {Image} from '@/components/ui/image';
 import Modal from '../Modal/Modal';
-import TeacherBg from '../../../../assets/Images/teachers-bg.webp';
+import TeacherBg from '../../../../assets/Images/Schools/teachers-bg.webp';
 import Teacher1Web from '../../../../assets/Images/Schools/teacher1-web.webp';
 import Teacher2Web from '../../../../assets/Images/Schools/teacher2-web.webp';
 import Teacher3Web from '../../../../assets/Images/Schools/teacher3-web.webp';

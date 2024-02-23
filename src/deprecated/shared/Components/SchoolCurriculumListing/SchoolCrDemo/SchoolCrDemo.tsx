@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import Image from '../../Atoms/Image/Image';
 import {Image} from '@/components/ui/image';
 import playbuttonwebp from '../../../../assets/Images/Schools/playbuttonwebp.webp';
 import dots from '../../../../assets/Images/Schools/Dots.webp'

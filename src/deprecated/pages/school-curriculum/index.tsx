@@ -4,7 +4,6 @@ import NumbersSpeak from '@/deprecated/shared/Components/SchoolCurriculum/Number
 import PublishingPartners from '@/deprecated/shared/Components/SchoolCurriculum/PublishingPartners/PublishingPartners';
 import TeacherCta from '@/deprecated/shared/Components/SchoolCurriculum/TeacherCta/TeacherCta';
 import Testonomial from '@/deprecated/shared/Components/SchoolCurriculum/Testonomial/Testonomial';
-import SchoolHeader from '@/deprecated/shared/Components/SchoolCurriculum/header/SchoolHeader';
 import { FetchFooter } from '@/api/older-api-methods';
 import React, { useEffect, useRef, useState } from 'react';
 import Caraousel from '@/deprecated/shared/Components/Molecules/Caraousel/Caraousel';
@@ -12,6 +11,7 @@ import carausel1 from '../../assets/Images/Schools/Banner.png'
 import SchoolsMarQue from '@/deprecated/shared/Components/SchoolCurriculum/SchoolsMarQue/SchoolsMarQue';
 import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
 import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
+import SchoolHeader from '@/deprecated/shared/Components/SchoolCurriculum/header/SchoolHeader';
 
 const CaraouselImages =[
   {
@@ -59,7 +59,7 @@ function SchoolCurriculumPage({ footerData }: { footerData: any }) {
      
     };
   }, []);
-  console.log(footerData,'footerData');
+  
   return (
     
     <>

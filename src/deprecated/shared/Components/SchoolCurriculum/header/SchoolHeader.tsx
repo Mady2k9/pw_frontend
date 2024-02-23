@@ -5,7 +5,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import MenuIcon from '@heroicons/react/20/solid/Bars3Icon';
 import Image from '../../Atoms/Image/Image';
 import PwLogo from '../../../../assets/Images/pw-logo.webp';
-import PwLogoInverted from '../../../../assets/Images/pw-logo-inverted.webp';
+import PwLogoInverted from '../../../../assets/Images/Schools/pw-logo-inverted.webp';
 import Link from 'next/link';
 import Modal from '../Modal/Modal';
 
@@ -70,7 +70,7 @@ const Header: React.FC<headerProps> = ({
                 >
                   <MenuIcon fill={`${showAboutUs ? 'white' : ' black'}`} />
                 </div>
-                <a href="https://pwlive-stage.penpencil.co/school-curriculum" aria-label="pw-logo">
+                <a href="https://pw.live" aria-label="pw-logo">
                   <Image
                     bgImagetitle={
                       showAboutUs ? `${PwLogoInverted.src}` : `${PwLogo.src}`
