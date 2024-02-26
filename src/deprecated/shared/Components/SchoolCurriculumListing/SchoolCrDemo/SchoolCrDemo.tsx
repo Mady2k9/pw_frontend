@@ -69,7 +69,7 @@ function SchoolCrDemo() {
       <div className="font-bold xl:text-[32px] xl:leading-[48px] text-[20px] leading-[30px] text-[#1B2124] text-center ">
         Digital Resources Demo Video
       </div>
-      <div className="mx-auto xl:max-w-6xl w-full     px-3 pt-6 relative ">
+      <div className="mx-auto xl:max-w-6xl w-full    px-2 md:px-0  pt-6 relative ">
         <div
           style={{ backgroundImage: `url(${Pexels.src})` }}
           className="bg-center  bg-cover bg-no-repeat   h-[480px] w-full rounded-lg sm:flex items-center justify-center hidden "
