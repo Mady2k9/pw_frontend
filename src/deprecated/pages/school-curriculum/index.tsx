@@ -12,25 +12,58 @@ import SchoolsMarQue from '@/deprecated/shared/Components/SchoolCurriculum/Schoo
 import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
 import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
 import SchoolHeader from '@/deprecated/shared/Components/SchoolCurriculum/header/SchoolHeader';
+import BLOOMBannerMWeb from '../../assets/Images/Schools/BLOOMBannerMWeb.webp';
+import BLOOMBannerWb from '../../assets/Images/Schools/BLOOMBannerWb.webp';
+import TeacherWeb from '../../assets/Images/Schools/Teacher-Training-Programme.webp';
+import TeacherMWeb from '../../assets/Images/Schools/Teacher-Training.webp';
+import SchoolsCrWeb from '../../assets/Images/Schools/SCHOOLcrWeb.webp';
+import SchoolsCrMWeb from '../../assets/Images/Schools/SchoolsCrmweb.webp';
+import SchoolsBanner1 from '../../assets/Images/Schools/1.webp';
+import SchoolsBanner2 from '../../assets/Images/Schools/2.webp';
+import SparksMweb from '../../assets/Images/Schools/SparkMwebBanner.webp';
+import Sparksweb from '../../assets/Images/Schools/SparkWebBanner.webp';
+import EuNextMWeb from '../../assets/Images/Schools/WebBannerEuMweb.webp';
+import EuNextWeb from '../../assets/Images/Schools/WebBannerEuWeb.webp';
 
 const CaraouselImages =[
   {
-    dwebImage:carausel1.src,
-    mwebImage:carausel1.src,
+    dwebImage:TeacherWeb.src,
+    mwebImage:TeacherMWeb.src,
     altTag: "test1",
     redirectionUrl: '',
     displayOrder: 1,
   },
   {
-    dwebImage:carausel1.src,
-    mwebImage:carausel1.src,
+    dwebImage:SchoolsCrWeb.src,
+    mwebImage:SchoolsCrMWeb.src,
     altTag: "test1",
     redirectionUrl: '',
     displayOrder: 1,
   },
   {
-    dwebImage:carausel1.src,
-    mwebImage:carausel1.src,
+    dwebImage:BLOOMBannerWb.src,
+    mwebImage:BLOOMBannerMWeb.src,
+    altTag: "test1",
+    redirectionUrl: '',
+    displayOrder: 1,
+  },
+  {
+    dwebImage:SchoolsBanner1.src,
+    mwebImage:SchoolsBanner2.src,
+    altTag: "test1",
+    redirectionUrl: '',
+    displayOrder: 1,
+  },
+  {
+    dwebImage:Sparksweb.src,
+    mwebImage:SparksMweb.src,
+    altTag: "test1",
+    redirectionUrl: '',
+    displayOrder: 1,
+  },
+  {
+    dwebImage:EuNextWeb.src,
+    mwebImage:EuNextMWeb.src,
     altTag: "test1",
     redirectionUrl: '',
     displayOrder: 1,

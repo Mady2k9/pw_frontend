@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import TestonomialCard from '../TestonomialCard/TestonomialCard';
 import SchoolCarousel from '../SchoolCarousel/SchoolCarousel';
 import { Image } from '@/components/ui/image';
@@ -6,11 +6,66 @@ import playbuttonwebp from '../../../../assets/Images/Schools/playbuttonwebp.web
 import schoolsTest from '../../../../assets/Images/Schools/schoolsTest.webp';
 import CommaIcon from '../../../../assets/Images/comma.webp';
 import ScreenshotTestonomial from '../../../../assets/Images/Schools/ScreenshotTestonomial.webp';
+import dynamic from 'next/dynamic';
 
+const DynamicVideoComponent = dynamic(
+  () => import('../../Molecules/VideoComponentPopup/VideoComponentPopup'),
+  {
+    ssr: false,
+  }
+);
 function Testonomial() {
+  const [showVideoPopup, setShowVideoPopup] = useState(false);
+  const videoContainerRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        videoContainerRef.current &&
+        videoContainerRef?.current?.contains(event.target as Node)
+      ) {
+        setShowVideoPopup(false);
+        document.body.style.overflow = 'auto';
+      }
+    };
+    document.addEventListener('click', handleOutsideClick);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+  const handleShowVideo = () => {
+    document.body.style.overflow = 'hidden';
+    setShowVideoPopup(true);
+  };
+  const getYtUrl = (url: string) => {
+    if (url?.includes('embed')) return url + '&autoplay=1';
+  };
   const array = [<TestonomialCard key={0} />];
   return (
     <div className='mx-auto xl:max-w-6xl w-full'>
+      {showVideoPopup ? (
+        <div
+          className="fixed h-screen inset-0 bg-black/20 z-[79] pt-7 flex justify-between items-center"
+          aria-hidden="true"
+          ref={videoContainerRef}
+        >
+          <div
+            className={
+              'mx-auto bg-black rounded-lg aspect-video absolute z-50 mt-10 left-0 right-0 max-[345px]:w-[315px] h-[228px] w-[360px] sm:w-[700px] sm:h-[450px] xl:w-[1000px] xl:h-[500px]'
+            }
+          >
+            <div className="absolute -top-3 -right-3 bg-black text-white w-10 h-10 flex flex-col items-center justify-center rounded-full cursor-pointer duration-200 transition-all text-2xl pb-1">
+              x
+            </div>
+            <DynamicVideoComponent
+              src={`${getYtUrl(
+                'https://www.youtube.com/embed/47H01638-9w?si=6zAj5IrAToauPPQp'
+              )}`}
+              title={'YT-video'}
+              className={'h-full w-full  rounded-lg'}
+            />
+          </div>
+        </div>
+      ) : null}
       <div className="font-bold md:leading-[48px] md:text-[32px] leading-[30px] text-[20px] text-[#1B2124] text-center pt-[20px] pb-[5px]">
         What students are saying
       </div>
@@ -22,7 +77,8 @@ function Testonomial() {
         className=" max-w-6xl  rounded  sm:p-6 mx-4 sm:mx-6 xl:mx-auto p-4 md:gap-8 gap-5 flex flex-col sm:flex-row border border-black">
         <div className="relative">
           <Image
-            // onClick={handleShowVideo}
+          onClick={handleShowVideo} 
+
             src={ScreenshotTestonomial.src}
             className={
               'w-full h-[166px] sm:h-[270px] cursor-pointer sm:w-[400px] xl:w-[480px] rounded bg-no-repeat bg-cover bg-center'
@@ -34,8 +90,8 @@ function Testonomial() {
             'w-full h-[166px] sm:h-[270px] cursor-pointer sm:w-[400px] xl:w-[480px] rounded bg-no-repeat bg-cover bg-center'
           } /> */}
           <Image
-            // onClick={handleShowVideo}
-            src={playbuttonwebp.src}
+          onClick={handleShowVideo} 
+          src={playbuttonwebp.src}
             alt='playbuttonwebp'
             className={
               'h-14 w-14 bg-center cursor-pointer bg-no-repeat bg-contain absolute bottom-2 md:bottom-7 lg:bottom-3 left-2'
