@@ -14,8 +14,8 @@ export default function CourseCohortTestSeries(props: InferGetServerSidePropsTyp
   if (!props.pageData) {
     return router.replace('');
   }
-  return <></>
-  // return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData}>
-  //   <TestSeriesListPage {...props.pageData} params={props.params} />
-  // </Layout>;
+  // return <></>
+  return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source=''>
+    <TestSeriesListPage {...props.pageData} params={props.params} />
+  </Layout>;
 }

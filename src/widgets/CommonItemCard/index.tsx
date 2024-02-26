@@ -131,7 +131,7 @@ export default function CommonItemCard({
             {
               features.map((m, index) => {
                 return <span key={index}
-                             className={'line-clamp-1'}>{m.value} {m.key.toLowerCase().replace(/_/g, ' ')} </span>;
+                             className={'line-clamp-1'}>{m.value} {m.key?.toLowerCase().replace(/_/g, ' ')} </span>;
               })
             }
           </div>

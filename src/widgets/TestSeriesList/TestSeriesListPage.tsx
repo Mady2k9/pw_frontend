@@ -87,7 +87,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
     return props.options?.find((option: ICohortOptions) => (stringToSlug(option.option) === activeTab));
   }, [activeTab, props.options]);
   const sectionContents: 'ALL' | 'COHORT' | 'LOADING' = (!router.query.cohortKey || (router.query.cohortKey && activeTab === 'all')) ? 'ALL' : (props.options && cohortKey && activeCohort ? 'COHORT' : 'LOADING');
-
+console.log(props.testCats, 'props')
   return <>
     <PageTitleBar
       breadcrumbs={{
@@ -133,7 +133,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
     {
       sectionContents === 'COHORT' &&
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
-        <TestSeriesShortList title={'Class 11 IIT-JEE Batches'} testSeries={[]} showMoreLink={'/'} />
+        <TestSeriesShortList title={'Class 11 IIT-JEE Test Series'} testSeries={props.testCats[activeCohort!.cohortId]} showMoreLink={'/'} />
       </div>
     }
     {
