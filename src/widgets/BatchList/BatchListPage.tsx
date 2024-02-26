@@ -154,7 +154,18 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
         <BatchLoadingGrid />
       </div>
     }
-    
+    <div className={'my-4 md:my-8 container'}>
+      {
+        Widgets.map((WidgetView: any, index) => {
+          console.log(WidgetView.type.name =='ResultsSection','widget')
+          return <div key={index}>
+            {
+            WidgetView.type.name =='ResultsSection'?  WidgetView: ''
+            }
+          </div>;
+        })
+      }
+    </div>
 
     {
       props?.content && <div className={'container mt-4 md:mt-6'}>
@@ -166,13 +177,13 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
         <FAQ items={props.faqs} pageSource={PAGE_SOURCE} />
       </div>
     }
-    <div className={'my-4 md:mt-8 container'}>
+    <div className={'my-4 md:my-8 container'}>
       {
         Widgets.map((WidgetView: any, index) => {
           console.log(WidgetView,'widget')
           return <div key={index}>
             {
-              WidgetView
+            WidgetView.type.name =='DownloadAppBanner'?  WidgetView: ''
             }
           </div>;
         })
