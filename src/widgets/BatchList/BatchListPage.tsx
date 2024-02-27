@@ -156,14 +156,7 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
     }
     <div className={'my-4 md:my-8 container'}>
       {
-        Widgets.map((WidgetView: any, index) => {
-          console.log(WidgetView.type.name =='ResultsSection','widget')
-          return <div key={index}>
-            {
-            WidgetView.type.name =='ResultsSection'?  WidgetView: ''
-            }
-          </div>;
-        })
+        Widgets.find((WidgetView: any) => WidgetView.type.name =='ResultsSection') || <></>
       }
     </div>
 
@@ -179,14 +172,7 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
     }
     <div className={'my-4 md:my-8 container'}>
       {
-        Widgets.map((WidgetView: any, index) => {
-          console.log(WidgetView,'widget')
-          return <div key={index}>
-            {
-            WidgetView.type.name =='DownloadAppBanner'?  WidgetView: ''
-            }
-          </div>;
-        })
+        Widgets.find((WidgetView: any) => WidgetView.type.name =='DownloadAppBanner') || <></>
       }
     </div>
 

@@ -2,14 +2,14 @@ import {Button} from "@/components/ui/button";
 import CommonItemCard from "../CommonItemCard";
 import FAQ from '@/widgets/FAQ';
 
-export interface BatchShortListProps {
+export interface TestSeriesShortListProps {
     title: string,
     testSeries: any[],
     showMoreLink?: string,
     page_source?: string,
 }
 
-export default function TestSeriesShortList({title, testSeries, showMoreLink, page_source}: BatchShortListProps) {
+export default function TestSeriesShortList({title, testSeries, showMoreLink, page_source}: TestSeriesShortListProps) {
     return <div className={''}>
         <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
         <div className={'container overflow-y-auto w-full pl-1.5'}>

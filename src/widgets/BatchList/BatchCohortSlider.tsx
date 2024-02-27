@@ -1,7 +1,5 @@
 import { Button } from '@/components/ui/button';
 import CommonItemCard from '../CommonItemCard';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { useMemo } from 'react';
 import Link from 'next/link';
 import { imageToImageUrl, stringToSlug } from '@/lib/utils';
 import { ICohortOptions } from '@/api/interfaces/page';
@@ -15,7 +13,13 @@ export interface BatchCohortSliderProps {
   page_source?: string,
 }
 
-export default function BatchCohortSlider({ title, batches, cohort, showMoreLink, page_source }: BatchCohortSliderProps) {
+export default function BatchCohortSlider({
+                                            title,
+                                            batches,
+                                            cohort,
+                                            showMoreLink,
+                                            page_source,
+                                          }: BatchCohortSliderProps) {
   const router = useRouter();
   const courseKey = router.query.courseKey as string;
   return <div className={''} id={'short-list-wrapper' + cohort.cohortId}>
@@ -43,7 +47,7 @@ export default function BatchCohortSlider({ title, batches, cohort, showMoreLink
                               thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name}
                               page_source={page_source}
                               batchId={item._id}
-                               />
+              />
             </div>;
           })
         }
