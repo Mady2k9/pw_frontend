@@ -241,7 +241,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
   headerData={props.headerData} page_source={PAGE_SOURCE}>
     <PageTitleBar
       inverted={true} title={props.batch.name}
-      floatingCard={BatchCard}
+      // floatingCard={BatchCard}
       breadcrumbs={{
         items: getBreadcrumbs({
           courseKey: courseKey as string,
@@ -252,17 +252,19 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
       }}
       descriptionElement={<BatchMetaDescription batch={props.batch} />}
       description={props.batch?.oneLineDescription} />
+    <PhoneIcon page_source={PAGE_SOURCE} />
     <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={Widgets}
               handleClick={(e, item) => {
                 e.preventDefault();
                 scrollToElement(document.getElementById(item)!, true);
               }} />
-    <div className={'lg:pr-[400px] container py-4 md:py-6 flex flex-col space-y-4 md:space-y-0'}>
-      <div className={'lg:hidden mb-4 md:mb-6 lg:mb-0 min-w-[320px] sm:mx-auto '}>
+    <div className={'w-full container py-4 md:py-6 flex lg:flex-row-reverse justify-between flex-col space-y-4 md:space-y-0 space-x-4 space-x-reverse'}>
+      <div className={'relative lg:z-10 lg:mt-[-320px] mt-[0px]'}>
+        <div className='mb-4 md:mb-6 lg:mb-0 lg:min-w-[360px] sm:w-[360px] min-w-[280px] lg:m-0 mx-auto sticky top-[156px]'>
         {BatchCard}
+        </div>
       </div>
-      <PhoneIcon page_source={PAGE_SOURCE} />
-      <div className={'flex flex-col space-y-4 md:space-y-6'}>
+      <div className={'lg:w-[67%] w-full flex flex-col space-y-4 md:space-y-6'}>
         {
           Widgets.map((widget, index) => {
             return <div className={'flex flex-col space-y-4 md:space-y-6 ' + index} key={index}>
