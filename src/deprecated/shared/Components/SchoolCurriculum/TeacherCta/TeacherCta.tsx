@@ -22,7 +22,7 @@ function TeacherCta({isInViewport,refValue}:{isInViewport:boolean, refValue:any}
     setCardVisible(!isCardVisible);
   };
   return (
-    <div className="mx-auto xl:max-w-6xl w-full  sm:px-3 md:px-0 md:mt-10 md:mb-28 mt-[32px] mb-[40px]"
+    <div className="mx-auto xl:max-w-6xl w-full  px-3 xl:px-0  md:mt-10 md:mb-28 mt-[32px] mb-[40px]"
     ref={refValue}>
       <div
         style={{
