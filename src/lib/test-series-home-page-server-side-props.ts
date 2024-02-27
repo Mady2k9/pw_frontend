@@ -20,9 +20,11 @@ export default async function testSeriesHomePageServerSideProps(context: GetServ
     headerData = result[0];
     footerData = result[1];
     pageData = result[2]?.data;
+    console.log('shreya', result[2])
   } catch (error) {
     // console.log(error);
   }
+ 
   if (!pageData) {
     return {
       redirect: {
