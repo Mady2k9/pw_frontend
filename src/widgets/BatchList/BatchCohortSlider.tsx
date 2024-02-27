@@ -28,10 +28,11 @@ export default function BatchCohortSlider({
     </div>
     <div className={'overflow-x-auto container scrollbar-hide w-full'}>
       <div className={'flex flex-nowrap gap-4 py-4'}>
+       
         {
           batches.slice(0, 3).map((item, index) => {
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
-              <CommonItemCard exploreLink={`/batches/${courseKey}/${stringToSlug(cohort.option)}/${item.seoSlug}`}
+              <CommonItemCard exploreLink={item.seoSlug}
                               buyNowLink={`/study/batches/${item.slug}/batch-overview`}
                               isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
                               usedFor={item.byName}
