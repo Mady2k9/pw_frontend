@@ -12,6 +12,7 @@ import { ReactNode, useMemo } from 'react';
 import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
 import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import FAQ from '@/widgets/FAQ';
+import TestPassCard from '@/widgets/TestPassCard';
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -22,6 +23,8 @@ const getWidgets = (pageData: IPageData) => {
   const widgets: {
     widget: ReactNode
   } [] = [];
+
+  console.log('shreya', pageData)
   pageData?.widgetOrder?.map((widget) => {
     switch (widget) {
       case 'CAROUSEL':
@@ -52,6 +55,25 @@ const getWidgets = (pageData: IPageData) => {
           />,
         });
         break;
+        case 'TEST_PASS':
+          const testPassData = pageData?.widgetJson[widget];
+        widgets.push({
+          widget: <TestPassCard title={testPassData?.sectionTitle}
+          description={testPassData?.sectionSubTitle}
+          testPassCardData={testPassData?.data?.map((section: any) => {
+            return {
+            name: section.name,
+            planTitle: section.planTitle,
+            offerings: section.offerings,
+            postDiscountPrice: section.postDiscountPrice,
+            price: section.price,
+            slug: section.slug,
+            discount: section.discount            
+            };
+          }) || []}
+           />
+        });
+        break
       case 'APP_DOWNLOAD':
         const downloadData = pageData?.widgetJson[widget];
         widgets.push({
@@ -106,8 +128,7 @@ export default function TestSeriesPage(props: any) {
         label: 'Test Series',
         link: '/test-series',
       }],
-    }}>
-    </PageTitleBar>
+    }}/>
     <div className={'flex flex-col gap-8 md:gap-10'}>
       {
         Widgets.map((widget, index) => {

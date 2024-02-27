@@ -101,7 +101,7 @@ export interface IWidgetJson {
     CAROUSEL: IWidget;
     HERO_SECTION: IWidget;
     STATS: IWidget;
-    TEST_PASS: IWidget;
+    TEST_PASS: IPassWidget;
 }
 
 export interface IWidget {
@@ -109,6 +109,13 @@ export interface IWidget {
     sectionTitle: string;
     sectionSubTitle: string;
     sectionProps: any; // This could be further detailed based on the structure of `sectionProps`
+}
+
+export interface IPassWidget{
+    _id: string;
+    sectionTitle: string;
+    sectionSubTitle: string;
+    data: any;
 }
 
 export interface ITopMenuItem {
