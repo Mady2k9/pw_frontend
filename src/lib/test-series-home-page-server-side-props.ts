@@ -23,7 +23,6 @@ export default async function testSeriesHomePageServerSideProps(context: GetServ
   } catch (error) {
     // console.log(error);
   }
- 
   if (!pageData) {
     return {
       redirect: {
