@@ -99,7 +99,6 @@ export default function TestSeriesPage(props: any) {
   if (!props.pageData) {
     return router.replace('');
   } 
-  console.log('shreya', props )
   return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source={''}>
     <PageTitleBar breadcrumbs={{
       items: [{

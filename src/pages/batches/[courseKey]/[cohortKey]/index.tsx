@@ -15,6 +15,7 @@ export default function CohortBatches(props: InferGetServerSidePropsType<typeof 
     return router.replace('');
   }
   return <Layout  seoSchema={props.pageData.seoSchema} footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source={page_source}>
+   
     <BatchListPage {...props.pageData} filteredBatches={props.filteredBatches} params={props.params} />
   </Layout>;
 }
