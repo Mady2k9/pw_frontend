@@ -3,7 +3,7 @@ import CommonItemCard from "../CommonItemCard";
 import FAQ from '@/widgets/FAQ';
 
 export interface BatchShortListProps {
-    title: string,
+    title?: string,
     testSeries: any[],
     showMoreLink?: string,
     page_source?: string,
@@ -20,9 +20,10 @@ export default function TestSeriesShortList({title, testSeries, showMoreLink, pa
                     testSeries?.slice(0, 3).map((item, index) => {
                         console.log(item,'item')
                         return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
-                            <CommonItemCard exploreLink={'/'} buyNowLink={'/'} isOnline={!item.modeType} key={index}
+                            <CommonItemCard exploreLink={'/test-series/iit-jee'} buyNowLink={'/'} isOnline={item.modeType} key={index}
                                        thumbnail={item.imageId ? item.imageId.baseUrl + item.imageId.key : ''} title={item.name} page_source={page_source} meta={item.meta} 
-                                       discount={item.discount} amount={item.price} updatedAmount={item.postDiscountPrice} />
+                                       discount={item.discount} amount={item.price} updatedAmount={item.postDiscountPrice} whatsappLink={'/study/test-series?childUrl=%2F'}
+                                        />
                         </div>
                     })
                 }

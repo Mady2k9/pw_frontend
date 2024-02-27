@@ -16,7 +16,7 @@ export interface IPageData {
     options: ICohortOptions[];
     seoTags: ISeoTags;
     widgetJson: IWidgetJson;
-    testCats : ITest[]
+    testCats : Record<string, any[]>
 }
 
 export interface ISeoSchema {

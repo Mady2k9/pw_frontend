@@ -1,6 +1,5 @@
 import { PageTitleBar } from '@/widgets/PageTitleBar';
 import { PageTabItemProps, PageTabs } from '@/widgets/PageTabs';
-import BatchCohortSlider from '@/widgets/BatchList/BatchCohortSlider';
 import { ReactElement, useEffect, useMemo, useState } from 'react';
 import TestSeriesShortList from '@/widgets/TestSeriesList/TestSeriesShortList';
 import { useRouter } from 'next/router';
@@ -10,6 +9,7 @@ import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import { slugToString, stringToSlug } from '@/lib/utils';
 import { ICohortOptions, IPageData } from '@/api/interfaces/page';
 import { BatchLoadingGrid } from '@/widgets/BatchList/BatchLoadingGrid';
+import TestCohortSlider from './TestCohortSlider';
 
 const cohortToCohortTabs = ({ courseKey, cohortOptions }: {
   courseKey: string,
@@ -87,7 +87,6 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
     return props.options?.find((option: ICohortOptions) => (stringToSlug(option.option) === activeTab));
   }, [activeTab, props.options]);
   const sectionContents: 'ALL' | 'COHORT' | 'LOADING' = (!router.query.cohortKey || (router.query.cohortKey && activeTab === 'all')) ? 'ALL' : (props.options && cohortKey && activeCohort ? 'COHORT' : 'LOADING');
-console.log(props.testCats, 'props')
   return <>
     <PageTitleBar
       breadcrumbs={{
@@ -118,14 +117,14 @@ console.log(props.testCats, 'props')
       <div className={'mt-4 md:mt-6 space-y-8'}>
         {
           props.options?.map((cohortOption, index) => {
-            if (!props.batches?.[cohortOption.cohortId]) {
+            if (!props.testCats?.[cohortOption.cohortId]) {
               return <></>;
             }
-            return <BatchCohortSlider key={index}
-                                      cohort={cohortOption}
-                                      title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
-                                      batches={props.batches[cohortOption.cohortId] || []}
-                                      showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />;
+            return <TestCohortSlider key={index}
+            cohort={cohortOption}
+            title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
+            batches={props.testCats[cohortOption.cohortId] || []}
+            showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />
           })
         }
       </div>
@@ -133,7 +132,7 @@ console.log(props.testCats, 'props')
     {
       sectionContents === 'COHORT' &&
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
-        <TestSeriesShortList title={'Class 11 IIT-JEE Test Series'} testSeries={props.testCats[activeCohort!.cohortId]} showMoreLink={'/'} />
+        <TestSeriesShortList testSeries={props.testCats[activeCohort!.cohortId as any]} />
       </div>
     }
     {

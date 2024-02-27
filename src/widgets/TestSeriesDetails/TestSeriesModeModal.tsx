@@ -6,7 +6,9 @@ import {
     DialogTitle,
     DialogTrigger
 } from "@/components/ui/dialog";
+import { Image } from "@/components/ui/image";
 import {ReactElement} from "react";
+import TestModalIcon from '../../assets/images/test-modal-icon.webp'
 
 interface TestSeriesModeModalProps {
     trigger: ReactElement
@@ -15,34 +17,39 @@ interface TestSeriesModeModalProps {
 const Mode = [
     {
         title: 'Online Mode',
-        description: 'Attempt tests online'
+        description: 'Attempt the test on our pw app or website',
+        price: '$899'
     }, {
         title: 'Home Delivery',
-        description: 'Attempt tests offline'
+        description: 'Attempt the test on our pw app or website',
+        price: '$899'
     }, {
         title: 'Offline Mode',
-        description: 'Attempt tests offline'
+        description: 'Attempt the test on our pw app or website',
+        price: '$899'
     }
 ];
 export default function TestSeriesModeModal({trigger}: TestSeriesModeModalProps) {
-    return <Dialog>
+    return <Dialog >
         <DialogTrigger asChild className={'outline-none'}>
             {
                 trigger
             }
         </DialogTrigger>
-        <DialogContent>
-            <DialogHeader>
-                <DialogTitle className={'text-xl border-b pb-2'}>Are you absolutely sure?</DialogTitle>
+        <DialogContent className="w-[700px]">
+            <DialogHeader >
+                <DialogTitle className={'text-xl border-b pb-2'}>Test Series Mode</DialogTitle>
                 <DialogDescription className={'pt-2 flex flex-col gap-4'}>
                     <h4 className={'font-medium text-normal'}>Select one of the options to continue:</h4>
-                    <div>
+                    <div className="flex gap-2">
                         {
                             Mode.map((m, index) => {
-                                return <div key={index} className={'flex items-center gap-2 cursor-pointer'}>
-                                    <input type="radio" name="mode" id={m.title} className={'w-4 h-4 rounded-full border border-light'}/>
-                                    <label htmlFor={m.title} className={'text-lg font-bold'}>{m.title}</label>
-                                    <p className={'text-lighter text-sm'}>{m.description}</p>
+                                return <div key={index} className={'flex flex-col py-8 px-4 items-center cursor-pointer border border-[#EFEFEF]'}>
+                                    <Image src={TestModalIcon.src} className="w-[160px] h-[103px]" />
+                                    <label htmlFor={m.title} className={'text-lg text-[#1B2124] font-bold mt-7 mb-1'}>{m.title}</label>
+                                    <p className={'text-[#3D3D3D] text-center text-sm capitalize mb-2'}>{m.description}</p>
+                                    <p className={'text-[#1B2124] font-semibold text-3xl'}>{m.price}</p>
+
                                 </div>
                             })
                         }
