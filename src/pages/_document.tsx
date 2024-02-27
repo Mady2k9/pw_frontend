@@ -37,15 +37,15 @@ export default function Document() {
           dangerouslySetInnerHTML={SoftwareAppSchema()}
           key="SoftwareAppSchema"
         />
-        <script dangerouslySetInnerHTML={GoogleTagManager()} />
+        {/*<script dangerouslySetInnerHTML={GoogleTagManager()} />*/}
       </Head>
 
       <body>
       <Main />
       <NextScript />
-      <noscript
-        dangerouslySetInnerHTML={GTMNoScript()}
-      />
+      {/*<noscript*/}
+      {/*  dangerouslySetInnerHTML={GTMNoScript()}*/}
+      {/*/>*/}
       </body>
 
     </Html>
