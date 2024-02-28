@@ -49,7 +49,7 @@ function ShareWith() {
             Share with your friends and help them achieve their goals.{' '}
           </div>
           <div
-            className="flex flex-row items-center w-[168px] h-[40px] border-[1px] rounded-md gap-[2px] pl-[10px] "
+            className="flex flex-row items-center w-[168px] h-[40px] border-[1px] rounded-md gap-[2px] pl-[10px] cursor-pointer"
             onClick={() => shareWhatsappMessage()}
           >
             <Image
