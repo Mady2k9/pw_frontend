@@ -39,11 +39,15 @@ const getWidgets = (pageData: IPageData) => {
         });
         break;
       case 'TEST_PASS':
+        const testPassData = pageData.widgetJson['TEST_PASS'];
+        if (!testPassData) {
+          break;
+        }
         widgets.push({
           widget: <div className={''}>
             <TestPassShortList
-              title={pageData.widgetJson['TEST_PASS']?.sectionTitle || 'Test Pass'}
-              items={pageData.widgetJson['TEST_PASS']?.data?.map((banner: any) => {
+              title={testPassData?.sectionTitle || 'Test Pass'}
+              items={testPassData?.data?.map((banner: any) => {
                 return {
                   image: banner.dwebImage,
                   mWebImage: banner.mwebImage,
