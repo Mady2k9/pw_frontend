@@ -26,9 +26,8 @@ export default function TestCohortSlider({ title, batches, cohort, showMoreLink,
           batches.slice(0, 3).map((item, index) => {
             console.log(item,'itemshai')
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
-              <CommonItemCard exploreLink={'/test-series/iit-jee'}
-            //   exploreLink={`/batches/${courseKey}/${stringToSlug(cohort.option)}/${item.seoSlug}`}
-                              buyNowLink={`/study/batches/${item.slug}/batch-overview`}
+              <CommonItemCard exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`}
+                              buyNowLink={'/study/test-series?childUrl=/'}
                               isOnline={!item.modeType}
                               amount={item?.price}
                               discount={item.discount}
@@ -37,7 +36,7 @@ export default function TestCohortSlider({ title, batches, cohort, showMoreLink,
                               isNew={item?.label[0]?.name}
                               whatsappLink={'/study/test-series?childUrl=%2F'}
                               thumbnail={item.imageId ? item.imageId.baseUrl + item.imageId.key : ''}
-                              title={item.name}
+                              title={item.title}
                               page_source={page_source}
                               batchId={item._id}
                                />
