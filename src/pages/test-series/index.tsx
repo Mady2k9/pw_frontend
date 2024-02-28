@@ -23,8 +23,6 @@ const getWidgets = (pageData: IPageData) => {
   const widgets: {
     widget: ReactNode
   } [] = [];
-
-  console.log('shreya', pageData)
   pageData?.widgetOrder?.map((widget) => {
     switch (widget) {
       case 'CAROUSEL':
@@ -60,7 +58,7 @@ const getWidgets = (pageData: IPageData) => {
         widgets.push({
           widget: <TestPassCard title={testPassData?.sectionTitle}
           description={testPassData?.sectionSubTitle}
-          testPassCardData={testPassData?.data?.map((section: any) => {
+          testPassCardData={testPassData?.sectionProps?.map((section: any) => {
             return {
             name: section.name,
             planTitle: section.planTitle,
@@ -121,7 +119,6 @@ export default function TestSeriesPage(props: any) {
   if (!props.pageData) {
     return router.replace('');
   } 
-  console.log('shreya', props )
   return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source={''}>
     <PageTitleBar breadcrumbs={{
       items: [{
