@@ -150,11 +150,11 @@ export default function CommonItemCard({
       <div className={'flex gap-2 !mt-3'}>
         {
           exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full'}>
-            {/* <Button variant={'outline'} className={'w-full  border-primary text-primary'}
+            <Button variant={'outline'} className={'w-full  border-primary text-primary'}
                     onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
               EXPLORE
-            </Button> */}
-            <TestSeriesModeModal trigger={<Button onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))} variant={'outline'} className={'w-full border-primary text-primary'} >EXPLORE</Button>} />
+            </Button>
+            {/* <TestSeriesModeModal trigger={<Button onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))} variant={'outline'} className={'w-full border-primary text-primary'} >EXPLORE</Button>} /> */}
           </Link>
         }
         {
