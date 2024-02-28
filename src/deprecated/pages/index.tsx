@@ -4,7 +4,7 @@ import HeroSection from '@/deprecated/shared/Components/Components/HeroSection/H
 import Carousel from '@/deprecated/shared/Components/Molecules/Caraousel/Caraousel';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 import SEO from '@/deprecated/shared/Components/SEO/seo';
-import ExamCategorySection from '@/deprecated/shared/Components/Components/ExamCategorySection/ExamCategorySection';
+// import ExamCategorySection from '@/deprecated/shared/Components/Components/ExamCategorySection/ExamCategorySection';
 import ExplorePwCenter from '@/deprecated/shared/Components/Components/ExplorePwCenter/ExplorePwCenter';
 import AcademicResults from '@/deprecated/shared/Components/Molecules/AcademicResults/AcademicResults';
 import TestinomialSections from '@/deprecated/shared/Components/Components/TestimonialsSection/TestinomialSections';
@@ -19,15 +19,19 @@ import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage
 import Header from '@/deprecated/shared/Components/Molecules/Header/header';
 import { WidgetEnum } from '@/deprecated/shared/Components/Enums/WidgetEnum';
 import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import ComponentWrapper from '@/deprecated/shared/Components/Molecules/ComponentWrapper/ComponentWrapper';
 import HeroFeatureSection from '@/deprecated/shared/Components/Components/HeroFeatureSection/HeroFeatureSection';
+// import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
+import { IWidgetJson } from '@/api/interfaces/page';
+import ExamCategorySection from '@/widgets/ExamCategorySection';
+import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
 
 export default function HomePage({
-  HomePageData,
-  headerData,
-  footerData,
-}: {
+                                   HomePageData,
+                                   headerData,
+                                   footerData,
+                                 }: {
   HomePageData: any;
   headerData: any;
   footerData: any;
@@ -83,13 +87,33 @@ export default function HomePage({
 
   useEffect(() => {
     eventTracker.pwLandingPage();
-    // handleScroll();
-    // window.addEventListener('scroll', handleScroll);
-    // return () => {
-    //   window.removeEventListener('scroll', handleScroll);
-    // };
   }, []);
 
+  const widgetData = useMemo(() => {
+    const x = pageData?.[WidgetEnum.EXAM_CATEGORIES];
+    const categories: ExamCategoryProps[] = [];
+    x?.sectionProps?.map((category: IWidgetJson) => {
+      const categoryData: any = category;
+      categories.push({
+        name: categoryData['categoryName'],
+        icon: categoryData['icon'],
+        color: categoryData?.cta?.['backGroundColor'],
+        slug: categoryData?.cta?.['ctaRedirectionUrl'],
+        actionName: categoryData?.cta?.['text'],
+        actionColor: categoryData?.cta?.['textColor'],
+        exams: categoryData?.options?.map((option: any) => {
+          return {
+            slug: option.redirectionUrl,
+            name: option.className,
+          };
+        }) || [],
+      });
+    });
+    return {
+      ...x,
+      categories: categories,
+    };
+  }, [pageData]);
   return (
     <>
       <SEO
@@ -105,7 +129,7 @@ export default function HomePage({
             'Physicswallah Live Courses for JEE, NEET & Class 6,7,8,9,10,11,12 | NCERT Solutions',
           locale: 'en_US',
           description:
-            "Physics Wallah is India's top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.",
+            'Physics Wallah is India\'s top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.',
           site_name: 'PW',
           url: 'https://www.pw.live/',
           images: [
@@ -113,7 +137,7 @@ export default function HomePage({
               url: 'https://www.pw.live/img/entrancei.jpg',
               width: '560',
               height: '292',
-              alt: "Physics Wallah is India's top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.",
+              alt: 'Physics Wallah is India\'s top online ed-tech platform that provides affordable and comprehensive learning experience to students of classes 6 to 12 and those preparing for JEE and NEET exams.',
             },
           ],
         }}
@@ -143,14 +167,15 @@ export default function HomePage({
         heroFeatureData={pageData?.[WidgetEnum?.HERO_SECTION]}
       />
 
-      <ComponentWrapper
-        title={pageData?.[WidgetEnum.EXAM_CATEGORIES].sectionTitle}
-        subTitle={pageData?.[WidgetEnum.EXAM_CATEGORIES].sectionSubTitle}
-      >
-        <ExamCategorySection
-          examCategoryData={pageData?.[WidgetEnum.EXAM_CATEGORIES]}
-        />
-      </ComponentWrapper>
+      {
+        widgetData && <ExamCategorySection title={widgetData?.sectionTitle || ''}
+                                           ctaText={widgetData?.cta?.text}
+                                           ctaAltText={widgetData?.cta?.altText}
+                                           ctaColor={widgetData?.cta?.textColor}
+                                           description={widgetData?.sectionSubTitle}
+                                           categories={widgetData?.categories} />
+      }
+
       {pageData?.[WidgetEnum.VIDYAPEETH] && (
         <ExplorePwCenter
           explorePWCenterData={pageData?.[WidgetEnum.VIDYAPEETH]}

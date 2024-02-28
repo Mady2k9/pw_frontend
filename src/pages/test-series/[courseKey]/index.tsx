@@ -13,8 +13,7 @@ export default function CourseTestSeries(props: InferGetServerSidePropsType<type
    if (!props.pageData) {
       return router.replace('');
    }
-   // return <></>
-   return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source=''>
+   return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source={'TEST_SERIES_LISTING'}>
       <TestSeriesListPage {...props.pageData} params={props.params}/>
    </Layout>;
 }

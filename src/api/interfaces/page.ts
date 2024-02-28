@@ -114,6 +114,7 @@ export interface IWidget {
     sectionTitle: string;
     sectionSubTitle: string;
     sectionProps: any; // This could be further detailed based on the structure of `sectionProps`
+    data: any; // This could be further detailed based on the structure of `sectionProps`
 }
 
 export interface ITopMenuItem {

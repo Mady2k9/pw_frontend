@@ -1,13 +1,15 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 import ExploreCityCards from '../../Molecules/ExplorePwCityCards/ExplorePwCityCards';
 import { exploreCityCardsType } from '../../Molecules/ExplorePwCityCards/ExplorePwCityCardsType';
 import { ExplorePwCenterType } from './ExplorePwCenterType';
 import eventTracker from '../../EventTracker/eventTracker';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const ExplorePwCenter = ({
-  explorePWCenterData,
-}: {
+                           explorePWCenterData,
+                         }: {
   explorePWCenterData: ExplorePwCenterType;
 }) => {
   const centreEventTrigger = (page_source: string) => {
@@ -16,14 +18,37 @@ const ExplorePwCenter = ({
   const compareByDisplayOrder = (a: any, b: any) =>
     a?.displayOrder - b?.displayOrder;
   const sortedCenterData = explorePWCenterData?.sectionProps?.centers?.sort(
-    compareByDisplayOrder
+    compareByDisplayOrder,
   );
+
+  const handleClick = () => {
+    centreEventTrigger('home_page');
+  };
+
+  const ButtonStyle = useMemo(() => {
+    const x: any = {};
+    if (explorePWCenterData?.cta?.backGroundColor) {
+      x.backgroundColor = explorePWCenterData?.cta.backGroundColor;
+    }
+    if (explorePWCenterData?.cta?.textColor) {
+      x.color = `${explorePWCenterData?.cta.textColor}`;
+    }
+    return x;
+  }, [explorePWCenterData?.cta]);
   return (
     <>
       <TransitionWrapper delay={1}>
-        <div className="my-10 bg-black">
+        <div
+          className="my-10"
+          style={{
+            backgroundColor: `${explorePWCenterData?.sectionProps?.videoOverlayColor}`,
+          }}
+        >
           <div
-            className={`sm:h-[650px] h-[500px] m-auto sm:flex bg-center bg-no-repeat bg-cover bg-black bg-opacity-70 overflow-hidden relative`}
+            className={`sm:h-[650px] h-[500px] m-auto sm:flex bg-center bg-no-repeat bg-cover bg-opacity-70 overflow-hidden relative`}
+            style={{
+              backgroundColor: `${explorePWCenterData?.sectionProps?.videoOverlayColor}`,
+            }}
           >
             <video
               src={explorePWCenterData?.sectionProps?.videoUrl}
@@ -37,11 +62,13 @@ const ExplorePwCenter = ({
             />
             <div className="w-full mx-auto">
               <TransitionWrapper>
-                <div className="mx-auto text-[#fff] text-center z-[1] px-4 sm:h-[260px] h-[180px] flex flex-col justify-center">
-                  <div className="sm:text-[32px] text-[#fff] sm:leading-[48px] text-[20px] leading-[30px] font-[700] mb-[14px] z-[1]">
+                <div
+                  className="mx-auto text-[#fff] text-center z-[1] px-4 sm:h-[260px] h-[180px] flex flex-col justify-center">
+                  <div
+                    className="sm:text-[32px] sm:leading-[48px] text-[20px] leading-[30px] font-[700] mb-[14px] z-[1]">
                     {explorePWCenterData?.sectionTitle}
                   </div>
-                  <div className=" text-[#fff] sm:text-[18px] sm:leading-[28px] text-[14px] leading-[20px] font-[500] z-[1]">
+                  <div className="sm:text-[18px] sm:leading-[28px] text-[14px] leading-[20px] font-[500] z-[1]">
                     {explorePWCenterData?.sectionSubTitle}
                   </div>
                 </div>
@@ -49,7 +76,8 @@ const ExplorePwCenter = ({
             </div>
           </div>
           <TransitionWrapper>
-            <div className="flex items-center  justify-center xl:max-w-6xl lg:max-w-6xl sm:mt-[-425px] mt-[-345px] md:p-6 p-3.5 xl:p-0 mx-auto">
+            <div
+              className="flex items-center  justify-center xl:max-w-6xl lg:max-w-6xl sm:mt-[-425px] mt-[-345px] md:p-6 p-3.5 xl:p-0 mx-auto">
               <div
                 className={` p-2.5 md:p-6 xl:p-8 rounded-lg md:rounded-2xl bg-white z-10 mb-[-20px]`}
                 style={{ boxShadow: '0px 0px 12px 0px #0000001F' }}
@@ -76,19 +104,23 @@ const ExplorePwCenter = ({
                   {sortedCenterData?.map(
                     (value: exploreCityCardsType, key: number) => (
                       <ExploreCityCards key={key} exploreCityCardData={value} />
-                    )
+                    ),
                   )}
                 </div>
-                <div className=" text-center">
-                  <a
-                    href="https://www.pw.live/vidyapeeth-centres"
-                    onClick={() => centreEventTrigger('home_page')}
-                  >
-                    <button className="rounded-md transition-all duration-200 hover:bg-[#4437B8] bg-[#5A4BDA] text-white font-semibold text- w-[100%] lg:w-[240px] py-3.5">
-                      View More
-                    </button>
-                  </a>
-                </div>
+                {
+                  explorePWCenterData?.cta && <div className=" text-center">
+                    <Link href={explorePWCenterData?.cta.ctaRedirectionUrl} >
+                      <Button
+                        className={`rounded-md transition-all duration-200 font-semibold text- w-[100%] lg:w-[240px] py-3.5`}
+                        title={explorePWCenterData?.cta.text}
+                        style={ButtonStyle}
+                        onClick={handleClick}
+                      >
+                        {explorePWCenterData?.cta.text}
+                      </Button>
+                    </Link>
+                  </div>
+                }
               </div>
             </div>
           </TransitionWrapper>
