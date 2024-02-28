@@ -7,9 +7,7 @@ import TestBenefits from '@/deprecated/shared/Components/PwRealTest/TestBenefits
 import BannerSection from '@/deprecated/shared/Components/PwRealTest/BannerSection/BannerSection';
 import TestSchedule from '@/deprecated/shared/Components/PwRealTest/TestSchedule/TestSchedule';
 import Header from '@/deprecated/shared/Components/Molecules/Header/header';
-
-const data=[
-        
+const data=[        
       {
           title: "Is the PW REAL TEST Free or Paid?",
           description:
@@ -39,8 +37,7 @@ const data=[
         {
           title: "Is the PW REAL Test exactly the same as Actual NEET Exam?",
           description:"While the PW REAL Test aims at providing the same experience as that of the NEET examination, there may be some differences, students should refer to the official websites for exact information related to NEET 2024."
-                                }
-          
+                                }         
       ]
 
 const Home = ({ headerData }: { headerData: any }) => {
