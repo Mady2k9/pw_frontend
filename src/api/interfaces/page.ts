@@ -1,4 +1,5 @@
 import {IBatch} from "@/api/interfaces/batch";
+import { ITestSeries } from "./test-series";
 
 export interface IPageData {
     description: string;
@@ -15,6 +16,7 @@ export interface IPageData {
     options: ICohortOptions[];
     seoTags: ISeoTags;
     widgetJson: IWidgetJson;
+    testCats : Record<string, any[]>
 }
 
 export interface ISeoSchema {
@@ -73,6 +75,9 @@ export interface IFaq {
 
 export interface IBatches {
     [key: string]: IBatch[];
+}
+export interface ITest {
+    [key: string]: ITestSeries[];
 }
 
 

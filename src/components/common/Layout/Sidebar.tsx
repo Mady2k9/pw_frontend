@@ -24,7 +24,7 @@ export default function Sidebar({ items, handleLogin }: NavbarProps) {
                 'left-4': selectedSubItem === null,
                 '-left-10': selectedSubItem,
               })}>
-          <Image className={'w-[35px] md:w-[55px]'} alt={'PW Logo'} src={PwLogoInverted.src} />
+          <Image className={'w-[35px] md:w-[55px] h-full'} alt={'PW Logo'} src={PwLogoInverted.src} />
         </Link>
         <div onClick={() => {
           setSelectedSubItem(null);
