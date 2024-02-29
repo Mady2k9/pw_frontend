@@ -12,7 +12,7 @@ import { ReactNode, useMemo } from 'react';
 import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
 import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import FAQ from '@/widgets/FAQ';
-import TestPassShortList from '@/widgets/TestSeriesList/TestPassShortList';
+import TestPassCard from '@/widgets/TestPassCard';
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -38,24 +38,23 @@ const getWidgets = (pageData: IPageData) => {
                               })} />,
         });
         break;
-      case 'TEST_PASS':
-        const testPassData = pageData.widgetJson['TEST_PASS'];
-        if (!testPassData) {
-          break;
-        }
+        case 'TEST_PASS':
+          const testPassData = pageData?.widgetJson[widget];
         widgets.push({
-          widget: <div className={''}>
-            <TestPassShortList
-              title={testPassData?.sectionTitle || 'Test Pass'}
-              items={testPassData?.data?.map((banner: any) => {
-                return {
-                  image: banner.dwebImage,
-                  mWebImage: banner.mwebImage,
-                  alt: banner.altTag,
-                  link: banner.redirectionUrl,
-                };
-              })} />
-          </div>,
+          widget: <TestPassCard title={testPassData?.sectionTitle}
+          description={testPassData?.sectionSubTitle}
+          testPassCardData={testPassData?.sectionProps?.map((section: any) => {
+            return {
+            title: section.title,
+            planTitle: section.planTitle,
+            meta: section.meta,
+            postDiscountPrice: section.postDiscountPrice,
+            price: section.price,
+            slug: section.slug,
+            discount: section.discount            
+            };
+          }) || []}
+           />
         });
         break;
       case 'TEST_SERIES':
@@ -127,8 +126,7 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
         label: 'Test Series',
         link: '/test-series',
       }],
-    }}>
-    </PageTitleBar>
+    }}/>
     <div className={'flex flex-col gap-8 md:gap-10'}>
       {
         Widgets.map((widget, index) => {
