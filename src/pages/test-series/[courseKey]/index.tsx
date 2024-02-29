@@ -8,7 +8,6 @@ import TestSeriesListPage from '@/widgets/TestSeriesList/TestSeriesListPage';
 export async function getServerSideProps(context: GetServerSidePropsContext) {
    return testSeriesListServerSideProps(context);
 }
-
 export default function CourseTestSeries(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
    const router = useRouter();
    if (!props.pageData) {
