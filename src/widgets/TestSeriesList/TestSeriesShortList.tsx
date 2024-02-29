@@ -12,9 +12,10 @@ export interface BatchShortListProps {
     testSeries: any[],
     showMoreLink?: string,
     page_source?: string,
+    modeDataModal: any
 }
 
-export default function TestSeriesShortList({title,cohort, testSeries, showMoreLink, page_source}: BatchShortListProps) {
+export default function TestSeriesShortList({title,cohort, testSeries, showMoreLink, page_source, modeDataModal}: BatchShortListProps) {
     const router = useRouter();
     const courseKey = router.query.courseKey as string;
 
@@ -26,7 +27,7 @@ export default function TestSeriesShortList({title,cohort, testSeries, showMoreL
                     testSeries?.slice(0, 3).map((item, index) => {
                         console.log(item,'item')
                         return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
-                            <CommonItemCard exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}`} buyNowLink={`/study/test-series?childUrl=/`} isOnline={item.modeType} key={index}
+                            <CommonItemCard modeDataModal={modeDataModal} exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}`} buyNowLink={`/study/test-series?childUrl=/`} isOnline={item.modeType} key={index}
                                        thumbnail={item.imageId ? item.imageId.baseUrl + item.imageId.key : ''} title={item.title} page_source={page_source} meta={item.meta} 
                                        discount={item.discount} amount={item.price} updatedAmount={item.postDiscountPrice} whatsappLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`}
                                         />

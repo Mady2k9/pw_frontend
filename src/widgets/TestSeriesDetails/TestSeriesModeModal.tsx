@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 
 interface TestSeriesModeModalProps {
     trigger: ReactElement
+    modeDataModal: any
 }
 
 const Mode = [
@@ -30,8 +31,9 @@ const Mode = [
         price: '$899'
     }
 ];
-export default function TestSeriesModeModal({trigger}: TestSeriesModeModalProps) {
+export default function TestSeriesModeModal({trigger , modeDataModal}: TestSeriesModeModalProps) {
     const [selectedMode, setSelectedMode] = useState(0)
+    // console.log(modeDataModal, 'modallll')
     return <Dialog >
         <DialogTrigger asChild className={'outline-none'}>
             {
