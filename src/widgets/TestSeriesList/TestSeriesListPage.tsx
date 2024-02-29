@@ -126,7 +126,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
             cohort={cohortOption}
             title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
             batches={props.testCats[cohortOption.cohortId] || []}
-            showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />
+            showMoreLink={`/test-series/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />
           })
         }
       </div>

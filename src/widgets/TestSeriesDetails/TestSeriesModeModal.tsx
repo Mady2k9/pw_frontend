@@ -56,7 +56,7 @@ export default function TestSeriesModeModal({trigger}: TestSeriesModeModalProps)
                         }
                     </div>
                     <div className="flex justify-end">
-                    <Button className="">Continue</Button>
+                    <Button className="py-4 px-12">Continue</Button>
                     </div>
                </DialogDescription>
             </DialogHeader>
