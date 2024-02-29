@@ -8,7 +8,7 @@ const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getTestPageSnapshot(slug: string): Promise<{ data: IPageData }> {
   return fetch(
-   `https://stage-api.penpencil.co/gcms/test-page-snapshot?orgId=5eb393ee95fab7468a79d189&appId=6555e0aab0d05351701b54bb&pageType=TEST_HOMEPAGE&slug=/test-series` ).then((res) => res.json());
+   `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_HOMEPAGE&slug=/test-series` ).then((res) => res.json());
 }
 
 export async function getTestListSnapshot(slug: string): Promise<{ data: IPageData }> {

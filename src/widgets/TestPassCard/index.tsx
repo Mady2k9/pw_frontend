@@ -3,13 +3,50 @@ import style from './TestPassCard.module.css'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { TeachersCard } from "../BatchDescription/BatchDetailsKnowYourTeachers";
 import TestPass from "./TestPass";
-import bgImage from '../../assets/background-images/Test-pass-Background.webp';
 
 
-export default function TestPassCard({title, description, testPassCardData}){
-    return <div className="w-full" style={{
-      backgroundImage: `url(${bgImage.src})`,
-    }}>
+export interface testPassCardDataType{
+title:string;
+slug:string;
+price:number;
+postDiscountPrice: number;
+planTitle:string;
+meta:{
+  icon:string;
+  text:string;
+}[];
+discount:number;
+}
+
+export interface cardColorType {
+  bgColor:string;
+  borderColor:string;
+  icon:{level1: string; level2: string}
+}
+
+const cardColor= [{
+  bgColor:'#F1F5FE',
+  borderColor:'#BCD8F1',
+  icon:{level1:'#81B6E4', level2:'#BCD8F1'}
+},
+{
+  bgColor:'#FFF6E5',
+  borderColor:'#F7E0B4',
+  icon:{level1:'#EDB84F', level2:'#F7E0B4'}
+},
+{
+  bgColor:'#DFF1E4',
+  borderColor:'#ADCFB7',
+  icon:{level1:'#64A478', level2:'#ADCFB7'}
+}]
+
+
+export default function TestPassCard({title, description, testPassCardData }:
+  {title:string, 
+   description: string, 
+   testPassCardData: testPassCardDataType[]
+  }){
+    return <div className={`w-full my-[24px] ${style.backgroundImage}`}>
       <div className={'container select-none py-[40px]'}  >
       <div className="relative w-[100%] border-b-2 border-[#81B6E4] h-[1px] ">
      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-[10px] bg-[#F1F5FE]  ">
@@ -27,9 +64,9 @@ export default function TestPassCard({title, description, testPassCardData}){
             className="w-full relative pt-[32px] "
           >
             <CarouselContent>
-              {testPassCardData.map((_, index: number) => (
-                <CarouselItem key={index} className="basis-1/3 ">
-                <TestPass testPassCardData ={testPassCardData} />
+              {testPassCardData?.map((data:testPassCardDataType, index: number) => (
+                <CarouselItem key={index} className="lg:basis-1/2 xl:basis-1/3 basis-1/1">
+                <TestPass testPassCardData ={data} cardColor={cardColor[index%3]} />
                 </CarouselItem>
               ))}
             </CarouselContent>

@@ -38,6 +38,25 @@ const getWidgets = (pageData: IPageData) => {
                               })} />,
         });
         break;
+        case 'TEST_PASS':
+          const testPassData = pageData?.widgetJson[widget];
+        widgets.push({
+          widget: <TestPassCard title={testPassData?.sectionTitle}
+          description={testPassData?.sectionSubTitle}
+          testPassCardData={testPassData?.sectionProps?.map((section: any) => {
+            return {
+            title: section.title,
+            planTitle: section.planTitle,
+            meta: section.meta,
+            postDiscountPrice: section.postDiscountPrice,
+            price: section.price,
+            slug: section.slug,
+            discount: section.discount            
+            };
+          }) || []}
+           />
+        });
+        break;
       case 'TEST_SERIES':
         const data = pageData?.widgetJson[widget];
         widgets.push({
@@ -53,25 +72,6 @@ const getWidgets = (pageData: IPageData) => {
           />,
         });
         break;
-        case 'TEST_PASS':
-          const testPassData = pageData?.widgetJson[widget];
-        widgets.push({
-          widget: <TestPassCard title={testPassData?.sectionTitle}
-          description={testPassData?.sectionSubTitle}
-          testPassCardData={testPassData?.sectionProps?.map((section: any) => {
-            return {
-            name: section.name,
-            planTitle: section.planTitle,
-            offerings: section.offerings,
-            postDiscountPrice: section.postDiscountPrice,
-            price: section.price,
-            slug: section.slug,
-            discount: section.discount            
-            };
-          }) || []}
-           />
-        });
-        break
       case 'APP_DOWNLOAD':
         const downloadData = pageData?.widgetJson[widget];
         widgets.push({
