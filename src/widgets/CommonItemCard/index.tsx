@@ -9,13 +9,14 @@ import OnlineTag from '@/assets/images/onlineTag.webp';
 import OfflineTag from '@/assets/images/offlineTag.webp';
 import PriceDisplay from '@/widgets/PriceDisplay';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CalendarDays, Star } from 'lucide-react';
 import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
 import { useRouter } from 'next/router';
 import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
 import TestSeriesModeModal from '../TestSeriesDetails/TestSeriesModeModal';
+import { ICohortOptions } from '@/api/interfaces/page';
 
 interface CommonItemCardProps {
   thumbnail?: string,
@@ -36,29 +37,31 @@ interface CommonItemCardProps {
   isNew?: boolean,
   page_source?: string;
   batchId?: string;
-  modeDataModal?: any
+  cohortIdTestMode?:string
+  cohortForModal?:string
 }
 
 export default function CommonItemCard({
-                                         isOnline,
-                                         amount,
-                                         updatedAmount,
-                                         discount,
-                                         title,
-                                         isNew,
-                                         startDate, endDate,
-                                         whatsappLink,
-                                         usedFor,
-                                         thumbnail,
-                                         exploreLink,
-                                         buyNowLink,
-                                         meta,
-                                         language,
-                                         fromDetails,
-                                         page_source,
-                                         batchId = '',
-                                         modeDataModal,
-                                       }: CommonItemCardProps) {
+  isOnline,
+  amount,
+  updatedAmount,
+  discount,
+  title,
+  isNew,
+  startDate, endDate,
+  whatsappLink,
+  usedFor,
+  thumbnail,
+  exploreLink,
+  buyNowLink,
+  meta,
+  language,
+  fromDetails,
+  page_source,
+  batchId = '',
+  cohortIdTestMode,
+  cohortForModal
+}: CommonItemCardProps) {
   const encodedUrl = useMemo(() => {
     if (typeof window === 'undefined') {
       return '';
@@ -75,6 +78,17 @@ export default function CommonItemCard({
   const handleBuyNowGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
     batchEventTracker.pwliveBuynowClick(batch_name, (isOnline ? 'Online' : 'Offline'), amount, updatedAmount, batchId, exam, classname, (page_source ? page_source : ''));
   };
+  const [apiData, setApiData]= useState<any>()
+  const data= async ()=>{ 
+      const response= await fetch(`https://stage-api.penpencil.co/gcms/test-category/test-category-modes/${cohortIdTestMode}`)
+      .then(response => response.json())
+.then(data => setApiData(data))
+.catch(error => console.error('Error:', error));
+  }
+  useEffect(()=>{
+      data()
+  },[])
+  console.log(apiData?.data?.length,'response')
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
       [styles.commonItemCardWrapperOnline]: isOnline,
@@ -93,11 +107,11 @@ export default function CommonItemCard({
         }
         {
           whatsappLink && <Link href={`https://wa.me/?text=Check%20out%20this%20link%3A%20${encodedUrl}`}
-                                target={'_blank'}><Image src={WhatsAppIcon.src} alt={'Whatsapp Link'}
-                                                         className={cn('cursor-pointer', {
-                                                           'w-8 ': fromDetails,
-                                                           ' mt-1 w-5 h-5': !fromDetails,
-                                                         })} /></Link>
+            target={'_blank'}><Image src={WhatsAppIcon.src} alt={'Whatsapp Link'}
+              className={cn('cursor-pointer', {
+                'w-8 ': fromDetails,
+                ' mt-1 w-5 h-5': !fromDetails,
+              })} /></Link>
         }
       </div>
       <div className={'aspect-video relative rounded-md overflow-hidden bg-gray-100'}>
@@ -152,7 +166,11 @@ export default function CommonItemCard({
       <div className={'flex gap-2 !mt-3'}>
         {
           exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full'}>
-            <TestSeriesModeModal modeDataModal={modeDataModal} trigger={<Button onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))} variant={'outline'} className={'w-full border-primary text-primary'} >EXPLORE</Button>} />
+            {apiData?.data?.length> 1 ? <TestSeriesModeModal modeDataModal={apiData} cohortForModal={cohortForModal? cohortForModal:''} trigger={<Button onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))} variant={'outline'} className={'w-full border-primary text-primary'} >EXPLORE</Button>} />
+              : <Button variant={'outline'} className={'w-full  border-primary text-primary'}
+                onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
+                EXPLORE
+              </Button>}
           </Link>
         }
         {

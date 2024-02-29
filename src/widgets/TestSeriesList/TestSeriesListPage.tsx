@@ -89,17 +89,6 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
   }, [activeTab, props.options]);
   const sectionContents: 'ALL' | 'COHORT' | 'LOADING' = (!router.query.cohortKey || (router.query.cohortKey && activeTab === 'all')) ? 'ALL' : (props.options && cohortKey && activeCohort ? 'COHORT' : 'LOADING');
   console.log(props, 'props')
-
-  const [apiData, setApiData]= useState()
-//   const data= async ()=>{
-//       const response= await fetch('https://stage-api.penpencil.co/gcms/test-category/test-category-modes/65dd2b7e720e00642118a947')
-//       .then(response => response.json())
-// .then(data => setApiData(data))
-// .catch(error => console.error('Error:', error));
-//   }
-//   useEffect(()=>{
-//       data()
-//   },[])
   return <>
     <PageTitleBar
       breadcrumbs={{
@@ -145,7 +134,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
     {
       sectionContents === 'COHORT' &&
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
-        <TestSeriesShortList modeDataModal={apiData} testSeries={props.testCats[activeCohort!.cohortId as any]} cohort={activeCohort!} />
+        <TestSeriesShortList testSeries={props.testCats[activeCohort!.cohortId as any]} cohort={activeCohort!} />
       </div>
     }
     {

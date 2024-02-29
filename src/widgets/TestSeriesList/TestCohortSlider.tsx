@@ -24,9 +24,8 @@ export default function TestCohortSlider({ title, batches, cohort, showMoreLink,
       <div className={'flex flex-nowrap gap-4 py-4'}>
         {
           batches.slice(0, 3).map((item, index) => {
-            console.log(item,'itemshai')
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
-              <CommonItemCard exploreLink={`/test-series/${courseKey}`}
+              <CommonItemCard exploreLink={!item.categoryModeId ? `/test-series/${courseKey}`:`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`}
                               buyNowLink={'/study/test-series?childUrl=/'}
                               isOnline={!item.modeType}
                               amount={item?.price}
@@ -39,6 +38,8 @@ export default function TestCohortSlider({ title, batches, cohort, showMoreLink,
                               title={item.title}
                               page_source={page_source}
                               batchId={item._id}
+                              cohortIdTestMode={item.categoryId}
+                              cohortForModal={cohort.option}
                                />
             </div>;
           })
