@@ -18,7 +18,7 @@ export interface IPageData {
 }
 
 export interface ISeoSchema {
-    content: IContent | IContent[];
+    content: IContent | IContent[] | any;
     type: string;
     status: boolean;
 }
@@ -109,6 +109,7 @@ export interface IWidget {
     sectionTitle: string;
     sectionSubTitle: string;
     sectionProps: any; // This could be further detailed based on the structure of `sectionProps`
+    data: any; // This could be further detailed based on the structure of `sectionProps`
 }
 
 export interface ITopMenuItem {

@@ -16,7 +16,7 @@ export default async function batchDetailsServerSideProps(context: GetServerSide
     const result = await Promise.all([
       FetchHeader(),
       FetchFooter(),
-      batchPageSnapshot(batchSlug, 'BATCH_DESCRIPTION'),
+      batchPageSnapshot(resolvedUrl, 'BATCH_DESCRIPTION'),
     ]);
     headerData = result[0];
     footerData = result[1];

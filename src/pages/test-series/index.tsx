@@ -111,15 +111,16 @@ const getWidgets = (pageData: IPageData) => {
   return widgets;
 };
 
-export default function TestSeriesPage(props: any) {
+export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
   const Widgets = useMemo(() => {
     return getWidgets(props.pageData!);
   }, [props.pageData]);
   if (!props.pageData) {
     return router.replace('');
-  } 
-  return <Layout footerData={props.footerData} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source={''}>
+  }
+  return <Layout footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
+                 page_source={'TEST_SERIES'}>
     <PageTitleBar breadcrumbs={{
       items: [{
         label: 'Test Series',

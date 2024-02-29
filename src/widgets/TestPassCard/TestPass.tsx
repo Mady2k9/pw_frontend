@@ -49,7 +49,7 @@ const TestPass = ({testPassCardData, cardColor}:{testPassCardData: testPassCardD
  </div>
  <div className="w-full h-[260px] flex flex-col justify-between p-[16px]" style={{backgroundColor: cardColor.bgColor}}>
 <div className="flex flex-col gap-[8px] overflow-y-scroll scrollbar-hide">
-    {testPassCardData.meta.map((item, index) => <div className="flex flex-ro items-center gap-2 ">
+    {testPassCardData.meta.map((item, index) => <div key={index} className="flex flex-ro items-center gap-2 ">
      <div className="h-[24px] w-[24px] bg-white border rounded-[50%] flex items-center justify-center">
      <Image src={item.icon} className=" h-[18px] w-[18px]" />
         </div>

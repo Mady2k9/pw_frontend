@@ -1,7 +1,5 @@
 import { Button } from '@/components/ui/button';
 import CommonItemCard from '../CommonItemCard';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { useMemo } from 'react';
 import Link from 'next/link';
 import { imageToImageUrl, stringToSlug } from '@/lib/utils';
 import { ICohortOptions } from '@/api/interfaces/page';
@@ -15,7 +13,13 @@ export interface BatchCohortSliderProps {
   page_source?: string,
 }
 
-export default function BatchCohortSlider({ title, batches, cohort, showMoreLink, page_source }: BatchCohortSliderProps) {
+export default function BatchCohortSlider({
+                                            title,
+                                            batches,
+                                            cohort,
+                                            showMoreLink,
+                                            page_source,
+                                          }: BatchCohortSliderProps) {
   const router = useRouter();
   const courseKey = router.query.courseKey as string;
   return <div className={''} id={'short-list-wrapper' + cohort.cohortId}>
@@ -24,10 +28,11 @@ export default function BatchCohortSlider({ title, batches, cohort, showMoreLink
     </div>
     <div className={'overflow-x-auto container scrollbar-hide w-full'}>
       <div className={'flex flex-nowrap gap-4 py-4'}>
+       
         {
           batches.slice(0, 3).map((item, index) => {
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
-              <CommonItemCard exploreLink={`/batches/${courseKey}/${stringToSlug(cohort.option)}/${item.seoSlug}`}
+              <CommonItemCard exploreLink={item.seoSlug}
                               buyNowLink={`/study/batches/${item.slug}/batch-overview`}
                               isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
                               usedFor={item.byName}
@@ -43,7 +48,7 @@ export default function BatchCohortSlider({ title, batches, cohort, showMoreLink
                               thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name}
                               page_source={page_source}
                               batchId={item._id}
-                               />
+              />
             </div>;
           })
         }

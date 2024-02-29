@@ -26,7 +26,7 @@ function GTMNoScript() {
 export default function Document() {
   return (
     <Html lang="en">
-            <Head>
+      <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={OrganisationAppSchema()}
@@ -47,7 +47,6 @@ export default function Document() {
         dangerouslySetInnerHTML={GTMNoScript()}
       />
       </body>
-
     </Html>
   );
 }

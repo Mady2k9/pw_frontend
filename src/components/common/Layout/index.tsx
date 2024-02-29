@@ -11,37 +11,19 @@ interface LayoutProps {
   footerData?: IFooterData[];
   seoTags?: ISeoTags;
   seoSchema?: ISeoSchema[];
-  breadcrumbs?: { label: string, link: string }[];
   className?: string;
   page_source: string;
 }
 
-export function Layout({ children, breadcrumbs,className, seoTags, headerData, footerData, seoSchema, page_source }: LayoutProps) {
-  if (seoSchema && breadcrumbs) {
-    const index = seoSchema?.findIndex((schema) => schema.type === 'Breadcrumb');
-    if (index > -1) {
-      seoSchema[index].content = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        'itemListElement': [
-          {
-            '@type': 'ListItem',
-            'position': 1,
-            'name': 'Home',
-            'item': 'https://pw.live',
-          },
-          ...breadcrumbs.map((item, index) => {
-            return {
-              '@type': 'ListItem',
-              'position': index + 2,
-              'name': item.label,
-              'item': 'https://pw.live' + item.link,
-            };
-          }),
-        ],
-      };
-    }
-  }
+export function Layout({
+                         children,
+                         className,
+                         seoTags,
+                         headerData,
+                         footerData,
+                         seoSchema,
+                         page_source,
+                       }: LayoutProps) {
   return (
     <main className={className || ''}>
       {seoTags && <SEO
