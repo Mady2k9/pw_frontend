@@ -6,7 +6,7 @@ import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 import SEO from '@/deprecated/shared/Components/SEO/seo';
 // import ExamCategorySection from '@/deprecated/shared/Components/Components/ExamCategorySection/ExamCategorySection';
 import ExplorePwCenter from '@/deprecated/shared/Components/Components/ExplorePwCenter/ExplorePwCenter';
-import AcademicResults from '@/deprecated/shared/Components/Molecules/AcademicResults/AcademicResults';
+//import AcademicResults from '@/deprecated/shared/Components/Molecules/AcademicResults/AcademicResults';
 import TestinomialSections from '@/deprecated/shared/Components/Components/TestimonialsSection/TestinomialSections';
 import DownloadAppSection from '@/deprecated/shared/Components/Molecules/DownloadAppSection/DownloadAppSection';
 import YouTubeCardSection from '@/deprecated/shared/Components/Components/YouTubeCardSection/YouTubeCardSection';
@@ -26,6 +26,7 @@ import HeroFeatureSection from '@/deprecated/shared/Components/Components/HeroFe
 import { IWidgetJson } from '@/api/interfaces/page';
 import ExamCategorySection from '@/widgets/ExamCategorySection';
 import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
+import ResultsSection from '@/widgets/ResultsSection';
 
 export default function HomePage({
                                    HomePageData,
@@ -187,16 +188,12 @@ export default function HomePage({
       >
         <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />
       </ComponentWrapper>
-      <ComponentWrapper
-        title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
-        subTitle={pageData?.[WidgetEnum.RESULTS].sectionSubTitle}
-        classname="px-0"
-      >
-        <AcademicResults
-          academicResultData={pageData?.[WidgetEnum.RESULTS]}
-          showClassesScrollData
-        />
-      </ComponentWrapper>
+
+      {pageData?.[WidgetEnum.RESULTS] && (
+        <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}
+                                  title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
+                                  description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />
+        )}
 
       <DownloadAppSection />
 
