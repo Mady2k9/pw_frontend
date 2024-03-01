@@ -15,12 +15,13 @@ import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
 import { useRouter } from 'next/router';
 import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
+import TestSeriesModeModal from '../TestSeriesDetails/TestSeriesModeModal';
 
 interface CommonItemCardProps {
   thumbnail?: string,
   title: string,
   usedFor?: string,
-  meta?: { key: string, value?: string, }[]
+  meta?: { key: string, value?: string, text?: any}[]
   startDate?: string,
   language?: string,
   endDate?: string,
@@ -62,7 +63,7 @@ export default function CommonItemCard({
     }
     return encodeURIComponent(window.location.origin + whatsappLink);
   }, [whatsappLink]);
-  const features = (meta && meta.filter((m) => m.value).slice(0, 2)) || [];
+  const features = (meta && meta.filter((m) => m.value || m.text).slice(0, 2)) || [];
   const router = useRouter();
   const getClassAndExam = router.asPath.split('/');
 
@@ -93,7 +94,7 @@ export default function CommonItemCard({
                                 target={'_blank'}><Image src={WhatsAppIcon.src} alt={'Whatsapp Link'}
                                                          className={cn('cursor-pointer', {
                                                            'w-8 ': fromDetails,
-                                                           ' mt-1 w-5': !fromDetails,
+                                                           ' mt-1 w-5 h-5': !fromDetails,
                                                          })} /></Link>
         }
       </div>
@@ -131,7 +132,13 @@ export default function CommonItemCard({
             {
               features.map((m, index) => {
                 return <span key={index}
-                             className={'line-clamp-1'}>{m.value} {m.key.toLowerCase().replace(/_/g, ' ')} </span>;
+                             className={'line-clamp-1'}>{m.value? m.value : 
+                              <div
+                              className={'container'}
+                              dangerouslySetInnerHTML={{
+                                __html: m.text
+                              }} />
+                              } {m.key?.toLowerCase().replace(/_/g, ' ')} </span>;
               })
             }
           </div>
@@ -142,11 +149,8 @@ export default function CommonItemCard({
       </div>
       <div className={'flex gap-2 !mt-3'}>
         {
-          exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full '}>
-            <Button variant={'outline'} className={'w-full  border-primary text-primary'}
-                    onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
-              EXPLORE
-            </Button>
+          exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full'}>
+            <TestSeriesModeModal trigger={<Button onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))} variant={'outline'} className={'w-full border-primary text-primary'} >EXPLORE</Button>} />
           </Link>
         }
         {

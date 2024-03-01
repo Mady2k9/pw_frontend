@@ -13,7 +13,7 @@ import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTrack
 
 interface NavbarProps {
   items?: ITopMenuItem[];
-  page_source: string 
+  page_source: string
 }
 
 const MenuItem = ({ item,  }: { item: ITopMenuItem}) => {

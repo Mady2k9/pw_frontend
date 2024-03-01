@@ -12,14 +12,17 @@ const StatsSection = ({ statsData }: { statsData: any }) => {
     <div className="flex flex-col items-center justify-center ">
       <TransitionWrapper>
         <div className="grid xl:grid-cols-4  grid-cols-2 gap-3 md:my-[32px] my-[20px]">
-          {sortedStatsData?.map((cardData: any, key: number) => (
-            <div key={key}>
-              <TrustedPlatforCard
-                statsCardData={cardData}
-                bgColor={bgColor[key]}
-              />
-            </div>
-          ))}
+          {sortedStatsData?.map((cardData: any, key: number) => {
+            console.log(cardData['backGroundColor']);
+            return (
+              <div key={key}>
+                <TrustedPlatforCard
+                  statsCardData={cardData}
+                  bgColor={cardData['backGroundColor'] || bgColor[key]}
+                />
+              </div>
+            );
+          })}
         </div>
       </TransitionWrapper>
       <TransitionWrapper>

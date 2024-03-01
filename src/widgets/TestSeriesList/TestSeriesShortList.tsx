@@ -1,24 +1,35 @@
 import {Button} from "@/components/ui/button";
 import CommonItemCard from "../CommonItemCard";
 import FAQ from '@/widgets/FAQ';
+import { useRouter } from "next/router";
+import { ICohortOptions } from "@/api/interfaces/page";
+import { stringToSlug } from '@/lib/utils';
+
 
 export interface BatchShortListProps {
-    title: string,
+    title?: string,
+    cohort: ICohortOptions,
     testSeries: any[],
     showMoreLink?: string,
     page_source?: string,
 }
 
-export default function TestSeriesShortList({title, testSeries, showMoreLink, page_source}: BatchShortListProps) {
+export default function TestSeriesShortList({title,cohort, testSeries, showMoreLink, page_source}: BatchShortListProps) {
+    const router = useRouter();
+    const courseKey = router.query.courseKey as string;
+
     return <div className={''}>
         <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
         <div className={'container overflow-y-auto w-full pl-1.5'}>
             <div className={'flex flex-nowrap gap-4 py-4'}>
                 {
-                    [1, 2, 4].map((item, index) => {
+                    testSeries?.slice(0, 3).map((item, index) => {
+                        console.log(item,'item')
                         return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
-                            <CommonItemCard exploreLink={'/'} buyNowLink={'/'} isOnline={index != 1} key={index}
-                                       thumbnail={''} title={'Lakshaya JEE Mains & Advanced 2023'} page_source={page_source}/>
+                            <CommonItemCard exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}`} buyNowLink={`/study/test-series?childUrl=/`} isOnline={item.modeType} key={index}
+                                       thumbnail={item.imageId ? item.imageId.baseUrl + item.imageId.key : ''} title={item.title} page_source={page_source} meta={item.meta} 
+                                       discount={item.discount} amount={item.price} updatedAmount={item.postDiscountPrice} whatsappLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`}
+                                        />
                         </div>
                     })
                 }
