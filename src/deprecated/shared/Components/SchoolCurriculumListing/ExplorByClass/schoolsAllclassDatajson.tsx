@@ -1,12 +1,12 @@
 import English from '../../../../assets/Images/Schools/English.webp';
 import Hindi from '../../../../assets/Images/Schools/Hindischool.webp';
 import Mathematics from '../../../../assets/Images/Schools/Mathematics.webp';
-import Evs from '../../../../assets/Images/Schools/Evs.webp';
+import Evs from '../../../../assets/Images/Schools/EVS.webp';
 import EnglishGrammar from '../../../../assets/Images/Schools/EnglishGrammar.webp';
 import HindiGrammar from '../../../../assets/Images/Schools/HindiGrammar.webp';
 import ComputerScience from '../../../../assets/Images/Schools/ComputerScience.webp';
 
-export const AccessAllCardData = 
+export const AccessAllCardData =
 {
   Bloom:{
      categoryName:"Bloom",
@@ -15,11 +15,11 @@ export const AccessAllCardData =
      schoolclass:"BLOOM_K_8",
     classes: [
       {
-        class: "Nursery",       
+        class: "Nursery",
         slug:"bloom-nursery-321156",
         subjects: [
           {
-           
+
             slug:"english-496273",
             name: "English",
             image: `${English.src}`,
@@ -39,7 +39,7 @@ export const AccessAllCardData =
             image: `${Mathematics.src}`,
             Backcolor:"#E4FFF3",
             redirectionUrl:"https://www.pw.live/study/batches/bloom-nursery-321156/subjects/maths-755668/subject-topics?came_from=my-batches&subject=Maths&batchSubjectId=65796b7b44f53a0018959b50"
-            
+
           },
           {
             slug:"evs-493700",
@@ -47,7 +47,7 @@ export const AccessAllCardData =
             image: `${Evs.src}`,
             Backcolor:"#FFF0E5",
             redirectionUrl:"https://www.pw.live/study/batches/bloom-nursery-321156/subjects/evs-493700/subject-topics?came_from=my-batches&subject=EVS&batchSubjectId=65718f092718500018c235ab"
-            
+
           }
         ]
       },
@@ -272,7 +272,7 @@ export const AccessAllCardData =
            image:  `${Mathematics.src}`,
            Backcolor:"#E4FFF3",
            redirectionUrl:"https://pw.live/school-curriculum/class-nursery/math"
-           
+
          },
          {
            name: "Environmental Studies",
@@ -484,7 +484,7 @@ export const AccessAllCardData =
          image:  `${Mathematics.src}`,
          Backcolor:"#E4FFF3",
          redirectionUrl:"https://pw.live/school-curriculum/class-nursery/math"
-         
+
        },
        {
          name: "Environmental Studies",
@@ -670,4 +670,4 @@ export const AccessAllCardData =
  ]
 }
   }
-  
+
