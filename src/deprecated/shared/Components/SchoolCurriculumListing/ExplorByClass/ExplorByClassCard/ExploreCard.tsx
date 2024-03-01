@@ -46,13 +46,13 @@ function ExploreCard({
       schoolclass: schoolclass,
     };
     localStorage.setItem('clickedSubjects', JSON.stringify(newData));
-    let baseUrl = `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}school-curriculum/${tabUrl}/onboringPage`;
+    let baseUrl = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/school-curriculum/${tabUrl}/onboringPage`;
     if (localStorage.getItem('user')) {
       baseUrl = subject.redirectionUrl;
     }
 
     window.open(
-      `${process.env.NEXT_PUBLIC_PP_HOME_BASE_URL}study/auth?redirect_url=${baseUrl}`,
+      `${process.env.NEXT_PUBLIC_APP_BASE_URL}/study/auth?redirect_url=${baseUrl}`,
       '_parent'
     );
   };
