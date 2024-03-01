@@ -4,12 +4,14 @@ import Button from '../ReusableButton/ReusableButton';
 import Modal from '../Modal/Modal';
 import Frame from '../../../../assets/Images/Schools/Frame.webp';
 import InterestingUsCard from '../InterestingUsCard/InterestingUsCard';
-import IntrestingData from '../../../../jsonFiles/SchoolsIntrestingWith.json'
+import {IntrestingData} from './SchoolsIntrestingWithjson';
+
 function InterestingUs({isInViewport,refValue}:{isInViewport:boolean, refValue:any} ) {
   const [isCardVisible, setCardVisible] = useState(false);
   const handleButtonClick = () => {
     setCardVisible(!isCardVisible);
   };
+  console.log(IntrestingData.IntrestingCardData,'IntrestingData.IntrestingCardData');
   return (
     <div className="flex w-full items-center max-w-6xl  flex-col mx-auto pt-[28px] md:pt-12">
       <div className="flex flex-col md:flex-row items-center relative">
@@ -58,6 +60,7 @@ function InterestingUs({isInViewport,refValue}:{isInViewport:boolean, refValue:a
       </div>
       {/* "visual"  */}
       <div className="my-12 flex flex-wrap gap-5 mx-auto justify-center">
+      {/* {IntrestingData.IntrestingCardData.map((cardData, index) => ( */}
       {IntrestingData.IntrestingCardData.map((cardData, index) => (
         <InterestingUsCard
           key={index}

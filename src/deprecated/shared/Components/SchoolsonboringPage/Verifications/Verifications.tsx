@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SendImageStudy from '../../../../assets/Images/Study.gif';
+import SendImageStudy from '../../../../assets/Images/Schools/Study.gif';
 import { updateCohort } from '@/deprecated/shared/Admitcard/api/updateCohort';
 import { getProfileData } from '@/deprecated/shared/Admitcard/api/getProfileData';
 import { updateRecentCohort } from '@/deprecated/shared/Admitcard/api/updateRecentCohort';
@@ -73,6 +73,7 @@ function Verifications() {
     >
       <Image
         src ={`${SendImageStudy.src}`}
+        alt='gif image'
         className={`md:w-[370px] md:h-[275px] w-[200px] h-[160px] bg-bottom bg-cover bg-no-repeat my-[13px] `}
       />
     </div>

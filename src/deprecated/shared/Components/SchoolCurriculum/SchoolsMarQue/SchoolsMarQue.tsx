@@ -1,6 +1,7 @@
 import React from 'react'
 import Marquee from 'react-fast-marquee';
-import SchoolsNameData from '../../../../jsonFiles/SchoolsName.json'
+// import SchoolsNameData from '../../../../jsonFiles/SchoolsName.json'
+import {AssetsSchoolsNameData} from './SchoolsNamejson'
 import SchoolsMarQuecard from './SchoolsMarQuecard';
 
 function SchoolsMarQue() {
@@ -14,7 +15,7 @@ function SchoolsMarQue() {
 
       <Marquee pauseOnHover>
         <div className="flex  w-full my-5 md:my-6 xl:my-8 gap-10">
-          {SchoolsNameData.SchoolsNameData?.map((data, key) => (
+          {AssetsSchoolsNameData.SchoolsNameData?.map((data, key) => (
             <SchoolsMarQuecard             
               key={data.heading}
               mainTitle={data.heading}

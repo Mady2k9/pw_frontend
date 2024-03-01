@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import schoolCardData from '../../../../jsonFiles/schoolcardData.json';
+import {AccessStateData} from '../PublishingPartners/schoolcardDatajson';
 import Image from '../../Atoms/Image/Image';
 import PoupCard from './PoupCard';
 import { useRouter } from 'next/router';
@@ -9,7 +9,7 @@ import stars from '../../../../assets/Images/Schools/Group-1.webp';
 import satrsMweb from '../../../../assets/Images/Schools/Group-2.webp';
 
 export default function Modal() {
-  const partnersData = schoolCardData?.schoolCardData || [];
+  const partnersData = AccessStateData?.schoolCardData || [];
   const [open, setOpen] = useState(true);
   const [isHovered, setHovered] = useState(false);
   const [childState, setChildState] = useState<string | null>(null);
