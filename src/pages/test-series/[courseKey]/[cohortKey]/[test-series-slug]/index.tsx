@@ -88,7 +88,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                 // descriptionContent={props.pageData?.testModeId.meta.map((data)=>{
                 //    return data.text
                 // })}
-                description={props.pageData?.testModeId?.description.replace( /(<([^>]+)>)/ig, '')} />
+                description={props?.pageData?.testModeId?.description?.replace( /(<([^>]+)>)/ig, '')} />
             {/* <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={props?.pageData?.tabs} */}
             <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={items}
                 handleClick={(e, item) => setActiveTab(item)} />

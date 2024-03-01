@@ -24,7 +24,7 @@ export default function TestSeriesShortList({title,cohort, testSeries, showMoreL
                 {
                     testSeries?.slice(0, 3).map((item, index) => {
                         return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
-                            <CommonItemCard cohortIdTestMode={item.categoryId} cohortForModal={cohort.option} exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}`} buyNowLink={`/study/test-series?childUrl=/`} isOnline={item.modeType} key={index}
+                            <CommonItemCard cohortIdTestMode={item.categoryId} cohortForModal={cohort.option} exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`} buyNowLink={`/study/test-series?childUrl=/`} isOnline={item.modeType} key={index}
                                        thumbnail={item.imageId ? item.imageId.baseUrl + item.imageId.key : ''} title={item.title} page_source={page_source} meta={item.meta} 
                                        discount={item.discount} amount={item.price} updatedAmount={item.postDiscountPrice} whatsappLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`}
                                         />
