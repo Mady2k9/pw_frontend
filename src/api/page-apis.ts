@@ -11,6 +11,11 @@ export async function getTestPageSnapshot(slug: string): Promise<{ data: IPageDa
     `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_HOMEPAGE&slug=${slug}`,
   ).then((res) => res.json());
 }
+export async function getModalData(slug: any): Promise<{ data: IPageData }> {
+  return fetch(
+    `${baseUrl}/gcms/test-category/test-category-modes/${slug}`,
+  ).then((res) => res.json());
+}
 
 export async function getTestListSnapshot(slug: string): Promise<{ data: IPageData }> {
   return fetch(

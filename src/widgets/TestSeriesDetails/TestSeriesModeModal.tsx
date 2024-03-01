@@ -21,7 +21,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortForM
     const [selectedMode, setSelectedMode] = useState(0)
     const router = useRouter()
     const courseKey = router.query.courseKey as string;
-    const getUrl = router.asPath
+    // const getUrl = router.asPath
 
     const handleModeSelect =(e:any)=>{
         e.preventDefault()
@@ -29,6 +29,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortForM
             router.push(`${courseKey}/${stringToSlug(cohortForModal)}/${modeDataModal?.data[selectedMode].slug}`)
         }
     }
+    console.log(modeDataModal,'modall')
     return <Dialog >
         <DialogTrigger asChild className={'outline-none'}>
             {

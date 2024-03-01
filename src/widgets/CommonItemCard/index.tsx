@@ -17,6 +17,7 @@ import { useRouter } from 'next/router';
 import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
 import TestSeriesModeModal from '../TestSeriesDetails/TestSeriesModeModal';
 import { ICohortOptions } from '@/api/interfaces/page';
+import { getModalData } from '@/api/page-apis';
 
 interface CommonItemCardProps {
   thumbnail?: string,
@@ -78,17 +79,9 @@ export default function CommonItemCard({
   const handleBuyNowGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
     batchEventTracker.pwliveBuynowClick(batch_name, (isOnline ? 'Online' : 'Offline'), amount, updatedAmount, batchId, exam, classname, (page_source ? page_source : ''));
   };
-  const [apiData, setApiData]= useState<any>()
-  const data= async ()=>{ 
-      const response= await fetch(`https://stage-api.penpencil.co/gcms/test-category/test-category-modes/${cohortIdTestMode}`)
-      .then(response => response.json())
-.then(data => setApiData(data))
-.catch(error => console.error('Error:', error));
-  }
-  useEffect(()=>{
-      data()
-  },[])
-  console.log(apiData?.data?.length,'response')
+  const [apiData, setApiData]= useState<any>(getModalData(cohortIdTestMode))
+
+  console.log(getModalData(cohortIdTestMode),'responses')
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
       [styles.commonItemCardWrapperOnline]: isOnline,
