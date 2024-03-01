@@ -18,7 +18,7 @@ export default function ResultsSection({ title, hideCategories, description, res
     const res = results.find((result) => {
       return result.exam === activePill;
     });
-    if (!res.imageOption) {
+    if (res && !res.imageOption) {
       res.imageOption = [{
         dWebImage: res.dwebImage || res.dWebImage,
         mWebImage: res.mwebImage || res.mWebImage,

@@ -13,6 +13,7 @@ import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCar
 import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import FAQ from '@/widgets/FAQ';
 import TestPassCard from '@/widgets/TestPassCard';
+import TestPassShortList from '@/widgets/TestSeriesList/TestPassShortList';
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -38,23 +39,13 @@ const getWidgets = (pageData: IPageData) => {
                               })} />,
         });
         break;
-        case 'TEST_PASS':
-          const testPassData = pageData?.widgetJson[widget];
+      case 'TEST_PASS':
+        const testPassData = pageData?.widgetJson[widget];
         widgets.push({
-          widget: <TestPassCard title={testPassData?.sectionTitle}
-          description={testPassData?.sectionSubTitle}
-          testPassCardData={testPassData?.sectionProps?.map((section: any) => {
-            return {
-            title: section.title,
-            planTitle: section.planTitle,
-            meta: section.meta,
-            postDiscountPrice: section.postDiscountPrice,
-            price: section.price,
-            slug: section.slug,
-            discount: section.discount            
-            };
-          }) || []}
-           />
+          widget: <TestPassShortList title={testPassData?.sectionTitle}
+                                     description={testPassData?.sectionSubTitle}
+                                     items={testPassData?.sectionProps || []}
+          />,
         });
         break;
       case 'TEST_SERIES':
@@ -116,6 +107,7 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
   const Widgets = useMemo(() => {
     return getWidgets(props.pageData!);
   }, [props.pageData]);
+  console.log(props);
   if (!props.pageData) {
     return router.replace('');
   }
@@ -126,7 +118,7 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
         label: 'Test Series',
         link: '/test-series',
       }],
-    }}/>
+    }} />
     <div className={'flex flex-col gap-8 md:gap-10'}>
       {
         Widgets.map((widget, index) => {

@@ -189,11 +189,13 @@ export default function HomePage({
         <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />
       </ComponentWrapper>
 
-      {pageData?.[WidgetEnum.RESULTS] && (
-        <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}
-                                  title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
-                                  description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />
+      <div className={'container'}>
+        {pageData?.[WidgetEnum.RESULTS] && (
+          <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}
+                          title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
+                          description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />
         )}
+      </div>
 
       <DownloadAppSection />
 
