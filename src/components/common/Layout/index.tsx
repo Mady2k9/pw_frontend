@@ -13,6 +13,7 @@ interface LayoutProps {
   seoSchema?: ISeoSchema[];
   className?: string;
   page_source: string;
+  noIndex?: boolean;
 }
 
 export function Layout({
@@ -23,11 +24,13 @@ export function Layout({
                          footerData,
                          seoSchema,
                          page_source,
+                         noIndex,
                        }: LayoutProps) {
   return (
     <main className={className || ''}>
       {seoTags && <SEO
         seoSchema={seoSchema}
+        robots={noIndex ? 'noindex, nofollow' : 'index, follow'}
         title={seoTags?.pageMetaTags?.metaTitle}
         description={seoTags?.pageMetaTags?.metaDescription}
         keyword={seoTags?.pageMetaTags?.metaKeywords?.join(',')}

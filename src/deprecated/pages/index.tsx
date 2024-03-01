@@ -160,63 +160,63 @@ export default function HomePage({
         />
       )}
 
-      {pageData?.[WidgetEnum?.HERO_SECTION] && (
-        <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />
-      )}
+      {/*{pageData?.[WidgetEnum?.HERO_SECTION] && (*/}
+      {/*  <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />*/}
+      {/*)}*/}
 
-      <HeroFeatureSection
-        heroFeatureData={pageData?.[WidgetEnum?.HERO_SECTION]}
-      />
+      {/*<HeroFeatureSection*/}
+      {/*  heroFeatureData={pageData?.[WidgetEnum?.HERO_SECTION]}*/}
+      {/*/>*/}
 
-      {
-        widgetData && <ExamCategorySection title={widgetData?.sectionTitle || ''}
-                                           ctaText={widgetData?.cta?.text}
-                                           ctaAltText={widgetData?.cta?.altText}
-                                           ctaColor={widgetData?.cta?.textColor}
-                                           description={widgetData?.sectionSubTitle}
-                                           categories={widgetData?.categories} />
-      }
+      {/*{*/}
+      {/*  widgetData && <ExamCategorySection title={widgetData?.sectionTitle || ''}*/}
+      {/*                                     ctaText={widgetData?.cta?.text}*/}
+      {/*                                     ctaAltText={widgetData?.cta?.altText}*/}
+      {/*                                     ctaColor={widgetData?.cta?.textColor}*/}
+      {/*                                     description={widgetData?.sectionSubTitle}*/}
+      {/*                                     categories={widgetData?.categories} />*/}
+      {/*}*/}
 
-      {pageData?.[WidgetEnum.VIDYAPEETH] && (
-        <ExplorePwCenter
-          explorePWCenterData={pageData?.[WidgetEnum.VIDYAPEETH]}
-        />
-      )}
-      <ComponentWrapper
-        title={pageData?.[WidgetEnum.STATS].sectionTitle}
-        subTitle={pageData?.[WidgetEnum.STATS].sectionSubTitle}
-      >
-        <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />
-      </ComponentWrapper>
+      {/*{pageData?.[WidgetEnum.VIDYAPEETH] && (*/}
+      {/*  <ExplorePwCenter*/}
+      {/*    explorePWCenterData={pageData?.[WidgetEnum.VIDYAPEETH]}*/}
+      {/*  />*/}
+      {/*)}*/}
+      {/*<ComponentWrapper*/}
+      {/*  title={pageData?.[WidgetEnum.STATS].sectionTitle}*/}
+      {/*  subTitle={pageData?.[WidgetEnum.STATS].sectionSubTitle}*/}
+      {/*>*/}
+      {/*  <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />*/}
+      {/*</ComponentWrapper>*/}
 
-      <div className={'container'}>
-        {pageData?.[WidgetEnum.RESULTS] && (
-          <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}
-                          title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
-                          description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />
-        )}
-      </div>
+      {/*<div className={'container'}>*/}
+      {/*  {pageData?.[WidgetEnum.RESULTS] && (*/}
+      {/*    <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}*/}
+      {/*                    title={pageData?.[WidgetEnum.RESULTS].sectionTitle}*/}
+      {/*                    description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />*/}
+      {/*  )}*/}
+      {/*</div>*/}
 
-      <DownloadAppSection />
+      {/*<DownloadAppSection />*/}
 
-      {pageData?.[WidgetEnum.TESTIMONIALS] && (
-        <TestinomialSections
-          testinomialData={pageData?.[WidgetEnum.TESTIMONIALS]}
-        />
-      )}
-      <ComponentWrapper
-        title={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionTitle}
-        subTitle={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionSubTitle}
-      >
-        <StudyResources resourceData={pageData?.[WidgetEnum.STUDY_RESOURCE]} />
-      </ComponentWrapper>
+      {/*{pageData?.[WidgetEnum.TESTIMONIALS] && (*/}
+      {/*  <TestinomialSections*/}
+      {/*    testinomialData={pageData?.[WidgetEnum.TESTIMONIALS]}*/}
+      {/*  />*/}
+      {/*)}*/}
+      {/*<ComponentWrapper*/}
+      {/*  title={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionTitle}*/}
+      {/*  subTitle={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionSubTitle}*/}
+      {/*>*/}
+      {/*  <StudyResources resourceData={pageData?.[WidgetEnum.STUDY_RESOURCE]} />*/}
+      {/*</ComponentWrapper>*/}
 
-      {pageData?.[WidgetEnum.YOUTUBE_STATS] && (
-        <YouTubeCardSection
-          youtubeData={pageData?.[WidgetEnum.YOUTUBE_STATS]}
-        />
-      )}
-      <PhoneIcon />
+      {/*{pageData?.[WidgetEnum.YOUTUBE_STATS] && (*/}
+      {/*  <YouTubeCardSection*/}
+      {/*    youtubeData={pageData?.[WidgetEnum.YOUTUBE_STATS]}*/}
+      {/*  />*/}
+      {/*)}*/}
+      {/*<PhoneIcon />*/}
       <Footer footerData={footerData} showFreeLearning />
     </>
   );

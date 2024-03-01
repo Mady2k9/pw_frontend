@@ -47,3 +47,41 @@ export interface IPlanInfo {
     price: number;
     discount: number;
 }
+export interface ITestSeriesImageId {
+    _id: string;
+    name: string;
+    baseUrl: string;
+    key: string;
+}
+
+export interface ITestSeriesMetaIcon {
+    _id: string;
+    name: string;
+    baseUrl: string;
+    key: string;
+}
+
+export interface ITestSeriesMeta {
+    type: string;
+    text: string;
+    icon?: ITestSeriesMetaIcon;
+}
+
+export interface ITestSeriesLabel {
+    name: string;
+}
+
+export interface ITestSeriesCategory {
+    categoryModeId: string | null;
+    modeType: 'Online' | 'Offline' | null | undefined;
+    categoryId: string;
+    title: string;
+    label: ITestSeriesLabel[];
+    imageId: ITestSeriesImageId;
+    discount: number;
+    price: number;
+    currency: string;
+    postDiscountPrice: number;
+    meta: ITestSeriesMeta[];
+    slug: string;
+}
