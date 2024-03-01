@@ -13,7 +13,7 @@ import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTrack
 
 interface NavbarProps {
   items?: ITopMenuItem[];
-  page_source: string 
+  page_source: string
 }
 
 const MenuItem = ({ item,  }: { item: ITopMenuItem}) => {
@@ -131,7 +131,7 @@ export function Navbar({ items, page_source }: NavbarProps) {
               </Sheet>
             </div>
             <Link href={'/'} className={'pr-3 h-full flex flex-col items-center justify-center'}>
-              <Image className={'w-[35px] md:w-[55px] h-full'} alt={'PW Logo'} src={PwLogoInverted.src} />
+              <Image className={'w-[35px] md:w-[55px]'} alt={'PW Logo'} src={PwLogoInverted.src} />
             </Link>
             <div className={' gap-1 h-full hidden md:flex'}>
               {

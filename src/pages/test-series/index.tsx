@@ -66,7 +66,7 @@ const getWidgets = (pageData: IPageData) => {
       case 'APP_DOWNLOAD':
         const downloadData = pageData?.widgetJson[widget];
         widgets.push({
-          widget: <div className={'container'}>
+          widget: <div className={'container py-10'}>
             <DownloadAppBanner config={downloadData} />
           </div>,
         });

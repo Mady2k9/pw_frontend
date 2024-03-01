@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import Freelearning from '../FreeLearningResources/freelearning';
-import Image from '../../Atoms/Image/Image';
 import { MenuItems } from './FooterTypeD';
 import { soicalMediaData } from '@/deprecated/shared/StaticData/SocialMedia';
 import PwLogo from '../../../../assets//Images/pw-logo.webp';
 import GooglePlayeStoreIcon from '../../../../assets/Images/google-play-badge.webp';
 import appleStoreIcon from '../../../../assets/Images/apple-store-badge.webp';
 import eventTracker from '../../EventTracker/eventTracker';
+import { Image } from '@/components/ui/image';
 
 export interface footerProps {
   showFreeLearning?: boolean;
@@ -41,7 +41,8 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
               <div className="flex items-center">
                 <a aria-label="pw-logo" href="https://pw.live/">
                   <Image
-                    bgImagetitle={`${PwLogo.src}`}
+                    src={`${PwLogo.src}`}
+                    alt={'pw-logo'}
                     className={
                       'h-12 w-12 mr-3 bg-center bg-no-repeat bg-contain'
                     }
@@ -72,8 +73,9 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                         onClick={() =>
                           googleStoreEvent('google_play', 'footer')
                         }
+                        alt={'Google Play Store'}
                         className={'h-[40px] w-full rounded-lg'}
-                        bgImagetitle={GooglePlayeStoreIcon.src}
+                        src={GooglePlayeStoreIcon.src}
                         // alt="Download App on Playstore"
                       />
                     </a>
@@ -85,9 +87,10 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       rel="noreferrer"
                     >
                       <Image
+                        alt={'App Store'}
                         onClick={() => appStoreEvent('app_store', 'footer')}
                         className={'h-[40px] w-full rounded-lg'}
-                        bgImagetitle={appleStoreIcon.src}
+                        src={appleStoreIcon.src}
                         // alt="Download App on Appstore"
                       />
                     </a>
@@ -103,7 +106,8 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                     {soicalMediaData.map((data) => (
                       <a aria-label={data.url} href={data.url} key={data.url}>
                         <Image
-                          bgImagetitle={data.image}
+                          src={data.image}
+                          alt={data.url}
                           className="h-6 w-6 bg-center bg-no-repeat bg-contain"
                         />
                       </a>
