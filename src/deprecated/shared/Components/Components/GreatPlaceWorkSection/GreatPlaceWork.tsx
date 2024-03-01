@@ -37,14 +37,14 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
               certification serves as proof. Want to check out the Exciting
               world of PW?
             </div>
-
+            <a href='https://www.pw.live/updates' >
             <Button
               title={'Know More'}
               className={
                 'px-[28px] py-[14px] md:w-[200px] w-[148px] md:h-[56px] h-[48px] rounded-md hover:bg-[#FFFFFF] transition-all duration-200 bg-[#FFFFFF] items-center text-[#3D3D3D] font-semibold md:leading-[28px] md:text-[18px] leading-[20px] text-[14px]'
               }
-              ctaRedirectionUrl={'https://www.pw.live/updates'}
             />
+            </a>
           </div>
 
           <div className="sm:py-4 py-6 order-first md:order-first lg:order-last">
@@ -86,14 +86,14 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
               certification serves as proof. Want to check out the Exciting
               world of PW?
             </div>
-
+            <a href='https://www.pw.live/updates'>
             <Button
               title={'Know More'}
               className={
                 'px-[28px] py-[14px] md:w-[200px] w-[148px] md:h-[56px] h-[48px] rounded-md hover:bg-[#FFFFFF] transition-all duration-200 bg-[#FFFFFF] items-center text-[#3D3D3D] font-semibold md:leading-[28px] md:text-[18px] leading-[20px] text-[14px]'
               }
-              ctaRedirectionUrl={'https://www.pw.live/updates'}
             />
+            </a>
           </div>
 
           <div className="sm:py-4 py-6 order-first md:order-first lg:order-last">

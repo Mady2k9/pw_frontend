@@ -1,6 +1,6 @@
 import Header from '@/deprecated/shared/Components/Molecules/Header/header';
-import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
-import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
+import {  FetchHeader } from '@/api/older-api-methods';
+import {  FetchFooter } from '@/api/older-api-methods';
 import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 import Mission from '@/deprecated/shared/Components/Components/Mission/Mission';

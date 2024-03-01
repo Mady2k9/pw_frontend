@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { memo } from 'react';
 import Image from '../../Atoms/Image/Image';
 import VisionBgImage from '../../../../assets/Images/vision-bg.svg';
