@@ -1,80 +1,87 @@
-import {cn} from "@/lib/utils";
-import style from './TestPassCard.module.css'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { TeachersCard } from "../BatchDescription/BatchDetailsKnowYourTeachers";
-import TestPass from "./TestPass";
+import { Button } from '@/components/ui/button';
+import { Image } from '@/components/ui/image';
+import { ITestPassData } from '@/api/interfaces/test-series';
 
-
-export interface testPassCardDataType{
-title:string;
-slug:string;
-price:number;
-postDiscountPrice: number;
-planTitle:string;
-meta:{
-  icon:string;
-  text:string;
-}[];
-discount:number;
+export interface IColorType {
+  bgColor: string;
+  borderColor: string;
+  icon: { level1: string; level2: string };
 }
 
-export interface cardColorType {
-  bgColor:string;
-  borderColor:string;
-  icon:{level1: string; level2: string}
-}
+const TestPassCard = ({ data, color }: {
+  data: ITestPassData,
+  color: IColorType
+}) => {
 
-const cardColor= [{
-  bgColor:'#F1F5FE',
-  borderColor:'#BCD8F1',
-  icon:{level1:'#81B6E4', level2:'#BCD8F1'}
-},
-{
-  bgColor:'#FFF6E5',
-  borderColor:'#F7E0B4',
-  icon:{level1:'#EDB84F', level2:'#F7E0B4'}
-},
-{
-  bgColor:'#DFF1E4',
-  borderColor:'#ADCFB7',
-  icon:{level1:'#64A478', level2:'#ADCFB7'}
-}]
+  console.log(data, color);
+  return <div
+    className={'flex flex-col w-[360px] rounded-tl-[12px] rounded-tr-[12px] border-[2px]'}
+    style={{ borderColor: color.borderColor }}>
+  {/*  <div*/}
+  {/*    className={'bg-white border-b-2 h-[92px]  border-dashed border-[#D9DCE1] p-[16px] pb-[24px] w-full rounded-tl-[12px] rounded-tr-[12px] flex flex-col'}>*/}
+  {/*    <div className="flex flex-row w-full justify-between">*/}
+  {/*      <div className="flex flex-row items-center gap-[16px] ">*/}
+  {/*        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">*/}
+  {/*          <g clipPath="url(#clip0_8401_37945)">*/}
+  {/*            <rect width="26" height="26" rx="5" fill={color.icon.level1} />*/}
+  {/*            <circle cx="21.3156" cy="5.72188" r="7.8" fill={color.icon.level2} />*/}
+  {/*            <rect y="15.6016" width="13.52" height="13.52" fill={color.icon.level2} />*/}
+  {/*          </g>*/}
+  {/*          <defs>*/}
+  {/*            <clipPath id="clip0_8401_37945">*/}
+  {/*              <rect width="26" height="26" rx="5" fill="white" />*/}
+  {/*            </clipPath>*/}
+  {/*          </defs>*/}
+  {/*        </svg>*/}
+  {/*        <div className="text-[16px] leading-[24px] font-[700]">{data.title}</div>*/}
+  {/*      </div>*/}
+  {/*      {data.planTitle && <div*/}
+  {/*        className="bg-gradient-to-r from-[#C58F27] to-[#EDB84F] text-white rounded-[4px] px-[10px] text-[12] leading-[18px] font-[600] flex items-center justify-center"> {data.planTitle} </div>*/}
+  {/*      }*/}
+  {/*    </div>*/}
+  {/*    <div className="px-[42px] flex flex-row items-center ">*/}
+  {/*      {data.price &&*/}
+  {/*        <div className="flextext-[16px] leading-[24px] font-[700] text-[#5A4BDA] gap-1 mr-[8px]">*/}
+  {/*<span>*/}
+  {/*₹*/}
+  {/*</span>*/}
+  {/*          <span>*/}
+  {/*{data.price}*/}
+  {/*</span>*/}
+  {/*        </div>}*/}
+  {/*      <div className=" line-through mr-[12px] text-[12px] leading-[18px] font-[500]">*/}
+  {/*        {data.postDiscountPrice}*/}
+  {/*      </div>*/}
+  {/*      {data.discount &&*/}
+  {/*        <div className="flex text-[12px] leading-[18px] font-[600] text-[#1B7938] gap-1 mr-[8px]">*/}
+  {/*<span>*/}
+  {/*{data.discount}%*/}
+  {/*</span>*/}
+  {/*          <span>*/}
+  {/*OFF*/}
+  {/*</span>*/}
+  {/*        </div>}*/}
+  {/*    </div>*/}
+  {/*  </div>*/}
+  {/*  <div className="w-full h-[260px] flex flex-col justify-between p-[16px]"*/}
+    {/*       style={{ backgroundColor: cardColor.bgColor }}>*/}
+    {/*    <div className="flex flex-col gap-[8px] overflow-y-scroll scrollbar-hide">*/}
+    {/*      {data.meta.map((item, index) => <div key={index} className="flex flex-ro items-center gap-2 ">*/}
+    {/*        <div className="h-[24px] w-[24px] bg-white border rounded-[50%] flex items-center justify-center">*/}
+    {/*          <Image src={item.icon} className=" h-[18px] w-[18px]" />*/}
+    {/*        </div>*/}
+    {/*        <div*/}
+    {/*          dangerouslySetInnerHTML={{*/}
+    {/*            __html: item.text,*/}
+    {/*          }} />*/}
 
-
-export default function TestPassCard({title, description, testPassCardData }:
-  {title:string, 
-   description: string, 
-   testPassCardData: testPassCardDataType[]
-  }){
-    return <div className={`w-full my-[24px] ${style.backgroundImage}`}>
-      <div className={'container select-none py-[40px]'}  >
-      <div className="relative w-[100%] border-b-2 border-[#81B6E4] h-[1px] ">
-     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-[10px] bg-[#F1F5FE]  ">
-     <span className="bg-[#DDEBF8] border-[1px] border-[#012D45] rounded-full text-[12px] leading-[10px] font-[600] px-[15px] text-[#012D45]"> Newly Launched </span>
-     </div>
-         </div>
-    {title && <h2 className={'text-[32px] leading-[48px] mt-[20px] font-bold text-center '}>{title}</h2>}
-    {description &&
-      <p className={'text-center text-[18px] leading-[28px] font-[500]  text-[#1B2124] mx-auto mt-[9px]'}>{description}</p>}
-
-            <Carousel
-            opts={{
-              align: 'center',
-            }}
-            className="w-full relative pt-[32px] "
-          >
-            <CarouselContent>
-              {testPassCardData?.map((data:testPassCardDataType, index: number) => (
-                <CarouselItem key={index} className="lg:basis-1/2 xl:basis-1/3 basis-1/1">
-                <TestPass testPassCardData ={data} cardColor={cardColor[index%3]} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div
-              className={' bg-gradient-to-r from-transparent to-white'} />
-            <CarouselPrevious  className={'top-[1/2 -translate-y-1/2 left-[-15px] bg-white hover:bg-white'} />
-            <CarouselNext  className={'top-[1/2 -translate-y-1/2 right-[-15px] bg-white hover:bg-white'} />
-          </Carousel> 
-    </div>
-    </div>
+    {/*      </div>)}*/}
+    {/*    </div>*/}
+    {/*    <Button className={'w-full min-h-[40px] mt-[16px]'} onClick={() => {*/}
+    {/*    }}*/}
+    {/*    >{'View All'}</Button>*/}
+    {/*  </div>*/}
+  </div>;
 };
+
+export default TestPassCard;
