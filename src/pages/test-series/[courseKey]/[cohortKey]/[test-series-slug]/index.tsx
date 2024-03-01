@@ -5,6 +5,8 @@ import {useState} from "react";
 import TestSeriesDetails from "@/widgets/TestSeriesDetails";
 import TestSeriesDetailsTestList from "@/widgets/TestSeriesDetails/TestSeriesDetailsTestList";
 import WhyChooseUs from "@/widgets/WhyChooseUs";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import getTestDescriptionServerSideProps from "@/lib/test-series-description-server-side";
 
 const items = [{
     title: 'Inclusion',
@@ -24,15 +26,15 @@ const items = [{
     key: 'What You Will Experience'
 }];
 
-export async function getServerSideProps({params}: { params: any }) {
-    return {
-        props:{}
-    }
-}
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    return getTestDescriptionServerSideProps(context);
+  }
 
-export default function TestSeriesDescription() {
+export default function TestSeriesDescription(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [activeTab, setActiveTab] = useState<string>(items[0].key);
     const PAGE_SOURCE= 'Details Page'
+    console.log(props ,'desProps' )
+
     return <div>
         <PageTitleBar
             inverted={true} title={'Lakshya JEE 2024 Test Series -12th JEE'}

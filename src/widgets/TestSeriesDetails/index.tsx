@@ -21,7 +21,7 @@ export default function TestSeriesDetails() {
             <div className="flex pb-2 md:pb-3 justify-between border-b items-center">
                 <h3 className={' md:text-xl font-bold'}>Online Mode</h3>
                 <TestSeriesModeModal trigger={<Button variant={'outline'} size={'sm'}>Change Mode <ChevronRightIcon
-                    className={'w-4 h-4 stroke-primary'}/></Button>}/>
+                    className={'w-4 h-4 stroke-primary'} /></Button>} modeDataModal={undefined} cohortForModal={""}/>
             </div>
             <h2 className={'text-xl md:text-3xl font-bold'}>This test series includes</h2>
             <div className={'flex flex-wrap gap-4'}>

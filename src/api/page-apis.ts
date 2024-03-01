@@ -22,6 +22,11 @@ export async function getTestListSnapshot(slug: string): Promise<{ data: IPageDa
     `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_CAT_LISTING&slug=${slug}`,
   ).then((res) => res.json());
 }
+export async function getTestDescriptionSnapshot(slug: string): Promise<{ data: IPageData }> {
+  return fetch(
+    `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_MODE_DESCRIPTION&slug=${slug}`,
+  ).then((res) => res.json());
+}
 
 export async function batchPageSnapshot(slug: string, type: 'BATCH_LISTING' | 'BATCH_DESCRIPTION' = 'BATCH_LISTING'): Promise<{
   data: IPageData

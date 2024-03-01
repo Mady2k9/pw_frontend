@@ -81,14 +81,13 @@ export default function CommonItemCard({
   };
   const [apiData, setApiData]= useState<any>(getModalData(cohortIdTestMode))
 
-  console.log(getModalData(cohortIdTestMode),'responses')
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
       [styles.commonItemCardWrapperOnline]: isOnline,
       [styles.commonItemCardWrapperOffline]: !isOnline,
     })}>
     <div className={cn(' bg-white w-full rounded-md p-3 space-y-2 relative')}>
-      <Image src={isOnline ? OnlineTag.src : OfflineTag.src}
+      <Image src={isOnline ? OnlineTag.src :isOnline== false? OfflineTag.src: ''}
              className={'absolute -left-2.5 -top-2.5 w-[100px] h-10'} />
       <div className={'flex items-start gap-2 !mt-2'}>
         <h4 className={'md:text-lg h-[56px] line-clamp-2 font-semibold flex-1'}>
@@ -157,13 +156,21 @@ export default function CommonItemCard({
         <PriceDisplay amount={amount} discount={discount} total={updatedAmount} />
       </div>
       <div className={'flex gap-2 !mt-3'}>
-        {
+        {/* {
           exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full'}>
             {apiData?.data?.length> 1 ? <TestSeriesModeModal modeDataModal={apiData} cohortForModal={cohortForModal? cohortForModal:''} trigger={<Button onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))} variant={'outline'} className={'w-full border-primary text-primary'} >EXPLORE</Button>} />
               : <Button variant={'outline'} className={'w-full  border-primary text-primary'}
                 onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
                 EXPLORE
               </Button>}
+          </Link>
+        } */}
+        {
+          exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full'}>
+               <Button variant={'outline'} className={'w-full  border-primary text-primary'}
+                onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
+                EXPLORE
+              </Button>
           </Link>
         }
         {

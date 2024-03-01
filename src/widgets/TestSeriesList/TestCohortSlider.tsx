@@ -25,9 +25,10 @@ export default function TestCohortSlider({ title, batches, cohort, showMoreLink,
         {
           batches.slice(0, 3).map((item, index) => {
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
-              <CommonItemCard exploreLink={!item.categoryModeId ? `/test-series/${courseKey}`:`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`}
+              {/* <CommonItemCard exploreLink={item.categoryModeId ? `/test-series/${courseKey}`:`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`} */}
+              <CommonItemCard exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item.slug}`}
                               buyNowLink={'/study/test-series?childUrl=/'}
-                              isOnline={!item.modeType}
+                              isOnline={item.modeType ? item.modeType : null}
                               amount={item?.price}
                               discount={item.discount}
                               updatedAmount={item?.postDiscountPrice}
