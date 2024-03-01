@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import ExplorByClassCard from './ExplorByClassCard/ExplorByClassCard';
-import classData from '../../../../jsonFiles/schoolsAllclassData.json';
 import Image from '../../Atoms/Image/Image';
 import RotateImage from '../../../../assets/Images/Schools/Vector-2.webp';
 import AnimationsStyle from './Animation.module.css';

@@ -1,12 +1,13 @@
 import React from 'react';
 import PublishingCard from '../PublishingCard/PublishingCard';
-import schoolCardData from '../../../../jsonFiles/schoolcardData.json';
+import {AccessStateData} from './schoolcardDatajson';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
 import Curve from '../../../../assets/Images/Schools/Curve.webp';
 import student from '../../../../assets/Images/Schools/student-raising-hand.webp';
 
 function PublishingPartners() {
-  const partnersData = schoolCardData?.schoolCardData || [];
+  console.log(AccessStateData.schoolCardData,'AccessStateData');
+  const partnersData = AccessStateData?.schoolCardData || [];
   return (
     <>
       <TransitionWrapper>

@@ -84,11 +84,6 @@ function Testonomial() {
               'w-full h-[166px] sm:h-[270px] cursor-pointer sm:w-[400px] xl:w-[480px] rounded bg-no-repeat bg-cover bg-center'
             }
           />
-          {/* <Image src={ScreenshotTestonomial.src}
-          alt='ScreenshotTestonomial'
-          className={
-            'w-full h-[166px] sm:h-[270px] cursor-pointer sm:w-[400px] xl:w-[480px] rounded bg-no-repeat bg-cover bg-center'
-          } /> */}
           <Image
           onClick={handleShowVideo} 
           src={playbuttonwebp.src}

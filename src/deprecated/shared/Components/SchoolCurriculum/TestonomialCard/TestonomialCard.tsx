@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Image } from '@/components/ui/image';
 import { CardData } from './TestonomialCardType';
-import testonomialVideo from '../../../../jsonFiles/testonomialVideo.json';
+import{AccessVideoData} from './testonomialVideojson';
 import dynamic from 'next/dynamic';
 import playbuttonwebp from '../../../../assets/Images/Schools/playbuttonwebp.webp';
-import schoolsTest from '../../../../assets/Images/Schools/schoolsTest.webp';
 import CommaIcon from '../../../../assets/Images/Schools/comma.webp';
 import TestonomialCardPop from '../TestonomialCardPop/TestonomialCardPop';
 
@@ -23,7 +22,7 @@ function TestonomialCard() {
 
   useEffect(() => {
     videoContainerRefs.current = Array.from(
-      { length: testonomialVideo.Videocards.length },
+      { length: AccessVideoData.Videocards.length },
       () => null
     );
   }, []);
@@ -55,7 +54,7 @@ function TestonomialCard() {
   };
   return (
     <>
-      {testonomialVideo.Videocards.map((cardData: CardData, index) => (
+      {AccessVideoData.Videocards.map((cardData: CardData, index) => (
         <div
           key={cardData?.name}
           className={`border border-black rounded-lg w-[360px] bg-[#FFF0E7] mb-3.5    relative `}

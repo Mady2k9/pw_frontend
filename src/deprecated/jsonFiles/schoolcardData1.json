@@ -1,0 +1,33 @@
+{
+  "schoolCardData": [
+    {
+      "sectionTitle": "Our Publishing Partners",
+      "sectionProps": [
+        {
+          "title": "Bloom",
+          "description": "Our Publishing Partner for classes Nursery till 2nd",
+          "mwebImage": "./Bloom.webp",
+          "dwebImage": "Bloom.webp",
+          "TopTitle": "For K-2 Grade",
+          "bgColor": "#AE60B5"
+        },
+        {
+          "title": "euNext",
+          "description": "Our Publishing Partner for classes Nursery till 8th",
+          "mwebImage": "./Next.webp",
+          "dwebImage": "/Next.webp",
+          "bgColor": "#E86309",
+          "TopTitle": "For K-8 Grade"
+        },
+        {
+          "title": "Spark",
+          "description": "Our Publishing Partner for classes Class 8th till 10th",
+          "mwebImage": "./spark.webp",
+          "dwebImage": "./spark.webp",
+          "bgColor": "#037CBF",
+          "TopTitle": "For Class 8-10"
+        }
+      ]
+    }
+  ]
+}
