@@ -22,7 +22,7 @@ function Verifications() {
   console.log(newData.batchSlug, 'newData1');
   const redirectToBatch = () => {
     if (newData) {
-      const url = `${process.env.NEXT_PUBLIC_APP_BASE_URL}study/batches/${newData.batchSlug}/subjects/${newData.subjectSlug}/subject-topics`;
+      const url = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/study/batches/${newData.batchSlug}/subjects/${newData.subjectSlug}/subject-topics`;
       window.open(url, '_parent');
     }
   };

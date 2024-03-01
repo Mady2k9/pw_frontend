@@ -3,7 +3,6 @@ import ExplorByClass from '@/deprecated/shared/Components/SchoolCurriculumListin
 import ExploreOurCatalogue from '@/deprecated/shared/Components/SchoolCurriculumListing/ExploreOurCatalogue/ExploreOurCatalogue';
 import SchoolCrDemo from '@/deprecated/shared/Components/SchoolCurriculumListing/SchoolCrDemo/SchoolCrDemo';
 import SchoolNavbar from '@/deprecated/shared/Components/SchoolCurriculumListing/SchoolNavbar/SchoolNavbar';
-// import classData from '../../../jsonFiles/schoolsAllclassData.json';
 import {AccessAllCardData} from '../../../shared/Components/SchoolCurriculumListing/ExplorByClass/schoolsAllclassDatajson'
 
 
