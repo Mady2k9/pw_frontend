@@ -1,0 +1,122 @@
+ .contentLeft {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+ }
+ .contentRight {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+ }
+ .contentLeftInActive {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+ }
+ .contentRightInActive {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+ }
+
+ .contentLeft:before {
+  z-index:0 ;
+  content: ' ';
+  display: block;
+  background: #fff0e7;
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  transform: skew(172deg);
+  border-radius: 8px 8px 0px 0px;
+  box-shadow: -2px 0px 0px 0px rgba(0, 0, 0, 0.08);
+}
+.contentRight:after {
+  z-index:0 ;
+  content: ' ';
+  display: block;
+  background: #fff0e7;
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -10px;
+  transform: skew(9deg);
+  border-radius: 8px 8px 0px 0px;
+  box-shadow: 2px 0px 0px 0px rgba(0, 0, 0, 0.08);
+} 
+
+.contentLeftInActive:before {
+  z-index:0 ;
+  content: ' ';
+  display: block;
+  background: #EAECEF;
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  transform: skew(172deg);
+  border-radius: 8px 8px 0px 0px;
+  box-shadow: -2px 0px 0px 0px rgba(0, 0, 0, 0.08);
+}
+.contentRightInActive:after {
+  z-index:0 ;
+  content: ' ';
+  display: block;
+  background: #EAECEF;
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -10px;
+  transform: skew(9deg);
+  border-radius: 8px 8px 0px 0px;
+  box-shadow: 2px 0px 0px 0px rgba(0, 0, 0, 0.08);
+} 
+
+
+.inactiveTab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: #eaecef; /*linear-gradient(105.85deg, #bb77ff -2.87%, #6e6eff 101.15%);*/
+}
+.inactiveTab:before {
+  content: ' ';
+  display: block;
+  background: #eaecef;
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  transform: skew(172deg);
+  border-radius: 8px 8px 0px 0px;
+  box-shadow: -2px 0px 0px 0px rgba(0, 0, 0, 0.08);
+}
+.inactiveTab:after {
+  content: ' ';
+  display: block;
+  background: #eaecef;
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -10px;
+  transform: skew(9deg);
+  border-radius: 8px 8px 0px 0px;
+  box-shadow: 2px 0px 0px 0px rgba(0, 0, 0, 0.08);
+}
