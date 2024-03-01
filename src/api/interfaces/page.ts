@@ -17,6 +17,7 @@ export interface IPageData {
     seoTags: ISeoTags;
     widgetJson: IWidgetJson;
     testCats : Record<string, any[]>
+    testModeId: ItestModeId;
 }
 
 export interface ISeoSchema {
@@ -78,6 +79,49 @@ export interface IBatches {
 }
 export interface ITest {
     [key: string]: ITestSeries[];
+}
+export interface ItestModeId {
+    title: string
+    description: string
+    categoryId:string
+    categoryModeId:string
+    currency:string
+    discount:number
+imageId:{_id: string, name: string, baseUrl: string, key: string}
+label:{
+name : string
+}[]
+label1:{
+    link: string
+    fileId: {_id: string , key: string , baseUrl: string , name:string}
+    imageId: {_id: string , key: string , baseUrl: string , name:string}
+    platform:[]
+    videoType:string
+    videoUrl: string
+}[]
+label2:{
+    imageId: {_id: string , key: string , baseUrl: string , name:string}
+    platform:[]
+    videoType:string
+    videoUrl: string
+}[]
+meta:{
+    icon:{
+        baseUrl:string
+        key:string
+    }
+    text:any
+}[]
+modeMetrics:{
+    text: string
+    value: number
+}[]
+
+postDiscountPrice: number
+price: number
+scheduleFileId: {_id: string, name: string, baseUrl: string, key: string}
+slug:string
+type: string
 }
 
 

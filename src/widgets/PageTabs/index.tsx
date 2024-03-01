@@ -20,7 +20,7 @@ export function PageTabs({ items, handleClick, className, activeItem }: PageTabs
       <div id={'page-tabs-wrapper'}
            className="container flex space-x-4 md:space-x-6 font-medium  scrollbar-hide overflow-y-auto">
         {
-          items.map((item, index) => {
+          items?.map((item, index) => {
             const active = activeItem === item.key;
             return <Link key={index} id={`${item.key}-tab`} onClick={(e) => {
               if (handleClick) {

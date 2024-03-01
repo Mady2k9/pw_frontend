@@ -1,12 +1,16 @@
-import {PageTitleBar} from "@/widgets/PageTitleBar";
+import { PageTitleBar } from "@/widgets/PageTitleBar";
 import CommonItemCard from "@/widgets/CommonItemCard";
-import {PageTabItemProps, PageTabs} from "@/widgets/PageTabs";
-import {useState} from "react";
+import { PageTabItemProps, PageTabs } from "@/widgets/PageTabs";
+import { useState } from "react";
 import TestSeriesDetails from "@/widgets/TestSeriesDetails";
 import TestSeriesDetailsTestList from "@/widgets/TestSeriesDetails/TestSeriesDetailsTestList";
 import WhyChooseUs from "@/widgets/WhyChooseUs";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import getTestDescriptionServerSideProps from "@/lib/test-series-description-server-side";
+import { slugToString, stringToSlug } from "@/lib/utils";
+import { useRouter } from "next/router";
+import { ItestModeId } from "@/api/interfaces/page";
+import { Layout } from "@/components/common/Layout";
 
 const items = [{
     title: 'Inclusion',
@@ -25,7 +29,30 @@ const items = [{
     link: '#What You Will Experience',
     key: 'What You Will Experience'
 }];
+const getBreadcrumbs = ({ cohortKey, courseKey, batchDetails }: {
+    courseKey: string,
+    cohortKey?: string,
+    batchDetails: ItestModeId
+}) => {
+    const items: { label: string, link: string }[] = [{
+        label: `${slugToString(courseKey).toUpperCase()} Test Series`,
+        link: `/test-series/${stringToSlug(courseKey)}`,
+    }];
+    if (cohortKey) {
+        items.push({
+            label: `${slugToString(cohortKey)} ${stringToSlug(courseKey).toUpperCase()} Test Series`,
+            link: `/test-series/${stringToSlug(courseKey)}/${stringToSlug(cohortKey)}`,
+        });
+        if (batchDetails) {
+            items.push({
+                label: `${batchDetails.title}`,
+                link: `/test-series/${stringToSlug(courseKey)}/${stringToSlug(cohortKey)}/${batchDetails.seoSlug}`,
+            });
+        }
+    }
 
+    return items;
+};
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     return getTestDescriptionServerSideProps(context);
   }
@@ -33,51 +60,45 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 export default function TestSeriesDescription(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [activeTab, setActiveTab] = useState<string>(items[0].key);
     const PAGE_SOURCE= 'Details Page'
-    console.log(props ,'desProps' )
+    const router = useRouter()
+    const { courseKey, cohortKey } = router.query;
 
-    return <div>
-        <PageTitleBar
-            inverted={true} title={'Lakshya JEE 2024 Test Series -12th JEE'}
-            floatingCard={<CommonItemCard exploreLink={'/'} buyNowLink={'/'}
-                                          thumbnail={''} title={'Lakshaya JEE Mains & Advanced 2023'} page_source={PAGE_SOURCE}/>}
-            breadcrumbs={{
-                items: [
-                    {
-                        label: "Test series",
-                        link: '/test-series'
-                    }, {
-                        label: "Neet",
-                        link: '/test-series/neet/'
-                    }, {
-                        label: "Test series Name",
-                        link: '/test-series/neet/class-12/lakshya-jee-2024-test-series-12th-jee'
-                    }
-                ],
-                inverted: true
-            }}
-            descriptionContent={`
-                                <ul class="list-disc">
-                                <li>
-                                <div class="text-[#757575] md:text-sm text-xs font-[500]">PW launched 26 new YT channels in 2022, which helped us increase the total number of students on YouTube from 8.7 million to 22 million.</div>
-                                </li>
-                                <li>
-                                <div class="text-[#757575] md:text-sm text-xs font-[500]">We have produced industry-best results, with 15000+ PWians qualifying in JEE, NEET, and NDA exams. 1 out of 5 students selected for JEE and 1 out of 6 chosen for both the NEET and NDA exams were PWians.</div>
-                                </li>
-                                <li>
-                                <div class="text-[#757575] md:text-sm text-xs font-[500]">Our flagship programs, JEE and NEET, have continued to grow 2x. At the same time, Foundation and Defense Wallah have seen a surge of 3x in student enrollment.</div>
-                                </li>
-                                <li>
-                                <div class="text-[#757575] md:text-sm text-xs font-[500]">PW is delivering magnificent results. Last year, one in every five students was chosen for the JEE exam, and one in every six was chosen for the NEET exam.</div>
-                                </li>
-                                </ul>`
-            }
-            description={'Unlock your full potential to maximise your IIT JEE success with our intensive test series.'}/>
-        <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={items}
-                  handleClick={(e, item) => setActiveTab(item)}/>
-        <div className={'md:pr-[400px] container py-4 md:py-6 flex flex-col space-y-4 md:space-y-6'}>
-            <TestSeriesDetails/>
-            <TestSeriesDetailsTestList/>
-            <WhyChooseUs/>
+    console.log(props.pageData, 'desProps' )
+
+    return <Layout seoSchema={props?.pageData?.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
+        seoTags={props?.pageData?.seoTags}
+        headerData={props.headerData} page_source={PAGE_SOURCE}>
+        <div>
+            <PageTitleBar
+                inverted={true} title={props?.pageData?.title ? props?.pageData?.title : props?.pageData?.testModeId?.title}
+                floatingCard={<CommonItemCard exploreLink={'/'} buyNowLink={'/'}
+                    thumbnail={props.pageData?.testModeId.imageId ? props?.pageData?.testModeId?.imageId?.baseUrl + props?.pageData?.testModeId?.imageId?.key : ''} title={props?.pageData?.testModeId?.title ? props?.pageData?.testModeId?.title : "Testing"} page_source={PAGE_SOURCE}
+                    discount={props?.pageData?.testModeId.discount} amount={props?.pageData?.testModeId.price} updatedAmount={props?.pageData?.testModeId.postDiscountPrice}
+                    meta={props?.pageData?.testModeId?.meta} whatsappLink={``}
+                />}
+                breadcrumbs={{
+                    items: getBreadcrumbs({
+                        courseKey: courseKey as string,
+                        cohortKey: cohortKey as string,
+                        batchDetails: props.pageData?.title,
+                    }),
+                    inverted: true
+                }}
+                descriptionContent={props.pageData?.testModeId.meta}
+                // descriptionContent={props.pageData?.testModeId.meta.map((data)=>{
+                //    return data.text
+                // })}
+                description={props.pageData?.testModeId?.description.replace( /(<([^>]+)>)/ig, '')} />
+            {/* <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={props?.pageData?.tabs} */}
+            <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={items}
+                handleClick={(e, item) => setActiveTab(item)} />
+            <div className={'md:pr-[400px] container py-4 md:py-6 flex flex-col space-y-4 md:space-y-6'}>
+                <TestSeriesDetails metaValueData={props?.pageData?.testModeId}
+                metaData={props?.pageData?.testModeId}
+                    scheduleButtonLink={props.pageData?.testModeId} />
+                <TestSeriesDetailsTestList />
+                <WhyChooseUs whyChooseData={props?.pageData?.testModeId?.label1} />
+            </div>
         </div>
-    </div>
+    </Layout>
 }
