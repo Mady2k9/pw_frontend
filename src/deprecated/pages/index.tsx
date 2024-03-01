@@ -1,7 +1,6 @@
 import { verifyToken } from '@/deprecated/common/Hooks/UseAuth';
 import { useRouter } from 'next/router';
 import HeroSection from '@/deprecated/shared/Components/Components/HeroSection/HeroSection';
-import Carousel from '@/deprecated/shared/Components/Molecules/Caraousel/Caraousel';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 import SEO from '@/deprecated/shared/Components/SEO/seo';
 // import ExamCategorySection from '@/deprecated/shared/Components/Components/ExamCategorySection/ExamCategorySection';
@@ -27,6 +26,9 @@ import { IWidgetJson } from '@/api/interfaces/page';
 import ExamCategorySection from '@/widgets/ExamCategorySection';
 import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
 import ResultsSection from '@/widgets/ResultsSection';
+import { Carousel } from '@/components/ui/carousel';
+import { MainBanner } from '@/widgets/MainBanner';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 
 export default function HomePage({
                                    HomePageData,
@@ -149,16 +151,21 @@ export default function HomePage({
         twitterImageWidth="292"
       />
       <Header headerData={headerData} showLogin />
-      {pageData?.[WidgetEnum?.CAROUSEL] && (
-        <Carousel
-          carouselData={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps}
-          containerClass="mx-auto"
-          mwebImageClassName={'bg-cover w-full h-full'}
-          dwebImageClassName={'bg-cover w-full h-full'}
-          setIntervalTime={5000}
-          showSecondaryArrow
-        />
-      )}
+      {
+        pageData?.[WidgetEnum?.CAROUSEL] && (
+          <MainBanner stretched={true}
+                      leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}
+                      rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}
+                      autoplayInterval={5000}
+                      items={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps.map((banner: any) => {
+                        return {
+                          image: banner.dwebImage,
+                          mWebImage: banner.mwebImage,
+                          alt: banner.altTag,
+                          link: banner.redirectionUrl,
+                        };
+                      })} />
+        )}
 
       {/*{pageData?.[WidgetEnum?.HERO_SECTION] && (*/}
       {/*  <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />*/}

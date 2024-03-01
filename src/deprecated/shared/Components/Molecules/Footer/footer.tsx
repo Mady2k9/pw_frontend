@@ -54,7 +54,7 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                 </div>
               </div>
 
-              <div className="pt-3 font-[500] text-[#3D3D3D] text-xs xl:text-[14px] xl:leading-[20px] sm:text-[12px] sm:leading-[18px]  text-left">
+              <div className="pt-3 font-[500] text-[#3D3D3D] text-sm  text-left">
                 {
                   'We understand that every student has different needs and capabilities, which is why we create such a wonderful and unique curriculum that is the best fit for every student.'
                 }

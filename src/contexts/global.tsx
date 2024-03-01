@@ -1,13 +1,17 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+
 interface IGlobalContextType {
   isSidebarOpen: boolean;
+  userInteracted: boolean;
   toggleSidebar: (state: boolean) => void;
 }
 
 
 const GlobalContext = createContext<IGlobalContextType>({
   isSidebarOpen: false,
-  toggleSidebar: async () => {},
+  userInteracted: false,
+  toggleSidebar: async () => {
+  },
 });
 
 interface GlobalProviderProps {
@@ -16,11 +20,30 @@ interface GlobalProviderProps {
 
 export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   const [isSidebarOpen, toggleSidebar] = useState(false);
+  const [userInteracted, setUserInteracted] = useState(false);
+  const triggerUserInteracted = () => {
+    setUserInteracted(true);
+  };
+  useEffect(() => {
+    ['click', 'mousemove', 'mouseover', 'mousemove', 'touchmove', 'focus'].forEach((eventName) => {
+      window.addEventListener(eventName, triggerUserInteracted);
+      setTimeout(() => {
+        setUserInteracted(true);
+      }, 10000);
+      if (userInteracted) {
+        window.removeEventListener(eventName, triggerUserInteracted);
+      }
+      return () => {
+        window.removeEventListener(eventName, triggerUserInteracted);
+      };
+    });
+  }, [userInteracted]);
   return (
     <GlobalContext.Provider
       value={{
         isSidebarOpen,
-        toggleSidebar
+        userInteracted,
+        toggleSidebar,
       }}>
       {children}
     </GlobalContext.Provider>
