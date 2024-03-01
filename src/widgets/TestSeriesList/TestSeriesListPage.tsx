@@ -88,7 +88,6 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
     return props.options?.find((option: ICohortOptions) => (stringToSlug(option.option) === activeTab));
   }, [activeTab, props.options]);
   const sectionContents: 'ALL' | 'COHORT' | 'LOADING' = (!router.query.cohortKey || (router.query.cohortKey && activeTab === 'all')) ? 'ALL' : (props.options && cohortKey && activeCohort ? 'COHORT' : 'LOADING');
-  console.log(props, 'props')
   return <>
     <PageTitleBar
       breadcrumbs={{
@@ -110,10 +109,10 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
         </span>
       </div>} />
     {
-    props.options && <PageTabs activeItem={activeTab} items={items} handleClick={(e, item) => {
-      setActiveTab(item);
-    }} />
-  }
+      props.options && <PageTabs activeItem={activeTab} items={items} handleClick={(e, item) => {
+        setActiveTab(item);
+      }} />
+    }
     {
       sectionContents === 'ALL' &&
       <div className={'mt-4 md:mt-6 space-y-8'}>
@@ -123,10 +122,10 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
               return <></>;
             }
             return <TestCohortSlider key={index}
-            cohort={cohortOption}
-            title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
-            batches={props.testCats[cohortOption.cohortId] || []}
-            showMoreLink={`/test-series/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />
+                                     cohort={cohortOption}
+                                     title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
+                                     testSeries={props.testCats[cohortOption.cohortId] || []}
+                                     showMoreLink={`/test-series/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />;
           })
         }
       </div>
