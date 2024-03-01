@@ -58,9 +58,11 @@ export default function TestPassShortList({
       >
         <CarouselContent>
           {items?.map((data, index: number) => (
-            <CarouselItem key={index} className="lg:basis-1/2 xl:basis-1/3 basis-1/1">
+            <><CarouselItem key={index} className="lg:basis-1/2 xl:basis-1/3 basis-1/1">
               <TestPassCard data={data} color={CardColors[index % 3]} />
-            </CarouselItem>
+            </CarouselItem><CarouselItem key={index} className="lg:basis-1/2 xl:basis-1/3 basis-1/1">
+                <TestPassCard data={data} color={CardColors[index % 3]} />
+              </CarouselItem></>
           ))}
         </CarouselContent>
         <div
