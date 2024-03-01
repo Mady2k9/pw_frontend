@@ -20,13 +20,13 @@ export default function TestPassShortList({ title, items, showMoreLink, page_sou
     </div>
     <div className={'overflow-x-auto container scrollbar-hide w-full'}>
       <div className={'flex flex-nowrap gap-4 py-4'}>
-        {
+        {/* {
           items?.slice(0, 3).map((item, index) => {
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
               <TestPassCard data={item} />
             </div>;
           })
-        }
+        } */}
       </div>
     </div>
     <div className={'container'}>
