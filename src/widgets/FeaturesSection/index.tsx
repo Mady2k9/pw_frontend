@@ -30,7 +30,7 @@ export default function FeaturesSection({ title, description, features }: ExamCa
               <div key={index}
                    style={{ background: color }}
                    className={`flex flex-col items-center text-center space-y-2 bg-indigo-50 rounded px-4 py-6 md:py-8`}>
-                <div className={'w-14 h-14 rounded-md mb-2 md:mb-4'}>
+                <div className={'w-14 h-14 min-w-14 min-h-14 rounded-md mb-2 md:mb-4'}>
                   <Image src={feature.icon || ''} alt={feature.title} />
                 </div>
                 <h3 className={'text-lg md:text-xl font-semibold'}>{feature.title}</h3>
