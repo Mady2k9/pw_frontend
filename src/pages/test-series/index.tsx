@@ -107,11 +107,10 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
   const Widgets = useMemo(() => {
     return getWidgets(props.pageData!);
   }, [props.pageData]);
-  console.log(props);
   if (!props.pageData) {
     return router.replace('');
   }
-  return <Layout footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
+  return <Layout noIndex={true} footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
                  page_source={'TEST_SERIES'}>
     <PageTitleBar breadcrumbs={{
       items: [{
@@ -127,7 +126,7 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
       }
     </div>
 
-    <div className={'flex flex-col gap-4 md:gap-6'}>
+    <div className={'flex flex-col gap-4 md:gap-6 mt-6'}>
       <ResultsSection results={[]} title={'Academic Excellence : Results'}
                       description={'Giving wings to a millions dreams, a million more to go'} />
       <div
