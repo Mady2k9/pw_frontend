@@ -1,4 +1,3 @@
-import item from '../../jsonFiles/faq.json';
 import AboutRealTest from '@/deprecated/shared/Components/PwRealTest/AboutRealTest/AboutRealTest';
 import FAQ from '@/deprecated/shared/Components/PwRealTest/FAQ/FAQ';
 import HeroSection from '@/deprecated/shared/Components/PwRealTest/HeroSection/HeroSection';
