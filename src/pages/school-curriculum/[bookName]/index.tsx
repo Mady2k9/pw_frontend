@@ -1,4 +1,4 @@
-import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
+import {  FetchFooter } from '@/api/older-api-methods';
 import React from 'react';
 import SchoolCurriculumBookPage from '@/deprecated/pages/school-curriculum/[bookName]';
 
