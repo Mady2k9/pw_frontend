@@ -93,9 +93,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={items}
                 handleClick={(e, item) => setActiveTab(item)} />
             <div className={'md:pr-[400px] container py-4 md:py-6 flex flex-col space-y-4 md:space-y-6'}>
-                <TestSeriesDetails metaValueData={props?.pageData?.testModeId}
-                metaData={props?.pageData?.testModeId}
-                    scheduleButtonLink={props.pageData?.testModeId} />
+                <TestSeriesDetails metaData={props?.pageData?.testModeId} />
                 <TestSeriesDetailsTestList />
                 <WhyChooseUs whyChooseData={props?.pageData?.testModeId?.label1} />
             </div>
