@@ -30,6 +30,7 @@ export function MainBanner({ items, autoplayInterval = 10000, stretched, leftIco
       }, 1000);
     }
   }, [autoplayInterval, userInteracted]);
+  console.log(items);
   if (!items.length) {
     return <></>;
   }

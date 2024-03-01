@@ -20,6 +20,7 @@ export async function getServerSideProps() {
   } catch (error) {
     // console.log(error);
   }
+  console.log('HomePageData', HomePageData);
   if (!headerData?.data || !footerData?.data) {
     return {
       redirect: {

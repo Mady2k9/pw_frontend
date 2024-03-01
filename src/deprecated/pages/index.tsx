@@ -117,7 +117,6 @@ export default function HomePage({
       categories: categories,
     };
   }, [pageData]);
-  console.log(pageData?.[WidgetEnum?.CAROUSEL]);
   return (
     <>
       <SEO
