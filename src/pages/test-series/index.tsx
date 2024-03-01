@@ -107,11 +107,10 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
   const Widgets = useMemo(() => {
     return getWidgets(props.pageData!);
   }, [props.pageData]);
-  console.log(props);
   if (!props.pageData) {
     return router.replace('');
   }
-  return <Layout footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
+  return <Layout noIndex={true} footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
                  page_source={'TEST_SERIES'}>
     <PageTitleBar breadcrumbs={{
       items: [{
