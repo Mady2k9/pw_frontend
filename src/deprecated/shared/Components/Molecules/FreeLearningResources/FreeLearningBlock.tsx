@@ -28,7 +28,7 @@ const FreeLearningBlock = ({ data }: { data: menuItemsDatas }) => {
       </div>
       <div className="flex flex-row flex-wrap">
         {bundle?.map((item, index) => (
-          <div key={index} className="w-[200px]  mr-[85px] sm:my-[20px]">
+          <div key={index} className="w-[200px]  mr-[85px] sm:mb-[20px]">
             {item?.map((i, index) => (
               <a key={index} href={i?.redirectionUrl} aria-label={i?.menuTitle}>
                 <div

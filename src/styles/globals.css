@@ -48,10 +48,13 @@
         @apply border-border;
     }
 
+    
     body {
         font-family: 'Gilroy', 'sans-serif';
         @apply bg-background text-foreground;
+        
     }
+    
 
     @font-face {
         font-display: swap;
@@ -208,3 +211,11 @@
 .animationFromLeft{
     @apply animate-in slide-in-from-left-6 fade-in duration-700;
 }
+
+.slideBarRemove::-webkit-scrollbar {
+    display: none;
+  }
+  .slideBarRemove {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }

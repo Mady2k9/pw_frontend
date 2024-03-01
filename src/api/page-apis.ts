@@ -8,8 +8,7 @@ const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getTestPageSnapshot(slug: string): Promise<{ data: IPageData }> {
   return fetch(
-    `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_HOMEPAGE&slug=${slug}`,
-  ).then((res) => res.json());
+   `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_HOMEPAGE&slug=/test-series` ).then((res) => res.json());
 }
 
 export async function getTestListSnapshot(slug: string): Promise<{ data: IPageData }> {
@@ -21,6 +20,7 @@ export async function getTestListSnapshot(slug: string): Promise<{ data: IPageDa
 export async function batchPageSnapshot(slug: string, type: 'BATCH_LISTING' | 'BATCH_DESCRIPTION' = 'BATCH_LISTING'): Promise<{
   data: IPageData
 }> {
+  console.log(`${baseUrl}/gcms/batch-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=${type}&slug=${slug}`);
   return fetch(
     `${baseUrl}/gcms/batch-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=${type}&slug=${slug}`,
   ).then((res) => res.json());

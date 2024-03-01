@@ -1,4 +1,6 @@
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
+import batchEventTracker from "@/lib/BatchEventTracker/BatchEventTracker";
+
 
 interface FAQProps {
     items: {
@@ -7,10 +9,16 @@ interface FAQProps {
         title: string;
         description: string;
     }[]
+    pageSource?: string;
+
 }
 
-export default function FAQ({items}: FAQProps) {
-    return <div className={'py-4  md:py-8'}>
+export default function FAQ({items,pageSource}: FAQProps) {
+    const handleGaEvent= ()=>{
+       if(pageSource)
+       batchEventTracker.faqClick(pageSource)
+    }
+    return <div className={''} onClick={handleGaEvent}>
         <h2 className={'text-xl md:text-4xl font-bold '}>Frequently Asked Questions </h2>
         <div className={'mt-4 md:mt-6'}>
             <Accordion type="single" collapsible>

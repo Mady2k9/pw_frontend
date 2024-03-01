@@ -1,4 +1,5 @@
 import {IBatch} from "@/api/interfaces/batch";
+import { ITestSeries } from "./test-series";
 
 export interface IPageData {
     description: string;
@@ -15,10 +16,11 @@ export interface IPageData {
     options: ICohortOptions[];
     seoTags: ISeoTags;
     widgetJson: IWidgetJson;
+    testCats : Record<string, any[]>
 }
 
 export interface ISeoSchema {
-    content: IContent | IContent[];
+    content: IContent | IContent[] | any;
     type: string;
     status: boolean;
 }
@@ -37,7 +39,7 @@ export interface IContent {
 export interface IItemListElement {
     "@type": string;
     position: number;
-    item?: IItem;
+    item?: IItem | string;
     name?: string;
 }
 
@@ -74,6 +76,9 @@ export interface IFaq {
 export interface IBatches {
     [key: string]: IBatch[];
 }
+export interface ITest {
+    [key: string]: ITestSeries[];
+}
 
 
 export interface ICohortOptions {
@@ -109,6 +114,7 @@ export interface IWidget {
     sectionTitle: string;
     sectionSubTitle: string;
     sectionProps: any; // This could be further detailed based on the structure of `sectionProps`
+    data: any; // This could be further detailed based on the structure of `sectionProps`
 }
 
 export interface ITopMenuItem {

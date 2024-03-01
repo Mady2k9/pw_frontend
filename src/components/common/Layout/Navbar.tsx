@@ -9,12 +9,14 @@ import { cn } from '@/lib/utils';
 import { useGlobal } from '@/contexts/global';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Sidebar from '@/components/common/Layout/Sidebar';
+import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 
 interface NavbarProps {
   items?: ITopMenuItem[];
+  page_source: string
 }
 
-const MenuItem = ({ item }: { item: ITopMenuItem }) => {
+const MenuItem = ({ item,  }: { item: ITopMenuItem}) => {
   const link = item.menuRedirectionUrl || '';
   const isExternal = link?.includes('https');
   const hasSubmenu = item?.menuItems?.length > 0;
@@ -34,22 +36,29 @@ const MenuItem = ({ item }: { item: ITopMenuItem }) => {
           })}>
           <div className={'w-[360px] bg-white h-full'}>
             {
-              item.menuItems?.map((subItem, index) => (
-                <div key={index}
-                     onMouseEnter={() => setHoveredChild(subItem)}
-                     className={'flex group hover:bg-zinc-100 gap-2 transitionAll200 items-center justify-between px-4 py-3'}>
-                  <Link href={subItem.menuRedirectionUrl || '#'}
-                        target={subItem.menuRedirectionUrl?.includes('https') ? '_blank' : '_self'}
-                        className={'items-center gap-2'}>
-                    <span className={'font-medium'}>{subItem.menuTitle}</span>
-                    <div
-                      className={'text-xs text-zinc-500 font-medium line-clamp-2'}>{subItem.menuItems?.map((m) => m.menuTitle).join(', ')}</div>
-                  </Link>
-                  <div className={'min-w-5 group-hover:translate-x-1/2 transitionAll200'}>
-                    <ChevronRightIcon className={'w-5 h-5'} />
+              item.menuItems?.map((subItem, index) => {
+                const active = hoveredChild?.menuTitle === subItem.menuTitle;
+                return (
+                  <div key={index}
+                       onMouseEnter={() => setHoveredChild(subItem)}
+                       className={cn('flex group hover:bg-zinc-100 gap-2 transitionAll200 items-center justify-between px-4 py-3', {
+                         'bg-zinc-100': active,
+                       })}>
+                    <Link href={subItem.menuRedirectionUrl || '#'}
+                          target={subItem.menuRedirectionUrl?.includes('https') ? '_blank' : '_self'}
+                          className={'items-center gap-2'}>
+                      <span className={'font-medium'}>{subItem.menuTitle}</span>
+                      <div
+                        className={'text-xs text-zinc-500 font-medium line-clamp-2'}>{subItem.menuItems?.map((m) => m.menuTitle).join(', ')}</div>
+                    </Link>
+                    <div className={cn('min-w-5 group-hover:translate-x-1/2 transitionAll200', {
+                      'translate-x-1/2': active,
+                    })}>
+                      <ChevronRightIcon className={'w-5 h-5'} />
+                    </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             }
           </div>
           <div className={'flex-1 bg-zinc-100 h-full p-4 relative'}>
@@ -94,11 +103,15 @@ const MenuItem = ({ item }: { item: ITopMenuItem }) => {
   </Link>;
 };
 
-export function Navbar({ items }: NavbarProps) {
+export function Navbar({ items, page_source }: NavbarProps) {
   const { isSidebarOpen, toggleSidebar } = useGlobal();
   const handleLogin = () => {
+    eventTracker.authPageVisit('Login/Register', page_source);
     window.open('/study/auth/', '_self');
   };
+  if(!items){
+    return <></>
+  }
   return (
     <>
       <div

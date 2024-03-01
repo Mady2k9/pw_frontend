@@ -15,9 +15,10 @@ export interface BatchGridListProps {
   batches: IBatch[],
   cohort: ICohortOptions,
   filteredBatches?: IBatch[]
+  page_source?:string;
 }
 
-export default function BatchGridList({ batches: _batches, cohort, filteredBatches }: BatchGridListProps) {
+export default function BatchGridList({ batches: _batches, cohort, filteredBatches, page_source }: BatchGridListProps) {
   const [batches, setBatches] = useState(filteredBatches || _batches || []);
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(true);
@@ -65,7 +66,7 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
     <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
       {
         batches.map((item, index) => {
-          return <CommonItemCard exploreLink={`/batches/${courseKey}/${stringToSlug(cohort.option)}/${item.seoSlug}`}
+          return  <CommonItemCard exploreLink={item.seoSlug}
                                  buyNowLink={`/study/batches/${item.slug}/batch-overview`}
                                  isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
                                  key={index}
@@ -79,9 +80,13 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
                                  language={item.language}
                                  isNew={item.markedAsNew}
                                  whatsappLink={item.seoSlug}
-                                 thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name} />;
+                                 thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name} 
+                                 page_source={page_source}
+                                 batchId={item._id}/>
+                                
         })
       }
+      
     </div>
     {
       batches.length === 0 && !loading && <BatchNoDataGrid onReset={() => {

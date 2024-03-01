@@ -70,6 +70,7 @@ function getWidgets(props: IPageData) {
 }
 
 export default function BatchListPage(props: IPageData & { params: any, filteredBatches?: IBatch[] }) {
+  const PAGE_SOURCE = 'Listing page';
   const router = useRouter();
   const { courseKey, cohortKey } = router.query;
   const items = cohortToCohortTabs({
@@ -133,7 +134,8 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
                                       cohort={cohortOption}
                                       title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
                                       batches={props.batches[cohortOption.cohortId] || []}
-                                      showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />;
+                                      showMoreLink={`/batches/${courseKey}/${stringToSlug(cohortOption.option as string)}`}
+                                      page_source={PAGE_SOURCE} />;
           })
         }
       </div>
@@ -143,7 +145,8 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
         <BatchGridList cohort={activeCohort!}
                        filteredBatches={props.filteredBatches?.length ? props.filteredBatches : undefined}
-                       batches={props.batches[activeCohort!.cohortId] || []} />
+                       batches={props.batches[activeCohort!.cohortId] || []}
+                       page_source={PAGE_SOURCE} />
       </div>
     }
     {
@@ -151,28 +154,27 @@ export default function BatchListPage(props: IPageData & { params: any, filtered
         <BatchLoadingGrid />
       </div>
     }
-    <div className={'mt-4 md:mt-8 container'}>
+    <div className={'my-4 md:my-8 container'}>
       {
-        Widgets.map((WidgetView: any, index) => {
-          return <div key={index}>
-            {
-              WidgetView
-            }
-          </div>;
-        })
+        Widgets.find((WidgetView: any) => WidgetView.type.name =='ResultsSection') || <></>
       }
     </div>
 
     {
-      props?.content && <div className={'container'} >
+      props?.content && <div className={'container mt-4 md:mt-6'}>
         <HtmlContentWidget content={props?.content} />
       </div>
     }
     {
-      props.faqs?.length > 0 && <div className={'container'}>
-        <FAQ items={props.faqs} />
+      props.faqs?.length > 0 && <div className={'container  mt-4 md:mt-6'}>
+        <FAQ items={props.faqs} pageSource={PAGE_SOURCE} />
       </div>
     }
+    <div className={'my-4 md:my-8 container'}>
+      {
+        Widgets.find((WidgetView: any) => WidgetView.type.name =='DownloadAppBanner') || <></>
+      }
+    </div>
 
   </div>;
 }

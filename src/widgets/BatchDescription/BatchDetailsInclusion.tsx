@@ -8,12 +8,27 @@ import {
   DialogContent,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
+import { useRouter } from 'next/router';
 
-export default function BatchDetailsInclusion({ description, orientationVideo }: {
+export default function BatchDetailsInclusion({ description, orientationVideo, batch_name, batch_price, batch_id, isOnline }: {
   description: string,
-  orientationVideo?: IOrientationVideo
+  orientationVideo?: IOrientationVideo,
+  batch_name:string,
+  batch_price:{
+  amount: number,
+  discount: number,
+  tax: number,
+  total: number
+  },
+  batch_id: string;
+  isOnline: boolean;
 }) {
-
+  const router= useRouter();
+const getClassAndExam = router.asPath.split('/')
+const handleOrientationVideoGAEvent = () =>{
+  batchEventTracker.PwOrientationVideoClick(batch_name,(isOnline?'Online': 'Offline'), batch_price.amount, batch_price.total, batch_id,(getClassAndExam[2]? getClassAndExam[2] :""), (getClassAndExam[3]?getClassAndExam[3].split('?')[0] : ''))
+}
   console.log(orientationVideo?.introSection);
   const orientationThumbnail = orientationVideo?.introSection?.introVideoImageUrl;
   return <BatchDescriptionCardWrapper title={'This batch includes'}>
@@ -42,6 +57,7 @@ export default function BatchDetailsInclusion({ description, orientationVideo }:
                 <DialogTrigger asChild>
                   <div
                     className="absolute md:bottom-[-10px] md:right-[-10px] right-0  h-[48px] w-[48px] cursor-pointer"
+                    onClick={handleOrientationVideoGAEvent}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
