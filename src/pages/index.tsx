@@ -2,8 +2,9 @@ import HomePage from '@/deprecated/pages';
 import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
 import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
 import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
+import { GetStaticProps } from 'next';
 
-export async function getServerSideProps() {
+export const getStaticProps = (async (context) => {
   let HomePageData;
   let headerData;
   let footerData;
@@ -37,10 +38,16 @@ export async function getServerSideProps() {
       footerData: footerData || {},
     },
   };
-}
+}) satisfies GetStaticProps<{
+  HomePageData: any,
+  headerData: any,
+  footerData: any,
+}>;
+
 function Home(props: any) {
   return (
-    <HomePage {...props}/>
+    <HomePage {...props} />
   );
 }
+
 export default Home;
