@@ -7,9 +7,19 @@ interface ExamCategorySectionProps {
   title?: string;
   description?: string;
   categories?: ExamCategoryProps[];
+  ctaText?: string;
+  ctaAltText?: string;
+  ctaColor?: string;
 }
 
-export default function ExamCategorySection({ title, description, categories }: ExamCategorySectionProps) {
+export default function ExamCategorySection({
+                                              title,
+                                              ctaText,
+                                              ctaAltText,
+                                              ctaColor,
+                                              description,
+                                              categories,
+                                            }: ExamCategorySectionProps) {
   const [showAll, setShowAll] = useState(false);
   return (
     <div className={'container py-4  md:py-8'}>
@@ -28,8 +38,9 @@ export default function ExamCategorySection({ title, description, categories }: 
         <div className={'flex justify-center mt-6'}>
           <Button variant={'link'}
                   size={'lg'}
+                  style={ctaColor ? { color: ctaColor } : {}}
                   onClick={() => setShowAll(!showAll)}>
-            {!showAll ? `View All Categories (${categories?.length})` : 'View Less Categories'}
+            {!showAll ? (ctaText || `View All Categories (${categories?.length})`) : (ctaAltText || 'View Less Categories')}
           </Button>
         </div>
       }

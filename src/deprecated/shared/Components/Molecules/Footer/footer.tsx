@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import Freelearning from '../FreeLearningResources/freelearning';
-import Image from '../../Atoms/Image/Image';
 import { MenuItems } from './FooterTypeD';
 import { soicalMediaData } from '@/deprecated/shared/StaticData/SocialMedia';
 import PwLogo from '../../../../assets//Images/pw-logo.webp';
 import GooglePlayeStoreIcon from '../../../../assets/Images/google-play-badge.webp';
 import appleStoreIcon from '../../../../assets/Images/apple-store-badge.webp';
 import eventTracker from '../../EventTracker/eventTracker';
+import { Image } from '@/components/ui/image';
 
 export interface footerProps {
   showFreeLearning?: boolean;
@@ -41,7 +41,8 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
               <div className="flex items-center">
                 <a aria-label="pw-logo" href="https://pw.live/">
                   <Image
-                    bgImagetitle={`${PwLogo.src}`}
+                    src={`${PwLogo.src}`}
+                    alt={'pw-logo'}
                     className={
                       'h-12 w-12 mr-3 bg-center bg-no-repeat bg-contain'
                     }
@@ -53,7 +54,7 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                 </div>
               </div>
 
-              <div className="pt-3 font-[500] text-[#3D3D3D] text-xs xl:text-[14px] xl:leading-[20px] sm:text-[12px] sm:leading-[18px]  text-left">
+              <div className="pt-3 font-[500] text-[#3D3D3D] text-sm  text-left">
                 {
                   'We understand that every student has different needs and capabilities, which is why we create such a wonderful and unique curriculum that is the best fit for every student.'
                 }
@@ -68,13 +69,14 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
+                      <Image
                         onClick={() =>
                           googleStoreEvent('google_play', 'footer')
                         }
-                        className={'h-[40px] rounded-lg'}
+                        alt={'Google Play Store'}
+                        className={'h-[40px] w-full rounded-lg'}
                         src={GooglePlayeStoreIcon.src}
-                        alt="Download App on Playstore"
+                        // alt="Download App on Playstore"
                       />
                     </a>
 
@@ -84,11 +86,12 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <img
+                      <Image
+                        alt={'App Store'}
                         onClick={() => appStoreEvent('app_store', 'footer')}
-                        className={'h-[40px] rounded-lg'}
+                        className={'h-[40px] w-full rounded-lg'}
                         src={appleStoreIcon.src}
-                        alt="Download App on Appstore"
+                        // alt="Download App on Appstore"
                       />
                     </a>
                   </div>
@@ -103,7 +106,8 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                     {soicalMediaData.map((data) => (
                       <a aria-label={data.url} href={data.url} key={data.url}>
                         <Image
-                          bgImagetitle={data.image}
+                          src={data.image}
+                          alt={data.url}
                           className="h-6 w-6 bg-center bg-no-repeat bg-contain"
                         />
                       </a>

@@ -12,6 +12,7 @@ import { ReactNode, useMemo } from 'react';
 import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
 import DownloadAppBanner from '@/widgets/DownloadAppBanner';
 import FAQ from '@/widgets/FAQ';
+import TestPassCard from '@/widgets/TestPassCard';
 import TestPassShortList from '@/widgets/TestSeriesList/TestPassShortList';
 
 
@@ -39,19 +40,12 @@ const getWidgets = (pageData: IPageData) => {
         });
         break;
       case 'TEST_PASS':
+        const testPassData = pageData?.widgetJson[widget];
         widgets.push({
-          widget: <div className={''}>
-            <TestPassShortList
-              title={pageData.widgetJson['TEST_PASS']?.sectionTitle || 'Test Pass'}
-              items={pageData.widgetJson['TEST_PASS']?.data?.map((banner: any) => {
-                return {
-                  image: banner.dwebImage,
-                  mWebImage: banner.mwebImage,
-                  alt: banner.altTag,
-                  link: banner.redirectionUrl,
-                };
-              })} />
-          </div>,
+          widget: <TestPassShortList title={testPassData?.sectionTitle}
+                                     description={testPassData?.sectionSubTitle}
+                                     items={testPassData?.sectionProps || []}
+          />,
         });
         break;
       case 'TEST_SERIES':
@@ -72,7 +66,7 @@ const getWidgets = (pageData: IPageData) => {
       case 'APP_DOWNLOAD':
         const downloadData = pageData?.widgetJson[widget];
         widgets.push({
-          widget: <div className={'container'}>
+          widget: <div className={'container py-10'}>
             <DownloadAppBanner config={downloadData} />
           </div>,
         });
@@ -116,15 +110,14 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
   if (!props.pageData) {
     return router.replace('');
   }
-  return <Layout footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
+  return <Layout noIndex={true} footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
                  page_source={'TEST_SERIES'}>
     <PageTitleBar breadcrumbs={{
       items: [{
         label: 'Test Series',
         link: '/test-series',
       }],
-    }}>
-    </PageTitleBar>
+    }} />
     <div className={'flex flex-col gap-8 md:gap-10'}>
       {
         Widgets.map((widget, index) => {
@@ -133,7 +126,7 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
       }
     </div>
 
-    <div className={'flex flex-col gap-4 md:gap-6'}>
+    <div className={'flex flex-col gap-4 md:gap-6 mt-6'}>
       <ResultsSection results={[]} title={'Academic Excellence : Results'}
                       description={'Giving wings to a millions dreams, a million more to go'} />
       <div
