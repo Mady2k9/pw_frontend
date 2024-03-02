@@ -5,32 +5,32 @@ import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
 import { GetStaticProps } from 'next';
 
 export const getStaticProps = (async (context) => {
-  let HomePageData;
-  let headerData;
-  let footerData;
-
-  try {
-    const result = await Promise.all([
-      FetchHomePage(),
-      FetchHeader(),
-      FetchFooter(),
-    ]);
-    HomePageData = result[0];
-    headerData = result[1];
-    footerData = result[2];
-  } catch (error) {
-    // console.log(error);
-  }
-  console.log('HomePageData', HomePageData);
-  if (!headerData?.data || !footerData?.data) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/',
-      },
-      props: {},
-    };
-  }
+  // let HomePageData;
+  // let headerData;
+  // let footerData;
+  //
+  // try {
+  //   const result = await Promise.all([
+  //     FetchHomePage(),
+  //     FetchHeader(),
+  //     FetchFooter(),
+  //   ]);
+  //   HomePageData = result[0];
+  //   headerData = result[1];
+  //   footerData = result[2];
+  // } catch (error) {
+  //   // console.log(error);
+  // }
+  // console.log('HomePageData', HomePageData);
+  // if (!headerData?.data || !footerData?.data) {
+  //   return {
+  //     redirect: {
+  //       permanent: false,
+  //       destination: '/',
+  //     },
+  //     props: {},
+  //   };
+  // }
   return {
     props: {
 
