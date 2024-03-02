@@ -167,9 +167,9 @@ export default function HomePage({
                       })} />
         )}
 
-      {pageData?.[WidgetEnum?.HERO_SECTION] && (
-        <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />
-      )}
+      {/*{pageData?.[WidgetEnum?.HERO_SECTION] && (*/}
+      {/*  <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />*/}
+      {/*)}*/}
 
       <HeroFeatureSection
         heroFeatureData={pageData?.[WidgetEnum?.HERO_SECTION]}
