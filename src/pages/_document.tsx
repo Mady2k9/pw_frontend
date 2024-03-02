@@ -45,26 +45,13 @@ export default function Document() {
         })(window,document,'script','dataLayer','GTM-TGJHCW7D');`}
         </script>
       </Head>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-THMQFCKGHP" />
-      <script>
-        {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-THMQFCKGHP');`}
-      </script>
       <body>
+      <Main />
+      <NextScript />
       <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGJHCW7D"
                 height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
       </noscript>
-
-
-      <Main />
-      <NextScript />
-      {/*<noscript*/}
-      {/*  dangerouslySetInnerHTML={GTMNoScript()}*/}
-      {/*/>*/}
       </body>
     </Html>
   );
