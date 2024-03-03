@@ -1,4 +1,3 @@
-import PwLogoInverted from '@/assets/images/pw-logo.webp';
 import { Image } from '@/components/ui/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -10,13 +9,14 @@ import { useGlobal } from '@/contexts/global';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Sidebar from '@/components/common/Layout/Sidebar';
 import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
+import Logo from '@/components/icons/Logo';
 
 interface NavbarProps {
   items?: ITopMenuItem[];
-  page_source: string
+  page_source: string;
 }
 
-const MenuItem = ({ item,  }: { item: ITopMenuItem}) => {
+const MenuItem = ({ item }: { item: ITopMenuItem }) => {
   const link = item.menuRedirectionUrl || '';
   const isExternal = link?.includes('https');
   const hasSubmenu = item?.menuItems?.length > 0;
@@ -109,11 +109,12 @@ export function Navbar({ items, page_source }: NavbarProps) {
     eventTracker.authPageVisit('Login/Register', page_source);
     window.open('/study/auth/', '_self');
   };
-  if(!items){
-    return <></>
+  if (!items) {
+    return <></>;
   }
   return (
     <>
+      <div className={'h-[60px] md:h-navbar'}/>
       <div
         className={'fixed z-[2] top-0 left-0 flex items-center right-0 bottom-0 h-[60px] md:h-navbar bg-white shadow'} />
       <nav
@@ -131,7 +132,8 @@ export function Navbar({ items, page_source }: NavbarProps) {
               </Sheet>
             </div>
             <Link href={'/'} className={'pr-3 h-full flex flex-col items-center justify-center'}>
-              <Image className={'w-[35px] md:w-[55px]'} alt={'PW Logo'} src={PwLogoInverted.src} />
+              <Logo size={40} className={'md:hidden'}/>
+              <Logo size={55} className={'hidden md:block'}/>
             </Link>
             <div className={' gap-1 h-full hidden md:flex'}>
               {
