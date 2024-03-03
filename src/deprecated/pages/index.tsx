@@ -15,7 +15,6 @@ import StudyResources from '@/deprecated/shared/Components/Components/StudyResou
 import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
 import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
 import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
-import Header from '@/deprecated/shared/Components/Molecules/Header/header';
 import { WidgetEnum } from '@/deprecated/shared/Components/Enums/WidgetEnum';
 import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 import { useEffect, useMemo } from 'react';
@@ -29,6 +28,7 @@ import ResultsSection from '@/widgets/ResultsSection';
 import { Carousel } from '@/components/ui/carousel';
 import { MainBanner } from '@/widgets/MainBanner';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { Navbar } from '@/components/common/Layout/Navbar';
 
 export default function HomePage({
                                    HomePageData,
@@ -150,7 +150,8 @@ export default function HomePage({
         twitterImageHeight="560"
         twitterImageWidth="292"
       />
-      <Header headerData={headerData} showLogin />
+      {/*<Header headerData={headerData} showLogin />*/}
+      <Navbar page_source={'HOME'} items={headerData}/>
       {/*{*/}
       {/*  pageData?.[WidgetEnum?.CAROUSEL] && (*/}
       {/*    <MainBanner stretched={true}*/}

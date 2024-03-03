@@ -117,74 +117,74 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
           </nav>
         </div>
         {/* Mobile Nav */}
-        <Transition appear show={open} as={Fragment}>
-          <Dialog as="div" className="" onClose={toggleMenu}>
-            <div className="fixed inset-0 overflow-y-auto z-20">
-              <div className="flex h-full items-center justify-center text-center">
-                <Transition.Child
-                  as={Fragment}
-                  enter="ease-out duration-600"
-                  enterFrom="-translate-x-full"
-                  enterTo="translate-x-0"
-                  leave="ease-in duration-600"
-                  leaveFrom="translate-x-0"
-                  leaveTo="-translate-x-full"
-                >
-                  <Dialog.Panel className="w-[100vw] h-full relative transform overflow-hidden  bg-white text-left align-middle shadow-xl transition-all">
-                    <div className="flex justify-between px-3 pt-4 pb-2 items-center">
-                      <div className="flex items-center">
-                        <Link
-                          href="/"
-                          className="outline-transparent outline-dashed"
-                        >
-                          <Image
-                            bgImagetitle={`${PwLogo.src}`}
-                            className={
-                              'w-[36px] h-[35px] bg-center bg-no-repeat bg-contain '
-                            }
-                          />
-                        </Link>
-                      </div>
-                      <span
-                        className="w-7 h-7 cursor-pointer"
-                        onClick={toggleMenu}
-                      >
-                        <XMarkIcon />
-                      </span>
-                    </div>
-                    {headerData &&
-                      headerData?.map((data: HeaderItemsData) =>
-                        data?.menuItems.length > 0 ? (
-                          <FirstLevelTransitionMweb
-                            key={data._id}
-                            data={data}
-                            toggleMenu={toggleMenu}
-                          />
-                        ) : (
-                          <a
-                            key={data?.menuRedirectionUrl}
-                            href={data?.menuRedirectionUrl}
-                          >
-                            <div className="flex  justify-between items-center border-b-[1px] border-[#D9DCE1] p-4 cursor-pointer">
-                              <div className="font-semibold text-base text-[#1B2124]">
-                                {data?.menuTitle}
-                              </div>
-                            </div>
-                          </a>
-                        )
-                      )}
-                    <div className="absolute bottom-0 w-full flex justify-center p-4">
-                      <LoginButton
-                        text={'Login/Register'}
-                        className={'px-[24px] w-full py-[12px]'}
-                      />
-                    </div>
-                  </Dialog.Panel>
-                </Transition.Child>
-              </div>
-            </div>
-          </Dialog>
-        </Transition>
+        {/*<Transition appear show={open} as={Fragment}>*/}
+        {/*  <Dialog as="div" className="" onClose={toggleMenu}>*/}
+        {/*    <div className="fixed inset-0 overflow-y-auto z-20">*/}
+        {/*      <div className="flex h-full items-center justify-center text-center">*/}
+        {/*        <Transition.Child*/}
+        {/*          as={Fragment}*/}
+        {/*          enter="ease-out duration-600"*/}
+        {/*          enterFrom="-translate-x-full"*/}
+        {/*          enterTo="translate-x-0"*/}
+        {/*          leave="ease-in duration-600"*/}
+        {/*          leaveFrom="translate-x-0"*/}
+        {/*          leaveTo="-translate-x-full"*/}
+        {/*        >*/}
+        {/*          <Dialog.Panel className="w-[100vw] h-full relative transform overflow-hidden  bg-white text-left align-middle shadow-xl transition-all">*/}
+        {/*            <div className="flex justify-between px-3 pt-4 pb-2 items-center">*/}
+        {/*              <div className="flex items-center">*/}
+        {/*                <Link*/}
+        {/*                  href="/"*/}
+        {/*                  className="outline-transparent outline-dashed"*/}
+        {/*                >*/}
+        {/*                  <Image*/}
+        {/*                    bgImagetitle={`${PwLogo.src}`}*/}
+        {/*                    className={*/}
+        {/*                      'w-[36px] h-[35px] bg-center bg-no-repeat bg-contain '*/}
+        {/*                    }*/}
+        {/*                  />*/}
+        {/*                </Link>*/}
+        {/*              </div>*/}
+        {/*              <span*/}
+        {/*                className="w-7 h-7 cursor-pointer"*/}
+        {/*                onClick={toggleMenu}*/}
+        {/*              >*/}
+        {/*                <XMarkIcon />*/}
+        {/*              </span>*/}
+        {/*            </div>*/}
+        {/*            {headerData &&*/}
+        {/*              headerData?.map((data: HeaderItemsData) =>*/}
+        {/*                data?.menuItems.length > 0 ? (*/}
+        {/*                  <FirstLevelTransitionMweb*/}
+        {/*                    key={data._id}*/}
+        {/*                    data={data}*/}
+        {/*                    toggleMenu={toggleMenu}*/}
+        {/*                  />*/}
+        {/*                ) : (*/}
+        {/*                  <a*/}
+        {/*                    key={data?.menuRedirectionUrl}*/}
+        {/*                    href={data?.menuRedirectionUrl}*/}
+        {/*                  >*/}
+        {/*                    <div className="flex  justify-between items-center border-b-[1px] border-[#D9DCE1] p-4 cursor-pointer">*/}
+        {/*                      <div className="font-semibold text-base text-[#1B2124]">*/}
+        {/*                        {data?.menuTitle}*/}
+        {/*                      </div>*/}
+        {/*                    </div>*/}
+        {/*                  </a>*/}
+        {/*                )*/}
+        {/*              )}*/}
+        {/*            <div className="absolute bottom-0 w-full flex justify-center p-4">*/}
+        {/*              <LoginButton*/}
+        {/*                text={'Login/Register'}*/}
+        {/*                className={'px-[24px] w-full py-[12px]'}*/}
+        {/*              />*/}
+        {/*            </div>*/}
+        {/*          </Dialog.Panel>*/}
+        {/*        </Transition.Child>*/}
+        {/*      </div>*/}
+        {/*    </div>*/}
+        {/*  </Dialog>*/}
+        {/*</Transition>*/}
       </div>
     </>
   );
