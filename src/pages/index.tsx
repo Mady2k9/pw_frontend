@@ -46,9 +46,7 @@ export const getStaticProps = (async (context) => {
 
 function Home(props: any) {
   return (
-    <div>
-      Hello pw.live
-    </div>
+    <HomePage {...props}/>
   );
 }
 
