@@ -31,7 +31,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <script dangerouslySetInnerHTML={GoogleTagManager()} />
+        {/*<script dangerouslySetInnerHTML={GoogleTagManager()} />*/}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={OrganisationAppSchema()}
@@ -50,9 +50,9 @@ export default function Document() {
       <Main />
       <NextScript />
       </body>
-      <noscript
-        dangerouslySetInnerHTML={GTMNoScript()}
-      />
+      {/*<noscript*/}
+      {/*  dangerouslySetInnerHTML={GTMNoScript()}*/}
+      {/*/>*/}
     </Html>
   );
 }
