@@ -33,11 +33,15 @@ export const getStaticProps = (async (context) => {
   }
   return {
     props: {
-
+      HomePageData: HomePageData || {},
+      headerData: headerData?.data || {},
+      footerData: footerData || {},
     },
   };
 }) satisfies GetStaticProps<{
-
+  HomePageData: any,
+  headerData: any,
+  footerData: any,
 }>;
 
 function Home(props: any) {
