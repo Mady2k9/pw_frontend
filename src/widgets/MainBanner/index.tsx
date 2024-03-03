@@ -11,7 +11,6 @@ import Link from 'next/link';
 import { ReactNode, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useGlobal } from '@/contexts/global';
-import NextImage from '@/components/ui/next-image';
 
 interface MainBannerProps {
   items: { image: string, mWebImage: string, alt: string, link?: string }[];
@@ -42,8 +41,8 @@ export function MainBanner({ items, autoplayInterval = 10000, stretched, leftIco
             <CarouselItem key={index} className={''}>
               {
                 (userInteracted || index == 0) ? <Link href={_.link || '/'} className={'h-full'}>
-                  <NextImage alt={_.alt || 'banner-image'} src={_.image} className={'hidden md:block h-full w-full'} />
-                  <NextImage alt={_.alt || 'banner-image'} src={_.mWebImage} className={'md:hidden h-full w-full'} />
+                  <Image alt={_.alt || 'banner-image'} src={_.image} className={'hidden md:block h-full w-full'} />
+                  <Image alt={_.alt || 'banner-image'} src={_.mWebImage} className={'md:hidden h-full w-full'} />
                 </Link> : <div className={'w-full h-full'}></div>
               }
             </CarouselItem>
