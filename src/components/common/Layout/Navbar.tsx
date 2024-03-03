@@ -104,7 +104,7 @@ const MenuItem = ({ item }: { item: ITopMenuItem }) => {
 };
 
 export function Navbar({ items, page_source }: NavbarProps) {
-  const { isSidebarOpen, toggleSidebar } = useGlobal();
+  const { isSidebarOpen, toggleSidebar, userInteracted } = useGlobal();
   const handleLogin = () => {
     eventTracker.authPageVisit('Login/Register', page_source);
     window.open('/study/auth/', '_self');
@@ -114,7 +114,7 @@ export function Navbar({ items, page_source }: NavbarProps) {
   }
   return (
     <>
-      <div className={'h-[60px] md:h-navbar'}/>
+      <div className={'h-[60px] md:h-navbar'} />
       <div
         className={'fixed z-[2] top-0 left-0 flex items-center right-0 bottom-0 h-[60px] md:h-navbar bg-white shadow'} />
       <nav
@@ -127,13 +127,13 @@ export function Navbar({ items, page_source }: NavbarProps) {
                   <MenuIcon className={'w-7 mr-3 h-7'}
                             onClick={() => toggleSidebar(!isSidebarOpen)} /></SheetTrigger>
                 <SheetContent side={'left'} className="w-full p-0 md:hidden ">
-                  <Sidebar handleLogin={handleLogin} items={items} />
+                  {userInteracted && <Sidebar handleLogin={handleLogin} items={items} />}
                 </SheetContent>
               </Sheet>
             </div>
             <Link href={'/'} className={'pr-3 h-full flex flex-col items-center justify-center'}>
-              <Logo size={40} className={'md:hidden'}/>
-              <Logo size={55} className={'hidden md:block'}/>
+              <Logo size={40} className={'md:hidden'} />
+              <Logo size={55} className={'hidden md:block'} />
             </Link>
             <div className={' gap-1 h-full hidden md:flex'}>
               {

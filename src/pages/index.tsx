@@ -3,6 +3,7 @@ import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage
 import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
 import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
 import { GetStaticProps } from 'next';
+import { Button } from '@/components/ui/button';
 
 export const getStaticProps = (async (context) => {
   let HomePageData;
@@ -42,11 +43,12 @@ export const getStaticProps = (async (context) => {
   HomePageData: any,
   headerData: any,
   footerData: any,
+
 }>;
 
 function Home(props: any) {
   return (
-    <HomePage {...props}/>
+    <HomePage {...props} />
   );
 }
 
