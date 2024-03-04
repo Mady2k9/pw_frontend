@@ -40,7 +40,7 @@ function HeroSection() {
               <div className="absolute bottom-[56px] right-[-20px] sm:hidden block">
                 <img src={alakpanday.src} alt='alakpanday' className="w-[147px]" />
               </div>
-              <a href={`${process.env.NEXT_PUBLIC_PP_WHATSAPP_LINK_BASE_URL}`}>
+              <a href='https://realtest.pw.live'>
               <div className="font-semibold text-lg text-center w-[100%] cursor-pointer">
                Register for REAL Test
               </div>
