@@ -10,7 +10,7 @@ export const AccessVideoData =
       backgroundColor: "#FFF0E7",
       name: "Ms. Neha Purohit",
       class: "Group Head, Punnya Experiential School",
-      videoLink: "https://www.youtube.com/embed/47H01638-9w?si=6zAj5IrAToauPPQp",
+      videoLink: "https://www.youtube.com/embed/imjUfcxa9wQ?si=jL6jxXvIkEF2xudK",
       Details: "",
       parentImage: `${schoolsTest.src}`
     },
@@ -19,7 +19,7 @@ export const AccessVideoData =
       backgroundColor: "#FEF3FF",
       name: "Mr. Irfan Bhasin",
       class: "Academic Coordinator, AIIMS School",
-      videoLink: "https://www.youtube.com/embed/t0cf1iRxFzk?si=N_cdc3oPLdriR0yX",
+      videoLink: "https://www.youtube.com/embed/imjUfcxa9wQ?si=jL6jxXvIkEF2xudK",
       Details: "The Bloom curriculum is exceptional, and the team behind it is equally impressive. Their dedication and kindness in delivering quality education are truly commendable. We are grateful for their unwavering support and commitment to excellence in all aspects of their work.and students are thriving with",
       parentImage:`${Schoolsfavicon1.src}`
     },
@@ -28,7 +28,7 @@ export const AccessVideoData =
       backgroundColor: "#FFFBE6",
       name: "Mr. Irfan Bhasin",
       class: "Academic Coordinator, AIIMS School",
-      videoLink: "https://www.youtube.com/embed/42lWYxAQ_lQ?si=oSqhSbsPZxzB5goU",
+      videoLink: "https://www.youtube.com/embed/imjUfcxa9wQ?si=jL6jxXvIkEF2xudK",
       Details: "",
       parentImage:`${Schoolsfavicon1.src}`
 
@@ -38,7 +38,7 @@ export const AccessVideoData =
       backgroundColor: "#FFFBE6",
       name: "Jane Smith4",
       class: "Mage",
-      videoLink: "https://www.youtube.com/embed/42lWYxAQ_lQ?si=oSqhSbsPZxzB5goU",
+      videoLink: "https://www.youtube.com/embed/imjUfcxa9wQ?si=jL6jxXvIkEF2xudK",
       Details :"",
       parentImage:`${Schoolsfavicon1.src}`
 

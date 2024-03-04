@@ -41,7 +41,7 @@ function SchoolCrDemo() {
     if (url?.includes('embed')) return url + '&autoplay=1';
   };
   return (
-    <div className="py-10 relative overflow-hidden">
+    <div className="py-10 relative overflow-hidden px-3">
       {showVideoPopup ? (
         <div
           className="fixed h-screen inset-0 bg-black/20 z-50 flex justify-between items-center"
