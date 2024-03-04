@@ -1,13 +1,10 @@
 import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
 import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
 import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
-import { GetStaticProps } from 'next';
 import { Layout } from '@/components/common/Layout';
 import { WidgetEnum } from '@/deprecated/shared/Components/Enums/WidgetEnum';
 import { MainBanner } from '@/widgets/MainBanner';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import HeroSection from '@/deprecated/shared/Components/Components/HeroSection/HeroSection';
-import HeroFeatureSection from '@/deprecated/shared/Components/Components/HeroFeatureSection/HeroFeatureSection';
 import ExamCategorySection from '@/widgets/ExamCategorySection';
 import ExplorePwCenter from '@/deprecated/shared/Components/Components/ExplorePwCenter/ExplorePwCenter';
 import ComponentWrapper from '@/deprecated/shared/Components/Molecules/ComponentWrapper/ComponentWrapper';
@@ -126,84 +123,7 @@ function Home(props: any) {
     };
   }, [pageData]);
   return (
-    <Layout headerData={props.headerData} page_source={'HOME'}>
-      {
-        pageData?.[WidgetEnum?.CAROUSEL] && (
-          <MainBanner stretched={true}
-                      leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}
-                      rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}
-                      autoplayInterval={5000}
-                      items={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps.map((banner: any) => {
-                        return {
-                          image: banner.dwebImage,
-                          mWebImage: banner.mwebImage,
-                          alt: banner.altTag,
-                          link: banner.redirectionUrl,
-                        };
-                      })} />
-        )
-      }
-      {/*{pageData?.[WidgetEnum?.HERO_SECTION] && (*/}
-      {/*  <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />*/}
-      {/*)}*/}
-
-      {/*<HeroFeatureSection*/}
-      {/*  heroFeatureData={pageData?.[WidgetEnum?.HERO_SECTION]}*/}
-      {/*/>*/}
-
-      {
-        widgetData && <ExamCategorySection title={widgetData?.sectionTitle || ''}
-                                           ctaText={widgetData?.cta?.text}
-                                           ctaAltText={widgetData?.cta?.altText}
-                                           ctaColor={widgetData?.cta?.textColor}
-                                           description={widgetData?.sectionSubTitle}
-                                           categories={widgetData?.categories} />
-      }
-
-      {pageData?.[WidgetEnum.VIDYAPEETH] && (
-        <ExplorePwCenter
-          explorePWCenterData={pageData?.[WidgetEnum.VIDYAPEETH]}
-        />
-      )}
-      <ComponentWrapper
-        title={pageData?.[WidgetEnum.STATS].sectionTitle}
-        subTitle={pageData?.[WidgetEnum.STATS].sectionSubTitle}
-      >
-        <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />
-      </ComponentWrapper>
-
-      <div className={'container'}>
-        {pageData?.[WidgetEnum.RESULTS] && (
-          <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}
-                          title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
-                          description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />
-        )}
-      </div>
-
-      <DownloadAppSection />
-
-      {pageData?.[WidgetEnum.TESTIMONIALS] && (
-        <TestinomialSections
-          testinomialData={pageData?.[WidgetEnum.TESTIMONIALS]}
-        />
-      )}
-      <ComponentWrapper
-        title={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionTitle}
-        subTitle={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionSubTitle}
-      >
-        <StudyResources resourceData={pageData?.[WidgetEnum.STUDY_RESOURCE]} />
-      </ComponentWrapper>
-
-      {pageData?.[WidgetEnum.YOUTUBE_STATS] && (
-        <YouTubeCardSection
-          youtubeData={pageData?.[WidgetEnum.YOUTUBE_STATS]}
-        />
-      )}
-      <PhoneIcon />
-      {
-        props.footerData && <Footer footerData={props.footerData} showFreeLearning />
-      }
-    </Layout>
+    <div>Hello</div>
   );
 }
 
