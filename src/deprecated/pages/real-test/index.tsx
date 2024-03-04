@@ -29,7 +29,7 @@ const data=[
         {
           title: "Is the PW REAL TEST Free or Paid?",
           description:
-                     "PW REAL Test is a paid exam conducted in the same manner as that of NTA. Price: 299/- (Students enrolled in Paid Batches of PW, Online or Offline)Price: 499/- (Students not enrolled in any of the Paid Batches of PW, Online or Offline)"
+                     "<p> PW REAL Test is a paid exam conducted in the same manner as that of NTA.</p><p>&nbsp;</p><p> <strong>Price: </strong>299/- (Students enrolled in Paid Batches of PW, Online or Offline)</p><p> <strong>Price:</strong> 499/- (Students not enrolled in any of the Paid Batches of PW, Online or Offline)</p>"
 
        },
         {
@@ -115,7 +115,7 @@ const data=[
         },
         {
           title: "How does the PW REAL Test benefit students?",
-          description:"NTA Styled Test: It’s like a NEET before NEET so that students can get an actual hands on experience of how the exam is going to be like  Pen-Paper Exam Practice: Students preparing online can get an experience of the offline papers so that they are well prepared for the final NEET exam. Compete with students Nationwide: Get a chance to showcase your caliber and potential among students participating from PAN India "       
+          description:"<p> <strong>NTA Styled Test: </strong>It&rsquo;s like a NEET before NEET so that students can get an actual hands on experience of how the exam is going to be like</p><p>&nbsp;</p> <p> <strong>Pen-Paper Exam Practice: </strong>Students preparing online can get an experience of the offline papers so that they are well prepared for the final NEET exam.</p><p>&nbsp;</p> <p><strong>Compete with students Nationwide: </strong>Get a chance to showcase your caliber and potential among students participating from PAN India</p>"       
         },
         {
           title: "When will the PW Real test results be announced?",
