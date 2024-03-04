@@ -1,16 +1,15 @@
 // import { Carousel } from '@/components/ui/carousel';
 import React from 'react';
 import Carousel from '../../Molecules/Caraousel/Caraousel';
-import BannerRealtest from '../../../../assets/Images/PwRealTest/BannerRealtest.webp'
-import BannerRealtestMweb from '../../../../assets/Images/PwRealTest/FrameRealtest.webp'
-
+import BannerRealtest from '../../../../assets/Images/PwRealTest/timelineWeb.webp'
+import BannerRealtestMweb from '../../../../assets/Images/PwRealTest/timelineMweb.webp'
 
 const bannerDatas = [
   {
     dwebImage: BannerRealtest.src,
     mwebImage: BannerRealtestMweb.src,
     redirectionUrl: '',
-    altTag: "test1",
+    altTag: "Banner1",
     displayOrder: 1,
   },
 
@@ -18,7 +17,7 @@ const bannerDatas = [
     dwebImage: BannerRealtest.src,
     mwebImage: BannerRealtestMweb.src,
     redirectionUrl: '',
-    altTag: "test2",
+    altTag: "Banner2",
     displayOrder: 2,
   },
 ];
