@@ -7,24 +7,28 @@ import GooglePlayeStoreIcon from '../../../../assets/Images/google-play-badge.we
 import appleStoreIcon from '../../../../assets/Images/apple-store-badge.webp';
 import eventTracker from '../../EventTracker/eventTracker';
 import { Image } from '@/components/ui/image';
+import { useGlobal } from '@/contexts/global';
+import Logo from '@/components/icons/Logo';
 
 export interface footerProps {
   showFreeLearning?: boolean;
   footerData: any;
 }
-const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
+
+const Footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
+
   footerData = footerData?.data || footerData;
-  if(!footerData?.filter){
-    return <></>
+  if (!footerData?.filter) {
+    return <></>;
   }
   const footerlastSectionData = footerData?.filter(
-    (value: { section: number }) => value?.section === 3
+    (value: { section: number }) => value?.section === 3,
   )?.[0]?.menuItems;
   const footerFreeLernData = footerData?.filter(
-    (value: { section: number }) => value?.section === 2
+    (value: { section: number }) => value?.section === 2,
   );
   const footerFirstSectionData = footerData?.filter(
-    (value: { section: number }) => value?.section === 1
+    (value: { section: number }) => value?.section === 1,
   );
   const googleStoreEvent = (download_source: string, click_source: string) => {
     eventTracker.appDownloadClick(download_source, click_source);
@@ -38,15 +42,9 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
         <div className="mx-auto max-w-6xl xl:px-0 xl:py-8 px-4 py-4 xl:w-[95%]">
           <div className="md:flex md:flex-col md:justify-between xl:flex xl:flex-row  ">
             <div className="mb-6 md:mb-0 xl:w-[40%] md:w-[100%] ">
-              <div className="flex items-center">
+              <div className="flex gap-4 items-center">
                 <a aria-label="pw-logo" href="https://pw.live/">
-                  <Image
-                    src={`${PwLogo.src}`}
-                    alt={'pw-logo'}
-                    className={
-                      'h-12 w-12 mr-3 bg-center bg-no-repeat bg-contain'
-                    }
-                  />
+                  <Logo size={48} />
                 </a>
 
                 <div className="self-center font-[700]  text-[#1B2124]  text-[18px] leading-[28px]">
@@ -69,15 +67,17 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Image
-                        onClick={() =>
-                          googleStoreEvent('google_play', 'footer')
-                        }
-                        alt={'Google Play Store'}
-                        className={'h-[40px] w-full rounded-lg'}
-                        src={GooglePlayeStoreIcon.src}
-                        // alt="Download App on Playstore"
-                      />
+                      {
+                        <Image
+                          onClick={() =>
+                            googleStoreEvent('google_play', 'footer')
+                          }
+                          alt={'Google Play Store'}
+                          className={'h-[40px] w-full rounded-lg'}
+                          src={GooglePlayeStoreIcon.src}
+                          // alt="Download App on Playstore"
+                        />
+                      }
                     </a>
 
                     <a
@@ -86,13 +86,15 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Image
-                        alt={'App Store'}
-                        onClick={() => appStoreEvent('app_store', 'footer')}
-                        className={'h-[40px] w-full rounded-lg'}
-                        src={appleStoreIcon.src}
-                        // alt="Download App on Appstore"
-                      />
+                      {
+                        <Image
+                          alt={'App Store'}
+                          onClick={() => appStoreEvent('app_store', 'footer')}
+                          className={'h-[40px] w-full rounded-lg'}
+                          src={appleStoreIcon.src}
+                          // alt="Download App on Appstore"
+                        />
+                      }
                     </a>
                   </div>
                 </div>
@@ -117,12 +119,14 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
               </div>
             </div>
 
-            <div className="xl:w-[50%]  grid xl:grid-cols-3 gap-5 md:grid-cols-3 md:place-items-start grid-cols-2 md:pt-6 xl:pt-0 xl:mr-[60px]">
+            <div
+              className="xl:w-[50%]  grid xl:grid-cols-3 gap-5 md:grid-cols-3 md:place-items-start grid-cols-2 md:pt-6 xl:pt-0 xl:mr-[60px]">
               {footerFirstSectionData?.[0]?.menuItems?.map(
                 (menuItems: MenuItems) => {
                   return (
                     <div key={menuItems?.menuTitle}>
-                      <div className="mb-2 font-[600] text-start text-[#1B2124]  xl:text-[20px] xl:leading-[30px] text-[16px] leading-[24px]">
+                      <div
+                        className="mb-2 font-[600] text-start text-[#1B2124]  xl:text-[20px] xl:leading-[30px] text-[16px] leading-[24px]">
                         {menuItems?.menuTitle}
                       </div>
                       {menuItems?.menuItems?.map((val) => {
@@ -143,7 +147,7 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       })}
                     </div>
                   );
-                }
+                },
               )}
             </div>
           </div>
@@ -159,4 +163,4 @@ const footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
     </>
   );
 };
-export default memo(footer);
+export default memo(Footer);

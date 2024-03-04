@@ -225,7 +225,7 @@ export default function HomePage({
       {/*    youtubeData={pageData?.[WidgetEnum.YOUTUBE_STATS]}*/}
       {/*  />*/}
       {/*)}*/}
-      {/*<PhoneIcon />*/}
+      <PhoneIcon />
       {/*<Footer footerData={footerData} showFreeLearning />*/}
     </>
   );
