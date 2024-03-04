@@ -151,22 +151,23 @@ export default function HomePage({
         twitterImageWidth="292"
       />
       {/*<Header headerData={headerData} showLogin />*/}
-      <Navbar page_source={'HOME'} items={headerData}/>
-      {/*{*/}
-      {/*  pageData?.[WidgetEnum?.CAROUSEL] && (*/}
-      {/*    <MainBanner stretched={true}*/}
-      {/*                leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}*/}
-      {/*                rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}*/}
-      {/*                autoplayInterval={5000}*/}
-      {/*                items={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps.map((banner: any) => {*/}
-      {/*                  return {*/}
-      {/*                    image: banner.dwebImage,*/}
-      {/*                    mWebImage: banner.mwebImage,*/}
-      {/*                    alt: banner.altTag,*/}
-      {/*                    link: banner.redirectionUrl,*/}
-      {/*                  };*/}
-      {/*                })} />*/}
-      {/*  )}*/}
+      <Navbar page_source={'HOME'} items={headerData} />
+      {
+        pageData?.[WidgetEnum?.CAROUSEL] && (
+          <MainBanner stretched={true}
+                      leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}
+                      rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}
+                      autoplayInterval={5000}
+                      items={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps.map((banner: any) => {
+                        return {
+                          image: banner.dwebImage,
+                          mWebImage: banner.mwebImage,
+                          alt: banner.altTag,
+                          link: banner.redirectionUrl,
+                        };
+                      })} />
+        )
+      }
 
       {/*/!*{pageData?.[WidgetEnum?.HERO_SECTION] && (*!/*/}
       {/*/!*  <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />*!/*/}
