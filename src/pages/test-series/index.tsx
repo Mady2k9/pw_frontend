@@ -29,7 +29,7 @@ const getWidgets = (pageData: IPageData) => {
       case 'CAROUSEL':
         widgets.push({
           widget: <MainBanner stretched={true}
-                              items={pageData.widgetJson['CAROUSEL']?.sectionProps.map((banner: any) => {
+                              items={pageData.widgetJson['CAROUSEL']?.sectionProps?.map((banner: any) => {
                                 return {
                                   image: banner.dwebImage,
                                   mWebImage: banner.mwebImage,
