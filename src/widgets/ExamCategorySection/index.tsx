@@ -21,6 +21,10 @@ export default function ExamCategorySection({
                                               categories,
                                             }: ExamCategorySectionProps) {
   const [showAll, setShowAll] = useState(false);
+  console.log('shreya111', categories)
+  const sortedCategories = categories?.sort((a, b) => a.displayOrder - b.displayOrder);
+  console.log('shreya112', sortedCategories)
+
   return (
     <div className={'container py-4  md:py-8'}>
       {title && <h2 className={'text-xl md:text-4xl font-bold text-center '}>{title}</h2>}
@@ -29,7 +33,7 @@ export default function ExamCategorySection({
       <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-10'}>
         {
           (showAll ? categories : categories?.slice(0, 6))?.map((category, index) => (
-            <ExamCategoryCard key={index} {...category} slug={index + ''} />
+         <ExamCategoryCard key={index} {...category}  />
           ))
         }
       </div>
