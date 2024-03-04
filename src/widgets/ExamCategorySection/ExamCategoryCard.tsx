@@ -43,7 +43,7 @@ export default function ExamCategoryCard({
           <div className={'flex flex-wrap'} id={slug}>
             {
               (showMore ? exams : ExamsToDisplay).map((exam, index) => (
-                <Link href={exam.slug} key={index}>
+                <Link href={exam.slug || '#'} key={index}>
                   <Pill
                     className={'mr-2 mb-2 animationFromBottom !slide-in-from-bottom-2 fade-in'}><span>{exam.name}</span></Pill>
                 </Link>
@@ -65,7 +65,7 @@ export default function ExamCategoryCard({
             }
           </div>
         </div>
-        <Link href={slug} className={'flex cursor-pointer items-center group/item'}>
+        <Link href={slug || '#'} className={'flex cursor-pointer items-center group/item'}>
                     <span className={'group-hover/item:!text-primary group-hover/item:underline font-medium transitionAll200 '}
                           style={actionColor ? { color: actionColor } : {}}>
                         {actionName}

@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 import { IFooterData, ISeoSchema, ISeoTags, ITopMenuItem } from '@/api/interfaces/page';
 import SEO from '@/widgets/SEO';
 import { Navbar } from '@/components/common/Layout/Navbar';
+import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
+import formatDate from '@/lib/date.utils';
 
 interface LayoutProps {
   children: ReactNode;
@@ -24,6 +26,8 @@ export function Layout({
                          page_source,
                          noIndex,
                        }: LayoutProps) {
+  console.log(footerData);
+  console.log(headerData);
   return (
     <main className={className || ''}>
       {seoTags && <SEO
@@ -37,10 +41,9 @@ export function Layout({
       <Navbar items={headerData} page_source={page_source} />
       <div key={'navbar-placeholder'} className={'h-[60px] md:h-navbar'} />
       {children}
-      {/*<Footer  />*/}
-      {/*{*/}
-      {/*  footerData && <Footer showFreeLearning={true} footerData={footerData} />*/}
-      {/*}*/}
+      {
+        footerData && <Footer showFreeLearning={true} footerData={footerData} />
+      }
     </main>
   );
 

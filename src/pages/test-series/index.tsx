@@ -91,11 +91,12 @@ const getWidgets = (pageData: IPageData) => {
             }) || [],
           });
         });
-        return widgets.push({
+        widgets.push({
           widget: <ExamCategorySection title={widgetData?.sectionTitle}
                                        description={widgetData?.sectionSubTitle}
                                        categories={categories} />,
         });
+        break;
     }
   })
   ;
@@ -110,7 +111,8 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
   if (!props.pageData) {
     return router.replace('');
   }
-  return <Layout noIndex={true} footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
+  return <Layout noIndex={true} footerData={props.footerData} seoTags={props.pageData!.seoTags}
+                 headerData={props.headerData}
                  page_source={'TEST_SERIES'}>
     <PageTitleBar breadcrumbs={{
       items: [{
