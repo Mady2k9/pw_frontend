@@ -6,7 +6,7 @@ import herogif from '../../../../assets/Images/PwRealTest/herogif.gif';
 
 function HeroSection() {
   return (
-    <div className="mx-auto max-w-6xl xl:px-0 px-3 xl:mt-6 mt-4">
+    <div className="mx-auto max-w-6xl xl:px-0 px-3 xl:mt-6 mt-4 md:mt-6">
       <div className="bg-gradient-to-r from-[#140D52] to-[#312596] flex justify-between md:px-8 px-4 rounded-lg h-[327px]">
         <div className=" flex flex-col justify-between  py-5 md:py-6 ">
           <div className="text-white">
@@ -30,7 +30,7 @@ function HeroSection() {
                   }
                 />
                 <div className="xl:text-[18px] xl:leading-[28px] text-[12px] leading-[18px]  xl:font-[600] font:[500] text-[#FFF]">
-                  Date: 14th April 2024
+                  Date: 7th April 2024
                 </div>
               </div>
             </div>

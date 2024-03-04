@@ -36,7 +36,7 @@ function TestSchedule() {
                 </div>
                 <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
                   {' '}
-                  1st March 2024
+                  4th March 2024
                 </div>
               </div>
             </div>
@@ -56,7 +56,7 @@ function TestSchedule() {
                 </div>
                 <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
                   {' '}
-                  31st March 2024
+                  17st March 2024
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ function TestSchedule() {
                 </div>
                 <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
                   {' '}
-                  6th April 2024
+                  31st March 2024
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@ function TestSchedule() {
                 </div>
                 <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
                   {' '}
-                  14th April 2024
+                  7th April 2024
                 </div>
               </div>
             </div>
