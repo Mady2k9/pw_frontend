@@ -80,23 +80,29 @@ function Caraousel({
         >
           {sortedCaraouselData?.map((slide, index) => (
             <a
+             onClick={(e)=>{
+              if(!slide?.redirectionUrl){
+                e.preventDefault()
+              }
+             }}
               key={index}
               href={slide?.redirectionUrl}
               rel="noopener noreferrer"
               className={`${imageUpperDiv} flex-1 w-[100vw] `}
             >
               <img
-                onClick={() =>
-                  bannerEventTrigger(slide?.dwebImage, slide?.redirectionUrl)
+                onClick={() =>{
+                 if(slide?.redirectionUrl) bannerEventTrigger(slide?.dwebImage, slide?.redirectionUrl)
+                }
                 }
                 src={slide?.dwebImage}
                 alt={slide?.altTag || ''}
                 className={`hidden lg:block ${dwebImageClassName}`}
               />
               <img
-                onClick={() =>
-                  bannerEventTrigger(slide?.dwebImage, slide?.redirectionUrl)
-                }
+                onClick={() =>{
+                  if(slide?.redirectionUrl) bannerEventTrigger(slide?.dwebImage, slide?.redirectionUrl)
+                }}
                 src={slide?.mwebImage}
                 alt={slide?.altTag || ''}
                 className={`lg:hidden ${mwebImageClassName}`}

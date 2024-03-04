@@ -4,6 +4,7 @@ import registOpen from '../../../../assets/Images/PwRealTest/registOpen.webp';
 import registClose from '../../../../assets/Images/PwRealTest/registClose.webp';
 import IdCard from '../../../../assets/Images/PwRealTest/id-card.webp';
 import Exam from '../../../../assets/Images/PwRealTest/exam.webp';
+import Admitcard from '../../../../assets/Images/PwRealTest/admitcard1.webp';
 function TestSchedule() {
   return (
     <div className="mx-auto xl:max-w-6xl w-full  xl:px-0  px-3 ">
@@ -32,31 +33,11 @@ function TestSchedule() {
               />
               <div className="flex flex-col justify-center gap-3">
                 <div className="xl:text-[20px] xl:leading-[30px] text-[16px] leading-[24px] font-[700] text-[#3D3D3D]">
-                  Registration Opening Date
+                Registration Window
                 </div>
                 <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
                   {' '}
-                  4th March 2024
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-[#F8F8F8] xl:p-6  p-3 items-center rounded-md">
-            <div className="flex sm:flex-row gap-5">
-              <Image
-                src={`${registClose.src}`}
-                alt='registClose'
-                className={
-                  'h-[48px] w-[48px] xl:h-[84px] xl:w-[85px] bg-center bg-contain bg-no-repeat rounded-full'
-                }
-              />
-              <div className="flex flex-col justify-center gap-3">
-                <div className="xl:text-[20px] xl:leading-[30px] text-[16px] leading-[24px] font-[700] text-[#3D3D3D]">
-                  Registration Closing Date
-                </div>
-                <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
-                  {' '}
-                  17st March 2024
+                  4th-17th March 2024
                 </div>
               </div>
             </div>
@@ -65,14 +46,14 @@ function TestSchedule() {
             <div className="flex sm:flex-row gap-5">
               <Image
                 src={`${IdCard.src}`}
-                alt='id-card'
+                alt='registClose'
                 className={
                   'h-[48px] w-[48px] xl:h-[84px] xl:w-[85px] bg-center bg-contain bg-no-repeat rounded-full'
                 }
               />
               <div className="flex flex-col justify-center gap-3">
                 <div className="xl:text-[20px] xl:leading-[30px] text-[16px] leading-[24px] font-[700] text-[#3D3D3D]">
-                  Admit Card Release Date
+                Admit Card Release Date
                 </div>
                 <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
                   {' '}
@@ -85,6 +66,26 @@ function TestSchedule() {
             <div className="flex sm:flex-row gap-5">
               <Image
                 src={`${Exam.src}`}
+                alt='id-card'
+                className={
+                  'h-[48px] w-[48px] xl:h-[84px] xl:w-[85px] bg-center bg-contain bg-no-repeat rounded-full'
+                }
+              />
+              <div className="flex flex-col justify-center gap-3">
+                <div className="xl:text-[20px] xl:leading-[30px] text-[16px] leading-[24px] font-[700] text-[#3D3D3D]">
+                Exam Date
+                </div>
+                <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
+                  {' '}
+                  07th April 2024
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#F8F8F8] xl:p-6  p-3 items-center rounded-md">
+            <div className="flex sm:flex-row gap-5">
+              <Image
+                src={`${registClose.src}`}
                 alt='exam'
                 className={
                   'h-[48px] w-[48px] xl:h-[84px] xl:w-[85px] bg-center bg-contain bg-no-repeat rounded-full'
@@ -92,11 +93,11 @@ function TestSchedule() {
               />
               <div className="flex flex-col justify-center gap-3">
                 <div className="xl:text-[20px] xl:leading-[30px] text-[16px] leading-[24px] font-[700] text-[#3D3D3D]">
-                  Exam Conducting Date
+                Result Date
                 </div>
                 <div className="xl:text-[16px] xl:leading-[22px] text-[14px] leading-[20px] font-[500] text-[#3D3D3D]">
                   {' '}
-                  7th April 2024
+                  21st April 2024
                 </div>
               </div>
             </div>

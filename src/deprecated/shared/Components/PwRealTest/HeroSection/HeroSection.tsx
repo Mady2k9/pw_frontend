@@ -11,7 +11,7 @@ function HeroSection() {
         <div className=" flex flex-col justify-between  py-5 md:py-6 ">
           <div className="text-white">
             <div className="xl:text-[40px] xl:leading-[50px]  font-[700] text-[32px] leading-[48px]  text-transparent bg-clip-text bg-gradient-to-b from-[#ECB447] to-[#F1E1BF] w-[80%] md:w-full ">
-              PW REAL TEST 2024{' '}
+              PW REAL Test for NEET 2024{' '}
             </div>
             <div>
               <div className="xl:text-[24px] xl:leading-[32px] text-[18px] leading-[28px] font-[700]  text-[#FFF] md:w-[100%] w-[55%]">
