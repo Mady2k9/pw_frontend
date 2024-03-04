@@ -11,7 +11,7 @@ function AboutRealTest() {
           </div>
           <div className=" md:text-base md:font-medium  text-[#3D3D3D] text-xs font-medium xl:pt-[20px] pt-[6px]">
           The PW REAL Test for{' '}
-             NEET . is a significant event aimed at providing students with a genuine experience of the NEET exam process,
+             NEET  is a significant event aimed at providing students with a genuine experience of the NEET exam process,
             <span className="font-bold">
               {' '}
               from registration to results
