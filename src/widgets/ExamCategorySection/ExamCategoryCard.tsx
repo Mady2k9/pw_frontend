@@ -18,6 +18,7 @@ export interface ExamCategoryProps {
   icon?: string;
   color?: string;
   exams: ExamProps[];
+  displayOrder:number;
 }
 
 export default function ExamCategoryCard({
