@@ -27,17 +27,17 @@ const getWidgets = (pageData: IPageData) => {
   pageData?.widgetOrder?.map((widget) => {
     switch (widget) {
       case 'CAROUSEL':
-        // widgets.push({
-        //   widget: <MainBanner stretched={true}
-        //                       items={pageData.widgetJson['CAROUSEL']?.sectionProps?.map((banner: any) => {
-        //                         return {
-        //                           image: banner.dwebImage,
-        //                           mWebImage: banner.mwebImage,
-        //                           alt: banner.altTag,
-        //                           link: banner.redirectionUrl,
-        //                         };
-        //                       })} />,
-        // });
+        widgets.push({
+          widget: <MainBanner stretched={true}
+                              items={pageData.widgetJson['CAROUSEL']?.sectionProps?.map((banner: any) => {
+                                return {
+                                  image: banner.dwebImage,
+                                  mWebImage: banner.mwebImage,
+                                  alt: banner.altTag,
+                                  link: banner.redirectionUrl,
+                                };
+                              })} />,
+        });
         break;
       case 'TEST_PASS':
         const testPassData = pageData?.widgetJson[widget];
