@@ -3,8 +3,12 @@ import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
 import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
 import { GetStaticProps } from 'next';
 import { Layout } from '@/components/common/Layout';
+import { WidgetEnum } from '@/deprecated/shared/Components/Enums/WidgetEnum';
+import { MainBanner } from '@/widgets/MainBanner';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 
-export const getStaticProps = (async (context) => {
+
+export async function getServerSideProps() {
   let HomePageData;
   let headerData;
   let footerData;
@@ -21,16 +25,16 @@ export const getStaticProps = (async (context) => {
   } catch (error) {
     // console.log(error);
   }
-  console.log('HomePageData', HomePageData);
-  if (!headerData?.data || !footerData?.data) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/',
-      },
-      props: {},
-    };
-  }
+  // if (!headerData?.data || !footerData?.data) {
+  //   console.log('Redirecting to home page');
+  //   return {
+  //     redirect: {
+  //       permanent: false,
+  //       destination: '/',
+  //     },
+  //     props: {},
+  //   };
+  // }
   return {
     props: {
       HomePageData: HomePageData || {},
@@ -38,17 +42,27 @@ export const getStaticProps = (async (context) => {
       footerData: footerData || {},
     },
   };
-}) satisfies GetStaticProps<{
-  HomePageData: any,
-  headerData: any,
-  footerData: any,
-
-}>;
-
+}
 function Home(props: any) {
+  const pageData = props?.HomePageData?.data?.widgetJson;
   return (
     <Layout headerData={props.headerData} page_source={'HOME'}>
-      Hello
+      {
+        pageData?.[WidgetEnum?.CAROUSEL] && (
+          <MainBanner stretched={true}
+                      leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}
+                      rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}
+                      autoplayInterval={5000}
+                      items={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps.map((banner: any) => {
+                        return {
+                          image: banner.dwebImage,
+                          mWebImage: banner.mwebImage,
+                          alt: banner.altTag,
+                          link: banner.redirectionUrl,
+                        };
+                      })} />
+        )
+      }
     </Layout>
   );
 }
