@@ -110,6 +110,7 @@ export default function HomePage({
             name: option.className,
           };
         }) || [],
+        displayOrder: 0
       });
     });
     return {

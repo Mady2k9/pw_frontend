@@ -83,10 +83,10 @@ const getWidgets = (pageData: IPageData) => {
             slug: categoryData?.cta?.['ctaRedirectionUrl'],
             actionName: categoryData?.cta?.['text'],
             actionColor: categoryData?.cta?.['textColor'],
-            displayOrder: category.displayOrder,
+            displayOrder: categoryData.displayOrder,
             exams: categoryData?.options?.map((option: any) => {
               return {
-                slug: option.testSeriesRedirectionUrl,
+                slug: option.redirectionUrl,
                 name: option.className,
               };
             }) || [],

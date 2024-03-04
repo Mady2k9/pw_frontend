@@ -34,7 +34,6 @@ export default function ExamCategoryCard({
   const showMoreExams = useMemo(() => exams.length > 4, [exams]);
   const [showMore, setShowMore] = useState(false);
   const [height, setHeight] = useState(100);
-  console.log('shreya', slug)
   return (
     <div
       className={'overflow-hidden flex group mb-auto border border-zinc-100 card-shadow animationFromBottom cursor-default hover:border-zinc-600 transitionAll200 rounded p-4'}>
