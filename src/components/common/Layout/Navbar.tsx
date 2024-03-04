@@ -118,7 +118,6 @@ export function Navbar({ items, page_source }: NavbarProps) {
   }
   return (
     <>
-      <div className={'h-[60px] md:h-navbar'} />
       <div
         className={'fixed z-[2] top-0 left-0 flex items-center right-0 bottom-0 h-[60px] md:h-navbar bg-white shadow'} />
       <nav
@@ -126,33 +125,31 @@ export function Navbar({ items, page_source }: NavbarProps) {
         <div className={'container h-full flex justify-between items-center'}>
           <div className={'flex md:gap-2 h-full items-center'}>
             <div className={'md:hidden flex flex-col items-center'}>
-              <Sheet>
-                <SheetTrigger>
-                  <MenuIcon className={'w-7 mr-3 h-7'}
-                            onClick={() => toggleSidebar(!isSidebarOpen)} /></SheetTrigger>
-                {userInteracted && <SheetContent side={'left'} className="w-full p-0 md:hidden ">
-                  {<Sidebar handleLogin={handleLogin} items={items} />}
-                </SheetContent>}
-              </Sheet>
+              {/*<Sheet>*/}
+              {/*  <SheetTrigger>*/}
+              {/*    <MenuIcon className={'w-7 mr-3 h-7'}*/}
+              {/*              onClick={() => toggleSidebar(!isSidebarOpen)} /></SheetTrigger>*/}
+              {/*  {userInteracted && <SheetContent side={'left'} className="w-full p-0 md:hidden ">*/}
+              {/*    {<Sidebar handleLogin={handleLogin} items={items} />}*/}
+              {/*  </SheetContent>}*/}
+              {/*</Sheet>*/}
             </div>
             <Link href={'/'} className={'pr-3 h-full flex flex-col items-center justify-center'}>
               <Logo size={40} className={'md:hidden'} />
               <Logo size={55} className={'hidden md:block'} />
             </Link>
             <div className={' gap-1 h-full hidden md:flex'}>
-              {
-                items?.map((item, index) => (
-                  <MenuItem key={index} item={item} />
-                ))
-              }
+              {/*{*/}
+              {/*  items?.map((item, index) => (*/}
+              {/*    <MenuItem key={index} item={item} />*/}
+              {/*  ))*/}
+              {/*}*/}
             </div>
           </div>
-          <Button onClick={handleLogin} className={'hidden md:block'} size={'lg'}>
-            Login/Register
-          </Button>
-          <Button onClick={handleLogin} className={'md:hidden'}>
-            Login/Register
-          </Button>
+          {/*<Button onClick={handleLogin} size={'lg'}>*/}
+          {/*  Login/Register*/}
+          {/*</Button>*/}
+
         </div>
       </nav>
     </>

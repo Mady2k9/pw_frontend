@@ -2,13 +2,11 @@ import React, { memo } from 'react';
 import Freelearning from '../FreeLearningResources/freelearning';
 import { MenuItems } from './FooterTypeD';
 import { soicalMediaData } from '@/deprecated/shared/StaticData/SocialMedia';
-import PwLogo from '../../../../assets//Images/pw-logo.webp';
 import GooglePlayeStoreIcon from '../../../../assets/Images/google-play-badge.webp';
 import appleStoreIcon from '../../../../assets/Images/apple-store-badge.webp';
 import eventTracker from '../../EventTracker/eventTracker';
-import { Image } from '@/components/ui/image';
-import { useGlobal } from '@/contexts/global';
 import Logo from '@/components/icons/Logo';
+import NextImage from '@/components/ui/next-image';
 
 export interface footerProps {
   showFreeLearning?: boolean;
@@ -67,17 +65,10 @@ const Footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {
-                        <Image
-                          onClick={() =>
-                            googleStoreEvent('google_play', 'footer')
-                          }
-                          alt={'Google Play Store'}
-                          className={'h-[40px] w-full rounded-lg'}
-                          src={GooglePlayeStoreIcon.src}
-                          // alt="Download App on Playstore"
-                        />
-                      }
+                      <NextImage onClick={() =>
+                        googleStoreEvent('google_play', 'footer')
+                      } alt={'google_play'} src={GooglePlayeStoreIcon.src} width={'100'} height={'40'}
+                                 loading={'lazy'} />
                     </a>
 
                     <a
@@ -86,15 +77,9 @@ const Footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {
-                        <Image
-                          alt={'App Store'}
-                          onClick={() => appStoreEvent('app_store', 'footer')}
-                          className={'h-[40px] w-full rounded-lg'}
-                          src={appleStoreIcon.src}
-                          // alt="Download App on Appstore"
-                        />
-                      }
+                      <NextImage onClick={() =>
+                        googleStoreEvent('app_store', 'footer')
+                      } alt={'App Store'} src={appleStoreIcon.src} width={'100'} height={'40'} loading={'lazy'} />
                     </a>
                   </div>
                 </div>
@@ -107,11 +92,7 @@ const Footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                   <div className="flex w-[204px] justify-between ">
                     {soicalMediaData.map((data) => (
                       <a aria-label={data.url} href={data.url} key={data.url}>
-                        <Image
-                          src={data.image}
-                          alt={data.url}
-                          className="h-6 w-6 bg-center bg-no-repeat bg-contain"
-                        />
+                        <NextImage alt={data.url} src={data.image} width={24} height={24} loading={'lazy'} />
                       </a>
                     ))}
                   </div>

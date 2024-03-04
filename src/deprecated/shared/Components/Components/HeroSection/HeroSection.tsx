@@ -7,6 +7,7 @@ import studentMweb from '../../../../assets/Images/hero-student-m.webp';
 import studentWeb from '../../../../assets/Images/hero-student-w.webp';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
 import HeroSectionBgImage from '../../../../assets/Images/bgSecondComp.webp';
+import NextImage from '@/components/ui/next-image';
 
 const HeroSection = ({
                        HeroSectionData,
@@ -34,16 +35,17 @@ const HeroSection = ({
   return (
     <>
       <div
-        className="mx-auto"
+        className="mx-auto relative"
         style={{
-          backgroundImage: `url(${HeroSectionBgImage.src})`,
+          // backgroundImage: `url(${HeroSectionBgImage.src})`,
         }}
       >
+        <NextImage alt={'Bg-image-hero-section'} src={HeroSectionBgImage.src} className={''} fill={true}/>
         {/* <div className="2xl:max-w-6xl mx-auto bg-purple-200"> */}
         <div
           className="max-w-6xl flex items-center  sm:py-[60px] py-[30px] justify-between flex-col xl:flex-row m-auto">
-          <div className="text-center xl:text-left xl:w-[36%] w-full">
-            <TransitionWrapper>
+          <div className="text-center xl:text-left xl:w-[36%] w-full ">
+            {/*<TransitionWrapper>*/}
               <h1
                 className="font-bold text-2xl px-[50px] md:px-0 text-[#1B2124]  xl:text-[40px] md:text-[32px] md:leading-[48px] xl:leading-[50px] mb-[6px]">
                 {/* {HeroSectionData?.sectionTitle} */}
@@ -53,41 +55,47 @@ const HeroSection = ({
                   </span>{' '}
                 Educational Platform
               </h1>
-            </TransitionWrapper>
-            <TransitionWrapper>
+            {/*</TransitionWrapper>*/}
+            {/*<TransitionWrapper>*/}
 
               <div
                 className="text-sm md:text-[16px] px-4 md:px-0 text-center xl:text-start text-[#3D3D3D] mb-3.5 xl:mb-10">
                 {HeroSectionData?.sectionSubTitle}
               </div>
-            </TransitionWrapper>
-            <TransitionWrapper>
+            {/*</TransitionWrapper>*/}
+            {/*<TransitionWrapper>*/}
               <LoginButton
                 text={'Get Started'}
                 className={'px-[28px] py-[14px] w-[240px]'}
               />
-            </TransitionWrapper>
+            {/*</TransitionWrapper>*/}
 
           </div>
 
           <div className="sm:py-4 py-6">
-            <TransitionWrapper>
+            {/*<TransitionWrapper>*/}
               <div
-                className="relative justify-items-center sm:text-[14px] sm:leading-[20px] text-[12px] leading-[18px] font-[500]">
-                <TransitionWrapper>
-                  <Image
-                    bgImagetitle={studentMweb.src}
+                className="relative  justify-items-center sm:text-[14px] sm:leading-[20px] text-[12px] leading-[18px] font-[500]">
+                {/*<TransitionWrapper>*/}
+                  <NextImage
+                    src={studentMweb.src}
+                    alt={'student image'}
+                    width={320}
+                    height={225}
                     className={
-                      'sm:hidden block h-[225px] w-[320px] bg-center bg-no-repeat bg-contain'
+                      'sm:hidden block bg-center bg-no-repeat bg-contain'
                     }
                   />
-                  <Image
-                    bgImagetitle={studentWeb.src}
+                  <NextImage
+                    src={studentWeb.src}
+                    alt={'student image'}
+                    width={600}
+                    height={318}
                     className={
-                      'sm:block hidden h-[318px] w-[600px] bg-center bg-no-repeat bg-contain'
+                      'sm:block hidden bg-center bg-no-repeat bg-contain'
                     }
                   />
-                </TransitionWrapper>
+                {/*</TransitionWrapper>*/}
 
                 <div
                   className={`${Style.animsc} bg-white p-2  sm:h-[36px] h-[34px] absolute sm:right-[180px] sm:top-[85px] right-[85px] top-[48px] rounded-md z-0 shadow-[0_0_8px_0_rgba(0,0,0,0.08)]`}
@@ -133,7 +141,7 @@ const HeroSection = ({
                   </div>
                 }
               </div>
-            </TransitionWrapper>
+            {/*</TransitionWrapper>*/}
           </div>
         </div>
       </div>

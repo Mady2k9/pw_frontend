@@ -48,7 +48,7 @@ export function MainBanner({ items, autoplayInterval = 10000, stretched, leftIco
                     src={_.image}
                     alt={_.alt || 'banner-image'}
                     sizes="100vw"
-                    loading={'lazy'}
+                    loading={'eager'}
                     style={{
                       width: '100%',
                       height: 'auto',
@@ -61,7 +61,7 @@ export function MainBanner({ items, autoplayInterval = 10000, stretched, leftIco
                     src={_.mWebImage}
                     alt={_.alt || 'banner-image'}
                     sizes="100vw"
-                    loading={'lazy'}
+                    loading={'eager'}
                     style={{
                       width: '100%',
                       height: 'auto',
