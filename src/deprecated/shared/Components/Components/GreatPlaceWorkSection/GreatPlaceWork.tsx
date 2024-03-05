@@ -13,11 +13,10 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
       setShowContent(true);
     }
   }, 1000);
-  console.log(showcontent, 'showcontent');
   return (
     <>
       <div
-        className="mx-auto bg-no-repeat bg-cover sm:block hidden"
+        className="mx-auto bg-no-repeat bg-cover xl:block hidden"
         style={{
           backgroundImage: `url(${GpwBgImage.src})`,
         }}
@@ -66,14 +65,14 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
         </div>
       </div>
       <div
-        className="mx-auto bg-no-repeat bg-cover sm:hidden block"
+        className="mx-auto bg-no-repeat bg-cover xl:hidden block"
         style={{
           backgroundImage: `linear-gradient(rgb(0 0 0 / 76%), rgb(0 0 0 / 84%)), url(${GpwBgMobImage.src})`,
         }}
       >
         <div className="max-w-6xl flex items-center sm:py-[60px] py-[30px] justify-between flex-col xl:flex-row m-auto">
           <div
-            className={`w-full text-center lg:text-start ${
+            className={`w-full text-center xl:text-start ${
               showcontent ? 'opacity-90' : 'opacity-0'
             }`}
           >
@@ -81,7 +80,7 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
               PW is Officially a Great Place to Work !
             </h1>
 
-            <div className="md:w-4/5 text-[16px] leading-[24px] md:text-[20px] md:leading-[30px] px-4 md:px-0 text-center xl:text-start text-[#EAECEF] mb-3.5 xl:mb-6">
+            <div className="xl:w-4/5 text-[16px] leading-[24px] md:text-[20px] md:leading-[30px] px-4 md:px-0 text-center xl:text-start text-[#EAECEF] mb-3.5 xl:mb-6">
               Our team says that our culture is exceptional, and our
               certification serves as proof. Want to check out the Exciting
               world of PW?
@@ -96,7 +95,7 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
             </a>
           </div>
 
-          <div className="sm:py-4 py-6 order-first md:order-first lg:order-last">
+          <div className="sm:py-4 py-6 order-first xl:order-last">
             <div
               className={`${
                 isInViewport

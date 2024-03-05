@@ -19,7 +19,7 @@ export default function FounderCard({ isShown }: { isShown: boolean }) {
       <div className="font-[500] md:text-[16px] md:leading-[24px] text-[14px] leading-[22px] text-[#3D3D3D]">
         Founder and CEO
       </div>
-      <div className="pt-3 px-4 font-[600] md:text-[20px] md:leading-[32px] text-[16px] leading-[30px] text-[#1B2124] italic">
+      <div className="pt-3 px-1 font-[600] md:text-[20px] md:leading-[32px] text-[16px] leading-[30px] text-[#1B2124] italic">
         “My aim is to democratize and transform the education landscape in
         Bharat.”
       </div>
