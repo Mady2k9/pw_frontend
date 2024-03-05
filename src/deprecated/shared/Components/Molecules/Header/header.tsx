@@ -17,6 +17,7 @@ export interface headerProps {
   showLogin?: boolean;
   headerData: HeaderItemsData[];
 }
+
 export type ToggleMenuFunction = () => void;
 const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
   const [open, setOpen] = useState(false);
@@ -25,8 +26,8 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
   // useEffect(() => {
   //   setHeaderData(useCache.headerData?.data);
   // }, [useCache?.headerData?.data]);
-  if(!headerData){
-    return <></>
+  if (!headerData) {
+    return <></>;
   }
   const toggleMenu: ToggleMenuFunction = () => {
     setOpen(!open);
@@ -45,22 +46,24 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
         <div className={'flex justify-center'}>
           <nav className=" flex w-full items-center max-w-6xl justify-between h-[60px] sm:h-[80px] px-4 xl:px-0 ">
             <div className="flex items-center gap-5 ">
-              <div className="flex gap-[16px] items-center ">
-                <div
-                  className="lg:hidden w-[32px] h-[32px] cursor-pointer"
-                  onClick={toggleMenu}
-                >
-                  <MenuIcon />
+              {
+                headerData?.length > 0 && <div className="flex gap-[16px] items-center ">
+                  <div
+                    className="lg:hidden w-[32px] h-[32px] cursor-pointer"
+                    onClick={toggleMenu}
+                  >
+                    <MenuIcon />
+                  </div>
+                  <Link href="https://pw.live" aria-label="pw-logo">
+                    <Image
+                      bgImagetitle={`${PwLogo.src}`}
+                      className={
+                        'w-[40px] h-[40px] xl:w-[52px] xl:h-[55px] lg:w-[52px] lg:h-[55px] md:w-[42px] md:h-[41px] bg-center bg-no-repeat bg-contain'
+                      }
+                    />
+                  </Link>
                 </div>
-                <Link href="https://pw.live" aria-label="pw-logo">
-                  <Image
-                    bgImagetitle={`${PwLogo.src}`}
-                    className={
-                      'w-[40px] h-[40px] xl:w-[52px] xl:h-[55px] lg:w-[52px] lg:h-[55px] md:w-[42px] md:h-[41px] bg-center bg-no-repeat bg-contain'
-                    }
-                  />
-                </Link>
-              </div>
+              }
               <div className="hidden lg:inline-block">
                 <div className="flex items-center  gap-3.5 ml-4">
                   {headerData &&
@@ -83,7 +86,7 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
                             </div>
                           </span>
                         </a>
-                      )
+                      ),
                     )}
                 </div>
               </div>
@@ -116,7 +119,6 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
             </div>
           </nav>
         </div>
-        {/* Mobile Nav */}
         <Transition appear show={open} as={Fragment}>
           <Dialog as="div" className="" onClose={toggleMenu}>
             <div className="fixed inset-0 overflow-y-auto z-20">

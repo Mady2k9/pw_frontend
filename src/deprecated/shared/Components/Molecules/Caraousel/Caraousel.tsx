@@ -6,17 +6,18 @@ import PrimaryRightIcon from '../../../../assets/Images/swipe-right-arrow.webp';
 import PrimaryLeftIcon from '../../../../assets/Images/swipe-left-arrow.webp';
 import RightSecondaryArrow from '../../../../assets/Images/right-arrow-carousel.webp';
 import LeftSecondaryArrow from '../../../../assets/Images/left-arrow-carousel.webp';
+import { useGlobal } from '@/contexts/global';
 
 function Caraousel({
-  showPrimaryArrow,
-  showSecondaryArrow,
-  setIntervalTime,
-  carouselData,
-  mwebImageClassName,
-  dwebImageClassName,
-  imageUpperDiv,
-  containerClass,
-}: {
+                     showPrimaryArrow,
+                     showSecondaryArrow,
+                     setIntervalTime,
+                     carouselData,
+                     mwebImageClassName,
+                     dwebImageClassName,
+                     imageUpperDiv,
+                     containerClass,
+                   }: {
   showPrimaryArrow?: boolean;
   showSecondaryArrow?: boolean;
   setIntervalTime?: number;
@@ -62,6 +63,7 @@ function Caraousel({
   const compareByDisplayOrder = (a: any, b: any) =>
     a?.displayOrder - b?.displayOrder;
   const sortedCaraouselData = carouselData?.sort(compareByDisplayOrder);
+  const { userInteracted } = useGlobal();
   return (
     <>
       <div
@@ -78,23 +80,29 @@ function Caraousel({
         >
           {sortedCaraouselData?.map((slide, index) => (
             <a
+             onClick={(e)=>{
+              if(!slide?.redirectionUrl){
+                e.preventDefault()
+              }
+             }}
               key={index}
               href={slide?.redirectionUrl}
               rel="noopener noreferrer"
               className={`${imageUpperDiv} flex-1 w-[100vw] `}
             >
               <img
-                onClick={() =>
-                  bannerEventTrigger(slide?.dwebImage, slide?.redirectionUrl)
+                onClick={() =>{
+                 if(slide?.redirectionUrl) bannerEventTrigger(slide?.dwebImage, slide?.redirectionUrl)
+                }
                 }
                 src={slide?.dwebImage}
                 alt={slide?.altTag || ''}
                 className={`hidden lg:block ${dwebImageClassName}`}
               />
               <img
-                onClick={() =>
-                  bannerEventTrigger(slide?.dwebImage, slide?.redirectionUrl)
-                }
+                onClick={() =>{
+                  if(slide?.redirectionUrl) bannerEventTrigger(slide?.dwebImage, slide?.redirectionUrl)
+                }}
                 src={slide?.mwebImage}
                 alt={slide?.altTag || ''}
                 className={`lg:hidden ${mwebImageClassName}`}

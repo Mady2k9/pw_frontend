@@ -1,12 +1,11 @@
 import { verifyToken } from '@/deprecated/common/Hooks/UseAuth';
 import { useRouter } from 'next/router';
 import HeroSection from '@/deprecated/shared/Components/Components/HeroSection/HeroSection';
-import Carousel from '@/deprecated/shared/Components/Molecules/Caraousel/Caraousel';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 import SEO from '@/deprecated/shared/Components/SEO/seo';
 // import ExamCategorySection from '@/deprecated/shared/Components/Components/ExamCategorySection/ExamCategorySection';
 import ExplorePwCenter from '@/deprecated/shared/Components/Components/ExplorePwCenter/ExplorePwCenter';
-import AcademicResults from '@/deprecated/shared/Components/Molecules/AcademicResults/AcademicResults';
+//import AcademicResults from '@/deprecated/shared/Components/Molecules/AcademicResults/AcademicResults';
 import TestinomialSections from '@/deprecated/shared/Components/Components/TestimonialsSection/TestinomialSections';
 import DownloadAppSection from '@/deprecated/shared/Components/Molecules/DownloadAppSection/DownloadAppSection';
 import YouTubeCardSection from '@/deprecated/shared/Components/Components/YouTubeCardSection/YouTubeCardSection';
@@ -16,7 +15,6 @@ import StudyResources from '@/deprecated/shared/Components/Components/StudyResou
 import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
 import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
 import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
-import Header from '@/deprecated/shared/Components/Molecules/Header/header';
 import { WidgetEnum } from '@/deprecated/shared/Components/Enums/WidgetEnum';
 import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 import { useEffect, useMemo } from 'react';
@@ -26,6 +24,11 @@ import HeroFeatureSection from '@/deprecated/shared/Components/Components/HeroFe
 import { IWidgetJson } from '@/api/interfaces/page';
 import ExamCategorySection from '@/widgets/ExamCategorySection';
 import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
+import ResultsSection from '@/widgets/ResultsSection';
+import { Carousel } from '@/components/ui/carousel';
+import { MainBanner } from '@/widgets/MainBanner';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { Navbar } from '@/components/common/Layout/Navbar';
 
 export default function HomePage({
                                    HomePageData,
@@ -107,6 +110,7 @@ export default function HomePage({
             name: option.className,
           };
         }) || [],
+        displayOrder: 0
       });
     });
     return {
@@ -147,17 +151,24 @@ export default function HomePage({
         twitterImageHeight="560"
         twitterImageWidth="292"
       />
-      <Header headerData={headerData} showLogin />
-      {pageData?.[WidgetEnum?.CAROUSEL] && (
-        <Carousel
-          carouselData={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps}
-          containerClass="mx-auto"
-          mwebImageClassName={'bg-cover w-full h-full'}
-          dwebImageClassName={'bg-cover w-full h-full'}
-          setIntervalTime={5000}
-          showSecondaryArrow
-        />
-      )}
+      {/*<Header headerData={headerData} showLogin />*/}
+      <Navbar page_source={'HOME'} items={headerData} />
+      {
+        pageData?.[WidgetEnum?.CAROUSEL] && (
+          <MainBanner stretched={true}
+                      leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}
+                      rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}
+                      autoplayInterval={5000}
+                      items={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps.map((banner: any) => {
+                        return {
+                          image: banner.dwebImage,
+                          mWebImage: banner.mwebImage,
+                          alt: banner.altTag,
+                          link: banner.redirectionUrl,
+                        };
+                      })} />
+        )
+      }
 
       {pageData?.[WidgetEnum?.HERO_SECTION] && (
         <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />
@@ -187,16 +198,14 @@ export default function HomePage({
       >
         <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />
       </ComponentWrapper>
-      <ComponentWrapper
-        title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
-        subTitle={pageData?.[WidgetEnum.RESULTS].sectionSubTitle}
-        classname="px-0"
-      >
-        <AcademicResults
-          academicResultData={pageData?.[WidgetEnum.RESULTS]}
-          showClassesScrollData
-        />
-      </ComponentWrapper>
+
+      <div className={'container'}>
+        {pageData?.[WidgetEnum.RESULTS] && (
+          <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}
+                          title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
+                          description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />
+        )}
+      </div>
 
       <DownloadAppSection />
 
@@ -221,30 +230,4 @@ export default function HomePage({
       <Footer footerData={footerData} showFreeLearning />
     </>
   );
-}
-
-export async function getServerSideProps() {
-  let HomePageData;
-  let headerData;
-  let footerData;
-
-  try {
-    const result = await Promise.all([
-      FetchHomePage(),
-      FetchHeader(),
-      FetchFooter(),
-    ]);
-    HomePageData = result[0];
-    headerData = result[1];
-    footerData = result[2];
-  } catch (error) {
-    // console.log(error);
-  }
-  return {
-    props: {
-      HomePageData: HomePageData || {},
-      headerData: headerData?.data || {},
-      footerData: footerData || {},
-    },
-  };
 }

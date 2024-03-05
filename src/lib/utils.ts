@@ -126,3 +126,7 @@ export function stringToBase64(str: string): string {
 export function base64ToString(b64: string): string {
   return atob(b64);
 }
+
+export function padRightArray<T>(arr: T[], length: number, value: T) {
+  return arr.concat(Array(length - arr.length).fill(value));
+}

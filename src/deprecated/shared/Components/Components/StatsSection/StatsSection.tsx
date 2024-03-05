@@ -2,12 +2,17 @@ import { memo } from 'react';
 import TrustedPlatforCard from '../../Molecules/TrustedPlatformCards/TrustedPlatformCards';
 import LoginButton from '../../Atoms/LoginButton/LoginButton';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
+import { useGlobal } from '@/contexts/global';
 
 const StatsSection = ({ statsData }: { statsData: any }) => {
   const bgColor = ['#FFF3E3', '#FEE', '#E4FAFF', '#ECE7FF'];
   const compareByDisplayOrder = (a: any, b: any) =>
     a?.displayOrder - b?.displayOrder;
   const sortedStatsData = statsData?.sectionProps?.sort(compareByDisplayOrder);
+  const {userInteracted} = useGlobal()
+  if(!userInteracted){
+    return <></>
+  }
   return (
     <div className="flex flex-col items-center justify-center ">
       <TransitionWrapper>

@@ -1,0 +1,4 @@
+.numberSpeak {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--PW-Gray-Palette-900-PW-Neutral, #1b2124);
+}

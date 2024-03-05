@@ -15,7 +15,7 @@ export default function CourseBatches(props: InferGetServerSidePropsType<typeof 
   if (!props.pageData) {
     return router.replace('');
   }
-  return <Layout footerData={props.footerData} seoSchema={props.pageData.seoSchema} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source={page_source}>
+  return <Layout noIndex={true}  footerData={props.footerData} seoSchema={props.pageData.seoSchema} seoTags={props.pageData.seoTags} headerData={props.headerData} page_source={page_source}>
     <BatchListPage {...props.pageData} params={props.params} />
   </Layout>;
 }

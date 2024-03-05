@@ -1,3 +1,11 @@
 .wavyBorder {
 
 }
+.backgroundImage{
+    background: url('../../assets/background-images/Test-pass-Background.webp');
+}
+@media (max-width: 767px) {
+    .backgroundImage {
+        background: url('../../assets/background-images/Test-pass-Background-mweb.webp') center center/cover no-repeat;
+    }
+}

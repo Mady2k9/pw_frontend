@@ -15,15 +15,13 @@ import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
 import { useRouter } from 'next/router';
 import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
-import TestSeriesModeModal from '../TestSeriesDetails/TestSeriesModeModal';
-import { ICohortOptions } from '@/api/interfaces/page';
 import { getModalData } from '@/api/page-apis';
 
 interface CommonItemCardProps {
   thumbnail?: string,
   title: string,
   usedFor?: string,
-  meta?: { key: string, value?: string, text?: any}[]
+  meta?: { key: string, value?: string, text?: any }[]
   startDate?: string,
   language?: string,
   endDate?: string,
@@ -43,26 +41,33 @@ interface CommonItemCardProps {
 }
 
 export default function CommonItemCard({
-  isOnline,
-  amount,
-  updatedAmount,
-  discount,
-  title,
-  isNew,
-  startDate, endDate,
-  whatsappLink,
-  usedFor,
-  thumbnail,
-  exploreLink,
-  buyNowLink,
-  meta,
-  language,
-  fromDetails,
-  page_source,
-  batchId = '',
-  cohortIdTestMode,
-  cohortForModal
-}: CommonItemCardProps) {
+                                         isOnline,
+                                         amount,
+                                         updatedAmount,
+                                         discount,
+                                         title,
+                                         isNew,
+                                         startDate, endDate,
+                                         whatsappLink,
+                                         usedFor,
+                                         thumbnail,
+                                         exploreLink,
+                                         buyNowLink,
+                                         meta,
+                                         language,
+                                         fromDetails,
+                                         page_source,
+                                         batchId = '',
+                                       }: CommonItemCardProps) {
+  const Tag: 'Online' | 'Offline' | null = useMemo(() => {
+    if (isOnline === true) {
+      return 'Online';
+    }
+    if (isOnline === false) {
+      return 'Offline';
+    }
+    return null;
+  }, [isOnline]);
   const encodedUrl = useMemo(() => {
     if (typeof window === 'undefined') {
       return '';
@@ -74,22 +79,23 @@ export default function CommonItemCard({
   const getClassAndExam = router.asPath.split('/');
 
   const handleExploreGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
-    batchEventTracker.batchCardExploreClick(batch_name, (isOnline ? 'Online' : 'Offline'), amount, updatedAmount, batchId, exam, classname);
+    batchEventTracker.batchCardExploreClick(batch_name, Tag, amount, updatedAmount, batchId, exam, classname);
   };
   const handleBuyNowGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
-    batchEventTracker.pwliveBuynowClick(batch_name, (isOnline ? 'Online' : 'Offline'), amount, updatedAmount, batchId, exam, classname, (page_source ? page_source : ''));
+    batchEventTracker.pwliveBuynowClick(batch_name, Tag, amount, updatedAmount, batchId, exam, classname, (page_source ? page_source : ''));
   };
-  const [apiData, setApiData]= useState<any>(getModalData(cohortIdTestMode))
-
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
-      [styles.commonItemCardWrapperOnline]: isOnline,
-      [styles.commonItemCardWrapperOffline]: !isOnline,
+      [styles.commonItemCardWrapperOnline]: Tag === 'Online',
+      [styles.commonItemCardWrapperOffline]: Tag === 'Offline',
     })}>
     <div className={cn(' bg-white w-full rounded-md p-3 space-y-2 relative')}>
-      <Image src={isOnline ? OnlineTag.src :isOnline== false? OfflineTag.src: ''}
-             className={'absolute -left-2.5 -top-2.5 w-[100px] h-10'} />
-      <div className={'flex items-start gap-2 !mt-2'}>
+      {
+        Tag && <Image src={Tag === 'Online' ? OnlineTag.src : OfflineTag.src} alt={Tag}
+                      className={'absolute -left-2.5 -top-2.5 w-[100px] h-10'} />
+      }
+      <div className={'flex item' +
+        's-start gap-2 !mt-2'}>
         <h4 className={'md:text-lg h-[56px] line-clamp-2 font-semibold flex-1'}>
           {title}
         </h4>
@@ -140,13 +146,13 @@ export default function CommonItemCard({
             {
               features.map((m, index) => {
                 return <span key={index}
-                             className={'line-clamp-1'}>{m.value? m.value : 
-                              <div
-                              className={'container'}
-                              dangerouslySetInnerHTML={{
-                                __html: m.text
-                              }} />
-                              } {m.key?.toLowerCase().replace(/_/g, ' ')} </span>;
+                             className={'line-clamp-1'}>{m.value ? m.value :
+                  <div
+                    className={'container'}
+                    dangerouslySetInnerHTML={{
+                      __html: m.text,
+                    }} />
+                } {m.key?.toLowerCase().replace(/_/g, ' ')} </span>;
               })
             }
           </div>
@@ -167,10 +173,9 @@ export default function CommonItemCard({
         } */}
         {
           exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full'}>
-               <Button variant={'outline'} className={'w-full  border-primary text-primary'}
-                onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
-                EXPLORE
-              </Button>
+            <Button
+              onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
+              variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>
           </Link>
         }
         {

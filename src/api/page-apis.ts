@@ -8,8 +8,7 @@ const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getTestPageSnapshot(slug: string): Promise<{ data: IPageData }> {
   return fetch(
-    `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_HOMEPAGE&slug=${slug}`,
-  ).then((res) => res.json());
+   `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_HOMEPAGE&slug=/test-series` ).then((res) => res.json());
 }
 export async function getModalData(slug: any): Promise<{ data: IPageData }> {
   return fetch(

@@ -1,9 +1,9 @@
-import { Navbar } from '@/components/common/Layout/Navbar';
 import { ReactNode } from 'react';
 import { IFooterData, ISeoSchema, ISeoTags, ITopMenuItem } from '@/api/interfaces/page';
 import SEO from '@/widgets/SEO';
+import { Navbar } from '@/components/common/Layout/Navbar';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
-import { useRouter } from 'next/router';
+import formatDate from '@/lib/date.utils';
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,6 +13,7 @@ interface LayoutProps {
   seoSchema?: ISeoSchema[];
   className?: string;
   page_source: string;
+  noIndex?: boolean;
 }
 
 export function Layout({
@@ -23,11 +24,15 @@ export function Layout({
                          footerData,
                          seoSchema,
                          page_source,
+                         noIndex,
                        }: LayoutProps) {
+  console.log(footerData);
+  console.log(headerData);
   return (
     <main className={className || ''}>
       {seoTags && <SEO
         seoSchema={seoSchema}
+        robots={noIndex ? 'noindex, nofollow' : 'index, follow'}
         title={seoTags?.pageMetaTags?.metaTitle}
         description={seoTags?.pageMetaTags?.metaDescription}
         keyword={seoTags?.pageMetaTags?.metaKeywords?.join(',')}
@@ -36,7 +41,6 @@ export function Layout({
       <Navbar items={headerData} page_source={page_source} />
       <div key={'navbar-placeholder'} className={'h-[60px] md:h-navbar'} />
       {children}
-      {/*<Footer  />*/}
       {
         footerData && <Footer showFreeLearning={true} footerData={footerData} />
       }

@@ -34,9 +34,11 @@
 
         --radius: 0.5rem;
     }
-    .transitionAll200{
+
+    .transitionAll200 {
         @apply transition-all duration-200;
     }
+
     .card-shadow {
         box-shadow: 0 1px 8px 0 #00000014;
     }
@@ -48,10 +50,13 @@
         @apply border-border;
     }
 
+
     body {
         font-family: 'Gilroy', 'sans-serif';
         @apply bg-background text-foreground;
+
     }
+
 
     @font-face {
         font-display: swap;
@@ -195,16 +200,27 @@
     }
 
 }
-*{
+
+* {
 }
-.animationFromBottom{
+
+.animationFromBottom {
     @apply animate-in slide-in-from-bottom-6 fade-in duration-700;
 }
 
-.animationFromTop{
+.animationFromTop {
     @apply animate-in slide-in-from-top-6 fade-in duration-700;
 }
 
-.animationFromLeft{
+.animationFromLeft {
     @apply animate-in slide-in-from-left-6 fade-in duration-700;
+}
+
+.slideBarRemove::-webkit-scrollbar {
+    display: none;
+}
+
+.slideBarRemove {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }

@@ -26,7 +26,8 @@ import PhoneIcon from '@/deprecated/shared/Components/Molecules/PhoneIcon/PhoneI
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return batchDetailsServerSideProps(context);
 }
-const PAGE_SOURCE= 'Details Page'
+
+const PAGE_SOURCE = 'Details Page';
 const getBreadcrumbs = ({ cohortKey, courseKey, batchDetails }: {
   courseKey: string,
   cohortKey?: string,
@@ -114,10 +115,10 @@ const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps
             <BatchDetailsFreeContent overviewUrl={`/study/batches/${props.batch.slug}/batch-overview`}
                                      items={props.batch.freeContent}
                                      batch_name={props.batch.name}
-                                   batch_price={props.batch.fee}
-                                   batch_id={props.batch._id}
-                                   page_source={PAGE_SOURCE}
-                                   isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
+                                     batch_price={props.batch.fee}
+                                     batch_id={props.batch._id}
+                                     page_source={PAGE_SOURCE}
+                                     isOnline={!props.batch.isPathshala && !props.batch.config?.isVidyapeeth} />
           </div>,
         });
       } else {
@@ -230,9 +231,10 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return <></>;
   }
 
-  return <Layout seoSchema={props.pageData.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
+  return <Layout noIndex={true} seoSchema={props.pageData.seoSchema} className={'pb-[60px] md:pb-0'}
+                 footerData={props.footerData}
                  seoTags={props.pageData.seoTags}
-  headerData={props.headerData} page_source={PAGE_SOURCE}>
+                 headerData={props.headerData} page_source={PAGE_SOURCE}>
     <PageTitleBar
       inverted={true} title={props.batch.name}
       // floatingCard={BatchCard}
@@ -252,10 +254,12 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
                 e.preventDefault();
                 scrollToElement(document.getElementById(item)!, true);
               }} />
-    <div className={'w-full container py-4 md:py-6 flex lg:flex-row-reverse justify-between flex-col space-y-4 md:space-y-0 space-x-4 space-x-reverse'}>
+    <div
+      className={'w-full container py-4 md:py-6 flex lg:flex-row-reverse justify-between flex-col space-y-4 md:space-y-0 space-x-4 space-x-reverse'}>
       <div className={'relative lg:z-10 lg:mt-[-320px] mt-[0px]'}>
-        <div className='mb-4 md:mb-6 lg:mb-0 lg:min-w-[360px] sm:w-[360px] min-w-[280px] lg:m-0 mx-auto sticky top-[156px]'>
-        {BatchCard}
+        <div
+          className="mb-4 md:mb-6 lg:mb-0 lg:min-w-[360px] sm:w-[360px] min-w-[280px] lg:m-0 mx-auto sticky top-[156px]">
+          {BatchCard}
         </div>
       </div>
       <div className={'lg:w-[67%] w-full flex flex-col space-y-4 md:space-y-6'}>
