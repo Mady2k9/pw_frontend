@@ -56,7 +56,7 @@ function getWidgets(props: IPageData) {
   props.widgetOrder?.forEach((widget) => {
     if (widget === 'RESULTS') {
       const resultData = props.widgetJson['RESULTS'];
-      result.push(<ResultsSection hideCategories={true} results={resultData.sectionProps}
+      result.push(<ResultsSection hideCategories={resultData.sectionProps.length < 2  ?  true : false } results={resultData.sectionProps}
                                   title={resultData.sectionTitle}
                                   description={resultData.sectionSubTitle} />);
     } else if (widget === 'APP_DOWNLOAD') {
