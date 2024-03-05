@@ -23,7 +23,7 @@ export default function ExamCategorySection({
   const [showAll, setShowAll] = useState(false);
   const sortedCategories = categories?.sort((a, b) => a.displayOrder - b.displayOrder);
   return (
-    <div className={'container py-4  md:py-8'}>
+    <div className={'container'}>
       {title && <h2 className={'text-xl md:text-4xl font-bold text-center '}>{title}</h2>}
       {description &&
         <p className={'text-center text-sm font-medium md:text-lg text-light max-w-3xl mx-auto mt-3'}>{description}</p>}

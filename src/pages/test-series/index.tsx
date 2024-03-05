@@ -66,7 +66,7 @@ const getWidgets = (pageData: IPageData) => {
       case 'APP_DOWNLOAD':
         const downloadData = pageData?.widgetJson[widget];
         widgets.push({
-          widget: <div className={'container py-10'}>
+          widget: <div className={'container'}>
             <DownloadAppBanner config={downloadData} />
           </div>,
         });
@@ -98,6 +98,15 @@ const getWidgets = (pageData: IPageData) => {
                                        categories={categories} />,
         });
         break;
+        case "RESULTS":
+          const result = pageData?.widgetJson[widget];
+          widgets.push({
+            widget: <div className={'container'}>
+                <ResultsSection results={result.sectionProps} title={'Academic Excellence : Results'}
+                      description={'Giving wings to a millions dreams, a million more to go'} />
+            </div>,
+          });
+          break;
     }
   })
   ;
@@ -130,8 +139,6 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
     </div>
 
     <div className={'flex flex-col gap-4 md:gap-6 mt-6'}>
-      <ResultsSection results={[]} title={'Academic Excellence : Results'}
-                      description={'Giving wings to a millions dreams, a million more to go'} />
       <div
         className={'container'}
         dangerouslySetInnerHTML={{
