@@ -1,7 +1,7 @@
 import React from 'react';
 const MapColor = ({ stateColors }: { stateColors: any }) => {
   return (
-    <div className="column h-full xl:w-[506px] xl:h-[563px]">
+    <div className="column h-full sm:w-[506px] xl:h-[563px]">
       <svg viewBox="0 0 507 563" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           id="Haryana"
