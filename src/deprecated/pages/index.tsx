@@ -227,7 +227,7 @@ export default function HomePage({
         />
       )}
       <PhoneIcon />
-      {/*<Footer footerData={footerData} showFreeLearning />*/}
+      <Footer footerData={footerData} showFreeLearning />
     </>
   );
 }

@@ -21,7 +21,7 @@ function ShareWith() {
 ✅ Achieve an All India Rank 🇮🇳
 ✅ Final Practice before the Final Exam ` +
         '\r\n' +
-        `Don't miss out! Register now at ${process.env.NEXT_PUBLIC_PP_WHATSAPP_LINK_BASE_URL} before the last date 31st March 2024. 🏃‍♀️🏃‍♂️` +
+        `Don't miss out! Register now at https://realtest.pw.live before the last date 17th March 2024. 🏃‍♀️🏃‍♂️` +
         '\r\n\r\n' +
         `_Let's  NEET together! 💪😃🚀_` +
         '\r\n\r\n' +
@@ -49,7 +49,7 @@ function ShareWith() {
             Share with your friends and help them achieve their goals.{' '}
           </div>
           <div
-            className="flex flex-row items-center w-[168px] h-[40px] border-[1px] rounded-md gap-[2px] pl-[10px] "
+            className="flex flex-row items-center w-[168px] h-[40px] border-[1px] rounded-md gap-[2px] pl-[10px] cursor-pointer"
             onClick={() => shareWhatsappMessage()}
           >
             <Image

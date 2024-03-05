@@ -6,12 +6,12 @@ import herogif from '../../../../assets/Images/PwRealTest/herogif.gif';
 
 function HeroSection() {
   return (
-    <div className="mx-auto max-w-6xl xl:px-0 px-3 xl:mt-6 mt-4">
+    <div className="mx-auto max-w-6xl xl:px-0 px-3 xl:mt-6 mt-4 md:mt-6">
       <div className="bg-gradient-to-r from-[#140D52] to-[#312596] flex justify-between md:px-8 px-4 rounded-lg h-[327px]">
         <div className=" flex flex-col justify-between  py-5 md:py-6 ">
           <div className="text-white">
             <div className="xl:text-[40px] xl:leading-[50px]  font-[700] text-[32px] leading-[48px]  text-transparent bg-clip-text bg-gradient-to-b from-[#ECB447] to-[#F1E1BF] w-[80%] md:w-full ">
-              PW REAL TEST 2024{' '}
+              PW REAL Test for NEET 2024{' '}
             </div>
             <div>
               <div className="xl:text-[24px] xl:leading-[32px] text-[18px] leading-[28px] font-[700]  text-[#FFF] md:w-[100%] w-[55%]">
@@ -30,7 +30,7 @@ function HeroSection() {
                   }
                 />
                 <div className="xl:text-[18px] xl:leading-[28px] text-[12px] leading-[18px]  xl:font-[600] font:[500] text-[#FFF]">
-                  Date: 14th April 2024
+                  Date: 7th April 2024
                 </div>
               </div>
             </div>
@@ -40,7 +40,7 @@ function HeroSection() {
               <div className="absolute bottom-[56px] right-[-20px] sm:hidden block">
                 <img src={alakpanday.src} alt='alakpanday' className="w-[147px]" />
               </div>
-              <a href='https://realtest.pw.live/'>
+              <a href='https://realtest.pw.live'>
               <div className="font-semibold text-lg text-center w-[100%] cursor-pointer">
                Register for REAL Test
               </div>
