@@ -31,6 +31,7 @@ export default function TestSeriesDetails({metaData }:{metaData:any}) {
       useEffect(() => {
         modalData()
       }, [])
+      console.log(metaData,'sadfg')
     return (
         <div className={'card-shadow rounded-lg p-4 flex flex-col gap-4 md:gap-6'}>
            {modalChangeData?.data?.length>1 && modalChangeData?.data &&  <div className="flex pb-2 md:pb-3 justify-between border-b items-center">
@@ -63,9 +64,9 @@ export default function TestSeriesDetails({metaData }:{metaData:any}) {
                     )
                 })}
             </div>
-            <a href={metaData?.scheduleFileId?.baseUrl+metaData?.scheduleFileId?.key} target="_blank">
+          {metaData?.scheduleFileId &&  <a href={metaData?.scheduleFileId?.baseUrl+metaData?.scheduleFileId?.key} target="_blank">
             <Button variant={'secondary'} className="w-full"> View Schedule </Button>
-            </a>
+            </a>}
         </div>
     )
 }
