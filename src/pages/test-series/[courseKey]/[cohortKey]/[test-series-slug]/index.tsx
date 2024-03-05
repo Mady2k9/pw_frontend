@@ -129,7 +129,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                 <div className={'lg:w-[67%] w-full flex flex-col space-y-4 md:space-y-6'}>
                 <TestSeriesDetails metaData={props?.pageData?.testModeId} />
                 {testData?.data?.length > 0 && <TestSeriesDetailsTestList testData={testData} />}
-                {props?.pageData?.testModeId?.label1?.length && props?.pageData?.testModeId?.label1?.length > 0 && <WhyChooseUs whyChooseData={props?.pageData?.testModeId?.label1} />}
+                {props?.pageData?.testModeId?.label1 && props?.pageData?.testModeId?.label1?.length > 0 && <WhyChooseUs whyChooseData={props?.pageData?.testModeId?.label1} />}
             </div>
             </div>
         </div>

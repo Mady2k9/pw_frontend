@@ -15,7 +15,6 @@ import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
 import { useRouter } from 'next/router';
 import batchEventTracker from '@/lib/BatchEventTracker/BatchEventTracker';
-import { getModalData } from '@/api/page-apis';
 
 interface CommonItemCardProps {
   thumbnail?: string,

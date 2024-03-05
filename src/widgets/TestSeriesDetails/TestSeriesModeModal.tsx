@@ -30,7 +30,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
 if(value==='explore'){
     router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`)
 }else{
-    router.push(`${baseUrl}/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)
+    router.push(`/study/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)
 }
     }
     return <Dialog >
