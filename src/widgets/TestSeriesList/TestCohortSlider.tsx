@@ -35,6 +35,7 @@ export default function TestCohortSlider({
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>
               {
                 item && <TestSeriesCard
+                exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item?.slug}`}
                   buyNowLink={'/study/test-series?childUrl=/'}
                   mode={item.modeType}
                   amount={item?.price}
@@ -47,6 +48,8 @@ export default function TestCohortSlider({
                   title={item.title}
                   page_source={page_source}
                   testSeriesId={item.categoryModeId || ''}
+                  categoryId={item.categoryId}
+                  cohortOption={cohort.option}
                 />
               }
             </div>;

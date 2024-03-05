@@ -11,6 +11,7 @@ import { slugToString, stringToSlug } from "@/lib/utils";
 import { useRouter } from "next/router";
 import { ItestModeId } from "@/api/interfaces/page";
 import { Layout } from "@/components/common/Layout";
+import TestSeriesCard from "@/widgets/CommonItemCard/TestSeriesCard";
 
 const items = [{
     title: 'Inclusion',
@@ -63,7 +64,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
     const router = useRouter()
     const { courseKey, cohortKey } = router.query;
 
-    console.log(props.pageData, 'desProps' )
+    // console.log(props.pageData?.testModeId, 'desProps' )
 
     return <Layout seoSchema={props?.pageData?.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
         seoTags={props?.pageData?.seoTags}
@@ -71,7 +72,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
         <div>
             <PageTitleBar
                 inverted={true} title={props?.pageData?.title ? props?.pageData?.title : props?.pageData?.testModeId?.title}
-                floatingCard={<CommonItemCard exploreLink={'/'} buyNowLink={'/'}
+                floatingCard={<TestSeriesCard exploreLink={'/'} buyNowLink={'/'}
                     thumbnail={props.pageData?.testModeId.imageId ? props?.pageData?.testModeId?.imageId?.baseUrl + props?.pageData?.testModeId?.imageId?.key : ''} title={props?.pageData?.testModeId?.title ? props?.pageData?.testModeId?.title : "Testing"} page_source={PAGE_SOURCE}
                     discount={props?.pageData?.testModeId.discount} amount={props?.pageData?.testModeId.price} updatedAmount={props?.pageData?.testModeId.postDiscountPrice}
                     meta={props?.pageData?.testModeId?.meta} whatsappLink={``}

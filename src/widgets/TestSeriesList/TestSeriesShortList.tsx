@@ -35,6 +35,7 @@ export default function TestSeriesShortList({
             console.log(item, 'item');
             return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
               <TestSeriesCard
+              exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item?.slug}`}
                 buyNowLink={'/study/test-series?childUrl=/'}
                 mode={item.modeType}
                 amount={item?.price}
@@ -47,6 +48,8 @@ export default function TestSeriesShortList({
                 title={item.title}
                 page_source={page_source}
                 testSeriesId={item.categoryModeId || ''}
+                categoryId={item.categoryId}
+                cohortOption={cohort.option}
               />
             </div>;
           })

@@ -9,7 +9,7 @@ import OnlineTag from '@/assets/images/onlineTag.webp';
 import OfflineTag from '@/assets/images/offlineTag.webp';
 import PriceDisplay from '@/widgets/PriceDisplay';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CalendarDays, Star } from 'lucide-react';
 import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
@@ -38,26 +38,30 @@ interface TestSeriesCardProps {
   label?: string,
   page_source?: string;
   testSeriesId?: string;
+  categoryId?: string;
+  cohortOption?: string | null;
+  exploreLink?: string;
 }
 
 export default function TestSeriesCard({
-                                         mode,
-                                         amount,
-                                         updatedAmount,
-                                         discount,
-                                         title,
-                                         label,
-                                         startDate, endDate,
-                                         whatsappLink,
-                                         usedFor,
-                                         thumbnail,
-                                         buyNowLink,
-                                         meta,
-                                         language,
-                                         fromDetails,
-                                         page_source,
-                                         testSeriesId = '',
-                                       }: TestSeriesCardProps) {
+  mode,
+  amount,
+  updatedAmount,
+  discount,
+  title,
+  label,
+  whatsappLink,
+  thumbnail,
+  buyNowLink,
+  meta,
+  language,
+  fromDetails,
+  page_source,
+  testSeriesId = '',
+  categoryId,
+  cohortOption,
+  exploreLink,
+}: TestSeriesCardProps) {
 
   const encodedUrl = useMemo(() => {
     if (typeof window === 'undefined') {
@@ -67,6 +71,8 @@ export default function TestSeriesCard({
   }, [whatsappLink]);
   const features = (meta && meta.filter((m) => m.text).slice(0, 3)) || [];
   const router = useRouter();
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const [apiData, setApiData] = useState<any>()
   const getClassAndExam = router.asPath.split('/');
 
   const handleExploreGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
@@ -75,6 +81,16 @@ export default function TestSeriesCard({
   const handleBuyNowGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
     batchEventTracker.pwliveBuynowClick(batch_name, mode, amount, updatedAmount, testSeriesId, exam, classname, (page_source ? page_source : ''));
   };
+
+  const data = async () => {
+    await fetch(`${baseUrl}/gcms/test-category/test-category-modes/${categoryId}`)
+      .then(response => response.json())
+      .then(data => setApiData(data))
+      .catch(error => console.error('Error:', error));
+  }
+  useEffect(() => {
+    data()
+  }, [])
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
       [styles.commonItemCardWrapperOnline]: mode === 'Online',
@@ -134,10 +150,18 @@ export default function TestSeriesCard({
       </div>
       <div className={'flex gap-2 !mt-3'}>
         {
-          !fromDetails &&
+          !fromDetails && apiData?.data?.length > 1 ?
           <TestSeriesModeModal trigger={<Button
             onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
-            variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} />
+            variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption? cohortOption :''}/>
+            :
+            <Link href={exploreLink ? exploreLink : '/'} className='w-full'>
+            <Button variant={'outline'} className={'w-full  border-primary text-primary'}
+              onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
+              EXPLORE
+            </Button>
+            </Link>
+
         }
         {
           buyNowLink && <Link href={buyNowLink} target={'_blank'} className={'w-full '}>

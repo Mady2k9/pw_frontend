@@ -15,21 +15,18 @@ import { stringToSlug } from '@/lib/utils';
 interface TestSeriesModeModalProps {
     trigger: ReactElement
     modeDataModal: any
-    cohortForModal:string
+    cohortOption:string
 }
-export default function TestSeriesModeModal({trigger , modeDataModal, cohortForModal}: TestSeriesModeModalProps) {
+export default function TestSeriesModeModal({trigger , modeDataModal, cohortOption}: TestSeriesModeModalProps) {
     const [selectedMode, setSelectedMode] = useState(0)
     const router = useRouter()
     const courseKey = router.query.courseKey as string;
-    // const getUrl = router.asPath
-
     const handleModeSelect =(e:any)=>{
         e.preventDefault()
-        if(modeDataModal?.data[selectedMode]){
-            router.push(`${courseKey}/${stringToSlug(cohortForModal)}/${modeDataModal?.data[selectedMode].slug}`)
-        }
+        router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`)
+        console.log(router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`),'modall')
     }
-    console.log(modeDataModal,'modall')
+    console.log(modeDataModal, 'apiData')
     return <Dialog >
         <DialogTrigger asChild className={'outline-none'}>
             {
@@ -45,7 +42,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortForM
                         {
                             modeDataModal?.data?.map((m :any, index:number) => {
                                 return ( 
-                                <div key={index} onClick={()=>setSelectedMode(index)} className={`${selectedMode===index? 'bg-[#ECEAFF] border-[#5A4BDA]':' border-[#EFEFEF]'} min-w-[208px] rounded-lg flex flex-row-reverse sm:flex-col sm:py-8 py-4 px-4 items-center sm:mb-6 cursor-pointer border`}>
+                                <div key={index} onClick={()=>setSelectedMode(index)} className={`${selectedMode===index? 'bg-[#ECEAFF] border-[#5A4BDA]':' border-[#EFEFEF]'} w-full rounded-lg flex flex-row-reverse sm:flex-col sm:py-8 py-4 px-4 items-center sm:mb-6 cursor-pointer border`}>
                                     <Image src={m.imageId.baseUrl + m.imageId.key } className="sm:w-[160px] sm:h-[103px] w-[114px] h-[73px] bg-center bg-cover" />
                                     <div className="text-left sm:text-center gap-1.5 flex flex-col sm:mt-7 justify-between w-[90%] sm:w-full">
                                     <label htmlFor={m.title} className={'sm:text-lg text-base text-[#1B2124] font-semibold sm:font-bold sm:mb-1'}>{m.title}</label>
