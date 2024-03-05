@@ -102,7 +102,7 @@ const getWidgets = (pageData: IPageData) => {
           const result = pageData?.widgetJson[widget];
           widgets.push({
             widget: <div className={'container'}>
-                <ResultsSection results={result.sectionProps} title={'Academic Excellence : Results'}
+                <ResultsSection results={result?.sectionProps} title={'Academic Excellence : Results'}
                       description={'Giving wings to a millions dreams, a million more to go'} />
             </div>,
           });
