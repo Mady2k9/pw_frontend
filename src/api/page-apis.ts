@@ -27,6 +27,11 @@ export async function getTestDescriptionSnapshot(slug: string): Promise<{ data: 
   ).then((res) => res.json());
 }
 
+export async function fetchTestSeries (params: {cohortId: string, page: number}) {
+  return fetch(`${baseUrl}/gcms/test-category?cohortId=${params.cohortId}&limit=6&orgId=${orgId}&page=${params.page}`
+  ).then((res) => res.json())
+}
+
 export async function batchPageSnapshot(slug: string, type: 'BATCH_LISTING' | 'BATCH_DESCRIPTION' = 'BATCH_LISTING'): Promise<{
   data: IPageData
 }> {

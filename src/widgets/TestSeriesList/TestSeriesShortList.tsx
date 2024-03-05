@@ -3,9 +3,13 @@ import CommonItemCard from '../CommonItemCard';
 import FAQ from '@/widgets/FAQ';
 import { useRouter } from 'next/router';
 import { ICohortOptions } from '@/api/interfaces/page';
-import { stringToSlug } from '@/lib/utils';
+import { cn, jsonToQueryString, stringToSlug, uniqueBy } from '@/lib/utils';
 import { ITestSeriesCategory } from '@/api/interfaces/test-series';
 import TestSeriesCard from '@/widgets/CommonItemCard/TestSeriesCard';
+import { useEffect, useState } from 'react';
+import { BatchNoDataGrid } from '../BatchList/BatchNoDataGrid';
+import { BatchLoadingGrid } from '../BatchList/BatchLoadingGrid';
+import { fetchTestSeries, getTestListSnapshot } from '@/api/page-apis';
 
 
 export interface BatchShortListProps {
@@ -25,14 +29,38 @@ export default function TestSeriesShortList({
                                             }: BatchShortListProps) {
   const router = useRouter();
   const courseKey = router.query.courseKey as string;
+  const [card, setCard] = useState(testSeries?.slice(0,6) || []);
+  const [page, setPage] = useState(2)
+  const [loading, setLoading] = useState(false);
+  const [showLoadMore, setShowLoadMore] = useState(testSeries?.length>6);
 
+  const getCard = async () => {
+    let query: any = {
+      cohortId: cohort.cohortId,
+      page: page,
+    };
+    setLoading(true);
+    setPage(page+1)
+    fetchTestSeries(query).then((d) => {
+      if (!d.data.length || d.data.length < 6) {
+        setShowLoadMore(false);
+      } else {
+        setShowLoadMore(true);
+      }
+      setCard((prev) => [...prev, ...d.data]);
+    }).finally(() => {
+      setLoading(false);
+    });
+  
+  };
+ 
+  console.log('shreyacard', testSeries)
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
     <div className={'container overflow-y-auto w-full pl-1.5'}>
-      <div className={'flex flex-nowrap gap-4 py-4'}>
+    <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
         {
-          testSeries?.slice(0, 3).map((item, index) => {
-            console.log(item, 'item');
+          card?.map((item, index) => {
             return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
               <TestSeriesCard
               exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item?.slug}`}
@@ -61,6 +89,24 @@ export default function TestSeriesShortList({
         <Button variant={'secondary'} className={'text-primary mt-2 w-full'}>
           View All Test Series <span className={'hidden md:block text-3xl pl-1 text-primary font-thin'}> &rsaquo;</span>
         </Button>
+      </div>
+    }
+     {
+      testSeries?.length === 0 && !loading && <BatchNoDataGrid onReset={() => {
+        router.replace(router.asPath?.split('?')[0]);
+      }} />
+    }
+    {
+      loading && <>
+        <BatchLoadingGrid />
+      </>
+    }
+
+    {
+      showLoadMore && <div className={'flex items-center justify-center mt-6 md:mt-8'}>
+        <Button size={'lg'} loading={loading} onClick={() => {
+          getCard();
+        }} variant={'secondary'}>Load More Batches</Button>
       </div>
     }
   </div>;
