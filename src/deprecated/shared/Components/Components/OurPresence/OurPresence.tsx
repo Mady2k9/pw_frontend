@@ -68,11 +68,11 @@ function OurPresence() {
     <div className="bg-gradient-to-b from-[#FFF6E5] to-[white] relative ">
       <Image
         bgImagetitle={halfCirclrRight.src}
-        className="absolute h-[765px] w-[130px] top-0 left-[21px] hidden lg:block"
+        className="absolute h-[765px] w-[130px] top-[39px] left-[3px] hidden lg:block"
       />
       <Image
         bgImagetitle={halfCirclrleft.src}
-        className="absolute h-[765px] w-[160px] z-10 right-[0px] top-0 hidden lg:block"
+        className="absolute h-[765px] w-[160px] z-10 right-[35px] top-[139px] hidden lg:block"
       />
 
       <div className="mx-auto xl:max-w-6xl w-full md:py-20 pt-12 pb-24 px-4 xl:px-0">

@@ -77,7 +77,7 @@ export default function Drawer({ isOpen, setIsOpen }: DrawerProps) {
                 backgroundImage: `linear-gradient(rgb(0 0 0 / 76%), rgb(0 0 0 / 84%)),url(${AboutBgImage.src})`,
               }}
             >
-              <div className="font-[700] text-[10px] md:text-[12px] md:leading-[18px] self-center mx-auto align-middle md:p-2 md:px-4 px-[12px] py-[6px] rounded-[100px] bg-white mt-40 mb-4">
+              <div className="font-[700] text-[10px] md:text-[12px] md:leading-[18px] self-center mx-auto align-middle md:p-2 md:px-4 px-[12px] py-[6px] rounded-[100px] bg-white mt-48 mb-4">
                 ABOUT PW
               </div>
 
@@ -87,7 +87,7 @@ export default function Drawer({ isOpen, setIsOpen }: DrawerProps) {
               <h1 className="font-[500] text-[24px] leading-[32px] md:text-[60px] md:leading-[80px] text-white">
                 <span className="text-[#B2A9FF]">Manzil</span> Milegi Yahin Se
               </h1>
-              <div className="md:font-[400] font-[400] text-sm md:text-[18px] md:leading-[28px] text-[#C1C6CE] mx-auto md:max-w-4xl w-full">
+              <div className="pt-6 md:font-[400] font-[400] text-sm md:text-[18px] md:leading-[28px] text-[#C1C6CE] mx-auto md:max-w-4xl w-full">
                 PW(Physics Wallah) is student’s lifelong learning partner that
                 is democratizing education at scale in India, with a presence
                 spanning online, offline, and hybrid modes, reaching 98% of
@@ -97,7 +97,7 @@ export default function Drawer({ isOpen, setIsOpen }: DrawerProps) {
                 languages
               </div>
               <div
-                className="self-center md:mt-10 md:pt-10 pt-20 pb-2 "
+                className="self-center md:mt-10 md:pt-16 pt-20 pb-16 "
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <div className="flex justify-center">
