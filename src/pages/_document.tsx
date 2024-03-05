@@ -48,11 +48,11 @@ export default function Document() {
 
       <Main />
       <NextScript />
-      <script dangerouslySetInnerHTML={GoogleTagManager()} />
+      {/*<script dangerouslySetInnerHTML={GoogleTagManager()} />*/}
       </body>
-      <noscript
-        dangerouslySetInnerHTML={GTMNoScript()}
-      />
+      {/*<noscript*/}
+      {/*  dangerouslySetInnerHTML={GTMNoScript()}*/}
+      {/*/>*/}
     </Html>
   );
 }

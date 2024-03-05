@@ -1,12 +1,14 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { GlobalProvider } from '@/contexts/global';
-import { QueryClient, QueryClientProvider } from 'react-query';
-const queryClient = new QueryClient();
+import { GoogleTagManager } from '@next/third-parties/google';
+
+const GTM_ID = 'GTM-TGJHCW7D';
 export default function App({ Component, pageProps }: AppProps) {
-  return <QueryClientProvider client={queryClient}>
-    <GlobalProvider>
+  return <GlobalProvider>
+    <>
       <Component {...pageProps} />
-    </GlobalProvider>
-  </QueryClientProvider>;
+      <GoogleTagManager gtmId={GTM_ID} />
+    </>
+  </GlobalProvider>;
 }
