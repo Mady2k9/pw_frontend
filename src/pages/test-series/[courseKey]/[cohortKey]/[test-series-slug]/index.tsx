@@ -70,7 +70,6 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const [testData, setTestData] = useState<any>()
 
-    console.log(props?.pageData, 'desProps')
 
     const testDatas = async () => {
         await fetch(`${baseUrl}/gcms/tests?categoryModeId=${props?.pageData?.testModeId?.categoryModeId}`)
@@ -93,6 +92,8 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             />
         </div>;
     }, [props]);
+    console.log(testData, 'desProps')
+
     return <Layout seoSchema={props?.pageData?.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
         seoTags={props?.pageData?.seoTags}
         headerData={props.headerData} page_source={PAGE_SOURCE}>
