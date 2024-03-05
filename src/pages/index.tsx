@@ -124,22 +124,7 @@ function Home(props: any) {
   }, [pageData]);
   return (
     <div>
-      {
-        pageData?.[WidgetEnum?.CAROUSEL] && (
-          <MainBanner stretched={true}
-                      leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}
-                      rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}
-                      autoplayInterval={5000}
-                      items={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps.map((banner: any) => {
-                        return {
-                          image: banner.dwebImage,
-                          mWebImage: banner.mwebImage,
-                          alt: banner.altTag,
-                          link: banner.redirectionUrl,
-                        };
-                      })} />
-        )
-      }
+     PW Live
     </div>
   );
 }
