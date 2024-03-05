@@ -92,7 +92,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             />
         </div>;
     }, [props]);
-    console.log(testData, 'desProps')
+    console.log(props.pageData, 'desProps')
 
     return <Layout seoSchema={props?.pageData?.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
         seoTags={props?.pageData?.seoTags}
@@ -128,7 +128,9 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                     </div>
                 </div>
                 <div className={'lg:w-[67%] w-full flex flex-col space-y-4 md:space-y-6'}>
-                <TestSeriesDetails metaData={props?.pageData?.testModeId} />
+               {props?.pageData?.testModeId?.meta && props?.pageData?.testModeId?.meta?.length> 0 &&
+               <TestSeriesDetails metaData={props?.pageData?.testModeId} />
+               }
                 {testData?.data?.length > 0 && <TestSeriesDetailsTestList testData={testData} />}
                 {props?.pageData?.testModeId?.label1 && props?.pageData?.testModeId?.label1?.length > 0 && <WhyChooseUs whyChooseData={props?.pageData?.testModeId?.label1} />}
             </div>
