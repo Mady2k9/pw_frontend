@@ -122,15 +122,15 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             <div className={'w-full container py-4 md:py-6 flex lg:flex-row-reverse justify-between flex-col space-y-4 md:space-y-0 space-x-4 space-x-reverse'}>
                 <div className={'relative lg:z-10 lg:mt-[-320px] mt-[0px]'}>
                     <div
-                        className=" lg:min-w-[360px] sm:w-[360px] min-w-[280px] lg:m-0 mx-auto sticky top-[156px]">
+                        className="mb-4 md:mb-6 lg:mb-0 lg:min-w-[360px] sm:w-[360px] min-w-[280px] lg:m-0 mx-auto sticky top-[156px]">
                         {testSeriesCard}
                     </div>
                 </div>
-            </div>
-            <div className={'md:pr-[400px] container py-4 md:py-6 flex flex-col space-y-4 md:space-y-6'}>
+                <div className={'lg:w-[67%] w-full flex flex-col space-y-4 md:space-y-6'}>
                 <TestSeriesDetails metaData={props?.pageData?.testModeId} />
                 {testData?.data?.length > 0 && <TestSeriesDetailsTestList testData={testData} />}
                 {props?.pageData?.testModeId?.label1?.length && props?.pageData?.testModeId?.label1?.length > 0 && <WhyChooseUs whyChooseData={props?.pageData?.testModeId?.label1} />}
+            </div>
             </div>
         </div>
         {
