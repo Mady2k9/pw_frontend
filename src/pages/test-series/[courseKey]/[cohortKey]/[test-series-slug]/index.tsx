@@ -85,7 +85,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             return <></>;
         }
         return <div className={'w-full sm:w-auto'}>
-            <TestSeriesCard buyNowLink={`${baseUrl}/study/test-series?childUrl=%2F`}
+            <TestSeriesCard buyNowLink={`${baseUrl}/study/test-series?childUrl=%2F`} 
                 thumbnail={props.pageData?.testModeId?.imageId ? props?.pageData?.testModeId?.imageId?.baseUrl + props?.pageData?.testModeId?.imageId?.key : ''} title={props?.pageData?.testModeId?.title ? props?.pageData?.testModeId?.title : "Testing"} page_source={PAGE_SOURCE}
                 discount={props?.pageData?.testModeId?.discount} amount={props?.pageData?.testModeId?.price} updatedAmount={props?.pageData?.testModeId?.postDiscountPrice}
                 meta={props?.pageData?.testModeId?.meta} whatsappLink={props?.pageData?.slug}
