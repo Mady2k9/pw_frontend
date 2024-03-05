@@ -18,6 +18,7 @@ export interface IPageData {
     widgetJson: IWidgetJson;
     testCats : Record<string, any[]>
     testModeId: ItestModeId;
+    slug: string
 }
 
 export interface ISeoSchema {

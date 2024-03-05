@@ -3,6 +3,7 @@ import {ChevronRightIcon} from "lucide-react";
 import TestSeriesModeModal from "@/widgets/TestSeriesDetails/TestSeriesModeModal";
 import Link from "next/link";
 import { Image } from "@/components/ui/image";
+import { useEffect, useState } from "react";
 
 const Meta = [{
     title: 'Total Tests',
@@ -17,14 +18,27 @@ const Meta = [{
     title: 'JEE Mains & Advanced',
     value: 14
 }]
-export default function TestSeriesDetails({metaData }:{metaData:any}) {
+export default function TestSeriesDetails({metaData }:{metaData:any}) { 
+    const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
+    const [modalChangeData, setModalChangeData] = useState<any>()
+    const modalData = async () => {
+        if(!metaData?.categoryId) return
+        await fetch(`${baseUrl}/gcms/test-category/test-category-modes/${metaData?.categoryId}`)
+          .then(response => response.json())
+          .then(data => setModalChangeData(data))
+          .catch(error => console.error('Error:', error));
+      }
+      useEffect(() => {
+        modalData()
+      }, [])
+      console.log(modalChangeData,metaData,'metaDaat')
     return (
         <div className={'card-shadow rounded-lg p-4 flex flex-col gap-4 md:gap-6'}>
-            <div className="flex pb-2 md:pb-3 justify-between border-b items-center">
-                <h3 className={' md:text-xl font-bold'}>{metaData.type}</h3>
+           {modalChangeData?.data?.length>1 &&  <div className="flex pb-2 md:pb-3 justify-between border-b items-center">
+             <h3 className={' md:text-xl font-bold'}>{metaData.type}</h3>
                 <TestSeriesModeModal trigger={<Button variant={'outline'} size={'sm'}>Change Mode <ChevronRightIcon
-                    className={'w-4 h-4 stroke-primary'} /></Button>} modeDataModal={undefined} cohortForModal={""}/>
-            </div>
+                    className={'w-4 h-4 stroke-primary'} /></Button>} modeDataModal={modalChangeData} cohortOption="class-12" value={''} categoryId={""} />
+            </div>}
             <h2 className={'text-xl md:text-3xl font-bold'}>This test series includes</h2>
             <div className={'flex flex-wrap gap-4'}>
                 {
@@ -40,11 +54,11 @@ export default function TestSeriesDetails({metaData }:{metaData:any}) {
                 }
             </div>
             <div>
-                {metaData.meta.map((data: { icon: { baseUrl: string; key: string; }; text: any; })=>{
+                {metaData?.meta?.map((data: { icon: { baseUrl: string; key: string; }; text: any; })=>{
                     console.log(data, 'datasdks')
                     return (
                         <div key={data.text} className="flex items-center gap-3 mb-3">
-                            <Image src={data?.icon ? data?.icon?.baseUrl+ data?.icon?.key: ''} className="h-full bg-cover bg-center" alt="meta icons"/>
+                            <Image src={data?.icon ? data?.icon?.baseUrl+ data?.icon?.key: ''} className="h-full max-w-8 max-h-8 bg-cover bg-center" alt="meta icons"/>
                             <div dangerouslySetInnerHTML={{ __html: data.text }} />
                         </div>
                     )

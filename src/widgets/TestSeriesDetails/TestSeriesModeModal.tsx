@@ -4,7 +4,8 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
-    DialogTrigger
+    DialogTrigger,
+    DialogClose 
 } from "@/components/ui/dialog";
 import { Image } from "@/components/ui/image";
 import {ReactElement, useState} from "react";
@@ -16,17 +17,22 @@ interface TestSeriesModeModalProps {
     trigger: ReactElement
     modeDataModal: any
     cohortOption:string
+    value:string
+    categoryId:string
 }
-export default function TestSeriesModeModal({trigger , modeDataModal, cohortOption}: TestSeriesModeModalProps) {
+export default function TestSeriesModeModal({trigger , modeDataModal, cohortOption, value, categoryId}: TestSeriesModeModalProps) {
     const [selectedMode, setSelectedMode] = useState(0)
     const router = useRouter()
     const courseKey = router.query.courseKey as string;
-    const handleModeSelect =(e:any)=>{
-        e.preventDefault()
-        router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`)
-        console.log(router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`),'modall')
+    const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
+
+    const handleModeSelect =()=>{
+if(value==='explore'){
+    router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`)
+}else{
+    router.push(`${baseUrl}/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)
+}
     }
-    console.log(modeDataModal, 'apiData')
     return <Dialog >
         <DialogTrigger asChild className={'outline-none'}>
             {
@@ -47,7 +53,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                                     <div className="text-left sm:text-center gap-1.5 flex flex-col sm:mt-7 justify-between w-[90%] sm:w-full">
                                     <label htmlFor={m.title} className={'sm:text-lg text-base text-[#1B2124] font-semibold sm:font-bold sm:mb-1'}>{m.title}</label>
                                     <p className={'text-[#3D3D3D] text-[12px] leading-[18px] capitalize sm:mb-2 '}>{m.description}</p>
-                                    <div className="flex gap-2 items-center text-left sm:text-center">
+                                    <div className="flex gap-2 items-center text-left sm:text-center justify-center">
                                     <p className={` ${selectedMode === index? 'text-[#5A4BDA]':'text-[#1B2124]'} font-semibold text-lg sm:text-2xl`}>{`₹${m.price}`}</p>
                                     <p className={` font-semibold text-[#757575] sm:text-base text-sm line-through`}>{`₹${m.discount}`}</p>
                                     </div>
@@ -58,7 +64,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                         }
                     </div>
                     <div className="flex justify-end sm:grid">
-                    <Button onClick={handleModeSelect} className="py-4 px-12 w-full ">Continue</Button>
+                   <DialogClose asChild ><Button onClick={handleModeSelect} className="py-4 px-12 w-full ">Continue</Button></DialogClose> 
                     </div>
                </DialogDescription>
             </DialogHeader>

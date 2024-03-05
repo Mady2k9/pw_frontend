@@ -141,25 +141,24 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
         <BatchLoadingGrid />
       </div>
     }
+     <div className={'my-4 md:my-8 container'}>
+      {
+        Widgets.find((WidgetView: any) => WidgetView.type.name =='ResultsSection') || <></>
+      }
+    </div>
     {
       props?.content && <div className={'container mt-4 md:mt-6'}>
         <HtmlContentWidget content={props?.content} />
       </div>
     }
-    <div className={'mt-4 md:mt-8 container'}>
-      {
-        Widgets.map((WidgetView: any, index) => {
-          return <div key={index}>
-            {
-              WidgetView
-            }
-          </div>;
-        })
-      }
-    </div>
     <div className={'container'}>
       {
         props.faqs?.length > 0 && <FAQ items={props.faqs} />
+      }
+    </div>
+    <div className={'my-4 md:my-8 container'}>
+      {
+        Widgets.find((WidgetView: any) => WidgetView.type.name =='DownloadAppBanner') || <></>
       }
     </div>
   </>;

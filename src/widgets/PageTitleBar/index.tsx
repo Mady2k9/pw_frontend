@@ -4,6 +4,7 @@ import bgMWebImage from '@/assets/background-images/course-hero-bg-Mweb.webp';
 import bgInverted from '@/assets/background-images/description-bg-image.webp';
 import { Breadcrumbs, BreadcrumbsProps } from '@/components/ui/breadcrumbs';
 import { cn } from '@/lib/utils';
+import HtmlContentWidget from '../HtmlContentWidget/HtmlContentWidget';
 
 interface PageTitleBarProps {
   floatingCard?: ReactNode;
@@ -70,7 +71,7 @@ export function PageTitleBar({
             })}>{description}</p>
           }
           {
-            descriptionContent && <div dangerouslySetInnerHTML={{ __html: descriptionContent }} />
+            descriptionContent && <HtmlContentWidget content={descriptionContent} />
           }
           {
             descriptionElement && descriptionElement

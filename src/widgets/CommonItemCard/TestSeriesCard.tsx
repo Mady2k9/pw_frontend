@@ -153,7 +153,8 @@ export default function TestSeriesCard({
           !fromDetails && apiData?.data?.length > 1 ?
           <TestSeriesModeModal trigger={<Button
             onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
-            variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption? cohortOption :''}/>
+            variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption? cohortOption :''} value='explore'
+            categoryId={categoryId? categoryId:''} />
             :
             <Link href={exploreLink ? exploreLink : '/'} className='w-full'>
             <Button variant={'outline'} className={'w-full  border-primary text-primary'}
@@ -163,14 +164,17 @@ export default function TestSeriesCard({
             </Link>
 
         }
-        {
-          buyNowLink && <Link href={buyNowLink} target={'_blank'} className={'w-full '}>
-            <Button className={'w-full'}
-                    onClick={() => handleBuyNowGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
-              BUY NOW
-            </Button>
-          </Link>
-        }
+        {!fromDetails && apiData?.data?.length > 1 ?
+           <TestSeriesModeModal trigger={<Button
+          onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
+          variant={'default'} className={'w-full border-primary text-white'}>BUY NOW</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption ? cohortOption : ''} value='buy now'
+          categoryId={categoryId? categoryId:''} />
+        :<Link href={exploreLink ? exploreLink : '/'} className='w-full'>
+        <Button variant={'default'} className={'w-full  border-primary text-white'}
+          onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
+          BUY NOW
+        </Button>
+        </Link>}
       </div>
     </div>
   </div>;
