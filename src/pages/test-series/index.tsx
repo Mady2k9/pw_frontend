@@ -35,6 +35,7 @@ const getWidgets = (pageData: IPageData) => {
                                   mWebImage: banner.mwebImage,
                                   alt: banner.altTag,
                                   link: banner.redirectionUrl,
+                                  displayOrder: banner.displayOrder
                                 };
                               })} />,
         });

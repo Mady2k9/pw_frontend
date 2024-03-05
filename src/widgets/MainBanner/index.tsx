@@ -15,7 +15,7 @@ import NextImage from '@/components/ui/next-image';
 import { useRouter } from 'next/router';
 
 interface MainBannerProps {
-  items: { image: string, mWebImage: string, alt: string, link?: string }[];
+  items: { image: string, mWebImage: string, alt: string, link?: string, displayOrder: number }[];
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   stretched?: boolean;
@@ -35,12 +35,13 @@ export function MainBanner({ items, autoplayInterval = 10000, stretched, leftIco
   if (!items.length) {
     return <></>;
   }
+  const sortedItem = items?.sort((a, b) => a.displayOrder - b.displayOrder);
   return (
     <Carousel className="w-full group relative" opts={{ loop: true }}
               autoplayInterval={_autoplayInterval}>
       <CarouselContent className={''}>
         {
-          items.map((_, index) => (
+          sortedItem.map((_, index) => (
             <CarouselItem key={index} className={''}>
               {
                  <Link href={_.link || '/'}>
