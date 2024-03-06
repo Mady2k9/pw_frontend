@@ -35,9 +35,7 @@ const Header: React.FC<headerProps> = ({
   // useEffect(() => {
   //   setHeaderData(useCache.headerData?.data);
   // }, [useCache?.headerData?.data]);
-  if (!headerData) {
-    return <></>;
-  }
+
   const toggleMenu: ToggleMenuFunction = () => {
     setOpen(!open);
   };
@@ -70,6 +68,9 @@ const Header: React.FC<headerProps> = ({
     eventTracker.topNavigationClick(cta_name, page_source);
   };
   const [isOpen, setIsOpen] = useState(false);
+  if (!headerData) {
+    return <></>;
+  }
   return (
     <>
       {showAboutUs && (
@@ -155,7 +156,7 @@ const Header: React.FC<headerProps> = ({
                       className={`px-[15px] py-[5px] sm:px-[24px] sm:py-[12px] text-sm sm:text-lg ${showAboutUs ? 'z-80' : ''}`}
                     />
                   </div>
-                  
+
                 </>
               ) : (
                 <Profile></Profile>
