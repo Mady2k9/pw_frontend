@@ -1,7 +1,7 @@
 import { PageTitleBar } from "@/widgets/PageTitleBar";
 import CommonItemCard from "@/widgets/CommonItemCard";
 import { PageTabItemProps, PageTabs } from "@/widgets/PageTabs";
-import { useEffect, useMemo, useState } from "react";
+import { ReactElement, useEffect, useMemo, useState } from "react";
 import TestSeriesDetails from "@/widgets/TestSeriesDetails";
 import TestSeriesDetailsTestList from "@/widgets/TestSeriesDetails/TestSeriesDetailsTestList";
 import WhyChooseUs from "@/widgets/WhyChooseUs";
@@ -16,6 +16,7 @@ import HtmlContentWidget from "@/widgets/HtmlContentWidget/HtmlContentWidget";
 import { Image } from "@/components/ui/image";
 import { Button } from "@/components/ui/button";
 import PriceDisplay from "@/widgets/PriceDisplay";
+import { scrollToElement, scrollWrapperLeftToElement } from "@/lib/dom.utils";
 
 const items = [{
     title: 'Inclusion',
@@ -40,6 +41,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export default function TestSeriesDescription(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+    const [activeTab, setActiveTab] = useState<string>(items[0].key);
+    const PAGE_SOURCE = 'Details Page'
+    const router = useRouter()
+    const { courseKey, cohortKey } = router.query;
+    const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
+    const [testData, setTestData] = useState<any>()
+
+
+    const testDatas = async () => {
+        await fetch(`${baseUrl}/gcms/tests?categoryModeId=${props?.pageData?.testModeId?.categoryModeId}`)
+            .then(response => response.json())
+            .then(data => setTestData(data))
+            .catch(error => console.error('Error:', error));
+    }
+    useEffect(() => {
+        testDatas()
+    }, [])
     const getBreadcrumbs = ({ cohortKey, courseKey, batchDetails }: {
         courseKey: string,
         cohortKey?: string,
@@ -63,23 +81,98 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
         }
         return items;
     };
-    const [activeTab, setActiveTab] = useState<string>(items[0].key);
-    const PAGE_SOURCE = 'Details Page'
-    const router = useRouter()
-    const { courseKey, cohortKey } = router.query;
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-    const [testData, setTestData] = useState<any>()
+    const getWidgets = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+        const items: {
+            title: string,
+            link: string,
+            key: string,
+            widget: ReactElement
+        }[] = [];
+        if (props?.pageData) {
+            props.pageData.tabs.forEach((tab) => {
+                if (tab === 'Test' && testData?.data?.length > 0) {
+                    items.push({
+                        title: tab,
+                        link: `#${stringToSlug(tab)}`,
+                        key: stringToSlug(tab),
+                        widget: <div id={`${stringToSlug(tab)}`}>
+                            <TestSeriesDetailsTestList testData={testData} />
+                        </div>,
+                    });
+                } else if (tab === 'Inclusions' && props?.pageData?.testModeId?.meta && props?.pageData?.testModeId?.meta?.length > 0) {
+                    items.push({
+                        title: tab,
+                        link: `#${stringToSlug(tab)}`,
+                        key: stringToSlug(tab),
+                        widget: <div id={`${stringToSlug(tab)}`}>
+                            <TestSeriesDetails metaData={props?.pageData?.testModeId}
+                            />
+                        </div>,
+                    });
+                } else if (tab === 'Why Choose Us' && props?.pageData?.testModeId?.label1 && props?.pageData?.testModeId?.label1?.length > 0) {
+                    items.push({
+                        title: tab,
+                        link: `#${stringToSlug(tab)}`,
+                        key: stringToSlug(tab),
+                        widget: <div id={`${stringToSlug(tab)}`}>
+                            <WhyChooseUs whyChooseData={props?.pageData?.testModeId?.label1} />
+                        </div>,
+                    });
+                } else {
+                    console.log(tab);
+                }
+            });
+        }
 
-
-    const testDatas = async () => {
-        await fetch(`${baseUrl}/gcms/tests?categoryModeId=${props?.pageData?.testModeId?.categoryModeId}`)
-            .then(response => response.json())
-            .then(data => setTestData(data))
-            .catch(error => console.error('Error:', error));
-    }
+        return items;
+    };
+    const Widgets = useMemo(() => {
+        return getWidgets(props);
+    }, [props]);
     useEffect(() => {
-        testDatas()
-    }, [])
+        let visibleElements: Record<string, IntersectionObserverEntry> = {};
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const id = entry.target.id;
+                    if (entry.isIntersecting) {
+                        visibleElements[id] = entry;
+                    } else {
+                        delete visibleElements[id];
+                    }
+                    const visibleEntries = Object.values(visibleElements);
+                    if (visibleEntries.length > 0) {
+                        const topMostElement = visibleEntries.reduce((prev, current) => {
+                            return (prev.target.getBoundingClientRect().top < current.target.getBoundingClientRect().top) ? prev : current;
+                        });
+                        scrollWrapperLeftToElement(document.getElementById('page-tabs-wrapper')!, document.getElementById(`${topMostElement.target.id}-tab`), false);
+
+                        setActiveTab(topMostElement.target.id);
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: `-120px 0px 0px 0px`,
+                threshold: 0.1,
+            },
+        );
+        Widgets.forEach((tab) => {
+            const slug = tab.key;
+            const element = document.getElementById(slug);
+            if (element) observer.observe(element);
+        });
+
+        return () => {
+            Widgets.forEach((tab) => {
+                const slug = tab.key;
+                const element = document.getElementById(slug);
+                if (element) observer.unobserve(element);
+            });
+        };
+    }, [Widgets]);
+
     const testSeriesCard = useMemo(() => {
         if (!props.pageData) {
             return <></>;
@@ -93,7 +186,6 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             />
         </div>;
     }, [props]);
-    console.log(props.pageData, 'desProps')
 
     return <Layout seoSchema={props?.pageData?.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
         seoTags={props?.pageData?.seoTags}
@@ -118,9 +210,11 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                     })}
                 </div>}
                 descriptionContent={props?.pageData?.testModeId?.description} />
-            {/* <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={props?.pageData?.tabs} */}
-             <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={items}
-                handleClick={(e, item) => setActiveTab(item)} />
+            <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={Widgets}
+                handleClick={(e, item) => {
+                    e.preventDefault();
+                    scrollToElement(document.getElementById(item)!, true);
+                }} />
             <div className={'w-full container py-4 md:py-6 flex lg:flex-row-reverse justify-between flex-col space-y-4 md:space-y-0 space-x-4 space-x-reverse'}>
                 <div className={'relative lg:z-10 lg:mt-[-320px] mt-[0px]'}>
                     <div
@@ -129,12 +223,14 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                     </div>
                 </div>
                 <div className={'lg:w-[67%] w-full flex flex-col space-y-4 md:space-y-6'}>
-               {props?.pageData?.testModeId?.meta && props?.pageData?.testModeId?.meta?.length> 0 &&
-               <TestSeriesDetails metaData={props?.pageData?.testModeId} />
-               }
-                {testData?.data?.length > 0 && <TestSeriesDetailsTestList testData={testData} />}
-                {props?.pageData?.testModeId?.label1 && props?.pageData?.testModeId?.label1?.length > 0 && <WhyChooseUs whyChooseData={props?.pageData?.testModeId?.label1} />}
-            </div>
+                    {
+                        Widgets.map((widget, index) => {
+                            return <div className={'flex flex-col space-y-4 md:space-y-6 ' + index} key={index}>
+                                {widget.widget}
+                            </div>;
+                        })
+                    }
+                </div>
             </div>
         </div>
         {
