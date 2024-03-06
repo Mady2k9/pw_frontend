@@ -93,7 +93,7 @@ const MissionSection = () => {
         </div>
       </div>
       <div
-        className="mx-auto md:pt-[18px] md:pb-[40px] pt-[18px] bg-bottom bg-cover bg-no-repeat block xl:hidden"
+        className="mx-auto md:pt-[18px] md:pb-[40px] pt-[14px] bg-bottom bg-cover bg-no-repeat block xl:hidden"
         style={{
           backgroundImage: `url(${MissionSectionBgMobImage.src})`,
         }}
@@ -103,7 +103,7 @@ const MissionSection = () => {
             Our Mission
           </h2>
         </div>
-        <div className="max-w-6xl sm:flex sm:flex-col xl:flex xl:flex-row justify-around items-center md:pb-[32px] py-[18px] px-[16px] mx-auto">
+        <div className="max-w-6xl sm:flex sm:flex-col xl:flex xl:flex-row justify-around items-center md:pb-[32px] py-[7px] px-[16px] mx-auto">
           <div className="md:columns-4 columns-12 md:w-[356px] sm:w-full h-[120px] my-[20px] rounded-lg relative">
             <div className="w-[78px] h-[112px] rounded-lg bg-[#1B7938] absolute top-[11px] left-[-3px]"></div>
             <div className="w-[97%] h-auto rounded-lg bg-[#FFF1F3] absolute bottom-1 right-1 top-1 left-1">
