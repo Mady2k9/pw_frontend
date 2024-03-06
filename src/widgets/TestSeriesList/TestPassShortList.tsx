@@ -36,7 +36,7 @@ export default function TestPassShortList({
                                             showMoreLink,
                                             page_source,
                                           }: TestPassShortListProps) {
-  return <div className={`w-full ${style.backgroundImage}`}>
+  return <div className={`w-full py-6 xl:py-10 ${style.backgroundImage}`}>
     <div className={'container select-none'}>
       <div className="relative flex gap-2.5 items-center">
         <div className="h-[1px]  bg-[#81B6E4] flex-1" />

@@ -54,7 +54,7 @@ export function PageTitleBar({
           </>
         }
         <div
-          className={cn('container  relative py-4 md:py-7 space-y-2 md:space-y-4', containerClass, {
+          className={cn('container  relative py-4 md:pt-6 md:pb-[10px] space-y-2 md:space-y-4', containerClass, {
             'lg:pr-[400px]': !!floatingCard,
           })}>
           {
