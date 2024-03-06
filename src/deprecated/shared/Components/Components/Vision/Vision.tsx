@@ -84,7 +84,7 @@ const VisionSection = () => {
             <h2 className="font-[700] text-[20px] leading-[30px] text-[#1B2124]">
               Our Vision
             </h2>
-            <div className="flex pt-[16px] gap-2.5 text-sm md:text-[18px] leading-[28px] md:px-0 items-center xl:text-start text-[#3D3D3D] mb-3.5 font-[500]">
+            <div className="flex pt-[16px] gap-2.5 text-sm md:text-[18px] leading-[28px] md:px-0 xl:text-start text-[#3D3D3D] mb-3 font-[500]">
               <span>
                 <Image
                   bgImagetitle={starImage.src}
@@ -95,7 +95,7 @@ const VisionSection = () => {
               </span>
               <span>To democratize education at scale in India.</span>
             </div>
-            <div className="flex text-sm gap-2.5 md:text-[18px] leading-[28px] md:px-0 items-center xl:text-start text-[#3D3D3D] mb-3.5 font-[500]">
+            <div className="flex text-sm gap-2.5 md:text-[18px] leading-[28px] md:px-0 xl:text-start text-[#3D3D3D] mb-3 font-[500]">
               <span>
                 <Image
                   bgImagetitle={starImage.src}
@@ -109,7 +109,7 @@ const VisionSection = () => {
                 most affordable costs.
               </span>
             </div>
-            <div className="flex text-sm gap-2.5 md:text-[18px] leading-[28px] md:px-0 items-center xl:text-start text-[#3D3D3D] mb-3.5 font-[500]">
+            <div className="flex text-sm gap-2.5 md:text-[18px] leading-[28px] md:px-0 xl:text-start text-[#3D3D3D] mb-3 font-[500]">
               <span>
                 <Image
                   bgImagetitle={starImage.src}

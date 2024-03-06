@@ -99,11 +99,15 @@ const Header: React.FC<headerProps> = ({
                     className="lg:hidden w-[32px] h-[32px] cursor-pointer"
                     onClick={toggleMenu}
                   >
-                    <MenuIcon />
+                    <MenuIcon fill={`${isOpen ? 'white' : ' black'}`} />
                   </div>
                   <Link href="https://pw.live" aria-label="pw-logo">
                     <Image
-                      bgImagetitle={`${PwLogo.src}`}
+                      bgImagetitle={
+                        showAboutUs && isOpen
+                          ? `${PwLogoInverted.src}`
+                          : `${PwLogo.src}`
+                      }
                       className={
                         'w-[40px] h-[40px] xl:w-[52px] xl:h-[55px] lg:w-[52px] lg:h-[55px] md:w-[42px] md:h-[41px] bg-center bg-no-repeat bg-contain'
                       }
@@ -112,7 +116,7 @@ const Header: React.FC<headerProps> = ({
                 </div>
               }
               <div className="hidden lg:inline-block">
-                <div className="flex items-center  gap-3.5 ml-4">
+              <div className="flex items-center  gap-3.5 ml-4">
                   {headerData &&
                     headerData?.map((data: HeaderItemsData) =>
                       data?.menuItems?.length > 0 ? (
@@ -141,7 +145,7 @@ const Header: React.FC<headerProps> = ({
                             </div>
                           </span>
                         </a>
-                      ),
+                      )
                     )}
                 </div>
               </div>
