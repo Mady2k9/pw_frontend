@@ -12,7 +12,7 @@ export default function TestSeriesDetailsTestList({testData}:{testData:any}) {
         <h2 className={'text-xl md:text-3xl font-bold'}>Tests</h2>
         <div className={'flex flex-col gap-4'}>
             {
-                (showAll ? testData?.data : testData?.data?.splice(0, 2)).map((test:any, index:number) => {
+                (showAll ? testData?.data : testData?.data?.splice(0, 2))?.map((test:any, index:number) => {
                     return <TestCard key={index} {...test}/>
                 })
             }
