@@ -36,6 +36,36 @@ export function MainBanner({ items, autoplayInterval = 10000, stretched, leftIco
     return <></>;
   }
   const sortedItem = items?.sort((a, b) => a.displayOrder - b.displayOrder);
+  if(stretched && !userInteracted){
+    return <Link href={sortedItem[0]?.link || '/'}>
+      <NextImage
+        src={sortedItem[0]?.image}
+        alt={sortedItem[0]?.alt || 'banner-image'}
+        sizes="100vw"
+        loading={'eager'}
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        className={'hidden md:block'}
+        width={'90'}
+        height={'17'}
+      />
+      <NextImage
+        src={sortedItem[0]?.mWebImage}
+        alt={sortedItem[0]?.alt || 'banner-image'}
+        sizes="100vw"
+        loading={'eager'}
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        className={'md:hidden'}
+        width={'90'}
+        height={'17'}
+      />
+    </Link>
+  }
   return (
     <Carousel className="w-full group relative" opts={{ loop: true }}
               autoplayInterval={_autoplayInterval}>

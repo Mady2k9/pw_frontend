@@ -22,6 +22,7 @@ import { verifyToken } from '@/deprecated/common/Hooks/UseAuth';
 import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
 import { IWidgetJson } from '@/api/interfaces/page';
+import HomePage from '@/deprecated/pages';
 
 
 export async function getServerSideProps() {
@@ -59,43 +60,9 @@ export async function getServerSideProps() {
     },
   };
 }
+
 function Home(props: any) {
-  const pageData = useMemo(()=>{
-    return props?.HomePageData?.data?.widgetJson
-  },[props?.HomePageData?.data?.widgetJson]);
-  const router = useRouter();
-  useEffect(() => {
-    verifyToken().then((resp) => {
-      if (resp == 200) router.push('/study');
-    });
-  }, [router]);
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const marketingCampaigns = {} as any;
-    const setMarketingAttribute = (paramName: string) => {
-      const paramValue = queryParams.get(paramName);
-      if (paramValue) {
-        marketingCampaigns[paramName] = paramValue;
-      }
-    };
-    setMarketingAttribute('utm_source');
-    setMarketingAttribute('utm_medium');
-    setMarketingAttribute('utm_campaign');
-    setMarketingAttribute('utm_term');
-    setMarketingAttribute('utm_content');
-    setMarketingAttribute('gclid');
-    setMarketingAttribute('fbclid');
-    setMarketingAttribute('igshid');
-    if (Object.keys(marketingCampaigns).length > 0) {
-      const jsonMarketingCampaign = JSON.stringify(marketingCampaigns);
-      localStorage.setItem('campaignParam', btoa(jsonMarketingCampaign));
-    }
-  });
-
-  useEffect(() => {
-    eventTracker.pwLandingPage();
-  }, []);
-
+  const pageData = props?.HomePageData?.data?.widgetJson;
   const widgetData = useMemo(() => {
     const x = pageData?.[WidgetEnum.EXAM_CATEGORIES];
     const categories: ExamCategoryProps[] = [];
@@ -114,7 +81,7 @@ function Home(props: any) {
             name: option.className,
           };
         }) || [],
-        displayOrder: 0
+        displayOrder: 0,
       });
     });
     return {
@@ -123,7 +90,8 @@ function Home(props: any) {
     };
   }, [pageData]);
   return (
-    <div>
+    <Layout headerData={props.headerData} footerData={props.footerData} seoTags={props.HomePageData?.data?.seoTags}
+            page_source={'HOME'}>
       {
         pageData?.[WidgetEnum?.CAROUSEL] && (
           <MainBanner stretched={true}
@@ -140,7 +108,35 @@ function Home(props: any) {
                       })} />
         )
       }
-    </div>
+      {
+        widgetData && <ExamCategorySection title={widgetData?.sectionTitle || ''}
+                                           ctaText={widgetData?.cta?.text}
+                                           ctaAltText={widgetData?.cta?.altText}
+                                           ctaColor={widgetData?.cta?.textColor}
+                                           description={widgetData?.sectionSubTitle}
+                                           categories={widgetData?.categories} />
+      }
+      {pageData?.[WidgetEnum.VIDYAPEETH] && (
+        <ExplorePwCenter
+          explorePWCenterData={pageData?.[WidgetEnum.VIDYAPEETH]}
+        />
+      )}
+      <ComponentWrapper
+        title={pageData?.[WidgetEnum.STATS].sectionTitle}
+        subTitle={pageData?.[WidgetEnum.STATS].sectionSubTitle}
+      >
+        <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />
+      </ComponentWrapper>
+
+      <div className={'container'}>
+        {pageData?.[WidgetEnum.RESULTS] && (
+          <ResultsSection hideCategories={false}
+                          results={pageData?.[WidgetEnum.RESULTS].sectionProps}
+                          title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
+                          description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />
+        )}
+      </div>
+    </Layout>
   );
 }
 

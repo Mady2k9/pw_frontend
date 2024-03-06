@@ -32,9 +32,8 @@ export default function ExamCategorySection({
       <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6 md:m-6'}>
         {
           (showAll ? sortedCategories : sortedCategories?.slice(0, 6))?.map((category, index) => (
-            category.exams.length != 0 && 
-         <ExamCategoryCard key={index} {...category}  />
-       
+            category.exams.length != 0 &&
+            <ExamCategoryCard key={index} {...category} />
           ))
         }
       </div>

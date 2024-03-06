@@ -1,0 +1,33 @@
+{
+  "officeLocations": [
+    {
+      "color": "#D5D5D5",
+      "details": "0 Centres"
+    },
+
+    {
+      "color": "#B2D1FF",
+      "details": "Opening soon"
+    },
+    {
+      "color": "#FBCD8F",
+      "details": " 1-2 Centres"
+    },
+    {
+      "color": "#FFC000",
+      "details": " 3-4 centres"
+    },
+    {
+      "color": "#FF8A00",
+      "details": "5-10 centres"
+    },
+    {
+      "color": "#FF6B00",
+      "details": "10-20 centres"
+    },
+    {
+      "color": "#FF3E0C",
+      "details": "20+ centres"
+    }
+  ]
+}

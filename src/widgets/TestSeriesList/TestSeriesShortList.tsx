@@ -53,8 +53,6 @@ export default function TestSeriesShortList({
     });
   
   };
- 
-  console.log('shreyacard', testSeries)
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
     <div className={'container overflow-y-auto w-full pl-1.5'}>

@@ -127,13 +127,19 @@ export function Navbar({ items, page_source }: NavbarProps) {
             <div className={'md:hidden flex flex-col items-center'}>
               {
                 userInteracted ? <Sheet>
-                  <SheetTrigger>
+                  <SheetTrigger
+                    id={'MenuTrigger'}
+                  >
                     <MenuIcon className={'w-7 mr-3 h-7'}
                               onClick={() => toggleSidebar(!isSidebarOpen)} /></SheetTrigger>
                   {userInteracted && <SheetContent side={'left'} className="w-full p-0 md:hidden ">
                     {<Sidebar handleLogin={handleLogin} items={items} />}
                   </SheetContent>}
-                </Sheet> : <MenuIcon className={'w-7 mr-3 h-7'} />
+                </Sheet> : <MenuIcon onClick={() => {
+                  setTimeout(()=>{
+                    document.getElementById('MenuTrigger')?.click();
+                  },100);
+                }} className={'w-7 mr-3 h-7'} />
               }
 
             </div>
