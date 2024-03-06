@@ -77,7 +77,7 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
             }`}
           >
             <h1 className="font-bold text-2xl px-[50px] md:px-0 text-[#EAAA2E]  xl:text-[40px] md:text-[40px] md:leading-[48px] xl:leading-[50px] mb-[8px]">
-              PW is Officially a Great Place to Work !
+              PW is Officially a <br /> Great Place to Work !
             </h1>
 
             <div className="xl:w-4/5 text-[16px] leading-[24px] md:text-[20px] md:leading-[30px] px-4 md:px-0 text-center xl:text-start text-[#EAECEF] mb-3.5 xl:mb-6">

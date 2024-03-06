@@ -154,7 +154,13 @@ export interface IWidgetJson {
     TEST_PASS: IWidget;
 }
 
+export interface CtaViewAll {
+    altText: string;
+    text: string;
+    textColor: string;
+}
 export interface IWidget {
+    cta: CtaViewAll;
     _id: string;
     sectionTitle: string;
     sectionSubTitle: string;

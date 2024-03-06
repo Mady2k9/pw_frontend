@@ -72,6 +72,7 @@ function Home(props: any) {
         name: categoryData['categoryName'],
         icon: categoryData['icon'],
         color: categoryData?.cta?.['backGroundColor'],
+        iconBackgroundColor: categoryData['iconBackgroundColor'],
         slug: categoryData?.cta?.['ctaRedirectionUrl'],
         actionName: categoryData?.cta?.['text'],
         actionColor: categoryData?.cta?.['textColor'],

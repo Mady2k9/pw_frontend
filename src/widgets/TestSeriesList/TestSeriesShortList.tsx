@@ -52,8 +52,8 @@ export default function TestSeriesShortList({
     }).finally(() => {
       setLoading(false);
     });
-  
   };
+useEffect(()=>setCard(testSeries?.slice(0,6) || []) , [testSeries] )
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
     <div className={'container w-full sm:pl-1.5'}>
@@ -95,10 +95,11 @@ export default function TestSeriesShortList({
         router.replace(router.asPath?.split('?')[0]);
       }} />
     }
-    {
-      loading && <>
+
+   {
+      (!testSeries || loading )&& <div className={'container'}>
         <BatchLoadingGrid />
-      </>
+      </div>
     }
 
     {
