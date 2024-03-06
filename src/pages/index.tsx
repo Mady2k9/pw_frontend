@@ -60,10 +60,28 @@ export async function getServerSideProps() {
     },
   };
 }
+
 function Home(props: any) {
+  const pageData = props?.HomePageData?.data?.widgetJson;
   return (
-    <Layout headerData={props.headerData} footerData={props.footerData} seoTags={props.HomePageData?.data?.seoTags} page_source={'HOME'}>
-      Hello
+    <Layout headerData={props.headerData} footerData={props.footerData} seoTags={props.HomePageData?.data?.seoTags}
+            page_source={'HOME'}>
+      {
+        pageData?.[WidgetEnum?.CAROUSEL] && (
+          <MainBanner stretched={true}
+                      leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}
+                      rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}
+                      autoplayInterval={5000}
+                      items={pageData?.[WidgetEnum?.CAROUSEL]?.sectionProps.map((banner: any) => {
+                        return {
+                          image: banner.dwebImage,
+                          mWebImage: banner.mwebImage,
+                          alt: banner.altTag,
+                          link: banner.redirectionUrl,
+                        };
+                      })} />
+        )
+      }
     </Layout>
   );
 }
