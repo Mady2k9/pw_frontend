@@ -6,12 +6,14 @@ import eventTracker from '../../EventTracker/eventTracker';
 import TransitionWrapper from '../../Molecules/TransitionWrapper/TransitionWrapper';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useGlobal } from '@/contexts/global';
 
 const ExplorePwCenter = ({
                            explorePWCenterData,
                          }: {
   explorePWCenterData: ExplorePwCenterType;
 }) => {
+  const { userInteracted } = useGlobal();
   const centreEventTrigger = (page_source: string) => {
     eventTracker.centrePageVisit(page_source);
   };
@@ -50,16 +52,18 @@ const ExplorePwCenter = ({
               backgroundColor: `${explorePWCenterData?.sectionProps?.videoOverlayColor}`,
             }}
           >
-            <video
-              src={explorePWCenterData?.sectionProps?.videoUrl}
-              playsInline
-              style={{ objectFit: 'cover' }}
-              muted
-              autoPlay
-              loop
-              controlsList="nofullscreen nodownload noremoteplayback"
-              className="opacity-40 h-full w-full m-auto sm:flex items-center absolute top-0 z-0"
-            />
+            {
+              userInteracted && <video
+                src={explorePWCenterData?.sectionProps?.videoUrl}
+                playsInline
+                style={{ objectFit: 'cover' }}
+                muted
+                autoPlay
+                loop
+                controlsList="nofullscreen nodownload noremoteplayback"
+                className="opacity-40 h-full w-full m-auto sm:flex items-center absolute top-0 z-0"
+              />
+            }
             <div className="w-full mx-auto">
               <TransitionWrapper>
                 <div
@@ -109,7 +113,7 @@ const ExplorePwCenter = ({
                 </div>
                 {
                   explorePWCenterData?.cta && <div className=" text-center">
-                    <Link href={explorePWCenterData?.cta.ctaRedirectionUrl} >
+                    <Link href={explorePWCenterData?.cta.ctaRedirectionUrl}>
                       <Button
                         className={`rounded-md transition-all duration-200 font-semibold text- w-[100%] lg:w-[240px] py-3.5`}
                         title={explorePWCenterData?.cta.text}
