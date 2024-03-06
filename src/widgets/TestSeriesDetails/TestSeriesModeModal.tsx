@@ -12,6 +12,7 @@ import {ReactElement, useState} from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
 import { stringToBase64, stringToSlug } from '@/lib/utils';
+import Link from "next/link";
 
 interface TestSeriesModeModalProps {
     trigger: ReactElement
@@ -26,15 +27,17 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
     const courseKey = router.query.courseKey as string;
     const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
-    const handleModeSelect =()=>{
-if(value==='explore'){
-    router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`)
-}else{
-    // window.open(`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)}`)
-    // router.push(`/study/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)
-    console.log(`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)}`,'jhbvefhr')
-}
-    }
+//     const handleModeSelect =()=>{
+// if(value==='explore'){
+//     router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`)
+// }else{
+//     // window.open(`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)}`)
+//     // router.push(`/study/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)
+//     console.log(`${baseUrl}/study/auth?redirect_url=${`${baseUrl}/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`}`,'jhbvefhr')
+// }
+//     }
+// console.log(`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)}`,'jhbvefhr')
+
     return <Dialog >
         <DialogTrigger asChild className={'outline-none'}>
             {
@@ -66,7 +69,11 @@ if(value==='explore'){
                         }
                     </div>
                     <div className="flex justify-end sm:grid">
-                   <DialogClose asChild ><Button onClick={handleModeSelect} className="py-4 px-12 w-full ">Continue</Button></DialogClose> 
+                   <DialogClose asChild >
+                    <Link href={value==='explore'? `/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`: `${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)}`}>
+                    <Button className="py-4 px-12 w-full ">Continue</Button>
+                    </Link>
+                    </DialogClose> 
                     </div>
                </DialogDescription>
             </DialogHeader>
