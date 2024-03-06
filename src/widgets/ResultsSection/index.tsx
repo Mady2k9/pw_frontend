@@ -15,7 +15,7 @@ export default function ResultsSection({ title, hideCategories, description, res
   });
   const [activePill, setActivePill] = useState<string>(Categories?.[0]);
   const images = useMemo(() => {
-    const res = results.find((result) => {
+    const res = results?.find((result) => {
       return result.exam === activePill;
     });
     if (res && !res.imageOption) {
@@ -26,7 +26,7 @@ export default function ResultsSection({ title, hideCategories, description, res
     }
     return res?.imageOption || [];
   }, [activePill, results]);
-  if (!results.length) {
+  if (!results?.length) {
     return <></>;
   }
   return (

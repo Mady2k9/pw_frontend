@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
@@ -11,40 +11,87 @@ import LoginButton from '../../Atoms/LoginButton/LoginButton';
 import eventTracker from '../../EventTracker/eventTracker';
 import PwLogo from '../../../../assets/Images/pw-logo.webp';
 import Profile from '@/deprecated/shared/Admitcard/components/Profile';
+import PwLogoInverted from '../../../../assets/Images/pw-logo-inverted.webp';
+import Drawer from '../../Components/Drawer/Drawer';
 import Link from 'next/link';
 
 export interface headerProps {
   showLogin?: boolean;
   headerData: HeaderItemsData[];
+  showAboutUs?: boolean;
 }
 
 export type ToggleMenuFunction = () => void;
-const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
+const Header: React.FC<headerProps> = ({
+  showLogin,
+  headerData,
+  showAboutUs,
+}) => {
+  const greatPlaceRef = useRef(null);
+  //const [isOpen, setIsOpen] = useState(true);
   const [open, setOpen] = useState(false);
   //const [headerData, setHeaderData] = useState<HeaderItemsData[]>();
   // const useCache = useChacheDemo();
   // useEffect(() => {
   //   setHeaderData(useCache.headerData?.data);
   // }, [useCache?.headerData?.data]);
-  if (!headerData) {
-    return <></>;
-  }
+
   const toggleMenu: ToggleMenuFunction = () => {
     setOpen(!open);
   };
+  const handleIntersection = (entries: any) => {
+    entries.forEach((entry: any) => {
+      if (entry.isIntersecting) {
+        requestAnimationFrame(() => setIsInViewport(true));
+      }
+    });
+  };
+  const [isInViewport, setIsInViewport] = useState(false);
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    if (scrollPosition === 0) setIsOpen(true);
+  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleIntersection);
+    if (greatPlaceRef.current) {
+      observer.observe(greatPlaceRef.current);
+    }
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const eventTrigger = (cta_name: string, page_source: string) => {
     eventTracker.topNavigationClick(cta_name, page_source);
   };
+  const [isOpen, setIsOpen] = useState(false);
+  if (!headerData) {
+    return <></>;
+  }
   return (
     <>
+      {showAboutUs && (
+        <Drawer
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          // eslint-disable-next-line react/no-children-prop
+          children={undefined}
+        ></Drawer>
+      )}
       <div
-        className={`sticky top-0 w-full bg-white border-b-[1px] ${
-          open ? '' : 'z-40'
-        }`}
+        className={`sticky top-0 w-full ${
+          showAboutUs && isOpen ? 'bg-transparent border-none ' : ' bg-white'
+        } border-b-[1px] ${open ? '' : 'z-40'}`}
+        onMouseEnter={() => setIsOpen(!isOpen)}
+        onMouseLeave={() => setIsOpen(isOpen)}
       >
         <div className={'flex justify-center'}>
-          <nav className=" flex w-full items-center max-w-6xl justify-between h-[60px] sm:h-[80px] px-4 xl:px-0 ">
+          <nav
+            className={` flex w-full items-center max-w-6xl justify-between h-[60px] sm:h-[80px] px-4 xl:px-0`}
+          >
             <div className="flex items-center gap-5 ">
               {
                 headerData?.length > 0 && <div className="flex gap-[16px] items-center ">
@@ -76,12 +123,20 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
                           href={data?.menuRedirectionUrl}
                         >
                           <span
-                            className="hover:bg-[#F1EFFF] transition-all duration-200 cursor-pointer flex items-center h-[80px] p-2.5"
+                            className={`${
+                              showAboutUs && isOpen ? '' : 'hover:bg-[#F1EFFF]'
+                            } transition-all duration-200 cursor-pointer flex items-center h-[80px] p-2.5`}
                             onClick={() =>
                               eventTrigger(data?.menuTitle, 'home_page')
                             }
                           >
-                            <div className="font-semibold text-base text-[#1B2124]">
+                            <div
+                              className={`font-semibold text-base ${
+                                showAboutUs && isOpen
+                                  ? 'text-white '
+                                  : 'text-[#1B2124]'
+                              } `}
+                            >
                               {data?.menuTitle}
                             </div>
                           </span>
@@ -98,20 +153,10 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
                   <div className="lg:inline-flex">
                     <LoginButton
                       text={'Login/Register'}
-                      className={
-                        'px-[15px] py-[5px] sm:px-[24px] sm:py-[12px] text-sm sm:text-lg'
-                      }
+                      className={`px-[15px] py-[5px] sm:px-[24px] sm:py-[12px] text-sm sm:text-lg ${showAboutUs ? 'z-80' : ''}`}
                     />
                   </div>
-                  {/* <div className="lg:hidden">
-                  <Button
-                    className={
-                      'h-[32px] w-[125px] md:w-[135px] md:h-[40px] bg-[#5A4BDA] text-white font-semibold text-sm text-center px-[15px] py-[5px] rounded-md'
-                    }
-                    title={'Login/Register'}
-                    onClick={handleClick}
-                  />
-                </div> */}
+
                 </>
               ) : (
                 <Profile></Profile>
@@ -135,7 +180,7 @@ const Header: React.FC<headerProps> = ({ showLogin, headerData }) => {
                   <Dialog.Panel className="w-[100vw] h-full relative transform overflow-hidden  bg-white text-left align-middle shadow-xl transition-all">
                     <div className="flex justify-between px-3 pt-4 pb-2 items-center">
                       <div className="flex items-center">
-                        <Link
+                      <Link
                           href="/"
                           className="outline-transparent outline-dashed"
                         >
