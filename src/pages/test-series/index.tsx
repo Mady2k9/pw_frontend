@@ -80,6 +80,7 @@ const getWidgets = (pageData: IPageData) => {
           categories.push({
             name: categoryData['categoryName'],
             icon: categoryData['icon'],
+            iconBackgroundColor: categoryData['iconBackgroundColor'],
             color: categoryData?.cta?.['backGroundColor'],
             slug: categoryData?.cta?.['ctaRedirectionUrl'],
             actionName: categoryData?.cta?.['text'],
@@ -96,6 +97,9 @@ const getWidgets = (pageData: IPageData) => {
         widgets.push({
           widget: <ExamCategorySection title={widgetData?.sectionTitle}
                                        description={widgetData?.sectionSubTitle}
+                                       ctaAltText={widgetData?.cta?.altText}
+                                       ctaText={widgetData?.cta?.text}
+                                       ctaColor={widgetData?.cta.textColor}
                                        categories={categories} />,
         });
         break;
