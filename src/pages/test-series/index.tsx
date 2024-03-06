@@ -29,12 +29,13 @@ const getWidgets = (pageData: IPageData) => {
       case 'CAROUSEL':
         widgets.push({
           widget: <MainBanner stretched={true}
-                              items={pageData.widgetJson['CAROUSEL']?.sectionProps.map((banner: any) => {
+                              items={pageData.widgetJson['CAROUSEL']?.sectionProps?.map((banner: any) => {
                                 return {
                                   image: banner.dwebImage,
                                   mWebImage: banner.mwebImage,
                                   alt: banner.altTag,
                                   link: banner.redirectionUrl,
+                                  displayOrder: banner.displayOrder
                                 };
                               })} />,
         });
@@ -66,7 +67,7 @@ const getWidgets = (pageData: IPageData) => {
       case 'APP_DOWNLOAD':
         const downloadData = pageData?.widgetJson[widget];
         widgets.push({
-          widget: <div className={'container py-10'}>
+          widget: <div className={'container'}>
             <DownloadAppBanner config={downloadData} />
           </div>,
         });
@@ -83,19 +84,30 @@ const getWidgets = (pageData: IPageData) => {
             slug: categoryData?.cta?.['ctaRedirectionUrl'],
             actionName: categoryData?.cta?.['text'],
             actionColor: categoryData?.cta?.['textColor'],
+            displayOrder: categoryData.displayOrder,
             exams: categoryData?.options?.map((option: any) => {
               return {
-                slug: option.testSeriesRedirectionUrl,
+                slug: option.redirectionUrl,
                 name: option.className,
               };
             }) || [],
           });
         });
-        return widgets.push({
+        widgets.push({
           widget: <ExamCategorySection title={widgetData?.sectionTitle}
                                        description={widgetData?.sectionSubTitle}
                                        categories={categories} />,
         });
+        break;
+        case "RESULTS":
+          const result = pageData?.widgetJson[widget];
+          widgets.push({
+            widget: <div className={'container'}>
+                <ResultsSection results={result?.sectionProps} title={'Academic Excellence : Results'}
+                      description={'Giving wings to a millions dreams, a million more to go'} />
+            </div>,
+          });
+          break;
     }
   })
   ;
@@ -110,7 +122,8 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
   if (!props.pageData) {
     return router.replace('');
   }
-  return <Layout noIndex={true} footerData={props.footerData} seoTags={props.pageData!.seoTags} headerData={props.headerData}
+  return <Layout noIndex={true} footerData={props.footerData} seoTags={props.pageData!.seoTags}
+                 headerData={props.headerData}
                  page_source={'TEST_SERIES'}>
     <PageTitleBar breadcrumbs={{
       items: [{
@@ -127,8 +140,6 @@ export default function TestSeriesPage(props: InferGetServerSidePropsType<typeof
     </div>
 
     <div className={'flex flex-col gap-4 md:gap-6 mt-6'}>
-      <ResultsSection results={[]} title={'Academic Excellence : Results'}
-                      description={'Giving wings to a millions dreams, a million more to go'} />
       <div
         className={'container'}
         dangerouslySetInnerHTML={{

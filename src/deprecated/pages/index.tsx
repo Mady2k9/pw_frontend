@@ -3,32 +3,25 @@ import { useRouter } from 'next/router';
 import HeroSection from '@/deprecated/shared/Components/Components/HeroSection/HeroSection';
 import Footer from '@/deprecated/shared/Components/Molecules/Footer/footer';
 import SEO from '@/deprecated/shared/Components/SEO/seo';
-// import ExamCategorySection from '@/deprecated/shared/Components/Components/ExamCategorySection/ExamCategorySection';
 import ExplorePwCenter from '@/deprecated/shared/Components/Components/ExplorePwCenter/ExplorePwCenter';
-//import AcademicResults from '@/deprecated/shared/Components/Molecules/AcademicResults/AcademicResults';
 import TestinomialSections from '@/deprecated/shared/Components/Components/TestimonialsSection/TestinomialSections';
 import DownloadAppSection from '@/deprecated/shared/Components/Molecules/DownloadAppSection/DownloadAppSection';
 import YouTubeCardSection from '@/deprecated/shared/Components/Components/YouTubeCardSection/YouTubeCardSection';
 import PhoneIcon from '@/deprecated/shared/Components/Molecules/PhoneIcon/PhoneIcon';
 import StatsSection from '@/deprecated/shared/Components/Components/StatsSection/StatsSection';
 import StudyResources from '@/deprecated/shared/Components/Components/StudyResourcesSection/StudyResources';
-import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
-import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
-import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
-import Header from '@/deprecated/shared/Components/Molecules/Header/header';
 import { WidgetEnum } from '@/deprecated/shared/Components/Enums/WidgetEnum';
 import eventTracker from '@/deprecated/shared/Components/EventTracker/eventTracker';
 import { useEffect, useMemo } from 'react';
 import ComponentWrapper from '@/deprecated/shared/Components/Molecules/ComponentWrapper/ComponentWrapper';
 import HeroFeatureSection from '@/deprecated/shared/Components/Components/HeroFeatureSection/HeroFeatureSection';
-// import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
 import { IWidgetJson } from '@/api/interfaces/page';
 import ExamCategorySection from '@/widgets/ExamCategorySection';
 import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCard';
 import ResultsSection from '@/widgets/ResultsSection';
-import { Carousel } from '@/components/ui/carousel';
 import { MainBanner } from '@/widgets/MainBanner';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { Navbar } from '@/components/common/Layout/Navbar';
 
 export default function HomePage({
                                    HomePageData,
@@ -110,6 +103,7 @@ export default function HomePage({
             name: option.className,
           };
         }) || [],
+        displayOrder: 0
       });
     });
     return {
@@ -150,7 +144,8 @@ export default function HomePage({
         twitterImageHeight="560"
         twitterImageWidth="292"
       />
-      <Header headerData={headerData} showLogin />
+      {/*<Header headerData={headerData} showLogin />*/}
+      <Navbar page_source={'HOME'} items={headerData} />
       {
         pageData?.[WidgetEnum?.CAROUSEL] && (
           <MainBanner stretched={true}
@@ -165,92 +160,67 @@ export default function HomePage({
                           link: banner.redirectionUrl,
                         };
                       })} />
+        )
+      }
+
+      {pageData?.[WidgetEnum?.HERO_SECTION] && (
+        <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />
+      )}
+
+      <HeroFeatureSection
+        heroFeatureData={pageData?.[WidgetEnum?.HERO_SECTION]}
+      />
+
+      {
+        widgetData && <ExamCategorySection title={widgetData?.sectionTitle || ''}
+                                           ctaText={widgetData?.cta?.text}
+                                           ctaAltText={widgetData?.cta?.altText}
+                                           ctaColor={widgetData?.cta?.textColor}
+                                           description={widgetData?.sectionSubTitle}
+                                           categories={widgetData?.categories} />
+      }
+
+      {pageData?.[WidgetEnum.VIDYAPEETH] && (
+        <ExplorePwCenter
+          explorePWCenterData={pageData?.[WidgetEnum.VIDYAPEETH]}
+        />
+      )}
+      <ComponentWrapper
+        title={pageData?.[WidgetEnum.STATS].sectionTitle}
+        subTitle={pageData?.[WidgetEnum.STATS].sectionSubTitle}
+      >
+        <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />
+      </ComponentWrapper>
+
+      <div className={'container'}>
+        {pageData?.[WidgetEnum.RESULTS] && (
+          <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}
+                          title={pageData?.[WidgetEnum.RESULTS].sectionTitle}
+                          description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />
         )}
+      </div>
 
-      {/*{pageData?.[WidgetEnum?.HERO_SECTION] && (*/}
-      {/*  <HeroSection HeroSectionData={pageData?.[WidgetEnum?.HERO_SECTION]} />*/}
-      {/*)}*/}
+      <DownloadAppSection />
 
-      {/*<HeroFeatureSection*/}
-      {/*  heroFeatureData={pageData?.[WidgetEnum?.HERO_SECTION]}*/}
-      {/*/>*/}
+      {pageData?.[WidgetEnum.TESTIMONIALS] && (
+        <TestinomialSections
+          testinomialData={pageData?.[WidgetEnum.TESTIMONIALS]}
+        />
+      )}
+      <ComponentWrapper
+        title={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionTitle}
+        subTitle={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionSubTitle}
+      >
+        <StudyResources resourceData={pageData?.[WidgetEnum.STUDY_RESOURCE]} />
+      </ComponentWrapper>
 
-      {/*{*/}
-      {/*  widgetData && <ExamCategorySection title={widgetData?.sectionTitle || ''}*/}
-      {/*                                     ctaText={widgetData?.cta?.text}*/}
-      {/*                                     ctaAltText={widgetData?.cta?.altText}*/}
-      {/*                                     ctaColor={widgetData?.cta?.textColor}*/}
-      {/*                                     description={widgetData?.sectionSubTitle}*/}
-      {/*                                     categories={widgetData?.categories} />*/}
-      {/*}*/}
-
-      {/*{pageData?.[WidgetEnum.VIDYAPEETH] && (*/}
-      {/*  <ExplorePwCenter*/}
-      {/*    explorePWCenterData={pageData?.[WidgetEnum.VIDYAPEETH]}*/}
-      {/*  />*/}
-      {/*)}*/}
-      {/*<ComponentWrapper*/}
-      {/*  title={pageData?.[WidgetEnum.STATS].sectionTitle}*/}
-      {/*  subTitle={pageData?.[WidgetEnum.STATS].sectionSubTitle}*/}
-      {/*>*/}
-      {/*  <StatsSection statsData={pageData?.[WidgetEnum.STATS]} />*/}
-      {/*</ComponentWrapper>*/}
-
-      {/*<div className={'container'}>*/}
-      {/*  {pageData?.[WidgetEnum.RESULTS] && (*/}
-      {/*    <ResultsSection hideCategories={false} results={pageData?.[WidgetEnum.RESULTS].sectionProps}*/}
-      {/*                    title={pageData?.[WidgetEnum.RESULTS].sectionTitle}*/}
-      {/*                    description={pageData?.[WidgetEnum.RESULTS].sectionSubTitle} />*/}
-      {/*  )}*/}
-      {/*</div>*/}
-
-      {/*<DownloadAppSection />*/}
-
-      {/*{pageData?.[WidgetEnum.TESTIMONIALS] && (*/}
-      {/*  <TestinomialSections*/}
-      {/*    testinomialData={pageData?.[WidgetEnum.TESTIMONIALS]}*/}
-      {/*  />*/}
-      {/*)}*/}
-      {/*<ComponentWrapper*/}
-      {/*  title={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionTitle}*/}
-      {/*  subTitle={pageData?.[WidgetEnum.STUDY_RESOURCE].sectionSubTitle}*/}
-      {/*>*/}
-      {/*  <StudyResources resourceData={pageData?.[WidgetEnum.STUDY_RESOURCE]} />*/}
-      {/*</ComponentWrapper>*/}
-
-      {/*{pageData?.[WidgetEnum.YOUTUBE_STATS] && (*/}
-      {/*  <YouTubeCardSection*/}
-      {/*    youtubeData={pageData?.[WidgetEnum.YOUTUBE_STATS]}*/}
-      {/*  />*/}
-      {/*)}*/}
-      {/*<PhoneIcon />*/}
+      {pageData?.[WidgetEnum.YOUTUBE_STATS] && (
+        <YouTubeCardSection
+          youtubeData={pageData?.[WidgetEnum.YOUTUBE_STATS]}
+        />
+      )}
+      <PhoneIcon />
       <Footer footerData={footerData} showFreeLearning />
     </>
   );
-}
-
-export async function getServerSideProps() {
-  let HomePageData;
-  let headerData;
-  let footerData;
-
-  try {
-    const result = await Promise.all([
-      FetchHomePage(),
-      FetchHeader(),
-      FetchFooter(),
-    ]);
-    HomePageData = result[0];
-    headerData = result[1];
-    footerData = result[2];
-  } catch (error) {
-    // console.log(error);
-  }
-  return {
-    props: {
-      HomePageData: HomePageData || {},
-      headerData: headerData?.data || {},
-      footerData: footerData || {},
-    },
-  };
 }

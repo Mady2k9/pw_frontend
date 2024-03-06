@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronLeftIcon, ChevronRightIcon, LinkIcon } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Logo from '@/components/icons/Logo';
 
 interface NavbarProps {
   items?: ITopMenuItem[];
@@ -24,7 +25,7 @@ export default function Sidebar({ items, handleLogin }: NavbarProps) {
                 'left-4': selectedSubItem === null,
                 '-left-10': selectedSubItem,
               })}>
-          <Image className={'w-[35px] md:w-[55px] h-full'} alt={'PW Logo'} src={PwLogoInverted.src} />
+          <Logo size={40} className={'md:hidden'} />
         </Link>
         <div onClick={() => {
           setSelectedSubItem(null);

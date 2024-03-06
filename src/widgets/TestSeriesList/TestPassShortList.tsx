@@ -36,7 +36,7 @@ export default function TestPassShortList({
                                             showMoreLink,
                                             page_source,
                                           }: TestPassShortListProps) {
-  return <div className={`w-full py-10 ${style.backgroundImage}`}>
+  return <div className={`w-full ${style.backgroundImage}`}>
     <div className={'container select-none'}>
       <div className="relative flex gap-2.5 items-center">
         <div className="h-[1px]  bg-[#81B6E4] flex-1" />
@@ -44,10 +44,10 @@ export default function TestPassShortList({
                variant={'outline'}>Newly Launched</Badge>
         <div className="h-[1px]  bg-[#81B6E4] flex-1" />
       </div>
-      {title && <h2 className={'text-headings font-bold text-center mt-5'}>{title}</h2>}
+      {title && <h2 className={'text-headings text-[32px] leading-[48px] font-bold text-center mt-5'}>{title}</h2>}
       {
         description &&
-        <p className={'text-center text-headings'}>{description}</p>
+        <p className={'text-center text-headings text-[18px] font-medium leading-[28px]'}>{description}</p>
       }
 
       <Carousel
@@ -60,8 +60,7 @@ export default function TestPassShortList({
           {items?.map((data, index: number) => (
             <CarouselItem key={index} className="lg:basis-1/2 xl:basis-1/3 basis-1/1">
               <TestPassCard data={data} color={CardColors[index % 3]} />
-            </CarouselItem>
-          ))}
+            </CarouselItem>))}
         </CarouselContent>
         <div
           className={' bg-gradient-to-r from-transparent to-white'} />

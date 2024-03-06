@@ -18,7 +18,7 @@ export default function FeaturesSection({ title, description, features }: ExamCa
     return <></>;
   }
   return (
-    <div className={'container select-none py-4 animationFromBottom md:py-8'}>
+    <div className={'container select-none '}>
       {title && <h2 className={'text-xl md:text-4xl font-bold text-center '}>{title}</h2>}
       {description &&
         <p className={'text-center text-sm md:text-lg font-medium text-light max-w-3xl mx-auto mt-3'}>{description}</p>}

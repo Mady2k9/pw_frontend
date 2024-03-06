@@ -51,21 +51,21 @@ const getBreadcrumbs = ({ cohortKey, courseKey }: {
   return items;
 };
 
-function getWidgets(props: IPageData) {
-  const result: ReactElement[] = [];
-  props.widgetOrder?.forEach((widget) => {
-    if (widget === 'RESULTS') {
-      const resultData = props.widgetJson['RESULTS'];
-      result.push(<ResultsSection hideCategories={true} results={resultData.sectionProps}
-                                  title={resultData.sectionTitle}
-                                  description={resultData.sectionSubTitle} />);
-    } else if (widget === 'APP_DOWNLOAD') {
-      const downloadData = props.widgetJson['APP_DOWNLOAD'];
-      result.push(<DownloadAppBanner config={downloadData} />);
-    }
-  });
-  return result;
-}
+// function getWidgets(props: IPageData) {
+//   const result: ReactElement[] = [];
+//   props.widgetOrder?.forEach((widget) => {
+//     if (widget === 'RESULTS') {
+//       const resultData = props.widgetJson['RESULTS'];
+//       result.push(<ResultsSection hideCategories={resultData.sectionProps.length < 2  ?  true : false } results={resultData.sectionProps}
+//                                   title={resultData.sectionTitle}
+//                                   description={resultData.sectionSubTitle} />);
+//     } else if (widget === 'APP_DOWNLOAD') {
+//       const downloadData = props.widgetJson['APP_DOWNLOAD'];
+//       result.push(<DownloadAppBanner config={downloadData} />);
+//     }
+//   });
+//   return result;
+// }
 
 export default function TestSeriesListPage(props: IPageData & { params: any }) {
   const router = useRouter();
@@ -81,9 +81,9 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
       setActiveTab(router.query.cohortKey as string);
     }
   }, [router.query]);
-  const Widgets = useMemo(() => {
-    return getWidgets(props);
-  }, [props]);
+  // const Widgets = useMemo(() => {
+  //   return getWidgets(props);
+  // }, [props]);
   const activeCohort = useMemo(() => {
     return props.options?.find((option: ICohortOptions) => (stringToSlug(option.option) === activeTab));
   }, [activeTab, props.options]);
@@ -141,12 +141,19 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
         <BatchLoadingGrid />
       </div>
     }
+     <div className={' container'}>
+    {props.widgetJson['RESULTS'] && <ResultsSection hideCategories={props.widgetJson['RESULTS'].sectionProps.length < 2  ?  true : false } results={props.widgetJson['RESULTS'].sectionProps}
+                                  title={props.widgetJson['RESULTS'].sectionTitle}
+                                  description={props.widgetJson['RESULTS'].sectionSubTitle} />}
+                                  </div>
+    
     {
       props?.content && <div className={'container mt-4 md:mt-6'}>
         <HtmlContentWidget content={props?.content} />
       </div>
     }
-    <div className={'mt-4 md:mt-8 container'}>
+     
+    {/* <div className={'mt-4 md:mt-8 container'}>
       {
         Widgets.map((WidgetView: any, index) => {
           return <div key={index}>
@@ -156,12 +163,15 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
           </div>;
         })
       }
-    </div>
-    <div className={'container'}>
+    </div> */}
+    <div className={'mt-4 md:mt-8 container'}>
       {
         props.faqs?.length > 0 && <FAQ items={props.faqs} />
       }
     </div>
+    <div className={'my-4 md:mt-8  md:mb-20 container'}>
+    {props.widgetJson['APP_DOWNLOAD'] &&  <DownloadAppBanner config={props.widgetJson['APP_DOWNLOAD'] } /> }
+                                  </div>
   </>;
 }
 

@@ -28,14 +28,17 @@ export interface ITestPass {
 
 export interface ITestPassData {
     _id: string;
-    name: string;
-    offerings: IOffering[];
+    title: string;
+    meta: IOffering[];
     slug: string;
-    planInfo: IPlanInfo;
+    planTitle: string;
+    discount: number;
+    price: number;
+    postDiscountPrice: number;
 }
 
 export interface IOffering {
-    imageUrl: string;
+    icon: string;
     text: string; // This could be an HTML string
 }
 

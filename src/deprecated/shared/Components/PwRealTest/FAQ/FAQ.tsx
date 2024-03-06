@@ -56,7 +56,16 @@ const FAQ: React.FC<FAQProps> = (props) => {
                         leaveTo="h-0 hidden"
                       >
                         <Disclosure.Panel className="bg-[#FAFAFA] p-4 rounded-b-lg sm:text-[16px] sm:leading-[24px] text-[12px] leading-[18px] font-[500]">
-                          <p>{item?.description}</p>
+                          
+                          <div
+       
+        dangerouslySetInnerHTML={{
+          __html: `${item?.description}`,
+        }} />
+     
+       
+      
+   
                         </Disclosure.Panel>
                       </Transition>
                     </>

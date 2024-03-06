@@ -8,12 +8,14 @@ import {
 } from '@/components/ui/carousel';
 import { Image } from '@/components/ui/image';
 import Link from 'next/link';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { useGlobal } from '@/contexts/global';
+import NextImage from '@/components/ui/next-image';
+import { useRouter } from 'next/router';
 
 interface MainBannerProps {
-  items: { image: string, mWebImage: string, alt: string, link?: string }[];
+  items: { image: string, mWebImage: string, alt: string, link?: string, displayOrder: number }[];
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   stretched?: boolean;
@@ -30,21 +32,76 @@ export function MainBanner({ items, autoplayInterval = 10000, stretched, leftIco
       }, 1000);
     }
   }, [autoplayInterval, userInteracted]);
-  console.log(items);
   if (!items.length) {
     return <></>;
   }
+  const sortedItem = items?.sort((a, b) => a.displayOrder - b.displayOrder);
+  if(stretched && !userInteracted){
+    return <Link href={sortedItem[0]?.link || '/'}>
+      <NextImage
+        src={sortedItem[0]?.image}
+        alt={sortedItem[0]?.alt || 'banner-image'}
+        sizes="100vw"
+        loading={'eager'}
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        className={'hidden md:block'}
+        width={'90'}
+        height={'17'}
+      />
+      <NextImage
+        src={sortedItem[0]?.mWebImage}
+        alt={sortedItem[0]?.alt || 'banner-image'}
+        sizes="100vw"
+        loading={'eager'}
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        className={'md:hidden'}
+        width={'90'}
+        height={'17'}
+      />
+    </Link>
+  }
   return (
-    <Carousel className="w-full group relative" opts={{ loop: true }} autoplayInterval={_autoplayInterval}>
+    <Carousel className="w-full group relative" opts={{ loop: true }}
+              autoplayInterval={_autoplayInterval}>
       <CarouselContent className={''}>
         {
-          items.map((_, index) => (
+          sortedItem.map((_, index) => (
             <CarouselItem key={index} className={''}>
               {
-                (userInteracted || index == 0) ? <Link href={_.link || '/'} className={'h-full'}>
-                  <Image alt={_.alt || 'banner-image'} src={_.image} className={'hidden md:block h-full w-full'} />
-                  <Image alt={_.alt || 'banner-image'} src={_.mWebImage} className={'md:hidden h-full w-full'} />
-                </Link> : <div className={'w-full h-full'}></div>
+                 <Link href={_.link || '/'}>
+                  <NextImage
+                    src={_.image}
+                    alt={_.alt || 'banner-image'}
+                    sizes="100vw"
+                    loading={'eager'}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                    className={'hidden md:block'}
+                    width={'90'}
+                    height={'17'}
+                  />
+                   <NextImage
+                    src={_.mWebImage}
+                    alt={_.alt || 'banner-image'}
+                    sizes="100vw"
+                    loading={'eager'}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                    className={'md:hidden'}
+                    width={'90'}
+                    height={'17'}
+                  />
+                </Link>
               }
             </CarouselItem>
           ))

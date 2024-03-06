@@ -1,5 +1,5 @@
 import { FetchHeader } from '@/deprecated/common/fetcher-service/FetchHeader';
-import PwRealTestPage from '@/deprecated/pages/pw-real-test';
+import PwRealTestPage from '@/deprecated/pages/real-test';
 const PwRealTest = ({ headerData }: { headerData: any }) => {
   return (
     <PwRealTestPage headerData={headerData} />
