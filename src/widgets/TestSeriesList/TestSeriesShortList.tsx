@@ -3,7 +3,7 @@ import CommonItemCard from '../CommonItemCard';
 import FAQ from '@/widgets/FAQ';
 import { useRouter } from 'next/router';
 import { ICohortOptions } from '@/api/interfaces/page';
-import { cn, jsonToQueryString, stringToSlug, uniqueBy } from '@/lib/utils';
+import { cn, jsonToQueryString, stringToBase64, stringToSlug, uniqueBy } from '@/lib/utils';
 import { ITestSeriesCategory } from '@/api/interfaces/test-series';
 import TestSeriesCard from '@/widgets/CommonItemCard/TestSeriesCard';
 import { useEffect, useState } from 'react';
@@ -33,6 +33,7 @@ export default function TestSeriesShortList({
   const [page, setPage] = useState(2)
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(testSeries?.length>6);
+  const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
   const getCard = async () => {
     let query: any = {
@@ -54,7 +55,6 @@ export default function TestSeriesShortList({
   
   };
  
-  console.log('shreyacard', testSeries)
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
     <div className={'container overflow-y-auto w-full pl-1.5'}>
@@ -64,8 +64,8 @@ export default function TestSeriesShortList({
             return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
               <TestSeriesCard
               exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item?.slug}`}
-                buyNowLink={'/study/test-series?childUrl=/'}
-                mode={item.modeType}
+              buyNowLink={`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${item.categoryId}/mode/${item.categoryModeId}`)}`}
+              mode={item.modeType}
                 amount={item?.price}
                 discount={item.discount}
                 updatedAmount={item?.postDiscountPrice}
