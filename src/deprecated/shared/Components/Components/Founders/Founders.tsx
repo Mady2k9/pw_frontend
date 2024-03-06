@@ -200,7 +200,7 @@ const FoundersSection = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-3">
-              <div className="flex flex-col md:h-[440px] h-[370px] bg-white text-center rounded-md">
+              <div className="flex flex-col md:h-[440px] h-[363px] bg-white text-center rounded-md justify-between">
                 <div
                   className="w-full px-8 md:pt-8 pt-3 pb-4 overflow-y-scroll"
                   onMouseEnter={() => setIsShown(true)}
@@ -250,7 +250,7 @@ const FoundersSection = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:h-[440px] h-[365px] bg-white text-center rounded-md">
+              <div className="flex flex-col md:h-[440px] h-[363px] bg-white text-center rounded-md justify-between">
                 <div
                   className="w-full px-8 md:pt-8 pt-3 pb-4 overflow-y-scroll"
                   onMouseEnter={() => setIsShownBox(true)}

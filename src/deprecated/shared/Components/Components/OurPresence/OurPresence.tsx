@@ -75,8 +75,8 @@ function OurPresence() {
         className="absolute h-[765px] w-[160px] z-10 right-[35px] top-[139px] hidden lg:block"
       />
 
-      <div className="mx-auto xl:max-w-6xl w-full md:py-20 pt-12 pb-24 px-4 xl:px-0">
-        <div className="flex lg:flex-row flex-col justify-between gap-8">
+      <div className="mx-auto xl:max-w-6xl w-full md:py-20 pt-8 pb-20 px-4 xl:px-0">
+        <div className="flex lg:flex-row flex-col justify-between md:gap-8 gap-[28px]">
           <div className="flex flex-col justify-center xl:w-[60%] w-[100%]">
             <div>
               <div className="font-[700] md:text-[32px] pb-2 md:leading-[48px] text-[20px] leading-[30px] text-[#1B2124]">
@@ -88,7 +88,7 @@ function OurPresence() {
                 entire country.
               </div>
             </div>
-            <div className="flex flex-col gap-[24px] mt-[32px] z-20 ">
+            <div className="flex flex-col md:gap-[24px] gap-[12px] mt-[32px] z-20 ">
               <div className="px-[32px] py-[10px] rounded-full bg-gradient-to-r from-[#FFE7B9] to-[#00000000] font-[600] md:text-[24px] md:leading-[32px] text-[18px] leading-[28px] text-[#3D3D3D]">
                 100+
                 <span className="font-[500] md:text-[24px] text-[18px] ms-1 leading-[28px] text-[#3D3D3D]">
