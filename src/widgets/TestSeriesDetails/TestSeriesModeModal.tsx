@@ -26,7 +26,6 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
     const router = useRouter()
     const courseKey = router.query.courseKey as string;
     const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
-    
     return <Dialog >
         <DialogTrigger asChild className={'outline-none'}>
             {
@@ -48,8 +47,8 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                                     <label htmlFor={m.title} className={'sm:text-lg text-base text-[#1B2124] font-semibold sm:mb-1'}>{m.title}</label>
                                     <p className={'text-[#3D3D3D] text-[12px] leading-[18px] capitalize sm:mb-2 '}>{m.description}</p>
                                     <div className="flex gap-2 items-center text-left sm:text-center justify-center">
-                                    <p className={` ${selectedMode === index? 'text-[#5A4BDA]':'text-[#1B2124]'} font-semibold text-lg sm:text-2xl`}><span className="text-[20px]">{m.price !==0 && '₹'}</span>{m.price===0 ?'Free':`${m.price}`}</p>
-                                    <p className={` font-semibold text-[#757575] sm:text-base text-sm line-through`}>{m.price===0? '':`${m.discount}`}</p>
+                                    <p className={` ${selectedMode === index? 'text-[#5A4BDA]':'text-[#1B2124]'} font-semibold text-lg sm:text-2xl`}><span className="text-[20px]">{m.postDiscountPrice !==0 && '₹'}</span>{m.postDiscountPrice===0 ?'Free':`${m.postDiscountPrice}`}</p>
+                                    <p className={` font-semibold text-[#757575] sm:text-base text-sm line-through`}>{m.postDiscountPrice===0? '':`${m.price}`}</p>
                                     </div>
                                     </div>
                                 </div>
