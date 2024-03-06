@@ -57,8 +57,8 @@ export default function TestSeriesShortList({
  
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
-    <div className={'container w-full pl-1.5'}>
-    <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
+    <div className={'container w-full sm:pl-1.5'}>
+    <div className={cn('grid grid-cols-1 sm:grid-cols-2 place-items-center sm:place-items-start lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
         {
           card?.map((item, index) => {
             return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
