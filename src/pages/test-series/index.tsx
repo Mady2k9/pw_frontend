@@ -96,7 +96,8 @@ const getWidgets = (pageData: IPageData) => {
         widgets.push({
           widget: <ExamCategorySection title={widgetData?.sectionTitle}
                                        description={widgetData?.sectionSubTitle}
-                                       categories={categories} />,
+                                       categories={categories}
+                                       />,
         });
         break;
         case "RESULTS":
