@@ -67,7 +67,7 @@ export function getTestAction(startTime: string, purchased?: boolean): 'start' |
 }
 
 export function stringToSlug(str: string) {
-  return str.replace(/ /g, '-').toLowerCase();
+  return str?.replace(/ /g, '-').toLowerCase();
 }
 
 export function slugToString(str: string) {

@@ -153,22 +153,16 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
       </div>
     }
      
-    {/* <div className={'mt-4 md:mt-8 container'}>
-      {
-        Widgets.map((WidgetView: any, index) => {
-          return <div key={index}>
-            {
-              WidgetView
-            }
-          </div>;
-        })
-      }
-    </div> */}
     <div className={'mt-4 md:mt-8 container'}>
       {
         props.faqs?.length > 0 && <FAQ items={props.faqs} />
       }
     </div>
+    {/* <div className={'mt-4 md:mt-8 container'}>
+      {
+        Widgets.find((WidgetView: any) => WidgetView.type.name =='DownloadAppBanner') || <></>
+      }
+    </div> */}
     <div className={'my-4 md:mt-8  md:mb-20 container'}>
     {props.widgetJson['APP_DOWNLOAD'] &&  <DownloadAppBanner config={props.widgetJson['APP_DOWNLOAD'] } /> }
                                   </div>

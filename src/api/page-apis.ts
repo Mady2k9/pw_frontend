@@ -10,10 +10,14 @@ export async function getTestPageSnapshot(slug: string): Promise<{ data: IPageDa
   return fetch(
    `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_HOMEPAGE&slug=/test-series` ).then((res) => res.json());
 }
-
 export async function getTestListSnapshot(slug: string): Promise<{ data: IPageData }> {
   return fetch(
     `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_CAT_LISTING&slug=${slug}`,
+  ).then((res) => res.json());
+}
+export async function getTestDescriptionSnapshot(slug: string): Promise<{ data: IPageData }> {
+  return fetch(
+    `${baseUrl}/gcms/test-page-snapshot?orgId=${orgId}&appId=${appId}&pageType=TEST_MODE_DESCRIPTION&slug=${slug}`,
   ).then((res) => res.json());
 }
 

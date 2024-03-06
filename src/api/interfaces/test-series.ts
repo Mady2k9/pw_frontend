@@ -55,14 +55,14 @@ export interface ITestSeriesImageId {
 }
 
 export interface ITestSeriesMetaIcon {
-    _id: string;
-    name: string;
+    _id?: string;
+    name?: string;
     baseUrl: string;
     key: string;
 }
 
 export interface ITestSeriesMeta {
-    type: string;
+    type?: string;
     text: string;
     icon?: ITestSeriesMetaIcon;
 }

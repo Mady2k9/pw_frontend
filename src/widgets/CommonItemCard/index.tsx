@@ -9,7 +9,7 @@ import OnlineTag from '@/assets/images/onlineTag.webp';
 import OfflineTag from '@/assets/images/offlineTag.webp';
 import PriceDisplay from '@/widgets/PriceDisplay';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CalendarDays, Star } from 'lucide-react';
 import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
@@ -35,6 +35,8 @@ interface CommonItemCardProps {
   isNew?: boolean,
   page_source?: string;
   batchId?: string;
+  cohortIdTestMode?:string
+  cohortForModal?:string
 }
 
 export default function CommonItemCard({
@@ -102,11 +104,11 @@ export default function CommonItemCard({
         }
         {
           whatsappLink && <Link href={`https://wa.me/?text=Check%20out%20this%20link%3A%20${encodedUrl}`}
-                                target={'_blank'}><Image src={WhatsAppIcon.src} alt={'Whatsapp Link'}
-                                                         className={cn('cursor-pointer', {
-                                                           'w-8 ': fromDetails,
-                                                           ' mt-1 w-5 h-5': !fromDetails,
-                                                         })} /></Link>
+            target={'_blank'}><Image src={WhatsAppIcon.src} alt={'Whatsapp Link'}
+              className={cn('cursor-pointer', {
+                'w-8 ': fromDetails,
+                ' mt-1 w-5 h-5': !fromDetails,
+              })} /></Link>
         }
       </div>
       <div className={'aspect-video relative rounded-md overflow-hidden bg-gray-100'}>
@@ -159,6 +161,15 @@ export default function CommonItemCard({
         <PriceDisplay amount={amount} discount={discount} total={updatedAmount} />
       </div>
       <div className={'flex gap-2 !mt-3'}>
+        {/* {
+          exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full'}>
+            {apiData?.data?.length> 1 ? <TestSeriesModeModal modeDataModal={apiData} cohortForModal={cohortForModal? cohortForModal:''} trigger={<Button onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))} variant={'outline'} className={'w-full border-primary text-primary'} >EXPLORE</Button>} />
+              : <Button variant={'outline'} className={'w-full  border-primary text-primary'}
+                onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
+                EXPLORE
+              </Button>}
+          </Link>
+        } */}
         {
           exploreLink && !fromDetails && <Link href={exploreLink} className={'w-full'}>
             <Button
