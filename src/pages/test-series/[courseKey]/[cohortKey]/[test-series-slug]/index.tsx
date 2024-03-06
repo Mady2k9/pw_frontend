@@ -7,7 +7,7 @@ import TestSeriesDetailsTestList from "@/widgets/TestSeriesDetails/TestSeriesDet
 import WhyChooseUs from "@/widgets/WhyChooseUs";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import getTestDescriptionServerSideProps from "@/lib/test-series-description-server-side";
-import { slugToString, stringToSlug } from "@/lib/utils";
+import { slugToString, stringToBase64, stringToSlug } from "@/lib/utils";
 import { useRouter } from "next/router";
 import { ItestModeId } from "@/api/interfaces/page";
 import { Layout } from "@/components/common/Layout";
@@ -85,7 +85,8 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             return <></>;
         }
         return <div className={'w-full sm:w-auto'}>
-            <TestSeriesCard buyNowLink={`${baseUrl}/study/test-series?childUrl=%2F`} 
+            <TestSeriesCard 
+            buyNowLink={`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${props?.pageData?.testModeId?.categoryId}/mode/${props?.pageData?.testModeId?.categoryModeId}`)}`}
                 thumbnail={props.pageData?.testModeId?.imageId ? props?.pageData?.testModeId?.imageId?.baseUrl + props?.pageData?.testModeId?.imageId?.key : ''} title={props?.pageData?.testModeId?.title ? props?.pageData?.testModeId?.title : "Testing"} page_source={PAGE_SOURCE}
                 discount={props?.pageData?.testModeId?.discount} amount={props?.pageData?.testModeId?.price} updatedAmount={props?.pageData?.testModeId?.postDiscountPrice}
                 meta={props?.pageData?.testModeId?.meta} whatsappLink={props?.pageData?.slug}
