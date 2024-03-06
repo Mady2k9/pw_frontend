@@ -156,7 +156,7 @@ export default function TestSeriesPage(
         })}
       </div>
       {props.pageData?.widgetJson['RESULTS'] && (
-        <div className={'container my-6 xl:my-10'}>
+        <div className={'container my-2 xl:mb-10'}>
           <ResultsSection
             results={props.pageData?.widgetJson['RESULTS']?.sectionProps}
             title={'Academic Excellence : Results'}
@@ -167,10 +167,8 @@ export default function TestSeriesPage(
         </div>
       )}
       {props.pageData?.content && (
-        <div className={'flex flex-col gap-4 md:gap-6 my-6 xl:my-10'}>
-          <div className={'container'}>
+        <div className={'container my-6 xl:my-10'}>
             <HtmlContentWidget content={props?.pageData.content} />
-          </div>
         </div>
       )}
       {props.pageData?.faqs && (
