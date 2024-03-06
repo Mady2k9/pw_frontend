@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from '../../Atoms/Image/Image';
-import prateekImg from '../../../../assets/Images/co-founder.webp';
+import prateekImg from '../../../../assets/Images/prateek-sir-image-web.webp';
 
 export default function FounderCard({ isShown }: { isShown: boolean }) {
   return (

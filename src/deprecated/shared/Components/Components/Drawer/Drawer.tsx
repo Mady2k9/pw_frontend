@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Image from '../../Atoms/Image/Image';
 import AboutBgImage from '../../../../assets/Images/aboutus-banner.webp';
-import knowMore from '../../../../assets/Images/know_more.webp';
+import knowMore from '../../../../assets/Images/knowMoreArrow.webp';
 
 type DrawerProps = {
   children: React.ReactNode;
@@ -103,7 +103,7 @@ export default function Drawer({ isOpen, setIsOpen }: DrawerProps) {
                 <div className="flex justify-center">
                   <Image
                     bgImagetitle={knowMore.src}
-                    className={`h-[40px] w-[40px] md:h-[45px] md:w-[45px] bg-center bg-no-repeat bg-contain animate-bounce`}
+                    className={`h-[50px] w-[50px] md:h-[70px] md:w-[70px] bg-center bg-no-repeat bg-contain animate-bounce`}
                   />
                 </div>
                 <div className="font-[400] text-sm md:text-[16px] md:leading-[28px] text-white ">
