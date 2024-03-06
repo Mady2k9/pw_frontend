@@ -46,11 +46,11 @@ export default function Document() {
       <body>
       <Main />
       <NextScript />
-      {/*<script dangerouslySetInnerHTML={GoogleTagManager()} />*/}
+      <script dangerouslySetInnerHTML={GoogleTagManager()} />
       </body>
-      {/*<noscript*/}
-      {/*  dangerouslySetInnerHTML={GTMNoScript()}*/}
-      {/*/>*/}
+      <noscript
+        dangerouslySetInnerHTML={GTMNoScript()}
+      />
     </Html>
   );
 }

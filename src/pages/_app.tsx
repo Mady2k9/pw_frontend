@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return <GlobalProvider>
     <>
       <Component {...pageProps} />
-      <GoogleTagManager gtmId={GTM_ID} />
+      {/*<GoogleTagManager gtmId={GTM_ID} />*/}
       {/*<GoogleAnalytics gaId="G-9RN512817V" />*/}
 
     </>
