@@ -44,8 +44,6 @@ export default function Document() {
       </Head>
 
       <body>
-
-
       <Main />
       <NextScript />
       {/*<script dangerouslySetInnerHTML={GoogleTagManager()} />*/}

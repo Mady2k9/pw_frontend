@@ -24,7 +24,7 @@ import { ExamCategoryProps } from '@/widgets/ExamCategorySection/ExamCategoryCar
 import { IWidgetJson } from '@/api/interfaces/page';
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let HomePageData;
   let headerData;
   let footerData;
