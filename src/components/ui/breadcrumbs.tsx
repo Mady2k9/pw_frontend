@@ -15,7 +15,7 @@ export function Breadcrumbs({items, inverted}: BreadcrumbsProps) {
                 'stroke-zinc-800': !inverted,
             })}/>
         </Link>
-        <ChevronRightIcon className={cn('w-4', {
+        <ChevronRightIcon style={{color: '#757575'}} className={cn('w-4 ', {
             'stroke-white': inverted,
         })}/>
         {
@@ -25,7 +25,7 @@ export function Breadcrumbs({items, inverted}: BreadcrumbsProps) {
                 })}>
                     <Link href={item.link || '#'} key={index}>
                         <div key={index}
-                             className={cn('text-sm hover:underline capitalize line-clamp-1 cursor-pointer', {
+                             className={cn('text-sm hover:underline capitalize line-clamp-1 cursor-pointer text-[#757575]', {
                                  'text-white': inverted,
                                  'text-primary': (index === items.length - 1) && !inverted,
                              })}>
@@ -33,7 +33,7 @@ export function Breadcrumbs({items, inverted}: BreadcrumbsProps) {
                         </div>
                     </Link>
                     {
-                        index !== items.length - 1 && <ChevronRightIcon className={cn('w-4', {
+                        index !== items.length - 1 && <ChevronRightIcon style={{color: '#757575'}} className={cn('w-4', {
                             'stroke-white': inverted,
                         })}/>
                     }

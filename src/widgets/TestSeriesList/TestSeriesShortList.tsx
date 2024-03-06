@@ -3,7 +3,7 @@ import CommonItemCard from '../CommonItemCard';
 import FAQ from '@/widgets/FAQ';
 import { useRouter } from 'next/router';
 import { ICohortOptions } from '@/api/interfaces/page';
-import { cn, jsonToQueryString, stringToSlug, uniqueBy } from '@/lib/utils';
+import { cn, jsonToQueryString, stringToBase64, stringToSlug, uniqueBy } from '@/lib/utils';
 import { ITestSeriesCategory } from '@/api/interfaces/test-series';
 import TestSeriesCard from '@/widgets/CommonItemCard/TestSeriesCard';
 import { useEffect, useState } from 'react';
@@ -33,6 +33,7 @@ export default function TestSeriesShortList({
   const [page, setPage] = useState(2)
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(testSeries?.length>6);
+  const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
   const getCard = async () => {
     let query: any = {
@@ -54,17 +55,17 @@ export default function TestSeriesShortList({
   
   };
  
-  console.log('shreyacard', testSeries)
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
-    <div className={'container overflow-y-auto w-full pl-1.5'}>
-    <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
+    <div className={'container w-full sm:pl-1.5'}>
+    <div className={cn('grid grid-cols-1 sm:grid-cols-2 place-items-center sm:place-items-start lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
         {
           card?.map((item, index) => {
             return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
               <TestSeriesCard
-                buyNowLink={'/study/test-series?childUrl=/'}
-                mode={item.modeType}
+              exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item?.slug}`}
+              buyNowLink={`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${item.categoryId}/mode/${item.categoryModeId}`)}`}
+              mode={item.modeType}
                 amount={item?.price}
                 discount={item.discount}
                 updatedAmount={item?.postDiscountPrice}
@@ -75,6 +76,8 @@ export default function TestSeriesShortList({
                 title={item.title}
                 page_source={page_source}
                 testSeriesId={item.categoryModeId || ''}
+                categoryId={item.categoryId}
+                cohortOption={cohort.option}
               />
             </div>;
           })
