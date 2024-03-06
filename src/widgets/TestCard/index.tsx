@@ -9,19 +9,19 @@ interface TestCardProps {
     name: string,
     totalQuestions: number,
     totalMarks: number,
-    duration: number,
-    startDate: string,
+    maxDuration: number,
+    startTime: string,
 }
 
 export default function TestCard(test: TestCardProps) {
     const testAction = useMemo(() => {
-        return getTestAction(test.startDate, test.isFree);
+        return getTestAction(test.startTime, test.isFree);
     }, [test]);
     return <div className={'border rounded-lg p-3 md:p-4 animationFromBottom !slide-in-from-bottom-3'}>
         <div className="flex items-center">
             <div className="flex-1 flex flex-col items-start gap-2 md:gap-3">
                 {test.isFree && <Badge variant={'success'}>Free</Badge>}
-                <h3 className={'text-lg font-bold'}>{test.name}</h3>
+                <h3 className={'text-lg font-bold break-all'}>{test.name}</h3>
                 <div className={'flex items-center'}>
                     <div className={'flex items-center gap-2 border-r border-light pr-2'}>
                         <NotebookText className={'w-4 h-4 stroke-light'}/>
@@ -31,12 +31,12 @@ export default function TestCard(test: TestCardProps) {
                         <span>{test.totalMarks} Marks</span>
                     </div>
                     <div className={'flex items-center gap-2  pl-2.5'}>
-                        <span>{test.duration} Mins</span>
+                        <span>{test.maxDuration} Mins</span>
                     </div>
                 </div>
                 <div className={'flex items-center gap-2'}>
                     <CalendarDays className={'w-4 h-4'}/>
-                    <span>Starts on {formatDateAndTime(test.startDate)}</span>
+                    <span>Starts on {formatDateAndTime(test.startTime)}</span>
                 </div>
             </div>
             <div className="div">
