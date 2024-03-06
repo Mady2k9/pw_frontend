@@ -16,6 +16,7 @@ export interface ExamCategoryProps {
   actionColor?: string;
   slug: string;
   icon?: string;
+  iconBackgroundColor?: string;
   color?: string;
   exams: ExamProps[];
   displayOrder:number;
@@ -27,6 +28,7 @@ export default function ExamCategoryCard({
                                            icon,
                                            actionColor,
                                            color,
+                                           iconBackgroundColor,
                                            exams,
                                            actionName,
                                          }: ExamCategoryProps) {
@@ -79,8 +81,8 @@ export default function ExamCategoryCard({
         </Link>
       </div>
       <div className={'relative w-[90px] md:w-[100px] flex flex-col items-end justify-center'}>
-        <div className={'absolute -z-[1] left-0  -top-5 -bottom-5 aspect-square opacity-10'}
-             style={{ borderRadius: '50%', backgroundColor: (color || '#444444') }} />
+        <div className={'absolute -z-[1] left-0  -top-5 -bottom-5 aspect-square'}
+             style={{ borderRadius: '50%', backgroundColor: (iconBackgroundColor || '#444444') }} />
         {
           icon && <Image src={icon} className={'w-[60%] group-hover:scale-110 transitionAll200'} alt={'icon'} />
         }
