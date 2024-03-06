@@ -67,7 +67,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
     const PAGE_SOURCE = 'Details Page'
     const router = useRouter()
     const { courseKey, cohortKey } = router.query;
-    const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const [testData, setTestData] = useState<any>()
 
 
@@ -118,7 +118,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                 </div>}
                 descriptionContent={props?.pageData?.testModeId?.description} />
             {/* <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={props?.pageData?.tabs} */}
-            <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={items}
+             <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={items}
                 handleClick={(e, item) => setActiveTab(item)} />
             <div className={'w-full container py-4 md:py-6 flex lg:flex-row-reverse justify-between flex-col space-y-4 md:space-y-0 space-x-4 space-x-reverse'}>
                 <div className={'relative lg:z-10 lg:mt-[-320px] mt-[0px]'}>

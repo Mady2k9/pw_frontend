@@ -19,7 +19,7 @@ const Meta = [{
     value: 14
 }]
 export default function TestSeriesDetails({metaData }:{metaData:any}) { 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const [modalChangeData, setModalChangeData] = useState<any>()
     const modalData = async () => {
         if(!metaData?.categoryId) return

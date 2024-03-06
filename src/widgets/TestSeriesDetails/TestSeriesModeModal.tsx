@@ -11,7 +11,7 @@ import { Image } from "@/components/ui/image";
 import {ReactElement, useState} from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
-import { stringToSlug } from '@/lib/utils';
+import { stringToBase64, stringToSlug } from '@/lib/utils';
 
 interface TestSeriesModeModalProps {
     trigger: ReactElement
@@ -30,7 +30,9 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
 if(value==='explore'){
     router.push(`/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`)
 }else{
-    router.push(`/study/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)
+    // window.open(`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)}`)
+    // router.push(`/study/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)
+    console.log(`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)}`,'jhbvefhr')
 }
     }
     return <Dialog >
