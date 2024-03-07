@@ -18,30 +18,12 @@ import { Button } from "@/components/ui/button";
 import PriceDisplay from "@/widgets/PriceDisplay";
 import { scrollToElement, scrollWrapperLeftToElement } from "@/lib/dom.utils";
 
-const items = [{
-    title: 'Inclusion',
-    link: '#Inclusion',
-    key: 'Inclusion'
-}, {
-    title: 'Tests',
-    link: '#Tests-List',
-    key: 'Tests'
-}, {
-    title: 'Why Choose Us',
-    link: '#Why Choose Us',
-    key: 'Why Choose Us'
-}, {
-    title: 'What You Will Experience',
-    link: '#What You Will Experience',
-    key: 'What You Will Experience'
-}];
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     return getTestDescriptionServerSideProps(context);
 }
 
 export default function TestSeriesDescription(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const [activeTab, setActiveTab] = useState<string>(items[0].key);
     const PAGE_SOURCE = 'Details Page'
     const router = useRouter()
     const { courseKey, cohortKey } = router.query;
@@ -172,7 +154,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             });
         };
     }, [Widgets]);
-
+    const [activeTab, setActiveTab] = useState<string>(Widgets[0].key);
     const testSeriesCard = useMemo(() => {
         if (!props.pageData) {
             return <></>;
