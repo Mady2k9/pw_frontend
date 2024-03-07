@@ -27,7 +27,7 @@ export default function TestCohortSlider({
   const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
   return <div className={''} id={'short-list-wrapper' + cohort.cohortId}>
     <div className={'container '}>
-      <h4 className={'text-xl md:text-3xl font-bold'}>{title}</h4>
+      <h4 className={'text-xl md:text-[32px] leading-[48px] font-bold'}>{title}</h4>
     </div>
     <div className={'overflow-x-auto container scrollbar-hide w-full'}>
       <div className={'flex flex-nowrap gap-4 py-4'}>
@@ -61,7 +61,7 @@ export default function TestCohortSlider({
     <div className={'container'}>
       {
         showMoreLink && <Link href={showMoreLink}>
-          <Button variant={'secondary'} className={'text-primary mt-2 w-full'}>
+          <Button variant={'secondary'} className={'text-primary mt-2 w-full text-sm sm:text-base'}>
             View All {cohort.option} testSeries <span
             className={'hidden md:block text-3xl pl-1 text-primary font-thin'}> &rsaquo;</span>
           </Button>
