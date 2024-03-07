@@ -129,6 +129,7 @@ export default function TestSeriesPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   const router = useRouter();
+  console.log('shreya', props)
   const Widgets = useMemo(() => {
     return getWidgets(props.pageData!);
   }, [props.pageData]);

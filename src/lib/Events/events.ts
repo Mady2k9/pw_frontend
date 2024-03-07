@@ -17,6 +17,12 @@ export enum EventType {
     'PWLIVE_ORIENTATION_VIDEO' = 'pwlive_orientation_video',
     'SCHEDULE_DOWNLOAD' = 'schedule_download',
     'FREE_CONTENT_VIDE0' = 'free_content_video',
+    'Test_Listing_Visit' = 'test_listing_visit',
+    'Get_Pass_Click' = 'get_pass_click',
+    'Test_Series_Explore_Click' = 'testseries_explore_click',
+    'Test_Series_Buy_Click' = 'testseries_buy_click',
+    'Test_Click' = 'test_click',
+    'Test_View_Schedule' = 'test_view_schedule'
   }
   
   export interface PwEvent {
