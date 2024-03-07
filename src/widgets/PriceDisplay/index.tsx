@@ -27,7 +27,7 @@ export default function PriceDisplay({ currency, compact, total, discount, amoun
       {
         discount > 0 &&
         <div className={'flex gap-1 text-sm pl-2 flex-row items-center font-medium text-zinc-500 line-through'}>
-          {formatCurrency(amount, currency)}
+          {amount && formatCurrency(amount, currency)}
         </div>
       }
 
@@ -53,11 +53,11 @@ export default function PriceDisplay({ currency, compact, total, discount, amoun
             />
           </svg>
 
-          <div
+         {discount > 0  && <div
             className={'bg-[#DFF1E4]  flex space-x-1.5 text-xs px-2.5 py-1.5 rounded font-semibold'}>
             <Image src={DiscountImage.src} alt={'Discount'} width={14} height={15} />
             <span className={'whitespace-nowrap text-[#1B7938]'}>Discount of {formatNumber(discount)}% applied</span>
-          </div>
+          </div>}
         </div>}
       </>
     }
