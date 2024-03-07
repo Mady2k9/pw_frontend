@@ -39,22 +39,22 @@ const TestPassCard = ({ data, color }: {
        }
      </div>
      <div className="px-[42px] flex flex-row items-center gap-2 ">
-       {data.price &&
+       {data.postDiscountPrice &&
          <div className="flex text-[16px] leading-6 font-bold text-[#5A4BDA] gap-1 ">
   <span>
   ₹
   </span>
            <span>
-  {data.price}
+  {data.postDiscountPrice}
   </span>
          </div>}
        <div className=" line-through text-[12px] font-semibold leading-[18px]">
-         {data.postDiscountPrice}
+         {data.price}
        </div>
-       {data.discount &&
+       {data.discount >0  &&
          <div className="flex text-[12px] font-semibold leading-[18px] text-[#1B7938] gap-1">
   <span>
-  {data.discount}%
+  {data.discount }%
   </span>
            <span>
   OFF
