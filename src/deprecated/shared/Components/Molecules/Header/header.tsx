@@ -85,8 +85,8 @@ const Header: React.FC<headerProps> = ({
         className={`sticky top-0 w-full ${
           showAboutUs && isOpen ? 'bg-transparent border-none ' : ' bg-white'
         } border-b-[1px] ${open ? '' : 'z-40'}`}
-        onMouseEnter={() => setIsOpen(!isOpen)}
-        onMouseLeave={() => setIsOpen(isOpen)}
+        //onMouseEnter={() => setIsOpen(!isOpen)}
+        //onMouseLeave={() => setIsOpen(isOpen)}
       >
         <div className={'flex justify-center'}>
           <nav

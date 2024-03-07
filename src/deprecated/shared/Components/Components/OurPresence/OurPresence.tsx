@@ -88,7 +88,7 @@ function OurPresence() {
                 entire country.
               </div>
             </div>
-            <div className="flex flex-col md:gap-[24px] gap-[12px] mt-[32px] z-20 ">
+            <div className="flex flex-col md:gap-[24px] gap-[12px] mt-[32px]">
               <div className="px-[32px] py-[10px] rounded-full bg-gradient-to-r from-[#FFE7B9] to-[#00000000] font-[600] md:text-[24px] md:leading-[32px] text-[18px] leading-[28px] text-[#3D3D3D]">
                 100+
                 <span className="font-[500] md:text-[24px] text-[18px] ms-1 leading-[28px] text-[#3D3D3D]">
@@ -111,7 +111,7 @@ function OurPresence() {
           </div>
           <div className="relative py-[20px]">
             <MapColor stateColors={finalCentersData} />
-            <div className="flex flex-col md:gap-4 gap-2 absolute xl:bottom-[-40px] xl:right-[12px] bottom-[-55px] right-[0px] z-[10] ">
+            <div className="flex flex-col md:gap-4 gap-2 absolute xl:bottom-[-40px] xl:right-[12px] bottom-[-55px] right-[0px]">
               {mapData.officeLocations?.map((office, index) => (
                 <div key={index}>
                   <CenterInformations

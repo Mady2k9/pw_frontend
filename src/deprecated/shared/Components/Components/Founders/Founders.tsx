@@ -83,7 +83,7 @@ const FoundersSection = () => {
             <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
               <div className="flex flex-col md:h-[440px] h-[460px] bg-white text-center rounded-md">
                 <div
-                  className="w-full px-8 pt-8 pb-4 overflow-y-scroll"
+                  className="w-full px-8 pt-8 pb-4 overflow-y-scroll slideBarRemove"
                   onMouseEnter={() => setIsShown(true)}
                   onMouseLeave={() => setIsShown(false)}
                 >
@@ -106,7 +106,7 @@ const FoundersSection = () => {
                   )}
                 </div>
 
-                <div className="py-4 border-t border-[#bebdbd] cursor-default">
+                <div className="py-4 border-t border-[#bebdbd] cursor-pointer">
                   <div
                     ref={componentRef}
                     onClick={() => handleOnClick()}
@@ -133,7 +133,7 @@ const FoundersSection = () => {
 
               <div className="flex flex-col md:h-[440px] h-[475px] bg-white text-center rounded-md">
                 <div
-                  className="w-full px-8 pt-8 pb-4 overflow-y-scroll"
+                  className="w-full px-8 pt-8 pb-4 overflow-y-scroll slideBarRemove"
                   onMouseEnter={() => setIsShownBox(true)}
                   onMouseLeave={() => setIsShownBox(false)}
                 >
@@ -156,7 +156,7 @@ const FoundersSection = () => {
                   )}
                 </div>
 
-                <div className="py-4 border-t border-[#bebdbd] cursor-default">
+                <div className="py-4 border-t border-[#bebdbd] cursor-pointer">
                   <div
                     ref={componentRef}
                     onClick={() => handleOnClickBox()}
@@ -202,7 +202,7 @@ const FoundersSection = () => {
             <div className="grid grid-cols-1 gap-3">
               <div className="flex flex-col md:h-[440px] h-[363px] bg-white text-center rounded-md justify-between">
                 <div
-                  className="w-full px-8 md:pt-8 pt-3 pb-4 overflow-y-scroll"
+                  className="w-full px-8 md:pt-8 pt-3 pb-4 overflow-y-scroll slideBarRemove"
                   onMouseEnter={() => setIsShown(true)}
                   onMouseLeave={() => setIsShown(false)}
                 >
@@ -252,7 +252,7 @@ const FoundersSection = () => {
 
               <div className="flex flex-col md:h-[440px] h-[363px] bg-white text-center rounded-md justify-between">
                 <div
-                  className="w-full px-8 md:pt-8 pt-3 pb-4 overflow-y-scroll"
+                  className="w-full px-8 md:pt-8 pt-3 pb-4 overflow-y-scroll slideBarRemove"
                   onMouseEnter={() => setIsShownBox(true)}
                   onMouseLeave={() => setIsShownBox(false)}
                 >
