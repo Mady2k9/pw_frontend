@@ -16,7 +16,7 @@ interface PageTabsProps {
 
 export function PageTabs({ items, handleClick, className, activeItem }: PageTabsProps) {
   return (
-    <div className={cn('sticky top-[60px] md:top-[80px] z-[3] bg-[#F1EFFF]', className)}>
+    <div className={cn('sticky top-[60px] md:top-[80px] z-[3] bg-secondary', className)}>
       <div id={'page-tabs-wrapper'}
            className="container flex space-x-4 md:space-x-6 font-medium  scrollbar-hide overflow-y-auto">
         {
@@ -29,7 +29,7 @@ export function PageTabs({ items, handleClick, className, activeItem }: PageTabs
             }} href={`${item.link}`}
                          className={'text-sm outline-none md:text-base text-[#757575] relative capitalize'}>
               <div className={cn('whitespace-nowrap py-4', {
-                'text-[#5A4BDA]': active,
+                'text-primary': active,
               })}>
                 {/* {item} */}
                 {item.key}
