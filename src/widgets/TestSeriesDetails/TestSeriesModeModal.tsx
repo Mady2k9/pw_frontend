@@ -48,7 +48,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                                     <p className={'text-[#3D3D3D] text-[12px] leading-[18px] capitalize sm:mb-2 '}>{m.description}</p>
                                     <div className="flex gap-2 items-center text-left sm:text-center justify-center">
                                     <p className={` ${selectedMode === index? 'text-[#5A4BDA]':'text-[#1B2124]'} font-semibold text-lg sm:text-2xl`}><span className="text-[20px]">{m.postDiscountPrice !==0 && '₹'}</span>{m.postDiscountPrice===0 ?'Free':`${m.postDiscountPrice}`}</p>
-                                    <p className={` font-semibold text-[#757575] sm:text-base text-sm line-through`}>{m.postDiscountPrice===0? '':`${m.price}`}</p>
+                                    <p className={` font-semibold text-[#757575] sm:text-base text-sm line-through`}>{m.price ===0? '':`${m.price}`}</p>
                                     </div>
                                     </div>
                                 </div>
