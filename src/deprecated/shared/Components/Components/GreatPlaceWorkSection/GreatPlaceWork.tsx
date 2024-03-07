@@ -24,7 +24,7 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
         <div className="max-w-6xl flex items-center sm:py-[60px] py-[30px] justify-between flex-col xl:flex-row m-auto">
           <div
             className={`w-full text-center lg:text-start ${
-              showcontent ? 'opacity-90' : 'opacity-0'
+              showcontent ? 'opacity-90 delay-300' : 'opacity-0'
             }`}
           >
             <h1 className="font-bold text-2xl px-[50px] md:px-0 text-[#EAAA2E]  xl:text-[40px] md:text-[40px] md:leading-[48px] xl:leading-[50px] mb-[8px]">
@@ -48,9 +48,9 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
 
           <div className="sm:py-4 py-6 order-first md:order-first lg:order-last">
             <div
-              className={`${
+              className={`opacity-0 ${
                 isInViewport
-                  ? 'animate-in slide-in-from-left delay-500 duration-1000'
+                  ? 'animate-in slide-in-from-left delay-1000 duration-1000 opacity-100'
                   : ''
               }`}
             >
@@ -70,7 +70,7 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
           backgroundImage: `linear-gradient(rgb(0 0 0 / 76%), rgb(0 0 0 / 84%)), url(${GpwBgMobImage.src})`,
         }}
       >
-        <div className="max-w-6xl flex items-center sm:py-[60px] py-[30px] justify-between flex-col xl:flex-row m-auto">
+        <div className="max-w-6xl flex items-center sm:py-[60px] py-[30px] justify-between flex-col xl:flex-row m-auto overflow-y-hidden">
           <div
             className={`w-full text-center xl:text-start ${
               showcontent ? 'opacity-90' : 'opacity-0'
@@ -99,9 +99,10 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
             <div
               className={`${
                 isInViewport
-                  ? 'animate-in slide-in-from-left delay-500 duration-1000'
+                  ? 'animate-in slide-in-from-top delay-700 duration-1000'
                   : ''
               }`}
+              
             >
               <Image
                 bgImagetitle={GpwImage.src}
