@@ -66,7 +66,7 @@ export function PageTitleBar({
             })}>{title}</h1>}
           {
             description &&
-            <p className={cn('font-medium text-start  text-light', {
+            <p className={cn('font-medium text-start text-base text-light', {
               'text-white': inverted,
             })}>{description}</p>
           }

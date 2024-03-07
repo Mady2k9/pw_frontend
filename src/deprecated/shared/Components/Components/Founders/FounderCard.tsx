@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from '../../Atoms/Image/Image';
-import alakhImg from '../../../../assets/Images/founder-alakh.png';
+import alakhImg from '../../../../assets/Images/alakh-sir-image.webp';
 
 export default function FounderCard({ isShown }: { isShown: boolean }) {
   return (

@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import Image from '../../Atoms/Image/Image';
 import VisionBgImage from '../../../../assets/Images/vision-bg.svg';
 import VisionBgMobImage from '../../../../assets/Images/Our-Vision-mweb.webp';
-import visionWeb from '../../../../assets/Images/vision.webp';
-import visionMweb from '../../../../assets/Images/vision-mweb.webp';
+import visionWeb from '../../../../assets/Images/Our-Vision-web.webp';
+import visionMweb from '../../../../assets/Images/OurVision-mweb.webp';
 import starImage from '../../../../assets/Images/star.webp';
 
 const VisionSection = () => {
