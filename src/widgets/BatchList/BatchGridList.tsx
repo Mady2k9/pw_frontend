@@ -34,8 +34,7 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
       query = { ...query, ...extractFilters(routerQuery) };
     }
     setLoading(true);
-    const start = reset ? 0 : batches.length - 1;
-
+    const start = reset ? 0 : batches.length;
     if (reset) {
       setBatches([]);
       window.scrollTo({
@@ -80,13 +79,13 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
                                  language={item.language}
                                  isNew={item.markedAsNew}
                                  whatsappLink={item.seoSlug}
-                                 thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name} 
+                                 thumbnail={imageToImageUrl(item.previewImage) || ''} title={item.name}
                                  page_source={page_source}
                                  batchId={item._id}/>
-                                
+
         })
       }
-      
+
     </div>
     {
       batches.length === 0 && !loading && <BatchNoDataGrid onReset={() => {

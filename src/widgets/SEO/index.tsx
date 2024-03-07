@@ -7,8 +7,8 @@ import { App_Envs_Enum } from '@/lib/constants';
 interface OgImage {
   url: string;
   width: string;
-  height?: string;
-  alt?: string;
+  height: string;
+  alt: string;
 }
 
 interface SEOProps {
@@ -24,14 +24,14 @@ interface SEOProps {
   twitterImageHeight?: string;
   twitterImageWidth?: string;
   robots?: string;
-  openGraph?: {
-    title?: string;
-    type?: string;
-    locale?: string;
-    description?: string;
-    site_name?: string;
-    url?: string;
-    images?: OgImage[];
+  openGraph: {
+    title: string;
+    type: string;
+    locale: string;
+    description: string;
+    site_name: string;
+    url: string;
+    images: OgImage[];
   };
   children?: ReactNode;
   seoSchema?: {
