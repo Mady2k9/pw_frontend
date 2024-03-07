@@ -43,7 +43,7 @@ export default function TestSeriesDetails({metaData }:{metaData:any}) {
                 <TestSeriesModeModal trigger={<Button variant={'outline'} size={'sm'}>Change Mode <ChevronRightIcon
                     className={'w-4 h-4 stroke-primary'} /></Button>} modeDataModal={modalChangeData} cohortOption="class-12" value={'explore'} categoryId={""} />
             </div>}
-            <h2 className={'text-xl md:text-3xl font-bold'}>This test series includes</h2>
+            <h2 className={'text-xl md:text-[32px] leading-[48px] font-bold'}>This test series includes</h2>
             <div className={'flex flex-wrap gap-4'}>
                 {
                     metaData?.modeMetrics?.map((m:{text:string , value:number}, index:number) => {
@@ -51,7 +51,7 @@ export default function TestSeriesDetails({metaData }:{metaData:any}) {
                         return <div key={index} className={'text-left px-2 md:px-4'} style={{
                             borderLeft: `3px solid ${colors[index % 4]}`
                         }}>
-                            <h3 className={'text-xl font-bold'}>{m.value}</h3>
+                            <h3 className={'text-xl sm:text-2xl font-bold'}>{m.value}</h3>
                             <p className={'text-lighter text-sm font-medium'}>{m.text}</p>
                         </div>
                     })
