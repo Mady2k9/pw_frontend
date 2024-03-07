@@ -18,7 +18,7 @@ const Meta = [{
     title: 'JEE Mains & Advanced',
     value: 14
 }]
-export default function TestSeriesDetails({metaData }:{metaData:any}) { 
+export default function TestSeriesDetails({metaData, cohortKey }:{metaData:any, cohortKey:any}) { 
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const [modalChangeData, setModalChangeData] = useState<any>()
     const modalData = async () => {
@@ -41,7 +41,7 @@ export default function TestSeriesDetails({metaData }:{metaData:any}) {
            {modalChangeData?.data?.length>1 && modalChangeData?.data &&  <div className="flex pb-2 md:pb-3 justify-between border-b items-center">
              <h3 className={' md:text-xl font-bold'}>{metaData.type}</h3>
                 <TestSeriesModeModal trigger={<Button variant={'outline'} size={'sm'}>Change Mode <ChevronRightIcon
-                    className={'w-4 h-4 stroke-primary'} /></Button>} modeDataModal={modalChangeData} cohortOption="class-12" value={'explore'} categoryId={""} />
+                    className={'w-4 h-4 stroke-primary'} /></Button>} modeDataModal={modalChangeData} cohortOption={cohortKey} value={'explore'} />
             </div>}
             <h2 className={'text-xl md:text-[32px] leading-[48px] font-bold'}>This test series includes</h2>
             <div className={'flex flex-wrap gap-4'}>

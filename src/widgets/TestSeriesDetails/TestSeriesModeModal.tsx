@@ -19,7 +19,7 @@ interface TestSeriesModeModalProps {
     modeDataModal: any
     cohortOption:string
     value:string
-    categoryId:string
+    categoryId?:string
 }
 export default function TestSeriesModeModal({trigger , modeDataModal, cohortOption, value, categoryId}: TestSeriesModeModalProps) {
     const [selectedMode, setSelectedMode] = useState(0)
