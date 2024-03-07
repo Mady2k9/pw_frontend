@@ -50,7 +50,6 @@ export default function TestCohortSlider({
                   page_source={page_source}
                   testSeriesId={item.categoryModeId || ''}
                   categoryId={item.categoryId}
-                  cohortOption={cohort.option}
                 />
               }
             </div>;

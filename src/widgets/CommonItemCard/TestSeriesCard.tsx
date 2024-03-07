@@ -39,7 +39,6 @@ interface TestSeriesCardProps {
   page_source?: string;
   testSeriesId?: string;
   categoryId?: string;
-  cohortOption?: string | null;
   exploreLink?: string;
 }
 
@@ -59,7 +58,6 @@ export default function TestSeriesCard({
   page_source,
   testSeriesId = '',
   categoryId,
-  cohortOption,
   exploreLink,
 }: TestSeriesCardProps) {
 
@@ -74,6 +72,8 @@ export default function TestSeriesCard({
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   const [apiData, setApiData] = useState<any>()
   const getClassAndExam = router.asPath.split('/');
+  const cohort = router.query.cohortKey as string;
+
 
   const handleExploreGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
     batchEventTracker.batchCardExploreClick(batch_name, mode, amount, updatedAmount, testSeriesId, exam, classname);
@@ -91,6 +91,7 @@ export default function TestSeriesCard({
   useEffect(() => {
     data()
   }, [])
+
   return <div
     className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
       [styles.commonItemCardWrapperOnline]: mode === 'Online',
@@ -154,7 +155,7 @@ export default function TestSeriesCard({
           !fromDetails && apiData?.data?.length > 1 && exploreLink?
           <TestSeriesModeModal trigger={<Button
             onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
-            variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption? cohortOption :''} value='explore'
+            variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohort? cohort :''} value='explore'
             categoryId={categoryId? categoryId:''} />
             : exploreLink &&
             <Link href={exploreLink ? exploreLink : '/'} className='w-full'>
@@ -168,7 +169,7 @@ export default function TestSeriesCard({
         {!fromDetails && apiData?.data?.length > 1 ?
            <TestSeriesModeModal trigger={<Button
           onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
-          variant={'default'} className={'w-full border-primary text-white'}>BUY NOW</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption ? cohortOption : ''} value='buy now'
+          variant={'default'} className={'w-full border-primary text-white'}>BUY NOW</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohort ? cohort : ''} value='buy now'
           categoryId={categoryId? categoryId:''} />
         :buyNowLink && <Link href={buyNowLink ? buyNowLink : '/'} className='w-full'>
         <Button variant={'default'} className={'w-full  border-primary text-white'}

@@ -27,7 +27,8 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
     const PAGE_SOURCE = 'Details Page'
     const router = useRouter()
     const { courseKey, cohortKey } = router.query;
-    const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const baseUrlStaging = process.env.NEXT_PUBLIC_APP_BASE_URL;
     const [testData, setTestData] = useState<any>()
 
 
@@ -162,7 +163,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
         }
         return <div className={'w-full sm:w-auto'}>
             <TestSeriesCard 
-            buyNowLink={`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${props?.pageData?.testModeId?.categoryId}/mode/${props?.pageData?.testModeId?.categoryModeId}`)}`}
+            buyNowLink={`${baseUrlStaging}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrlStaging}/test-series?childUrl=/test-series/${props?.pageData?.testModeId?.categoryId}/mode/${props?.pageData?.testModeId?.categoryModeId}`)}`}
                 thumbnail={props.pageData?.testModeId?.imageId ? props?.pageData?.testModeId?.imageId?.baseUrl + props?.pageData?.testModeId?.imageId?.key : ''} title={props?.pageData?.testModeId?.title ? props?.pageData?.testModeId?.title : "Testing"} page_source={PAGE_SOURCE}
                 discount={props?.pageData?.testModeId?.discount} amount={props?.pageData?.testModeId?.price} updatedAmount={props?.pageData?.testModeId?.postDiscountPrice}
                 meta={props?.pageData?.testModeId?.meta} whatsappLink={props?.pageData?.slug}

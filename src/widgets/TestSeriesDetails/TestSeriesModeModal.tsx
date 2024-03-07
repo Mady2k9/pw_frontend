@@ -17,7 +17,7 @@ import Link from "next/link";
 interface TestSeriesModeModalProps {
     trigger: ReactElement
     modeDataModal: any
-    cohortOption:string
+    cohortOption:string| any
     value:string
     categoryId?:string
 }
