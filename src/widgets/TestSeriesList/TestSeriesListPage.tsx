@@ -103,7 +103,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
           <span className={'capitalize whitespace-nowrap mr-1.5 tracking-wide'}>{slugToString(cohortKey as string)}</span>
         }
         <span
-          className={'text-[#5A4BDA] whitespace-nowrap mr-1.5'}>{props.title}</span>
+          className={'text-primary whitespace-nowrap mr-1.5'}>{props.title}</span>
         <span>
           Test Series
         </span>
