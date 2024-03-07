@@ -14,21 +14,21 @@ const TestPassCard = ({ data, color }: {
   color: IColorType
 }) => {
   return <div
-    className={'flex flex-col min-w-[360px] w-full rounded-tl-lg rounded-tr-lg border-2'}
+    className={'flex flex-col md:w-[360px] w-[320px] rounded-tl-xl rounded-tr-xl border-2'}
     style={{ borderColor: color.borderColor }}>
    <div
-     className={'bg-white border-b-2 h-24  border-dashed border-[#D9DCE1] p-4 pb-6 w-full rounded-tl-lg rounded-tr-lg flex flex-col'}>
+     className={'bg-white border-b-2 h-24  border-dashed border-[#D9DCE1] p-4 pb-6 w-full rounded-tl-xl rounded-tr-xl flex flex-col'}>
      <div className="flex flex-row w-full justify-between">
        <div className="flex flex-row items-center gap-4 ">
-         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
            <g clipPath="url(#clip0_8401_37945)">
-             <rect width="26" height="26" rx="5" fill={color.icon.level1} />
+             <rect width="28" height="28" rx="5" fill={color.icon.level1} />
              <circle cx="21.3156" cy="5.72188" r="7.8" fill={color.icon.level2} />
              <rect y="15.6016" width="13.52" height="13.52" fill={color.icon.level2} />
            </g>
            <defs>
              <clipPath id="clip0_8401_37945">
-               <rect width="26" height="26" rx="5" fill="white" />
+               <rect width="28" height="28" rx="5" fill="white" />
              </clipPath>
            </defs>
          </svg>
@@ -48,7 +48,7 @@ const TestPassCard = ({ data, color }: {
   {data.postDiscountPrice}
   </span>
          </div>}
-       <div className=" line-through text-[12px] font-semibold leading-[18px]">
+       <div className=" line-through text-[12px] font-semibold leading-[18px] text-lighter">
          {data.price}
        </div>
        {data.discount >0  &&
@@ -69,7 +69,7 @@ const TestPassCard = ({ data, color }: {
            <div className="h-6 w-6 min-w-6 min-h-6  bg-white border rounded-full flex items-center justify-center">
              <Image src={item.icon} className="w-full h-full" />
            </div>
-           <div
+           <div className='text-[12px] text-[#3d3d3d]'
              dangerouslySetInnerHTML={{
                __html: item.text,
              }} />
@@ -77,7 +77,7 @@ const TestPassCard = ({ data, color }: {
          </div>)}
        </div>
        <Link href={`/study/test-series?childUrl=%2Ftest-pass%2F${data._id}%2Foverview`} target={'_blank'} className={'w-full '}>
-       <Button className={'w-full min-h-[40px] mt-[16px]'} onClick={() => {
+       <Button className={'w-[100%] min-h-[40px] mt-[16px]'} onClick={() => {
        }}
         >{'Get Pass'}</Button>
         </Link>

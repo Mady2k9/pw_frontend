@@ -18,6 +18,7 @@ import FAQ from '@/widgets/FAQ';
 import TestPassCard from '@/widgets/TestPassCard';
 import TestPassShortList from '@/widgets/TestSeriesList/TestPassShortList';
 import HtmlContentWidget from '@/widgets/HtmlContentWidget/HtmlContentWidget';
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   return testSeriesHomePageServerSideProps(context);
@@ -34,6 +35,8 @@ const getWidgets = (pageData: IPageData) => {
           widget: (
             <MainBanner
               stretched={true}
+              leftIcon={<ChevronLeftIcon className={'h-16 w-16 stroke-white'} />}
+              rightIcon={<ChevronRightIcon className={'h-16 w-16 stroke-white'} />}
               items={pageData.widgetJson['CAROUSEL']?.sectionProps?.map(
                 (banner: any) => {
                   return {
@@ -149,6 +152,7 @@ export default function TestSeriesPage(
             },
           ],
         }}
+        noBgImage
       />
       <div className={'flex flex-col gap-8 md:gap-10'}>
         {Widgets.map((widget, index) => {

@@ -12,7 +12,7 @@ interface ResultsSectionProps {
 export default function ResultsSection({ title, hideCategories, description, results }: ResultsSectionProps) {
   const Categories = results?.map((result) => {
     return result?.exam;
-  });
+  })
   const [activePill, setActivePill] = useState<string>(Categories?.[0]);
   const images = useMemo(() => {
     const res = results?.find((result) => {
@@ -31,7 +31,7 @@ export default function ResultsSection({ title, hideCategories, description, res
   }
   return (
     <div className={' py-4  md:py-8'}>
-      {title && <h2 className={'text-xl md:text-4xl font-bold text-center '}>{title}</h2>}
+      {title && <h2 className={'text-xl md:text-4xl font-bold text-center text-headings '}>{title}</h2>}
       {description &&
         <p className={'text-center text-sm md:text-lg font-medium text-light max-w-3xl mx-auto mt-3'}>{description}</p>}
       {!hideCategories && <div className={'w-full overflow-x-auto scrollbar-hide py-1 my-4'}>
@@ -40,7 +40,7 @@ export default function ResultsSection({ title, hideCategories, description, res
             Categories.map((category, index) => (
               <Pill onClick={() => setActivePill(category)} key={index}
                     variant={category === activePill ? 'active' : 'default'}>
-                <span>{category}</span>
+                <span className={category === activePill? 'text-primary': 'text-light '}>{category}</span>
               </Pill>
             ))
           }

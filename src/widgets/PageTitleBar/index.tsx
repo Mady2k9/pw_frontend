@@ -13,6 +13,7 @@ interface PageTitleBarProps {
   breadcrumbs?: BreadcrumbsProps;
   inverted?: boolean;
   containerClass?: string;
+  noBgImage?: boolean;
   descriptionContent?: string; // This should be html Content
   descriptionElement?: ReactElement; // This should be html Content
 }
@@ -25,11 +26,13 @@ export function PageTitleBar({
                                containerClass,
                                floatingCard,
                                description,
+                               noBgImage,
                                title,
                              }: PageTitleBarProps) {
   if (typeof title === 'string') {
     title = <>{title}</>;
   }
+  console.log('shreya', inverted)
   return (
     <>
       {
@@ -45,12 +48,14 @@ export function PageTitleBar({
           inverted ? <div
             className={'absolute left-0 right-0 top-0 bottom-0 bg-cover bg-center bg-no-repeat z-[-1]'}
             style={{ backgroundImage: `url(${bgInverted.src})` }} /> : <>
+          {!noBgImage && <> 
             <div
               className={'absolute left-0 right-0 top-0 bottom-0 bg-cover bg-center bg-no-repeat hidden md:block z-[-1]'}
               style={{ backgroundImage: `url(${bgImage.src})` }} />
             <div
               className={'absolute left-0 right-0 top-0 bottom-0 md:hidden  bg-cover bg-center bg-no-repeat z-[-1]'}
               style={{ backgroundImage: `url(${bgMWebImage.src})` }} />
+          </>}
           </>
         }
         <div

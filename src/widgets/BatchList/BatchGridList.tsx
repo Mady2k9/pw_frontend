@@ -66,7 +66,7 @@ export default function BatchGridList({ batches: _batches, cohort, filteredBatch
     <div className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
       {
         batches.map((item, index) => {
-          return  <CommonItemCard exploreLink={item.seoSlug}
+          return  <CommonItemCpard exploreLink={item.seoSlug}
                                  buyNowLink={`/study/batches/${item.slug}/batch-overview`}
                                  isOnline={!item.isPathshala && !item.config?.isVidyapeeth}
                                  key={index}
