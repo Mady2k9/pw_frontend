@@ -103,7 +103,7 @@ export default function Drawer({ isOpen, setIsOpen }: DrawerProps) {
                 <div className="flex justify-center">
                   <Image
                     bgImagetitle={knowMore.src}
-                    className={`h-[50px] w-[50px] md:h-[70px] md:w-[70px] bg-center bg-no-repeat bg-contain animate-bounce`}
+                    className={`h-[34px] w-[34px] md:h-[40px] md:w-[40px] bg-center bg-no-repeat bg-contain animate-bounce`}
                   />
                 </div>
                 <div className="font-[400] text-sm md:text-[16px] md:leading-[28px] text-white ">
