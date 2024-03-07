@@ -157,7 +157,7 @@ export default function Drawer({ isOpen, setIsOpen }: DrawerProps) {
                 languages
               </div>
               <div
-                className="self-center md:mt-10 md:pt-16 pt-20 pb-16 "
+                className="self-center md:mt-10 md:pt-16 pt-20 pb-16 cursor-pointer "
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <div className="flex justify-center">

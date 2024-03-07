@@ -63,10 +63,10 @@ const NestedDropDownWeb = ({ item }: { item: HeaderItemsData }) => {
         onMouseLeave={() => setShowDropDownOpen(false)}
       >
         <button
-          className=" border border-[#5A4BDA] py-[12px] px-[24px] rounded-[6px] flex items-center gap-[6px] justify-center"
+          className=" border border-[#9387FF] py-[12px] px-[24px] rounded-[6px] flex items-center gap-[6px] justify-center"
           onClick={handleDropDownOpen}
         >
-          <span className="text-[#5A4BDA] font-semibold text-base">
+          <span className="text-[#9387FF] font-semibold text-base">
             {item.menuTitle}
           </span>
           <span>
