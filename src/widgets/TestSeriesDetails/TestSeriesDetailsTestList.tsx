@@ -8,6 +8,8 @@ import {cn} from "@/lib/utils";
 export default function TestSeriesDetailsTestList({testData}:{testData:any}) {
 
     const [showAll, setShowAll] = useState(false);
+    console.log(testData,'testData');
+    
     return <div className={'card-shadow rounded-lg p-4 flex flex-col gap-4 md:gap-6'} id={'Tests-List'}>
         <h2 className={'text-xl md:text-[32px] leading-[48px] font-bold'}>Tests</h2>
         <div className={'flex flex-col gap-4'}>
