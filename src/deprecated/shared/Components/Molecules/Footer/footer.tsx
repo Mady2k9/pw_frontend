@@ -67,7 +67,7 @@ const Footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                     >
                       <NextImage onClick={() =>
                         googleStoreEvent('google_play', 'footer')
-                      } alt={'google_play'} src={GooglePlayeStoreIcon.src} width={'100'} height={'40'}
+                      } alt={'google_play'} src={GooglePlayeStoreIcon.src} width={'135'} height={'40'}
                                  loading={'lazy'} />
                     </a>
 
@@ -79,7 +79,7 @@ const Footer: React.FC<footerProps> = ({ showFreeLearning, footerData }) => {
                     >
                       <NextImage onClick={() =>
                         googleStoreEvent('app_store', 'footer')
-                      } alt={'App Store'} src={appleStoreIcon.src} width={'100'} height={'40'} loading={'lazy'} />
+                      } alt={'App Store'} src={appleStoreIcon.src} width={'120'} height={'40'} loading={'lazy'} />
                     </a>
                   </div>
                 </div>
