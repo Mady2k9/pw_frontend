@@ -73,7 +73,7 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
         <div className="max-w-6xl flex items-center sm:py-[60px] py-[30px] justify-between flex-col xl:flex-row m-auto overflow-y-hidden">
           <div
             className={`w-full text-center xl:text-start ${
-              showcontent ? 'opacity-90' : 'opacity-0'
+              showcontent ? 'opacity-90 delay-500' : 'opacity-0'
             }`}
           >
             <h1 className="font-bold text-2xl px-[50px] md:px-0 text-[#EAAA2E]  xl:text-[40px] md:text-[40px] md:leading-[48px] xl:leading-[50px] mb-[8px]">
@@ -99,7 +99,7 @@ const GreatPlaceWorkSection = ({ isInViewport }: { isInViewport: boolean }) => {
             <div
               className={`${
                 isInViewport
-                  ? 'animate-in slide-in-from-top delay-700 duration-1000'
+                  ? 'animate-in slide-in-from-bottom delay-700 duration-1000'
                   : ''
               }`}
               

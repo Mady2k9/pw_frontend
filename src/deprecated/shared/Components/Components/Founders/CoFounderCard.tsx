@@ -19,7 +19,7 @@ export default function FounderCard({ isShown }: { isShown: boolean }) {
       <div className="font-[500] md:text-[16px] md:leading-[24px] text-[14px] leading-[22px] text-[#3D3D3D]">
         Co Founder
       </div>
-      <div className="pt-2 px-1 font-[600] md:text-[20px] md:leading-[32px] text-[16px] leading-[30px] text-[#1B2124] italic">
+      <div className="pt-2 font-[600] md:text-[20px] md:leading-[32px] text-[16px] leading-[30px] text-[#1B2124] italic">
         “Teachers add soul into technology, which is why in ed-tech, education
         comes before technology”
       </div>
