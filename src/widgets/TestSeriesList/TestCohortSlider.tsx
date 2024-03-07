@@ -30,7 +30,7 @@ export default function TestCohortSlider({
       <h4 className={'text-xl md:text-[32px] leading-[48px] font-bold'}>{title}</h4>
     </div>
     <div className={'overflow-x-auto container scrollbar-hide w-full'}>
-      <div className={'flex flex-nowrap gap-4 py-4'}>
+      <div className={'flex flex-nowrap gap-6 sm:gap-4 py-4'}>
         {
           padRightArray(testSeries.slice(0, 3), 3, null).map((item, index) => {            
             return <div className={'min-w-[320px] w-full md:w-auto md:flex-1'} key={index}>

@@ -10,7 +10,7 @@ import OfflineTag from '@/assets/images/offlineTag.webp';
 import PriceDisplay from '@/widgets/PriceDisplay';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { CalendarDays, Star } from 'lucide-react';
+import Star from '../../assets/images/star.png'
 import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
 import { useRouter } from 'next/router';
@@ -96,13 +96,13 @@ export default function TestSeriesCard({
       [styles.commonItemCardWrapperOnline]: mode === 'Online',
       [styles.commonItemCardWrapperOffline]: mode === 'Offline',
     })}>
-    <div className={cn(' bg-white w-full rounded-md p-3 space-y-2 relative')}>
+    <div className={cn(' bg-white w-full rounded-md p-4 space-y-2 relative')}>
       {
         mode && <Image src={mode === 'Online' ? OnlineTag.src : OfflineTag.src} alt={mode}
                        className={'absolute -left-2.5 -top-2.5 w-[100px] h-10'} />
       }
       <div className={'flex item' +
-        's-start gap-2 !mt-2'}>
+        's-start gap-2 '}>
         <h4 className={'md:text-lg h-[56px] line-clamp-2 font-semibold flex-1'}>
           {title}
         </h4>
@@ -135,7 +135,8 @@ export default function TestSeriesCard({
             {
               features.map((m, index) => {
                 return <div key={index} className={'flex gap-2 py-1 h-[24px] overflow-hidden items-center'}>
-                  <Star className={'w-4 min-w-4 h-4 fill-amber-500 line-clamp-1 stroke-amber-500 stroke-2'} />
+                  {/* <Star className={'w-4 min-w-4 h-4 fill-amber-500 line-clamp-1 stroke-amber-500 stroke-2'} /> */}
+                  <Image src={Star.src} className='w-4 min-w-4 h-4 bg-center  bg-no-repeat bg-contain'/>
                   <span key={index}
                         className={'line-clamp-1'}>{m.text ? <HtmlContentWidget content={m.text} /> : ''
                   } {m.text?.toLowerCase().replace(/_/g, ' ')} </span>

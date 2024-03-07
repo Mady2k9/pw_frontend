@@ -54,7 +54,7 @@ export function PageTitleBar({
           </>
         }
         <div
-          className={cn('container  relative py-4 md:pt-6 md:pb-[10px] space-y-2 md:space-y-4', containerClass, {
+          className={cn('container  relative py-4 md:py-6 space-y-2 md:space-y-4', containerClass, {
             'lg:pr-[400px]': !!floatingCard,
           })}>
           {
@@ -66,7 +66,7 @@ export function PageTitleBar({
             })}>{title}</h1>}
           {
             description &&
-            <p className={cn('font-medium text-start text-base text-light', {
+            <p className={cn('font-medium sm:text-start text-sm sm:text-base text-light text-center', {
               'text-white': inverted,
             })}>{description}</p>
           }

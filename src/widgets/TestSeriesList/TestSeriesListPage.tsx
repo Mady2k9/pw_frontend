@@ -97,13 +97,13 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
         }),
       }}
       description={props.description}
-      title={<div className={'flex flex-wrap'}>
+      title={<div className={'flex flex-wrap justify-center sm:justify-start'}>
         {
           cohortKey &&
-          <span className={'capitalize whitespace-nowrap mr-1.5'}>{slugToString(cohortKey as string)}</span>
+          <span className={'capitalize whitespace-nowrap mr-1.5 tracking-wide'}>{slugToString(cohortKey as string)}</span>
         }
         <span
-          className={'text-primary whitespace-nowrap mr-1.5'}>{props.title}</span>
+          className={'text-[#5A4BDA] whitespace-nowrap mr-1.5'}>{props.title}</span>
         <span>
           Test Series
         </span>
