@@ -17,9 +17,10 @@ function Verifications() {
       newDataTemp = JSON.parse(existingData);
       setNewData(newDataTemp);
     }
-    console.log(existingData, 'newData');
   }, []);
-  console.log(newData.batchSlug, 'newData1');
+  useEffect(() => {
+    redirectToBatch();
+  }, [newData]);
   const redirectToBatch = () => {
     if (newData) {
       const url = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/study/batches/${newData.batchSlug}/subjects/${newData.subjectSlug}/subject-topics`;

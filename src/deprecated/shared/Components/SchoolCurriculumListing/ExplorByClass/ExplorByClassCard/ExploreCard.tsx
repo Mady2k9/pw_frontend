@@ -49,30 +49,23 @@ function ExploreCard({
       schoolclass: schoolclass,
     };
     localStorage.setItem('clickedSubjects', JSON.stringify(newData));
-    // let baseUrl = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/school-curriculum/${tabUrl}/onboringPage`;
-    // if (localStorage.getItem('user')) {
-    //   baseUrl = subject.redirectionUrl;
-    // }
-
-    // window.open(
-    //   `${process.env.NEXT_PUBLIC_APP_BASE_URL}/study/auth?redirect_url=${baseUrl}`,
-    //   '_parent'
-    // );
     const baseUrl = typeof window === 'undefined' ? '' : window.location.origin;
     let redirect_url;
-    if (localStorage.getItem('user')) {
-      redirect_url = subject.redirectionUrl;
+    let url;
+    if(localStorage.getItem('user')) 
+    {
+      
+      url = subject.redirectionUrl;
+       
     } else {
       redirect_url = `${baseUrl}/school-curriculum/${tabUrl}/onboringPage`;
+      url = `${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(redirect_url)}`
     }
     window.open(
-      `${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(redirect_url)}`,
+      url,
       '_blank'
     );
   };
-  // const baseUrl = typeof window === 'undefined' ? '' : window.location.origin;
-  
-  // const redirect_url = `${baseUrl}/school-curriculum/${tabUrl}/onboringPage`;
   return (
     <>
       {classItem.subjects.map((subject: Subject, index: number) => (
@@ -81,10 +74,7 @@ function ExploreCard({
           className="group cursor-pointer "
           onClick={() => handleClick(subject)}
         >
-          {/* <Link
-            target="_blank"
-            href={`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(redirect_url)}`}
-          > */}
+          
             
               <div
                 className="flex md:min-w-[240px] md:max-w-[240px] md:h-[100px] min-w-[180px] max-w-[180px] h-[80px] mb-2 rounded-lg transition-transform transform animate__animated"
@@ -119,7 +109,6 @@ function ExploreCard({
                 </div>
               </div>
             
-          {/* </Link> */}
         </div>
       ))}
     </>
