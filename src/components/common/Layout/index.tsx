@@ -26,8 +26,6 @@ export function Layout({
                          page_source,
                          noIndex,
                        }: LayoutProps) {
-  console.log(footerData);
-  console.log(headerData);
   return (
     <main className={className || ''}>
       {seoTags && <SEO
@@ -37,6 +35,20 @@ export function Layout({
         description={seoTags?.pageMetaTags?.metaDescription}
         keyword={seoTags?.pageMetaTags?.metaKeywords?.join(',')}
         canonical={seoTags?.canonicalLink}
+        openGraph={{
+          title: seoTags?.pageMetaTags?.metaTitle,
+          type: 'website',
+          locale: 'en_IN',
+          description: seoTags?.pageMetaTags?.metaDescription,
+          site_name: 'PW Live',
+          url: seoTags?.canonicalLink,
+          images: [{
+            url: seoTags?.pageMetaTags?.ogImageUrl || 'https://d2bps9p1kiy4ka.cloudfront.net/5b09189f7285894d9130ccd0/baea2846-ed40-4951-8683-84bd031d350a.png',
+            width: '40',
+            height: '40',
+            alt: seoTags?.pageMetaTags?.metaTitle,
+          }],
+        }}
       />}
       <Navbar items={headerData} page_source={page_source} />
       <div key={'navbar-placeholder'} className={'h-[60px] md:h-navbar'} />
