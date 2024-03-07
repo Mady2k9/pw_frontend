@@ -3,7 +3,8 @@ import SchoolHero from '../SchoolHero/SchoolHero';
 import TabButton from './Tab.module.css';
 // import Link from 'next/link';
 import { useRouter } from 'next/router';
-import classData from '../../../../jsonFiles/schoolsAllclassData.json';
+import {AccessAllCardData} from '../ExplorByClass/schoolsAllclassDatajson'
+
 
 interface Tab {
   id: string;
@@ -20,7 +21,7 @@ interface TabsProps {
 
 const TabComponent: React.FC<TabsProps> = ({ tabs }) => {
   const routes = useRouter();
-  const tabUrl = routes.query.bookName as keyof typeof classData;
+  const tabUrl = routes.query.bookName as keyof typeof AccessAllCardData;
   const [activeTab, setActiveTab] = useState<string>(tabUrl || tabs[0].to);
   const handleActiveTab = (tab: string) => {
     setActiveTab(tab);
