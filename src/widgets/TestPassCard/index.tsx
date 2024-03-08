@@ -69,7 +69,7 @@ const TestPassCard = ({ data, color }: {
            <div className="h-6 w-6 min-w-6 min-h-6  bg-white border rounded-full flex items-center justify-center">
              <Image src={item.icon} className="w-full h-full" />
            </div>
-           <div className='text-[12px] text-textColor'
+           <div className='text-[12px] text-light'
              dangerouslySetInnerHTML={{
                __html: item.text,
              }} />

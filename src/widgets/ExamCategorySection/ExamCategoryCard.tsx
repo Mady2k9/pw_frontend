@@ -38,7 +38,7 @@ export default function ExamCategoryCard({
   const [height, setHeight] = useState(100);
   return (
     <div
-      className={'overflow-hidden flex group mb-auto border border-zinc-100 card-shadow animationFromBottom cursor-default hover:border-strokeMedium transitionAll200 rounded p-4'}>
+      className={'overflow-hidden flex group mb-auto border border-zinc-100 card-shadow animationFromBottom cursor-default hover:border-stroke-medium transitionAll200 rounded p-4'}>
       <div className={'flex flex-col flex-1 gap-4'}>
         <h2 className={'text-lg md:text-xl font-bold line-clamp-1 text-headings'}>{name}</h2>
         <div className={cn('w-full transitionAll200 overflow-y-hidden scrollbar-hide')}
@@ -48,7 +48,7 @@ export default function ExamCategoryCard({
               (showMore ? exams : ExamsToDisplay).map((exam, index) => (
                 <Link href={exam.slug || '#'} key={index}>
                   <Pill
-                    className={'mr-2 mb-2 animationFromBottom md:text-[14px] text-[12px] !slide-in-from-bottom-2 hover:border-strokeMedium fade-in text-textColor'}><span>{exam.name}</span></Pill>
+                    className={'mr-2 mb-2 animationFromBottom md:text-[14px] text-[12px] !slide-in-from-bottom-2 hover:border-stroke-medium fade-in text-light'}><span>{exam.name}</span></Pill>
                 </Link>
               ))
             }
@@ -60,7 +60,7 @@ export default function ExamCategoryCard({
                 }, 100);
                 setShowMore(!showMore);
               }}
-                    className={'mr-2 mb-2  md:text-[12px] text-[14px] animationFromBottom !slide-in-from-bottom-2 hover:border-strokeMedium fade-in text-textColor'}><span>{!showMore ? 'More' : 'Less'}</span>
+                    className={'mr-2 mb-2  md:text-[12px] text-[14px] animationFromBottom !slide-in-from-bottom-2 hover:border-stroke-medium fade-in text-light'}><span>{!showMore ? 'More' : 'Less'}</span>
                 <ChevronDownIcon
                   className={cn('h-3 w-3 transitionAll200', {
                     'rotate-180': showMore,
