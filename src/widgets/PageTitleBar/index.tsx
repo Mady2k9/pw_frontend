@@ -32,7 +32,6 @@ export function PageTitleBar({
   if (typeof title === 'string') {
     title = <>{title}</>;
   }
-  console.log('shreya', inverted)
   return (
     <>
       {
