@@ -9,9 +9,9 @@ const pillVariants = cva(
         variants: {
             variant: {
                 default:
-                    "border bg-white hover:bg-zinc-50 hover:border-zinc-800",
+                    " border-stroke-light bg-white hover:bg-zinc-50 hover:border-stroke-medium",
                 active:
-                    "border-zinc-800 bg-zinc-50  hover:bg-zinc-50",
+                    "border-primary bg-zinc-50 hover:bg-zinc-50",
                 outline: "text-foreground",
             },
         },

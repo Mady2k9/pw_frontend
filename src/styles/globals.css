@@ -16,10 +16,10 @@
         --primary: 246 66% 57%;
         --primary-foreground: 0 0% 98%;
 
-        --secondary: 248, 100%, 97%;
+        --secondary: 248, 100%, 97%; 
         --secondary-foreground: 240 5.9% 10%;
 
-        --muted: 240 4.8% 95.9%;
+        --muted:200 14% 12%;
         --muted-foreground: 240 3.8% 46.1%;
 
         --accent: 240 4.8% 95.9%;
@@ -27,6 +27,8 @@
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
+
+        --headings: 200 14% 12%;
 
         --border: 240 5.9% 90%;
         --input: 240 5.9% 90%;
