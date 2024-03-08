@@ -48,7 +48,7 @@ export default function ExamCategoryCard({
               (showMore ? exams : ExamsToDisplay).map((exam, index) => (
                 <Link href={exam.slug || '#'} key={index}>
                   <Pill
-                    className={'mr-2 mb-2 animationFromBottom md:text-[14px] text-[12px] !slide-in-from-bottom-2 hover:border-strokeMedium fade-in text-[#3D3D3D]'}><span>{exam.name}</span></Pill>
+                    className={'mr-2 mb-2 animationFromBottom md:text-[14px] text-[12px] !slide-in-from-bottom-2 hover:border-strokeMedium fade-in text-textColor'}><span>{exam.name}</span></Pill>
                 </Link>
               ))
             }
@@ -60,7 +60,7 @@ export default function ExamCategoryCard({
                 }, 100);
                 setShowMore(!showMore);
               }}
-                    className={'mr-2 mb-2  md:text-[12px] text-[14px] animationFromBottom !slide-in-from-bottom-2 hover:border-strokeMedium fade-in text-[#3D3D3D]'}><span>{!showMore ? 'More' : 'Less'}</span>
+                    className={'mr-2 mb-2  md:text-[12px] text-[14px] animationFromBottom !slide-in-from-bottom-2 hover:border-strokeMedium fade-in text-textColor'}><span>{!showMore ? 'More' : 'Less'}</span>
                 <ChevronDownIcon
                   className={cn('h-3 w-3 transitionAll200', {
                     'rotate-180': showMore,

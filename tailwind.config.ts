@@ -54,6 +54,9 @@ const config = {
          strokeLight:{
           DEFAULT: '#D9DCE1'
         },
+        textColor:{
+          DEFAULT: '#3d3d3d'
+        },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
