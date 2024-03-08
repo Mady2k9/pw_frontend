@@ -3,7 +3,7 @@ import React from 'react';
 export default function FounderDetails() {
   return (
     <>
-      <div className="mt-2 cursor-default overflow-y-scroll">
+      <div className="mt-2 cursor-default">
         <div className="py-2 font-[700] md:text-[24px] md:leading-[32px] text-[20px] leading-[30px] text-start text-[#3D3D3D]">
           Alakh Pandey
         </div>

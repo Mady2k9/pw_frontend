@@ -5,7 +5,7 @@ function SchoolCrDownloadPdf() {
   const [isHovered, setHovered] = useState(false);
 
   const pdfPath =
-    'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+    'https://drive.google.com/file/d/1TNuLvc37XrKFc39mVb73X3qpKChLcVLC/view?usp=drivesdk';
 
   const handleDownload = () => {
     const link = document.createElement('a');

@@ -41,7 +41,7 @@ function SchoolCrDemo() {
     if (url?.includes('embed')) return url + '&autoplay=1';
   };
   return (
-    <div className="py-10 relative overflow-hidden">
+    <div className="py-10 relative overflow-hidden px-0 md:px-3">
       {showVideoPopup ? (
         <div
           className="fixed h-screen inset-0 bg-black/20 z-50 flex justify-between items-center"
@@ -58,7 +58,7 @@ function SchoolCrDemo() {
             </div>
             <DynamicVideoComponent
               src={`${getYtUrl(
-                'https://www.youtube.com/embed/47H01638-9w?si=6zAj5IrAToauPPQp'
+                'https://www.youtube.com/embed/h_3uFm7Ihbo?si=iGFYtQyQfJk_rfyC'
               )}`}
               title={'YT-video'}
               className={'h-full w-full  rounded-lg'}
@@ -106,14 +106,14 @@ function SchoolCrDemo() {
         <Image
           src={`${dots.src}`}
           className={
-            'xl:h-[89px] md:w-[19px] xl:w-[28px] h-[42px] w-[28px] bg-center bg-contain bg-no-repeat absolute xl:bottom-[200px] xl:left-[118px] bottom-[90px] md:left-[-4px] left-[-5px] 2xl:left-[670px]'
+            'xl:h-[89px] md:w-[19px] xl:w-[28px] h-[42px] w-[28px] bg-center bg-contain bg-no-repeat absolute xl:bottom-[200px] xl:left-[118px] bottom-[90px] md:left-[-4px] left-[-6px] 2xl:left-[670px]'
           }
         />
         
         <Image
           src={`${dots.src}`}
           className={
-            'xl:h-[89px]  h-[42px] w-[28px] md:w-[19px] xl:w-[28px] bg-center bg-contain bg-no-repeat absolute xl:top-[192px] xl:right-[109px] md:top-[113px] lg:right-[-5px] md:right-[-4px] top-[120px] right-[-4px] 2xl:right-[675px]'
+            'xl:h-[89px]  h-[42px] w-[28px] md:w-[19px] xl:w-[28px] bg-center bg-contain bg-no-repeat absolute xl:top-[192px] xl:right-[119px] md:top-[113px] lg:right-[-5px] md:right-[-4px] top-[120px] right-[-4px] 2xl:right-[675px]'
           }
         />
         <Image

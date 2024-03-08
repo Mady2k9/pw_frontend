@@ -5,7 +5,7 @@ import spark from '../../../../assets/Images/Schools/spark.webp';
 export const AccessStateData = {
   schoolCardData: [
     {
-      sectionTitle: "Our Publishing Partners",
+      sectionTitle: "Our Series",
       sectionProps: [
         {
           title: "Bloom",

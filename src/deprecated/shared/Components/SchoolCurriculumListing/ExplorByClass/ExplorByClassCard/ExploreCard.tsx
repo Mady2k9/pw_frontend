@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {Image} from '@/components/ui/image';
 
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { stringToBase64 } from '@/lib/utils';
 interface Subject {
   name: string;
   image: string;
@@ -21,7 +23,8 @@ function ExploreCard({
   cohortId,
   cohertSlug,
   schoolclass,
-}: ExploreCardProps) {
+}: ExploreCardProps) 
+{
   const routes = useRouter();
   const tabUrl = routes.query.bookName;
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -46,56 +49,67 @@ function ExploreCard({
       schoolclass: schoolclass,
     };
     localStorage.setItem('clickedSubjects', JSON.stringify(newData));
-    let baseUrl = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/school-curriculum/${tabUrl}/onboringPage`;
-    if (localStorage.getItem('user')) {
-      baseUrl = subject.redirectionUrl;
+    const baseUrl = typeof window === 'undefined' ? '' : window.location.origin;
+    let redirect_url;
+    let url;
+    if(localStorage.getItem('user')) 
+    {
+      
+      url = subject.redirectionUrl;
+       
+    } else {
+      redirect_url = `${baseUrl}/school-curriculum/${tabUrl}/onboringPage`;
+      url = `${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(redirect_url)}`
     }
-
     window.open(
-      `${process.env.NEXT_PUBLIC_APP_BASE_URL}/study/auth?redirect_url=${baseUrl}`,
-      '_parent'
+      url,
+      '_blank'
     );
   };
   return (
     <>
       {classItem.subjects.map((subject: Subject, index: number) => (
-        <a
+        <div
           key={subject.name}
-          className="group"
+          className="group cursor-pointer "
           onClick={() => handleClick(subject)}
         >
-          <div
-            className="flex md:min-w-[240px] md:max-w-[240px] md:h-[100px] min-w-[180px] max-w-[180px] h-[80px] mb-2 rounded-lg transition-transform transform animate__animated"
-            style={{
-              boxShadow: `${
-                hoveredCard === index ? '' : '0px 4px 0px 0px #1B2124'
-              }`,
-              border:
-                '1px solid var(--PW-Gray-Palette-900-PW-Neutral, #1B2124)',
-              transform: hoveredCard === index ? 'translateY(5px)' : 'none',
-            }}
-            onMouseEnter={() => setHoveredCard(index)}
-            onMouseLeave={() => setHoveredCard(null)}
-          >
-            <div className="flex w-[65%] items-center md:p-5 p-3 ">
-              <div className="md:text-[20px] md:leading-[30px] text-[16px] leading-[24px] font-semibold group-hover:absolute group-hover:z-0 group-hover:w-[30%]">
-                {subject.name}
+          
+            
+              <div
+                className="flex md:min-w-[240px] md:max-w-[240px] md:h-[100px] min-w-[180px] max-w-[180px] h-[80px] mb-2 rounded-lg transition-transform transform animate__animated"
+                style={{
+                  boxShadow: `${
+                    hoveredCard === index ? '' : '0px 4px 0px 0px #1B2124'
+                  }`,
+                  border:
+                    '1px solid var(--PW-Gray-Palette-900-PW-Neutral, #1B2124)',
+                  transform:
+                    hoveredCard === index ? 'translateY(5px)' : 'none',
+                }}
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <div className="flex w-[65%] items-center md:p-5 p-3 ">
+                  <div className="md:text-[20px] md:leading-[30px] text-[16px] leading-[24px] font-semibold group-hover:absolute group-hover:z-0 group-hover:w-[30%]">
+                    {subject.name}
+                  </div>
+                </div>
+                <div
+                  className="flex items-center md:w-[100px] group-hover:md:w-[150px]  md:h-[98px] w-[80px] h-[78px] rounded-full flex-row-reverse"
+                  style={{
+                    backgroundColor: `${subject.Backcolor}`,
+                    borderRadius: '70% 10px 10px 70%',
+                  }}
+                >
+                  <Image
+                    src={subject.image}
+                    className={`md:w-[52px] md:h-[52px] w-[40px] h-[40px]  bg-center bg-cover bg-no-repeat mr-5 `}
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              className="flex items-center md:w-[100px] group-hover:md:w-[150px]  md:h-[98px] w-[80px] h-[78px] rounded-full flex-row-reverse"
-              style={{
-                backgroundColor: `${subject.Backcolor}`,
-                borderRadius: '70% 10px 10px 70%',
-              }}
-            >
-              <Image
-                src={subject.image}
-                className={`md:w-[52px] md:h-[52px] w-[40px] h-[40px]  bg-center bg-cover bg-no-repeat mr-5 `}
-              />
-            </div>
-          </div>
-        </a>
+            
+        </div>
       ))}
     </>
   );

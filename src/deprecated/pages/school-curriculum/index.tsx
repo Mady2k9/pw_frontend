@@ -92,7 +92,6 @@ function SchoolCurriculumPage({ footerData }: { footerData: any }) {
      
     };
   }, []);
-  
   return (
     
     <>
@@ -125,6 +124,7 @@ export async function getServerSideProps() {
     headerData = result[0];
     footerData = result[1];
     HomePageData = result[2];
+    console.log(footerData,"footerData");
   } catch (error) {
     console.log(error);
   }

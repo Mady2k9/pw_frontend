@@ -10,13 +10,13 @@ export const AccessAllCardData =
 {
   Bloom:{
      categoryName:"Bloom",
-     cohortId:"6564df0016d89800181c11ab",
+     cohortId:"65e7289edf8e195e9ceea502",
      slug:"bloom",
      schoolclass:"BLOOM_K_8",
     classes: [
       {
         class: "Nursery",
-        slug:"bloom-nursery-321156",
+        slug:"bloom-nursery-491023",
         subjects: [
           {
 
@@ -34,11 +34,11 @@ export const AccessAllCardData =
             redirectionUrl:"https://www.pw.live/study/batches/bloom-lower-kg-118797/subjects/hindi-784657/subject-topics?came_from=search&subject=Hindi&batchSubjectId=658428d39c360b0018317e97"
           },
           {
-            slug:"maths-755668",
+            slug:"maths-678526",
             name: "Math",
             image: `${Mathematics.src}`,
             Backcolor:"#E4FFF3",
-            redirectionUrl:"https://www.pw.live/study/batches/bloom-nursery-321156/subjects/maths-755668/subject-topics?came_from=my-batches&subject=Maths&batchSubjectId=65796b7b44f53a0018959b50"
+            redirectionUrl:"https://staging.physicswallah.live/study/batches/bloom-nursery-491023/subjects/maths-678526/subject-topics?came_from=search&subject=Maths&batchSubjectId=65e7358aa413ca2adb9b6b55"
 
           },
           {

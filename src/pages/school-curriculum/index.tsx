@@ -1,5 +1,4 @@
-import { FetchHomePage } from '@/deprecated/common/fetcher-service/FetchHomePage';
-import { FetchFooter } from '@/deprecated/common/fetcher-service/FetchFooter';
+import { FetchFooter } from '@/api/older-api-methods';
 import SchoolCurriculumPage from '@/deprecated/pages/school-curriculum';
 
 function SchoolCurriculum(props: any) {

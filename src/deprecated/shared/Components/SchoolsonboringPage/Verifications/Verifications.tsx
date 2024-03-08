@@ -17,9 +17,10 @@ function Verifications() {
       newDataTemp = JSON.parse(existingData);
       setNewData(newDataTemp);
     }
-    console.log(existingData, 'newData');
   }, []);
-  console.log(newData.batchSlug, 'newData1');
+  useEffect(() => {
+    redirectToBatch();
+  }, [newData]);
   const redirectToBatch = () => {
     if (newData) {
       const url = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/study/batches/${newData.batchSlug}/subjects/${newData.subjectSlug}/subject-topics`;
@@ -71,11 +72,11 @@ function Verifications() {
       className="flex justify-center items-center h-full"
       // onClick={handleClick}
     >
-      {/* <Image
+      <Image
         src ={`${SendImageStudy.src}`}
         alt='gif image'
         className={`md:w-[370px] md:h-[275px] w-[200px] h-[160px] bg-bottom bg-cover bg-no-repeat my-[13px] `}
-      /> */}
+      />
     </div>
   );
 }
