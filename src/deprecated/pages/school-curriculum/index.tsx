@@ -27,27 +27,6 @@ import EuNextWeb from '../../assets/Images/Schools/WebBannerEuWeb.webp';
 
 const CaraouselImages =[
   {
-    dwebImage:TeacherWeb.src,
-    mwebImage:TeacherMWeb.src,
-    altTag: "test1",
-    redirectionUrl: '',
-    displayOrder: 1,
-  },
-  {
-    dwebImage:SchoolsCrWeb.src,
-    mwebImage:SchoolsCrMWeb.src,
-    altTag: "test1",
-    redirectionUrl: '',
-    displayOrder: 1,
-  },
-  {
-    dwebImage:BLOOMBannerWb.src,
-    mwebImage:BLOOMBannerMWeb.src,
-    altTag: "test1",
-    redirectionUrl: '',
-    displayOrder: 1,
-  },
-  {
     dwebImage:SchoolsBanner1.src,
     mwebImage:SchoolsBanner2.src,
     altTag: "test1",
@@ -55,19 +34,40 @@ const CaraouselImages =[
     displayOrder: 1,
   },
   {
-    dwebImage:Sparksweb.src,
-    mwebImage:SparksMweb.src,
-    altTag: "test1",
+    dwebImage:SchoolsCrWeb.src,
+    mwebImage:SchoolsCrMWeb.src,
+    altTag: "test2",
     redirectionUrl: '',
-    displayOrder: 1,
+    displayOrder: 2,
+  },
+  {
+    dwebImage:BLOOMBannerWb.src,
+    mwebImage:BLOOMBannerMWeb.src,
+    altTag: "test3",
+    redirectionUrl: '',
+    displayOrder: 3,
   },
   {
     dwebImage:EuNextWeb.src,
     mwebImage:EuNextMWeb.src,
-    altTag: "test1",
+    altTag: "test4",
     redirectionUrl: '',
-    displayOrder: 1,
-  }
+    displayOrder: 4,
+  },
+  {
+    dwebImage:Sparksweb.src,
+    mwebImage:SparksMweb.src,
+    altTag: "test5",
+    redirectionUrl: '',
+    displayOrder: 5,
+  },
+  {
+    dwebImage:TeacherWeb.src,
+    mwebImage:TeacherMWeb.src,
+    altTag: "test6",
+    redirectionUrl: '',
+    displayOrder: 6,
+  }  
 ]
 function SchoolCurriculumPage({ footerData }: { footerData: any }) {
   const [isInViewport, setIsInViewport] = useState(false);

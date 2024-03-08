@@ -13,6 +13,7 @@ interface Tab {
   to: string;
   bgImg: string;
   smbgImmg : string;
+  clickable?: boolean; 
 }
 
 interface TabsProps {
@@ -27,6 +28,7 @@ const TabComponent: React.FC<TabsProps> = ({ tabs }) => {
     setActiveTab(tab);
     routes.push(`/school-curriculum/${tab}`);
   };
+  
   return (
     <>
       <div className="w-full bg-[#F8F8F8]">
