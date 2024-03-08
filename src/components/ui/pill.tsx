@@ -9,7 +9,7 @@ const pillVariants = cva(
         variants: {
             variant: {
                 default:
-                    "border-[#D9DCE1] bg-white hover:bg-zinc-50 hover:border-[#b7b7b7]",
+                    " border-strokeLight bg-white hover:bg-zinc-50 hover:border-strokeMedium",
                 active:
                     "border-primary bg-zinc-50 hover:bg-zinc-50",
                 outline: "text-foreground",

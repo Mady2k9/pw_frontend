@@ -48,6 +48,12 @@ const config = {
         headings:{
           DEFAULT: '#1B2124'
         },
+        strokeMedium :{
+          DEFAULT: '#b7b7b7'
+        },
+         strokeLight:{
+          DEFAULT: '#D9DCE1'
+        },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
