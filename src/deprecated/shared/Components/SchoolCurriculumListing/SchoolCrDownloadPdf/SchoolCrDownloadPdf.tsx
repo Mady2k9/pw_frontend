@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { AccessAllCardData } from '../ExplorByClass/schoolsAllclassDatajson';
 import { Image } from '@/components/ui/image';
+import arrow from '../../../../assets/Images/Schools/arrow-down-tray.webp'
 const tabs = [
   {
     id: 'tab1',
@@ -17,7 +18,7 @@ const tabs = [
   {
     id: 'tab3',
     label: 'Spark',
-    pdfPath: '',  
+    pdfPath: 'https://drive.google.com/file/d/1f_0zsopVPdWwGsmXn3WWRTgBKLccH3EW/view',  
   },
 ];
 
@@ -54,7 +55,7 @@ function SchoolCrDownloadPdf() {
           onClick={() => handleDownload(tab?.pdfPath)}
         >
           <Image
-            src={'/arrow-down-tray.webp'}
+            src={arrow.src}
             alt='arrow-down'
             className={'w-[20px] h-[20px] '}
           />

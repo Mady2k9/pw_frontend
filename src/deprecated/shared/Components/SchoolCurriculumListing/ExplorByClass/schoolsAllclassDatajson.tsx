@@ -14,6 +14,7 @@ import ScienceMania from '../../../../assets/Images/Schools/ScienceMania.webp';
 import MeetheSapne from '../../../../assets/Images/Schools/MeetheSapne.webp';
 import PhonicsBonaza from '../../../../assets/Images/Schools/PhonicsBonaza.webp';
 import Coding from '../../../../assets/Images/Schools/Coding.webp';
+import ml from '../../../../assets/Images/Schools/ML.webp';
 
 export const AccessAllCardData =
 {
@@ -854,10 +855,10 @@ export const AccessAllCardData =
      class: "Grade 6",
      subjects: [
        {
-         name: "English",
-         image: `${English.src}`,
+         name: "Coding",
+         image: `${Coding.src}`,
          Backcolor:"#FFF0E7",
-         redirectionUrl:"https://pw.live/school-curriculum/class-1/english"
+         redirectionUrl:""
        },
        
 
@@ -867,10 +868,10 @@ export const AccessAllCardData =
      class: "Grade 7",
      subjects: [
        {
-         name: "English",
-         image: `${English.src}`,
+         name: "Coding",
+         image: `${Coding.src}`,
          Backcolor:"#FFF0E7",
-         redirectionUrl:"https://pw.live/school-curriculum/class-2/english"
+         redirectionUrl:""
 
        },
       
@@ -880,36 +881,50 @@ export const AccessAllCardData =
      class: "Grade 8",
      subjects: [
        {
-         name: "English",
-         image: `${English.src}`,
+         name: "Coding",
+         image: `${Coding.src}`,
          Backcolor:"#FFF0E7",
-         redirectionUrl:"https://pw.live/school-curriculum/class-2/english"
+         redirectionUrl:""
 
        },
       
      ]
    },
    {
-     class: "Grade 8",
+     class: "Grade 9",
      subjects: [
        {
          name: "English",
-         image: `${English.src}`,
+         image: `${Coding.src}`,
          Backcolor:"#FFF0E7",
-         redirectionUrl:"https://pw.live/school-curriculum/class-2/english"
+         redirectionUrl:""
 
        },
+       {
+        name: "Ai/Ml",
+        image: `${ml.src}`,
+        Backcolor:"#FFF0E7",
+        redirectionUrl:""
+
+      }
       
      ]
    },
    {
-     class: "Grade 8",
+     class: "Grade 10",
      subjects: [
        {
-         name: "English",
-         image: `${English.src}`,
+         name: "Coding",
+         image: `${Coding.src}`,
          Backcolor:"#FFF0E7",
-         redirectionUrl:"https://pw.live/school-curriculum/class-2/english"
+         redirectionUrl:""
+
+       },
+       {
+         name: "Ai/Ml",
+         image: `${ml.src}`,
+         Backcolor:"#FFF0E7",
+         redirectionUrl:""
 
        },
       
