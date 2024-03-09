@@ -188,7 +188,16 @@ export const AccessAllCardData =
             Backcolor:"#FFF0E5",
             redirectionUrl:"https://www.pw.live/study/batches/bloom-grade-1-328537/subjects/hindi-grammar-796957/subject-topics?came_from=search&subject=Hindi%20Grammar&batchSubjectId=658525d86957610018fcfa4a"
 
-          }
+          },
+          
+            {
+              slug:"computer-science-038948",
+              name: "Computer Science",
+              image: `${ComputerScience.src}`,
+              Backcolor:"#E4FFF3",
+              redirectionUrl:"https://www.pw.live/study/batches/bloom-grade-1-328537/subjects/computer-science-038948/subject-topics?came_from=my-batches&subject=Computer%20Science&batchSubjectId=658a71cda14e9b001806b2e4"
+  
+            }
 
         ]
       },

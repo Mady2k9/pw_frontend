@@ -5,8 +5,8 @@ import dots from '../../../../assets/Images/Schools/Dots.webp'
 import StarVector from '../../../../assets/Images/Schools/StarVector.webp';
 import VectorLeft from '../../../../assets/Images/Schools/Vector-left.webp';
 import VectorRight from '../../../../assets/Images/Schools/Vector-right.webp';
-import Pexels from '../../../../assets/Images/Schools/Thumbnail-01.webp';
-import PexelsMweb from '../../../../assets/Images/Schools/Thumbnail-01.webp';
+import Pexels from '../../../../assets/Images/Schools/ThumbnailcrDemo.webp';
+import PexelsMweb from '../../../../assets/Images/Schools/ThumbnailcrDemo.webp';
 import dynamic from 'next/dynamic';
 const DynamicVideoComponent = dynamic(
   () => import('../../Molecules/VideoComponentPopup/VideoComponentPopup'),
