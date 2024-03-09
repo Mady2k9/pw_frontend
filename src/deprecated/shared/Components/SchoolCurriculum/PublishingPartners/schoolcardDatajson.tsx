@@ -24,7 +24,7 @@ export const AccessStateData = {
           TopTitle: "For K-8 Grades"
         },
         {
-          title: "Spark",
+          title: "SPARK",
           description: "Our Skill/Tech Curriculum on coding, AI/ML and other skill based subjects.",
           mwebImage: `${spark.src}`,
           dwebImage: `${spark.src}`,

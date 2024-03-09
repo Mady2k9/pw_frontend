@@ -11,13 +11,13 @@ const tabs = [
   },
   {
     id: 'tab2',
-    label: 'euNext',
+    label: 'EuNext',
     pdfPath: "https://drive.google.com/file/d/1SJLc5zwffXhbf1dUuAOEJVEIdbO_Vwib/view?usp=drivesdk"
   
   },
   {
     id: 'tab3',
-    label: 'Spark',
+    label: 'SPARK',
     pdfPath: 'https://drive.google.com/file/d/1f_0zsopVPdWwGsmXn3WWRTgBKLccH3EW/view',  
   },
 ];
