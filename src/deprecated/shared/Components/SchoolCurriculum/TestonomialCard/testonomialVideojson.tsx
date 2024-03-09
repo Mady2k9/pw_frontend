@@ -1,4 +1,4 @@
-import ScreenshotTestonomial from '../../../../assets/Images/Schools/ScreenshotTestonomial.webp';
+import ScreenshotTestonomial from '../../../../assets/Images/Schools/Thumbnail-01.webp';
 import schoolsTest from '../../../../assets/Images/Schools/schoolsTest.webp';
 import Schoolsfavicon1 from '../../../../assets/Images/Schools/Schoolsfavicon1.webp';
 

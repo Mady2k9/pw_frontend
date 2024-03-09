@@ -5,7 +5,8 @@ import { Image } from '@/components/ui/image';
 import playbuttonwebp from '../../../../assets/Images/Schools/playbuttonwebp.webp';
 import schoolsTest from '../../../../assets/Images/Schools/teacherSchools.webp';
 import CommaIcon from '../../../../assets/Images/comma.webp';
-import ScreenshotTestonomial from '../../../../assets/Images/Schools/ScreenshotTestonomial.webp';
+import ScreenshotTestonomial from '../../../../assets/Images/Schools/Thumbnail-01.webp';
+
 import dynamic from 'next/dynamic';
 
 const DynamicVideoComponent = dynamic(

@@ -28,7 +28,7 @@ function SchoolNavbar() {
     {
       id: 'tab3',
       label: 'Spark',
-      to: 'Spark',
+      to: 'SPARK',
       content: `Our Skill/Tech-based Curriculum for grades 6 to 10. Spark covers all the technical skill based subjects which CBSE board mandates to be taught from grade 6 onwards. Subjects include coding, AI/ML, AR/VR/XR, Financial Literacy and other skill modules offered by CBSE. `,
       bgImg: Spark.src,
       smbgImmg:SparkMweb.src,

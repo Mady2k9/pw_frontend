@@ -131,7 +131,7 @@ export const AccessAllCardData =
       },
       {
         class: "Grade 1",
-        slug: "bloom-grade-1-328537",
+        slug: "bloom-nursery-491023",
         subjects: [
           {
             slug:"english-760358",
@@ -149,11 +149,11 @@ export const AccessAllCardData =
 
           },
           {
-            slug:"maths-139257",
+            slug:"maths-678526",
             name: "Math",
             image:  `${Mathematics.src}`,
             Backcolor:"#E4FFF3",
-            redirectionUrl:"https://www.pw.live/study/batches/bloom-grade-1-328537/subjects/maths-139257/subject-topics?came_from=search&subject=Maths&batchSubjectId=659674c195ec1800183a78bf"
+            redirectionUrl:"https://staging.physicswallah.live/study/batches/bloom-nursery-491023/subjects/maths-678526/subject-topics?came_from=search&subject=Maths&batchSubjectId=65e7358aa413ca2adb9b6b55"
 
           },
           
@@ -844,7 +844,7 @@ export const AccessAllCardData =
      }
    ]
  },
- Spark:{
+ SPARK:{
   categoryName:"Spark",
   schoolclass:" SPARK_CURRICULUM",
   cohortId:"656561e84c65fa00198734d3",
