@@ -20,7 +20,7 @@ export const AccessAllCardData =
 {
   Bloom:{
      categoryName:"Bloom",
-     cohortId:"65e7289edf8e195e9ceea502",
+     cohortId:"65e844aa854d7c0018c286eb",
      slug:"bloom",
      schoolclass:"BLOOM_K_8",
     classes: [
@@ -131,7 +131,7 @@ export const AccessAllCardData =
       },
       {
         class: "Grade 1",
-        slug: "bloom-nursery-491023",
+        slug: "bloom-grade-1-328537",
         subjects: [
           {
             slug:"english-760358",
@@ -149,11 +149,11 @@ export const AccessAllCardData =
 
           },
           {
-            slug:"maths-678526",
+            slug:"maths-139257",
             name: "Math",
             image:  `${Mathematics.src}`,
             Backcolor:"#E4FFF3",
-            redirectionUrl:"https://staging.physicswallah.live/study/batches/bloom-nursery-491023/subjects/maths-678526/subject-topics?came_from=search&subject=Maths&batchSubjectId=65e7358aa413ca2adb9b6b55"
+            redirectionUrl:"https://www.pw.live/study/batches/bloom-grade-1-328537/subjects/maths-139257/subject-topics?came_from=search&subject=Maths&batchSubjectId=659674c195ec1800183a78bf"
 
           },
           
@@ -188,7 +188,16 @@ export const AccessAllCardData =
             Backcolor:"#FFF0E5",
             redirectionUrl:"https://www.pw.live/study/batches/bloom-grade-1-328537/subjects/hindi-grammar-796957/subject-topics?came_from=search&subject=Hindi%20Grammar&batchSubjectId=658525d86957610018fcfa4a"
 
-          }
+          },
+          
+            {
+              slug:"computer-science-038948",
+              name: "Computer Science",
+              image: `${ComputerScience.src}`,
+              Backcolor:"#E4FFF3",
+              redirectionUrl:"https://www.pw.live/study/batches/bloom-grade-1-328537/subjects/computer-science-038948/subject-topics?came_from=my-batches&subject=Computer%20Science&batchSubjectId=658a71cda14e9b001806b2e4"
+  
+            }
 
         ]
       },

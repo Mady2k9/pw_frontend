@@ -59,7 +59,7 @@ function Testonomial() {
             </div>
             <DynamicVideoComponent
               src={`${getYtUrl(
-                'https://www.youtube.com/embed/imjUfcxa9wQ?si=jL6jxXvIkEF2xudK'
+                'https://www.youtube.com/embed/pdD7gg2cMSY?si=4pu1QPdu6NoqextI'
               )}`}
               title={'YT-video'}
               className={'h-full w-full  rounded-lg'}
