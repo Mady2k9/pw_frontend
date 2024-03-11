@@ -93,8 +93,12 @@ export default function TestSeriesCard({
     data()
   }, [])
 
-  return  <div className={cn(' bg-white w-full rounded-md p-4 space-y-2 relative')} 
-  style={{boxShadow: '0px 0px 8px 0px #00000014 ' }}>
+  return  <div
+  className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
+    [styles.commonItemCardWrapperOnline]: mode === 'Online',
+    [styles.commonItemCardWrapperOffline]: mode === 'Offline',
+  })}> 
+  <div className={cn(' bg-white w-full rounded-md p-4 space-y-2 relative')}>
       {
         mode && <Image src={mode === 'Online' ? OnlineTag.src : OfflineTag.src} alt={mode}
                        className={'absolute -left-2.5 -top-2.5 w-[100px] h-10'} />
@@ -175,5 +179,6 @@ export default function TestSeriesCard({
         </Button>
         </Link>}
       </div>
+    </div>
     </div>
 }
