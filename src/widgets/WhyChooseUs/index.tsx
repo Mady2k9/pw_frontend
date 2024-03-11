@@ -2,7 +2,7 @@ import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious}
 import { Image } from "@/components/ui/image";
 
 export default function WhyChooseUs({whyChooseData}:any) {
-    return <div className={'card-shadow rounded-lg p-4 flex flex-col gap-4 md:gap-6'} id={'Why-Choose-Us'}>
+    return <div className={'card-shadow rounded-lg p-4 sm:p-6 flex flex-col gap-4 md:gap-6'} id={'Why-Choose-Us'}>
         <h2 className={'text-xl md:text-[32px] md: leading-[48px] font-bold'}>Why Choose Us</h2>
         <Carousel
             opts={{

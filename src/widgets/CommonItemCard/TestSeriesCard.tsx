@@ -92,12 +92,8 @@ export default function TestSeriesCard({
     data()
   }, [])
 
-  return <div
-    className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
-      [styles.commonItemCardWrapperOnline]: mode === 'Online',
-      [styles.commonItemCardWrapperOffline]: mode === 'Offline',
-    })}>
-    <div className={cn(' bg-white w-full rounded-md p-4 space-y-2 relative')}>
+  return  <div className={cn(' bg-white w-full rounded-md p-4 space-y-2 relative')} 
+  style={{boxShadow: '0px 0px 8px 0px #00000014 ' }}>
       {
         mode && <Image src={mode === 'Online' ? OnlineTag.src : OfflineTag.src} alt={mode}
                        className={'absolute -left-2.5 -top-2.5 w-[100px] h-10'} />
@@ -155,7 +151,7 @@ export default function TestSeriesCard({
           !fromDetails && apiData?.data?.length > 1 && exploreLink?
           <TestSeriesModeModal trigger={<Button
             onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
-            variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption? cohortOption :''} value='explore'
+            variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} modeDataModal={apiData?.data?.length >= 1 ? apiData : null} cohortOption={cohortOption? cohortOption :''} value='explore'
             categoryId={categoryId? categoryId:''} />
             : exploreLink &&
             <Link href={exploreLink ? exploreLink : '/'} className='w-full'>
@@ -179,5 +175,4 @@ export default function TestSeriesCard({
         </Link>}
       </div>
     </div>
-  </div>;
 }

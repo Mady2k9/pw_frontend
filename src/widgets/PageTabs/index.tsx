@@ -18,7 +18,7 @@ export function PageTabs({ items, handleClick, className, activeItem }: PageTabs
   return (
     <div className={cn('sticky top-[60px] md:top-[80px] z-[3] bg-secondary', className)}>
       <div id={'page-tabs-wrapper'}
-           className="container flex space-x-4 md:space-x-6 font-medium  scrollbar-hide overflow-y-auto">
+           className="container flex space-x-4 md:space-x-8 font-medium  scrollbar-hide overflow-y-auto">
         {
           items?.map((item, index) => {
             const active = activeItem === item.key;
@@ -27,8 +27,8 @@ export function PageTabs({ items, handleClick, className, activeItem }: PageTabs
                 handleClick(e, item.key);
               }
             }} href={`${item.link}`}
-                         className={'text-sm outline-none md:text-base text-[#757575] relative capitalize'}>
-              <div className={cn('whitespace-nowrap py-4', {
+                         className={'text-xs outline-none md:text-base text-[#757575] relative capitalize'}>
+              <div className={cn('whitespace-nowrap py-3', {
                 'text-primary': active,
               })}>
                 {/* {item} */}
