@@ -4,6 +4,8 @@ import { Pill } from '@/components/ui/pill';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { Image } from '@/components/ui/image';
+import testSeriesEventTracker from '@/lib/TestSeriesEventTracker/TestSeriesEventTracker';
+import classNames from 'classnames';
 
 interface ExamProps {
   slug: string;
@@ -36,6 +38,9 @@ export default function ExamCategoryCard({
   const showMoreExams = useMemo(() => exams.length > 4, [exams]);
   const [showMore, setShowMore] = useState(false);
   const [height, setHeight] = useState(100);
+  const handleGAEvents = (className='All') =>{
+    testSeriesEventTracker.testListingVisit('Exam_cards', name, className)
+  }
   return (
     <div
       className={'overflow-hidden flex group mb-auto border border-zinc-100 card-shadow animationFromBottom cursor-default hover:border-stroke-medium transitionAll200 rounded p-4'}>
@@ -46,7 +51,7 @@ export default function ExamCategoryCard({
           <div className={'flex flex-wrap'} id={slug}>
             {
               (showMore ? exams : ExamsToDisplay).map((exam, index) => (
-                <Link href={exam.slug || '#'} key={index}>
+                <Link href={exam.slug || '#'} key={index} onClick={() => handleGAEvents(exam.name)}>
                   <Pill
                     className={'mr-2 mb-2 animationFromBottom md:text-[14px] text-[12px] !slide-in-from-bottom-2 hover:border-stroke-medium fade-in text-light'}><span>{exam.name}</span></Pill>
                 </Link>
@@ -68,7 +73,7 @@ export default function ExamCategoryCard({
             }
           </div>
         </div>
-        <Link href={slug || '#'} className={'flex cursor-pointer items-center group/item'}>
+        <Link href={slug || '#'} className={'flex cursor-pointer items-center group/item'} onClick={() => handleGAEvents()}>
                     <span className={'group-hover/item:!text-primary group-hover/item:underline  text-sm md:text-[16px]  font-medium transitionAll200 '}
                           style={actionColor ? { color: actionColor } : {}}>
                         {actionName}

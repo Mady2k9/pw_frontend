@@ -12,7 +12,7 @@ export interface TestCohortSliderProps {
   testSeries: ITestSeriesCategory[],
   cohort: ICohortOptions,
   showMoreLink?: string
-  page_source?: string,
+  page_source: string,
 }
 
 export default function TestCohortSlider({

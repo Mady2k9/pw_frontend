@@ -19,6 +19,7 @@ import TestSeriesModeModal from '@/widgets/TestSeriesDetails/TestSeriesModeModal
 import { ITestSeriesMeta } from '@/api/interfaces/test-series';
 import { Description } from '@radix-ui/react-dialog';
 import HtmlContentWidget from '@/widgets/HtmlContentWidget/HtmlContentWidget';
+import testSeriesEventTracker from '@/lib/TestSeriesEventTracker/TestSeriesEventTracker';
 
 interface TestSeriesCardProps {
   thumbnail?: string,
@@ -36,7 +37,7 @@ interface TestSeriesCardProps {
   mode?: 'Online' | 'Offline' | null,
   whatsappLink?: string,
   label?: string,
-  page_source?: string;
+  page_source: string;
   testSeriesId?: string;
   categoryId?: string;
   cohortOption?: string | null;
@@ -75,11 +76,11 @@ export default function TestSeriesCard({
   const [apiData, setApiData] = useState<any>()
   const getClassAndExam = router.asPath.split('/');
 
-  const handleExploreGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
-    batchEventTracker.batchCardExploreClick(batch_name, mode, amount, updatedAmount, testSeriesId, exam, classname);
+  const handleExploreGaEvent = () => {
+   testSeriesEventTracker.testSeriesExploreClick(title, updatedAmount , (getClassAndExam[2] ? getClassAndExam[2].split('?')[0] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : 'ALL'), discount);
   };
-  const handleBuyNowGaEvent = (batch_name: string, amount: number | undefined, updatedAmount: number | undefined, exam: string, classname: string) => {
-    batchEventTracker.pwliveBuynowClick(batch_name, mode, amount, updatedAmount, testSeriesId, exam, classname, (page_source ? page_source : ''));
+  const handleBuyNowGaEvent = () => {
+    testSeriesEventTracker.testSeriesBuyNowClick(title,  updatedAmount,  (getClassAndExam[2] ? getClassAndExam[2].split('?')[0] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : 'ALL'), discount, page_source);
   };
 
   const data = async () => {
@@ -152,26 +153,26 @@ export default function TestSeriesCard({
         {
           !fromDetails && apiData?.data?.length > 1 && exploreLink?
           <TestSeriesModeModal trigger={<Button
-            onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
+            onClick={handleExploreGaEvent}
             variant={'outline'} className={'w-full border-primary text-primary'}>EXPLORE</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption? cohortOption :''} value='explore'
             categoryId={categoryId? categoryId:''} />
             : exploreLink &&
             <Link href={exploreLink ? exploreLink : '/'} className='w-full'>
             <Button variant={'outline'} className={'w-full  border-primary text-primary'}
-              onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
-              EXPLORE
+              onClick={ handleExploreGaEvent}>
+               EXPLORE
             </Button>
             </Link>
 
         }
         {!fromDetails && apiData?.data?.length > 1 ?
            <TestSeriesModeModal trigger={<Button
-          onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}
+          onClick={ handleBuyNowGaEvent}
           variant={'default'} className={'w-full border-primary text-white'}>BUY NOW</Button>} modeDataModal={apiData?.data?.length > 1 ? apiData : null} cohortOption={cohortOption ? cohortOption : ''} value='buy now'
           categoryId={categoryId? categoryId:''} />
         :buyNowLink && <Link href={buyNowLink ? buyNowLink : '/'} className='w-full'>
         <Button variant={'default'} className={'w-full  border-primary text-white'}
-          onClick={() => handleExploreGaEvent(title, amount, updatedAmount, (getClassAndExam[2] ? getClassAndExam[2] : ''), (getClassAndExam[3] ? getClassAndExam[3].split('?')[0] : ''))}>
+          onClick={ handleBuyNowGaEvent}>
           BUY NOW
         </Button>
         </Link>}
