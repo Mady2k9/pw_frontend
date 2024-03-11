@@ -3,6 +3,7 @@ import { ITestSeries } from "./test-series";
 
 export interface IPageData {
     description: string;
+    testCatCount?:number;
     tabs: any[];
     updatedBy: string;
     seoSchema: ISeoSchema[];

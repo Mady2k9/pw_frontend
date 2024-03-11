@@ -168,7 +168,6 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
             />
         </div>;
     }, [props]);
-
     return <Layout seoSchema={props?.pageData?.seoSchema} className={'pb-[60px] md:pb-0'} footerData={props.footerData}
         seoTags={props?.pageData?.seoTags}
         headerData={props.headerData} page_source={PAGE_SOURCE}>
