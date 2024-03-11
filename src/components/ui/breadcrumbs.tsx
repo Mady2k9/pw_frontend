@@ -26,7 +26,7 @@ export function Breadcrumbs({items, inverted}: BreadcrumbsProps) {
                     <Link href={item.link || '#'} key={index}>
                         <div key={index}
                              className={cn('text-xs hover:underline capitalize line-clamp-1 cursor-pointer text-[#757575]', {
-                                 'text-PrimaryColorIndigo': inverted,
+                                 'text-primaryindigo': inverted,
                                  'text-primary': (index === items.length - 1) && !inverted,
                              })}>
                             {item.label}

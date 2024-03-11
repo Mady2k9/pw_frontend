@@ -52,8 +52,8 @@ const config = {
           light:'#D9DCE1',
           medium:'#b7b7b7'
         },
-        PrimaryColorIndigo:{
-          DEFAULT: 'hsl(var(--PrimaryColorIndigo))',
+        primaryindigo:{
+          DEFAULT: '#D2CCFF',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
