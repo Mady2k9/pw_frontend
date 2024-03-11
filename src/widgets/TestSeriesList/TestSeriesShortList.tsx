@@ -29,10 +29,10 @@ export default function TestSeriesShortList({
                                             }: BatchShortListProps) {
   const router = useRouter();
   const courseKey = router.query.courseKey as string;
-  const [card, setCard] = useState(testSeries?.slice(0,6) || []);
+  const [card, setCard] = useState(testSeries);
   const [page, setPage] = useState(2)
   const [loading, setLoading] = useState(false);
-  const [showLoadMore, setShowLoadMore] = useState(testSeries?.length>6);
+  const [showLoadMore, setShowLoadMore] = useState(true);
   const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
 
   const getCard = async () => {

@@ -13,26 +13,22 @@ function index({ footerData }: { footerData: any }) {
 
 export default index;
 export async function getServerSideProps() {
-  let HomePageData;
-  let headerData;
+ 
   let footerData;
 
   try {
     const result = await Promise.all([
-      FetchHomePage(),
-      FetchHeader(),
+     
       FetchFooter(),
     ]);
-    HomePageData = result[0];
-    headerData = result[1];
-    footerData = result[2];
+   
+    footerData = result[0];
   } catch (error) {
     // console.log(error);
   }
   return {
     props: {
-      HomePageData: HomePageData || {},
-      headerData: headerData?.data || {},
+     
       footerData: footerData || {},
     },
   };

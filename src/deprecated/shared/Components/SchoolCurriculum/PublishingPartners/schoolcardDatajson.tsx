@@ -5,31 +5,31 @@ import spark from '../../../../assets/Images/Schools/spark.webp';
 export const AccessStateData = {
   schoolCardData: [
     {
-      sectionTitle: "Our Publishing Partners",
+      sectionTitle: "Our Series",
       sectionProps: [
         {
           title: "Bloom",
-          description: "Our Publishing Partner for classes Nursery till 2nd",
+          description: "Our Most premium innovative and NEP-compliant curriculum.",
           mwebImage: `${Bloom.src}`,
           dwebImage: `${Bloom.src}`,
-          TopTitle: "For K-2 Grade",
+          TopTitle: "For K-8 Grades",
           bgColor: "#AE60B5"
         },
         {
-          title: "euNext",
-          description: "Our Publishing Partner for classes Nursery till 8th",
+          title: "EuNext",
+          description: "Our affordable, updated and NCERT aligned books.",
           mwebImage:`${Next.src}`,
           dwebImage: `${Next.src}`,
           bgColor: "#E86309",
-          TopTitle: "For K-8 Grade"
+          TopTitle: "For K-8 Grades"
         },
         {
-          title: "Spark",
-          description: "Our Publishing Partner for classes Class 8th till 10th",
+          title: "SPARK",
+          description: "Our Skill/Tech Curriculum on coding, AI/ML and other skill based subjects.",
           mwebImage: `${spark.src}`,
           dwebImage: `${spark.src}`,
           bgColor: "#037CBF",
-          TopTitle: "For Class 8-10"
+          TopTitle: "For 6-10 Grades"
         }
       ]
     }

@@ -3,9 +3,10 @@ import TestonomialCard from '../TestonomialCard/TestonomialCard';
 import SchoolCarousel from '../SchoolCarousel/SchoolCarousel';
 import { Image } from '@/components/ui/image';
 import playbuttonwebp from '../../../../assets/Images/Schools/playbuttonwebp.webp';
-import schoolsTest from '../../../../assets/Images/Schools/schoolsTest.webp';
+import schoolsTest from '../../../../assets/Images/Schools/teacherSchools.webp';
 import CommaIcon from '../../../../assets/Images/comma.webp';
-import ScreenshotTestonomial from '../../../../assets/Images/Schools/ScreenshotTestonomial.webp';
+import ScreenshotTestonomial from '../../../../assets/Images/Schools/Thumbnail-01.webp';
+
 import dynamic from 'next/dynamic';
 
 const DynamicVideoComponent = dynamic(
@@ -58,7 +59,7 @@ function Testonomial() {
             </div>
             <DynamicVideoComponent
               src={`${getYtUrl(
-                'https://www.youtube.com/embed/47H01638-9w?si=6zAj5IrAToauPPQp'
+                'https://www.youtube.com/embed/pdD7gg2cMSY?si=4pu1QPdu6NoqextI'
               )}`}
               title={'YT-video'}
               className={'h-full w-full  rounded-lg'}
@@ -67,7 +68,7 @@ function Testonomial() {
         </div>
       ) : null}
       <div className="font-bold md:leading-[48px] md:text-[32px] leading-[30px] text-[20px] text-[#1B2124] text-center pt-[20px] pb-[5px]">
-        What students are saying
+        What schools are saying
       </div>
       <div
         style={{

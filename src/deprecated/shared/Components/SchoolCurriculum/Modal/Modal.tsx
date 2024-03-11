@@ -82,7 +82,7 @@ export default function Modal() {
                         as="h2"
                         className="font-bold text-[20px] xl:text-[32px] leading-[30px] xl:leading-[48px] text-gray-900 flex justify-center"
                       >
-                        Which Publisher would you like to explore?
+                        Which Series would you like to explore ?
                         <div
                           className="sm:hidden block"
                           onClick={() => setOpen(false)}

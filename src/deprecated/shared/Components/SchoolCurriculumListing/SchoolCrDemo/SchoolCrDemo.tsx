@@ -5,8 +5,8 @@ import dots from '../../../../assets/Images/Schools/Dots.webp'
 import StarVector from '../../../../assets/Images/Schools/StarVector.webp';
 import VectorLeft from '../../../../assets/Images/Schools/Vector-left.webp';
 import VectorRight from '../../../../assets/Images/Schools/Vector-right.webp';
-import Pexels from '../../../../assets/Images/Schools/Pexels.webp';
-import PexelsMweb from '../../../../assets/Images/Schools/PexelsMweb.webp';
+import Pexels from '../../../../assets/Images/Schools/ThumbnailcrDemo.webp';
+import PexelsMweb from '../../../../assets/Images/Schools/ThumbnailcrDemo.webp';
 import dynamic from 'next/dynamic';
 const DynamicVideoComponent = dynamic(
   () => import('../../Molecules/VideoComponentPopup/VideoComponentPopup'),
@@ -41,7 +41,7 @@ function SchoolCrDemo() {
     if (url?.includes('embed')) return url + '&autoplay=1';
   };
   return (
-    <div className="py-10 relative overflow-hidden">
+    <div className="py-10 relative overflow-hidden px-0 md:px-3">
       {showVideoPopup ? (
         <div
           className="fixed h-screen inset-0 bg-black/20 z-50 flex justify-between items-center"
@@ -58,7 +58,7 @@ function SchoolCrDemo() {
             </div>
             <DynamicVideoComponent
               src={`${getYtUrl(
-                'https://www.youtube.com/embed/47H01638-9w?si=6zAj5IrAToauPPQp'
+                'https://www.youtube.com/embed/h_3uFm7Ihbo?si=iGFYtQyQfJk_rfyC'
               )}`}
               title={'YT-video'}
               className={'h-full w-full  rounded-lg'}
@@ -74,14 +74,6 @@ function SchoolCrDemo() {
           style={{ backgroundImage: `url(${Pexels.src})` }}
           className="bg-center  bg-cover bg-no-repeat   h-[480px] w-full rounded-lg sm:flex items-center justify-center hidden "
         >
-          {/* <img
-            onClick={handleShowVideo}
-            src="/playbuttonwebp.webp"
-            alt="/playbuttonwebp.webp"
-            className={
-              'md:w-[72px] md:h-[72px] w-[48px]  h-[48px] bg-center bg-contain bg-no-repeat cursor-pointer hover:rounded-full hover:bg-[#FFD2B3] hover:shadow-2xl  ease-in-out duration-300'
-            }
-          /> */}
            <Image src={`${playbuttonwebp.src}`}
           onClick={handleShowVideo} 
           className={
@@ -106,14 +98,14 @@ function SchoolCrDemo() {
         <Image
           src={`${dots.src}`}
           className={
-            'xl:h-[89px] md:w-[19px] xl:w-[28px] h-[42px] w-[28px] bg-center bg-contain bg-no-repeat absolute xl:bottom-[200px] xl:left-[118px] bottom-[90px] md:left-[-4px] left-[-5px] 2xl:left-[670px]'
+            'xl:h-[89px] md:w-[19px] xl:w-[28px] h-[42px] w-[28px] bg-center bg-contain bg-no-repeat absolute xl:bottom-[200px] xl:left-[118px] bottom-[90px] md:left-[-4px] left-[-6px] 2xl:left-[670px]'
           }
         />
         
         <Image
           src={`${dots.src}`}
           className={
-            'xl:h-[89px]  h-[42px] w-[28px] md:w-[19px] xl:w-[28px] bg-center bg-contain bg-no-repeat absolute xl:top-[192px] xl:right-[109px] md:top-[113px] lg:right-[-5px] md:right-[-4px] top-[120px] right-[-4px] 2xl:right-[675px]'
+            'xl:h-[89px]  h-[42px] w-[28px] md:w-[19px] xl:w-[28px] bg-center bg-contain bg-no-repeat absolute xl:top-[192px] xl:right-[119px] md:top-[113px] lg:right-[-5px] md:right-[-4px] top-[120px] right-[-4px] 2xl:right-[675px]'
           }
         />
         <Image

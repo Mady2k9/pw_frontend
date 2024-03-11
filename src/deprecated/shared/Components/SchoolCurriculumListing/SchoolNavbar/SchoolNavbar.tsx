@@ -1,5 +1,4 @@
 import React from 'react';
-//import SchoolHero from '../SchoolHero/SchoolHero';/Users/madhuresh/Downloads/Assets 3/Hero_Spark.webp /Users/madhuresh/Downloads/Assets 3/Hero_euNext.webp
 import TabComponent from '../Tabs/Tabs';
 import HeroBloom from '../../../../assets/Images/Schools/Rectangle7.webp';
 import Spark from '../../../../assets/Images/Schools/Hero_Spark.webp';
@@ -14,35 +13,23 @@ function SchoolNavbar() {
       id: 'tab1',
       label: 'Bloom',
       to: 'Bloom',
-      content: `The "Bloom Series" for K-2 grades is an innovative and comprehensive
-      educational resource designed in accordance with the National
-      Education Policy (NEP) 2020. Tailored for Nursery, Lower KG, Upper
-      KG, Grade 1, and Grade 2 students, this series covers a wide range
-      of subjects, ensuring a holistic and engaging learning experience.`,
+      content: `Our Most premium innovative and NEP-compliant curriculum for Grades K-8. This curriculum is designed on the philosophy of learning through activities and participation. It is build on the pedagogical approaches drawn from best curriculums globally. This series covers a wide range of subjects, ensuring a holistic and engaging learning experience.`,
       bgImg: HeroBloom.src,
       smbgImmg: BloomMweb.src,
     },
     {
       id: 'tab2',
-      label: 'euNext',
-      to: 'euNext',
-      content: `The "euNext Series" for K-2 grades is an innovative and comprehensive
-      educational resource designed in accordance with the National
-      Education Policy (NEP) 2020. Tailored for Nursery, Lower KG, Upper
-      KG, Grade 1, and Grade 2 students, this series covers a wide range
-      of subjects, ensuring a holistic and engaging learning experience.`,
+      label: 'EuNext',
+      to: 'EuNext',
+      content: `Our affordable, updated and NCERT aligned books for K-8 grades. These books are designed with keeping simplicity and learner friendliness as the core objective. EuNext covers all the major subjects in a comprehensive manner.`,
       bgImg: euNext.src,
       smbgImmg:euNextMweb.src,
     },
     {
       id: 'tab3',
       label: 'Spark',
-      to: 'Spark',
-      content: `The "Spark Series" for K-2 grades is an innovative and comprehensive
-      educational resource designed in accordance with the National
-      Education Policy (NEP) 2020. Tailored for Nursery, Lower KG, Upper
-      KG, Grade 1, and Grade 2 students, this series covers a wide range
-      of subjects, ensuring a holistic and engaging learning experience.`,
+      to: 'SPARK',
+      content: `Our Skill/Tech-based Curriculum for grades 6 to 10. Spark covers all the technical skill based subjects which CBSE board mandates to be taught from grade 6 onwards. Subjects include coding, AI/ML, AR/VR/XR, Financial Literacy and other skill modules offered by CBSE. `,
       bgImg: Spark.src,
       smbgImmg:SparkMweb.src,
     },

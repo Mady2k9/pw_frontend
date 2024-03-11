@@ -26,7 +26,7 @@ export default function ExamCategorySection({
 
   return (
     <div className={'container'}>
-      {title && <h2 className={'text-xl md:text-4xl font-bold text-center '}>{title}</h2>}
+      {title && <h1 className={'md:text-[40px] text-2xl font-bold text-center text-headings '}>{title}</h1>}
       {description &&
         <p className={'text-center text-sm font-medium md:text-lg text-light max-w-3xl mx-auto mt-3'}>{description}</p>}
       <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6 md:m-6'}>
