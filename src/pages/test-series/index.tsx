@@ -139,6 +139,7 @@ export default function TestSeriesPage(
     <Layout
       noIndex={true}
       footerData={props.footerData}
+      seoSchema={props.pageData.seoSchema}
       seoTags={props.pageData!.seoTags}
       headerData={props.headerData}
       page_source={'TEST_SERIES'}

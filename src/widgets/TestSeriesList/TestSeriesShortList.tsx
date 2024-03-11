@@ -18,6 +18,7 @@ export interface BatchShortListProps {
   testSeries: ITestSeriesCategory[],
   showMoreLink?: string,
   page_source: string,
+  testCatCount?: number;
 }
 
 export default function TestSeriesShortList({
@@ -26,6 +27,7 @@ export default function TestSeriesShortList({
                                               testSeries,
                                               showMoreLink,
                                               page_source,
+                                              testCatCount,
                                             }: BatchShortListProps) {
   const router = useRouter();
   const courseKey = router.query.courseKey as string;
@@ -34,7 +36,6 @@ export default function TestSeriesShortList({
   const [loading, setLoading] = useState(false);
   const [showLoadMore, setShowLoadMore] = useState(true);
   const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
-
   const getCard = async () => {
     let query: any = {
       cohortId: cohort.cohortId,
@@ -59,7 +60,10 @@ useEffect(()=>{setCard(testSeries?.slice(0,6) || []);
   setPage(2)} , [testSeries] )
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
+  {testCatCount &&   <div className={'container text-[16px] font-medium pb-6 text-lighter'}><span className={''}>Showing <b
+      className={'text-headings'}>‘{testCatCount}’</b> Total Batches</span></div>}
     <div className={'container w-full sm:pl-1.5'}>
+
     <div className={cn('grid grid-cols-1 sm:grid-cols-2 place-items-center sm:place-items-start lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>
         {
           card?.map((item, index) => {
