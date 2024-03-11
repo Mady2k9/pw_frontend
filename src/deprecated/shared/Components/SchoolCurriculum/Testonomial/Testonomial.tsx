@@ -5,7 +5,8 @@ import { Image } from '@/components/ui/image';
 import playbuttonwebp from '../../../../assets/Images/Schools/playbuttonwebp.webp';
 import schoolsTest from '../../../../assets/Images/Schools/teacherSchools.webp';
 import CommaIcon from '../../../../assets/Images/comma.webp';
-import ScreenshotTestonomial from '../../../../assets/Images/Schools/ScreenshotTestonomial.webp';
+import ScreenshotTestonomial from '../../../../assets/Images/Schools/Thumbnail-01.webp';
+
 import dynamic from 'next/dynamic';
 
 const DynamicVideoComponent = dynamic(
@@ -58,7 +59,7 @@ function Testonomial() {
             </div>
             <DynamicVideoComponent
               src={`${getYtUrl(
-                'https://www.youtube.com/embed/imjUfcxa9wQ?si=jL6jxXvIkEF2xudK'
+                'https://www.youtube.com/embed/pdD7gg2cMSY?si=4pu1QPdu6NoqextI'
               )}`}
               title={'YT-video'}
               className={'h-full w-full  rounded-lg'}

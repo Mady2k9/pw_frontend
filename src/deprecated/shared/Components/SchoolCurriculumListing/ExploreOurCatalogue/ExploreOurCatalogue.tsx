@@ -21,9 +21,7 @@ function ExploreOurCatalogue() {
             Explore Our Catalogue
           </div>
           <div className="text-[16px] leading-[24px] font-medium text-center text-white max-w-[721px]">
-            Lorem ipsum dolor sit amet consectetur. Iaculis aliquet sapien a at
-            ac mauris turpis. Ut quisque sit in mauris id. Tincidunt vestibulum
-            donec iaculis dictum tristique scelerisque cras risus turpis.
+          Click on the Link to find names of the books, features, number of pages, digital offerings, ISBN, MRP and other relevant details.
           </div>
           <SchoolCrDownloadPdf />
         </div>
@@ -43,9 +41,7 @@ function ExploreOurCatalogue() {
             Explore Our Catalogue
           </div>
           <div className="text-[16px] leading-[24px] font-medium text-center text-white max-w-[721px]">
-            Lorem ipsum dolor sit amet consectetur. Iaculis aliquet sapien a at
-            ac mauris turpis. Ut quisque sit in mauris id. Tincidunt vestibulum
-            donec iaculis dictum tristique scelerisque cras risus turpis.
+          Click on the Link to find names of the books, features, number of pages, digital offerings, ISBN, MRP and other relevant details.
           </div>
           <SchoolCrDownloadPdf />
         </div>
