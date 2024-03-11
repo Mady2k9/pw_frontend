@@ -92,15 +92,23 @@ export default function TestSeriesCard({
   useEffect(() => {
     data()
   }, [])
-
+  const Tag: 'Online' | 'Offline' | null = useMemo(() => {
+    if (mode === 'Online') {
+      return 'Online';
+    }
+    if (mode === 'Offline') {
+      return 'Offline';
+    }
+    return null;
+  }, [mode]);
   return  <div
   className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
-    [styles.commonItemCardWrapperOnline]: mode === 'Online',
-    [styles.commonItemCardWrapperOffline]: mode === 'Offline',
+    [styles.commonItemCardWrapperOnline]: Tag === 'Online',
+    [styles.commonItemCardWrapperOffline]: Tag === 'Offline',
   })}> 
   <div className={cn(' bg-white w-full rounded-md p-4 space-y-2 relative')}>
       {
-        mode && <Image src={mode === 'Online' ? OnlineTag.src : OfflineTag.src} alt={mode}
+        Tag && <Image src={Tag === 'Online' ? OnlineTag.src : OfflineTag.src} alt={Tag}
                        className={'absolute -left-2.5 -top-2.5 w-[100px] h-10'} />
       }
       <div className={'flex item' +
