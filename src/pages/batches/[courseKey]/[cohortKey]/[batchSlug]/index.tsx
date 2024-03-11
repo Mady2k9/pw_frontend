@@ -153,7 +153,7 @@ export default function BatchDescription(props: InferGetServerSidePropsType<type
     return getExternalWidgets(props.pageData!);
   }, [props]);
   const [activeTab, setActiveTab] = useState<string>(Widgets[0]?.key);
-  const PAGE_SOURCE = 'Details Page';
+  const PAGE_SOURCE = 'Batch Details Page';
   useEffect(() => {
     let visibleElements: Record<string, IntersectionObserverEntry> = {};
 

@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
 import { IOffering, ITestPassData } from '@/api/interfaces/test-series';
 import Link from 'next/link';
+import testSeriesEventTracker from '@/lib/TestSeriesEventTracker/TestSeriesEventTracker';
 
 export interface IColorType {
   bgColor: string;
@@ -13,6 +14,9 @@ const TestPassCard = ({ data, color }: {
   data: ITestPassData,
   color: IColorType
 }) => {
+  const handleGAEvents =() =>{
+    testSeriesEventTracker.getPassClick(data.title, data.price, data.planTitle, data.discount)
+  }
   return <div
     className={'flex flex-col md:w-[360px] w-[320px] rounded-tl-xl rounded-tr-xl border-2'}
     style={{ borderColor: color.borderColor }}>
@@ -77,8 +81,7 @@ const TestPassCard = ({ data, color }: {
          </div>)}
        </div>
        <Link href={`/study/test-series?childUrl=%2Ftest-pass%2F${data._id}%2Foverview`} target={'_blank'} className={'w-full '}>
-       <Button className={'w-[100%] min-h-[40px] mt-[16px]'} onClick={() => {
-       }}
+       <Button className={'w-[100%] min-h-[40px] mt-[16px]'} onClick={handleGAEvents}
         >{'Get Pass'}</Button>
         </Link>
       </div>
