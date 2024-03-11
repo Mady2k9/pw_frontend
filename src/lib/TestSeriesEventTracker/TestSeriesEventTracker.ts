@@ -2,7 +2,6 @@ import { logEvent } from '../Events/index';
 import { EventType } from '../Events/events';
 import helper from '../helper';
 import { v4 as uuidv4 } from 'uuid';
-import classNames from 'classnames';
 
 const deviceId = uuidv4();
 const testSeriesEventTracker = {
