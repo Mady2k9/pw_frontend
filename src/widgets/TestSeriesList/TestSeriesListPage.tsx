@@ -12,6 +12,7 @@ import { BatchLoadingGrid } from '@/widgets/BatchList/BatchLoadingGrid';
 import TestCohortSlider from './TestCohortSlider';
 import HtmlContentWidget from '../HtmlContentWidget/HtmlContentWidget';
 
+const PAGE_SOURCE = 'Listing page'
 const cohortToCohortTabs = ({ courseKey, cohortOptions }: {
   courseKey: string,
   cohortKey?: string,
@@ -122,10 +123,10 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
               return <></>;
             }
             return <TestCohortSlider key={index}
-                                     cohort={cohortOption}
-                                     title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
-                                     testSeries={props.testCats[cohortOption.cohortId] || []}
-                                     showMoreLink={`/test-series/${courseKey}/${stringToSlug(cohortOption.option as string)}`} />;
+            cohort={cohortOption}
+            title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
+            testSeries={props.testCats[cohortOption.cohortId] || []}
+            showMoreLink={`/test-series/${courseKey}/${stringToSlug(cohortOption.option as string)}`} page_source={PAGE_SOURCE} />;
           })
         }
       </div>
@@ -133,7 +134,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
     {
       sectionContents === 'COHORT' &&
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
-        <TestSeriesShortList testSeries={props.testCats[activeCohort!.cohortId as any]} cohort={activeCohort!} />
+        <TestSeriesShortList testSeries={props.testCats[activeCohort!.cohortId as any]} cohort={activeCohort!} page_source={PAGE_SOURCE} />
       </div>
     }
     {

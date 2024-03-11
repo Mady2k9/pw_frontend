@@ -24,8 +24,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export default function TestSeriesDescription(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const PAGE_SOURCE = 'Details Page'
-    const router = useRouter()
+    const PAGE_SOURCE = 'TEST-SERIES_DETAILS_PAGE';
+    const router = useRouter();
     const { courseKey, cohortKey } = router.query;
     const baseUrlForApi = process.env.NEXT_PUBLIC_API_URL;
     const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;

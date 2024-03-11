@@ -17,7 +17,7 @@ export interface BatchShortListProps {
   cohort: ICohortOptions,
   testSeries: ITestSeriesCategory[],
   showMoreLink?: string,
-  page_source?: string,
+  page_source: string,
 }
 
 export default function TestSeriesShortList({
@@ -53,7 +53,10 @@ export default function TestSeriesShortList({
       setLoading(false);
     });
   };
-useEffect(()=>setCard(testSeries?.slice(0,6) || []) , [testSeries] )
+useEffect(()=>{setCard(testSeries?.slice(0,6) || []);
+   setShowLoadMore(true);
+   setLoading(false);
+  setPage(2)} , [testSeries] )
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
     <div className={'container w-full sm:pl-1.5'}>
