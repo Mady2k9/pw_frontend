@@ -112,7 +112,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
     };
     const Widgets = useMemo(() => {
         return getWidgets(props);
-    }, [props]);
+    }, [props, testData]);
     useEffect(() => {
         let visibleElements: Record<string, IntersectionObserverEntry> = {};
 

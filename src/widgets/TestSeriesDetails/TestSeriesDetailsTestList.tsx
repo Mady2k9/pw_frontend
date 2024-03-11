@@ -6,20 +6,18 @@ import {scrollToElement} from "@/lib/dom.utils";
 import {cn} from "@/lib/utils";
 
 export default function TestSeriesDetailsTestList({testData}:{testData:any}) {
-
     const [showAll, setShowAll] = useState(false);
-    console.log(testData,'testData');
     return <div className={'card-shadow rounded-lg p-4 sm:p-6 flex flex-col gap-4 md:gap-6'} id={'Tests-List'}>
         <h2 className={'text-xl md:text-[32px] leading-[48px] font-bold'}>Tests</h2>
         <div className={'flex flex-col gap-4'}>
             {
-                (showAll && testData ? testData :  testData?.splice(0, 2))?.map((test:any, index:number) => {
+                (showAll ? testData?.data :  testData?.data?.slice(0, 2))?.map((test:any, index:number) => {
                     return <TestCard key={index} {...test}/>
                 })
             }
         </div>
         {
-            testData?.length <= 2 ? null :
+            testData?.data?.length <= 2 ? null :
                 <Button variant={'secondary'} onClick={() => {
                     scrollToElement(document.getElementById('Tests-List')!);
                     setShowAll(!showAll);
@@ -27,8 +25,8 @@ export default function TestSeriesDetailsTestList({testData}:{testData:any}) {
                 }}> <ChevronDownIcon
                     className={cn('w-5 h-5 stroke-primary mr-2', {
                         'rotate-180': showAll
-                    })}/> View Less Tests
-                    ({testData?.length})</Button>
+                    })}/> {showAll? 'View Less Tests' : 'View More Tests'}
+                    ({testData?.data?.length - 2})</Button>
         }
     </div>;
 }
