@@ -79,7 +79,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                         link: `#${stringToSlug(tab)}`,
                         key: stringToSlug(tab),
                         widget: <div id={`${stringToSlug(tab)}`}>
-                            <TestSeriesDetailsTestList testData={testData} />
+                            <TestSeriesDetailsTestList testData={testData} url={`${baseUrl}/study/test-series?childUrl=/test-series/${props?.pageData?.testModeId?.categoryId}/mode/${props?.pageData?.testModeId?.categoryModeId}`} />
                         </div>,
                     });
                 } else if (tab === 'Inclusions' && props?.pageData?.testModeId?.meta && props?.pageData?.testModeId?.meta?.length > 0) {
@@ -163,7 +163,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
         }
         return <div className={'w-full sm:w-auto'}>
             <TestSeriesCard 
-            buyNowLink={`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${props?.pageData?.testModeId?.categoryId}/mode/${props?.pageData?.testModeId?.categoryModeId}`)}`}
+            buyNowLink={`${baseUrl}/study/test-series?childUrl=/test-series/${props?.pageData?.testModeId?.categoryId}/mode/${props?.pageData?.testModeId?.categoryModeId}`}
                 thumbnail={props.pageData?.testModeId?.imageId ? props?.pageData?.testModeId?.imageId?.baseUrl + props?.pageData?.testModeId?.imageId?.key : ''} title={props?.pageData?.testModeId?.title ? props?.pageData?.testModeId?.title : "Testing"} page_source={PAGE_SOURCE}
                 discount={props?.pageData?.testModeId?.discount} amount={props?.pageData?.testModeId?.price} updatedAmount={props?.pageData?.testModeId?.postDiscountPrice}
                 meta={props?.pageData?.testModeId?.meta} whatsappLink={props?.pageData?.slug}

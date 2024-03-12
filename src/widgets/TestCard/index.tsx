@@ -3,6 +3,7 @@ import {CalendarDays, ChevronRightIcon, LockKeyholeIcon, NotebookText} from "luc
 import {useMemo} from "react";
 import {getTestAction} from "@/lib/utils";
 import {formatDateAndTime} from "@/lib/date.utils";
+import Link from "next/link";
 
 interface TestCardProps {
     isFree: boolean,
@@ -13,32 +14,33 @@ interface TestCardProps {
     startTime: string,
 }
 
-export default function TestCard(test: TestCardProps) {
+export default function TestCard({test, url }:{test:TestCardProps , url:string}) {
     const testAction = useMemo(() => {
-        return getTestAction(test.startTime, test.isFree);
+        return getTestAction(test?.startTime, test?.isFree);
     }, [test]);
     return <div className={'border rounded-lg p-3 md:p-4 animationFromBottom !slide-in-from-bottom-3'}>
         <div className="flex items-center">
             <div className="flex-1 flex flex-col items-start gap-2 md:gap-3">
-                {test.isFree && <Badge variant={'success'}>Free</Badge>}
-                <h3 className={'text-lg font-bold break-all'}>{test.name}</h3>
+                {test?.isFree && <Badge variant={'success'}>Free</Badge>}
+                <h3 className={'text-lg font-bold break-all'}>{test?.name}</h3>
                 <div className={'flex items-center'}>
                     <div className={'flex items-center gap-2 border-r border-light pr-2'}>
                         <NotebookText className={'w-4 h-4 stroke-light'}/>
-                        <span>{test.totalQuestions} Questions</span>
+                        <span>{test?.totalQuestions} Questions</span>
                     </div>
                     <div className={'flex items-center gap-2 border-r border-light pr-2.5 pl-2'}>
-                        <span>{test.totalMarks} Marks</span>
+                        <span>{test?.totalMarks} Marks</span>
                     </div>
                     <div className={'flex items-center gap-2  pl-2.5'}>
-                        <span>{test.maxDuration} Mins</span>
+                        <span>{test?.maxDuration} Mins</span>
                     </div>
                 </div>
                 <div className={'flex items-center gap-2'}>
                     <CalendarDays className={'w-4 h-4'}/>
-                    <span>Starts on {formatDateAndTime(test.startTime)}</span>
+                    <span>Starts on {formatDateAndTime(test?.startTime)}</span>
                 </div>
             </div>
+            <Link href={url} >
             <div className="div">
                 {
                     testAction === 'upcoming' && <Badge variant={'default'}>Upcoming</Badge>
@@ -57,6 +59,7 @@ export default function TestCard(test: TestCardProps) {
                     </div>
                 }
             </div>
+            </Link>
         </div>
     </div>;
 }
