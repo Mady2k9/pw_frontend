@@ -84,7 +84,7 @@ useEffect(()=>{setCard(testSeries?.slice(0,6) || []);
                 testSeriesId={item.categoryModeId || ''}
                 categoryId={item.categoryId}
                 cohortOption={cohort.option}
-              />
+                />
             </div>;
           })
         }

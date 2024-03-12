@@ -11,15 +11,15 @@ import { Image } from "@/components/ui/image";
 import {ReactElement, useState} from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
-import { stringToBase64, stringToSlug } from '@/lib/utils';
+import { formatCurrency, stringToBase64, stringToSlug } from '@/lib/utils';
 import Link from "next/link";
 
 interface TestSeriesModeModalProps {
     trigger: ReactElement
     modeDataModal: any
-    cohortOption:string
+    cohortOption:string| any
     value:string
-    categoryId:string
+    categoryId?:string
 }
 export default function TestSeriesModeModal({trigger , modeDataModal, cohortOption, value, categoryId}: TestSeriesModeModalProps) {
     const [selectedMode, setSelectedMode] = useState(0)
@@ -41,14 +41,14 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                         {
                             modeDataModal?.data?.map((m :any, index:number) => {
                                 return ( 
-                                <div key={index} onClick={()=>setSelectedMode(index)} className={`${selectedMode===index? 'bg-[#ECEAFF] border-[#5A4BDA]':' border-[#EFEFEF]'} w-full rounded-lg flex flex-row-reverse sm:flex-col sm:py-8 py-4 px-4 items-center sm:mb-6 cursor-pointer border`}>
+                                <div key={index} onClick={()=>setSelectedMode(index)} className={`${selectedMode===index? 'bg-[#ECEAFF] border-primary':' border-[#EFEFEF]'} w-full rounded-lg flex flex-row-reverse sm:flex-col sm:py-8 py-4 px-4 items-center sm:mb-6 cursor-pointer border`}>
                                     <Image src={m.imageId.baseUrl + m.imageId.key } className="sm:w-[160px] sm:h-[103px] w-[114px] h-[73px] bg-center bg-cover" />
                                     <div className="text-left sm:text-center gap-1.5 flex flex-col sm:mt-7 justify-between w-[90%] sm:w-full">
-                                    <label htmlFor={m.title} className={'sm:text-lg text-base text-[#1B2124] font-semibold sm:mb-1'}>{m.title}</label>
-                                    <p className={'text-[#3D3D3D] text-[12px] leading-[18px] capitalize sm:mb-2 '}>{m.description}</p>
+                                    <label htmlFor={m.title} className={'sm:text-lg text-base text-headings font-semibold sm:mb-1'}>{m.title}</label>
+                                    <p className={'text-light text-[12px] leading-[18px] capitalize sm:mb-2 '}>{m.description}</p>
                                     <div className="flex gap-2 items-center text-left sm:text-center justify-center">
-                                    <p className={` ${selectedMode === index? 'text-[#5A4BDA]':'text-[#1B2124]'} font-semibold text-lg sm:text-2xl`}><span className="text-[20px]">{m.postDiscountPrice !==0 && '₹'}</span>{m.postDiscountPrice===0 ?'Free':`${m.postDiscountPrice}`}</p>
-                                    <p className={` font-semibold text-[#757575] sm:text-base text-sm line-through`}>{m.price !==0 && m.price}</p>
+                                    <p className={` ${selectedMode === index? 'text-primary':'text-headings '} font-semibold text-lg sm:text-2xl`}>{m.postDiscountPrice !==0 ?formatCurrency(m.postDiscountPrice,m.currency) :"FREE"}</p>
+                                    <p className={` font-semibold text-lighter sm:text-base text-sm line-through`}>{m.postDiscountPrice !==0 && m.price}</p>
                                     </div>
                                     </div>
                                 </div>

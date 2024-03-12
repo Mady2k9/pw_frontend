@@ -1,5 +1,4 @@
 import { PageTitleBar } from "@/widgets/PageTitleBar";
-import CommonItemCard from "@/widgets/CommonItemCard";
 import { PageTabItemProps, PageTabs } from "@/widgets/PageTabs";
 import { ReactElement, useEffect, useMemo, useState } from "react";
 import TestSeriesDetails from "@/widgets/TestSeriesDetails";
@@ -17,6 +16,7 @@ import { Image } from "@/components/ui/image";
 import { Button } from "@/components/ui/button";
 import PriceDisplay from "@/widgets/PriceDisplay";
 import { scrollToElement, scrollWrapperLeftToElement } from "@/lib/dom.utils";
+import PhoneIcon from "@/deprecated/shared/Components/Molecules/PhoneIcon/PhoneIcon";
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -27,12 +27,13 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
     const PAGE_SOURCE = 'TEST-SERIES_DETAILS_PAGE';
     const router = useRouter();
     const { courseKey, cohortKey } = router.query;
+    const baseUrlForApi = process.env.NEXT_PUBLIC_API_URL;
     const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
     const [testData, setTestData] = useState<any>()
 
 
     const testDatas = async () => {
-        await fetch(`${baseUrl}/gcms/tests?categoryModeId=${props?.pageData?.testModeId?.categoryModeId}`)
+        await fetch(`${baseUrlForApi}/gcms/tests?categoryModeId=${props?.pageData?.testModeId?.categoryModeId}`)
             .then(response => response.json())
             .then(data => setTestData(data))
             .catch(error => console.error('Error:', error));
@@ -87,7 +88,8 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                         link: `#${stringToSlug(tab)}`,
                         key: stringToSlug(tab),
                         widget: <div id={`${stringToSlug(tab)}`}>
-                            <TestSeriesDetails metaData={props?.pageData?.testModeId}
+                            <TestSeriesDetails metaData={props?.pageData?.testModeId} 
+                            cohortKey={cohortKey? cohortKey:''}
                             />
                         </div>,
                     });
@@ -110,7 +112,7 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
     };
     const Widgets = useMemo(() => {
         return getWidgets(props);
-    }, [props]);
+    }, [props, testData]);
     useEffect(() => {
         let visibleElements: Record<string, IntersectionObserverEntry> = {};
 
@@ -185,21 +187,22 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                 descriptionElement={<div>
                     {props?.pageData?.testModeId?.meta?.map((data) => {
                         return <div key={data?.text} className="flex items-center">
-                            <Image src={data?.icon?.baseUrl + data?.icon?.key} className="w-8 h-8 bg-center bg-no-repeat bg-cover" />
+                            <Image src={data?.icon?.baseUrl + data?.icon?.key} className="sm:w-8 sm:h-8 w-6 h-6 bg-center bg-no-repeat bg-cover" />
                             <HtmlContentWidget content={data?.text} />
                         </div>
                     })}
                 </div>}
                 descriptionContent={props?.pageData?.testModeId?.description} />
+                 <PhoneIcon page_source={PAGE_SOURCE} />
             <PageTabs className={'bg-white shadow'} activeItem={activeTab} items={Widgets}
                 handleClick={(e, item) => {
                     e.preventDefault();
                     scrollToElement(document.getElementById(item)!, true);
                 }} />
-            <div className={'w-full container py-4 md:py-6 flex lg:flex-row-reverse justify-between flex-col space-y-4 md:space-y-0 space-x-4 space-x-reverse'}>
+            <div className={'w-full container py-4 md:py-6 flex lg:flex-row-reverse justify-between flex-col space-y-3 md:space-y-0 space-x-4 space-x-reverse'}>
                 <div className={'relative lg:z-10 lg:mt-[-320px] mt-[0px]'}>
                     <div
-                        className="mb-4 md:mb-6 lg:mb-0 lg:min-w-[360px] sm:w-[360px] min-w-[280px] lg:m-0 mx-auto sticky top-[156px]">
+                        className=" md:mb-6 lg:mb-0 lg:min-w-[360px] sm:w-[360px] min-w-[280px] lg:m-0 mx-auto sticky top-[156px]">
                         {testSeriesCard}
                     </div>
                 </div>
