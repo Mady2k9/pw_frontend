@@ -134,7 +134,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
     {
       sectionContents === 'COHORT' &&
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
-        <TestSeriesShortList testSeries={props.testCats[activeCohort!.cohortId as any]} cohort={activeCohort!} page_source={PAGE_SOURCE} />
+        <TestSeriesShortList testSeries={props.testCats[activeCohort!.cohortId as any]} cohort={activeCohort!} page_source={PAGE_SOURCE} testCatCount={props.testCatCount} />
       </div>
     }
     {
