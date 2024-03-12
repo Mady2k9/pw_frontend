@@ -58,7 +58,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                     </div>
                     <div className="flex justify-end sm:grid">
                    <DialogClose asChild >
-                    <Link href={value==='explore'? `/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`: `${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`)}`}>
+                    <Link href={value==='explore'? `/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`: `${baseUrl}/study//test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`}>
                     <Button className="py-4 px-12 w-full ">Continue</Button>
                     </Link>
                     </DialogClose> 

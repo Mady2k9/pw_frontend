@@ -37,7 +37,7 @@ export default function TestCohortSlider({
               {
                 item && <TestSeriesCard
                 exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item?.slug}`}
-                  buyNowLink={`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${item?.categoryId}/mode/${item?.categoryModeId}`)}`}
+                  buyNowLink={`${baseUrl}/study/test-series?childUrl=/test-series/${item?.categoryId}/mode/${item?.categoryModeId}`}
                   mode={item.modeType}
                   amount={item?.price}
                   discount={item.discount}
