@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import PriceDisplay from "@/widgets/PriceDisplay";
 import { scrollToElement, scrollWrapperLeftToElement } from "@/lib/dom.utils";
 import PhoneIcon from "@/deprecated/shared/Components/Molecules/PhoneIcon/PhoneIcon";
+import FAQ from "@/widgets/FAQ";
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -216,6 +217,9 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                     }
                 </div>
             </div>
+        </div>
+        <div className="container sm:py-6 py-4">
+        {props?.pageData?.faqs && props?.pageData?.faqs?.length > 0 && <FAQ items={props?.pageData?.faqs} pageSource={PAGE_SOURCE} />}
         </div>
         {
             props?.pageData?.testModeId?.price &&
