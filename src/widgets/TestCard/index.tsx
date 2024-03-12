@@ -12,9 +12,10 @@ interface TestCardProps {
     totalMarks: number,
     maxDuration: number,
     startTime: string,
+    url: string,
 }
 
-export default function TestCard({test, url }:{test:TestCardProps , url:string}) {
+export default function TestCard(test:TestCardProps) {
     const testAction = useMemo(() => {
         return getTestAction(test?.startTime, test?.isFree);
     }, [test]);
@@ -40,7 +41,7 @@ export default function TestCard({test, url }:{test:TestCardProps , url:string})
                     <span>Starts on {formatDateAndTime(test?.startTime)}</span>
                 </div>
             </div>
-            <Link href={url} >
+            <Link href={test?.url} >
             <div className="div">
                 {
                     testAction === 'upcoming' && <Badge variant={'default'}>Upcoming</Badge>
