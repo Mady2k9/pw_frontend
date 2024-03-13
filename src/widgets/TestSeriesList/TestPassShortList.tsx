@@ -3,6 +3,7 @@ import style from '@/widgets/TestPassCard/TestPassCard.module.css';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import TestPassCard from '@/widgets/TestPassCard';
 import { Badge } from '@/components/ui/badge';
+import { CardColors } from './TestPassCardColors';
 
 export interface TestPassShortListProps {
   title: string,
@@ -11,23 +12,6 @@ export interface TestPassShortListProps {
   showMoreLink?: string,
   page_source?: string,
 }
-
-const CardColors = [
-  {
-    bgColor: '#F1F5FE',
-    borderColor: '#BCD8F1',
-    icon: { level1: '#81B6E4', level2: '#BCD8F1' },
-  },
-  {
-    bgColor: '#FFF6E5',
-    borderColor: '#F7E0B4',
-    icon: { level1: '#EDB84F', level2: '#F7E0B4' },
-  },
-  {
-    bgColor: '#DFF1E4',
-    borderColor: '#ADCFB7',
-    icon: { level1: '#64A478', level2: '#ADCFB7' },
-  }];
 
 export default function TestPassShortList({
                                             title,
