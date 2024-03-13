@@ -32,7 +32,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                 trigger
             }
         </DialogTrigger>
-        <DialogContent className="max-w-[720px]">
+        <DialogContent className="max-w-[720px] bottom-0 sm:bottom-auto sm:data-[state=closed]:slide-out-to-top-[48%] data-[state=closed]:slide-out-to-bottom-[48%] data-[state=open]:slide-in-from-left-1/2 sm:data-[state=open]:slide-in-from-top-[48%] data-[state=open]:slide-in-from-bottom-[48%]">
             <DialogHeader >
                 <DialogTitle className={'text-base font-bold sm:text-xl border-b text-left pb-2'}>Test Series Mode</DialogTitle>
                 <DialogDescription className={'pt-2 flex flex-col'}>
@@ -46,7 +46,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                                     <div className="text-left sm:text-center gap-1.5 flex flex-col sm:mt-7 justify-between w-[90%] sm:w-full">
                                     <label htmlFor={m.title} className={'sm:text-lg text-base text-headings font-semibold sm:mb-1'}>{m.title}</label>
                                     <p className={'text-light text-[12px] leading-[18px] capitalize sm:mb-2 '}>{m.description}</p>
-                                    <div className="flex gap-2 items-center text-left sm:text-center justify-center">
+                                    <div className="flex gap-2 items-center text-left sm:text-center sm:justify-center justify-start ">
                                     <p className={` ${selectedMode === index? 'text-primary':'text-headings '} font-semibold text-lg sm:text-2xl`}>{m.postDiscountPrice !==0 ?formatCurrency(m.postDiscountPrice,m.currency) :"FREE"}</p>
                                     <p className={` font-semibold text-lighter sm:text-base text-sm line-through`}>{m.postDiscountPrice !==0 && m.price}</p>
                                     </div>
@@ -56,10 +56,10 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                             })
                         }
                     </div>
-                    <div className="flex justify-end sm:grid">
+                    <div className="flex justify-end sm:grid mt-3 sm:mt-0">
                    <DialogClose asChild >
-                    <Link href={value==='explore'? `/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`: `${baseUrl}/study//test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`}>
-                    <Button className="py-4 px-12 w-full ">Continue</Button>
+                    <Link className="contents sm:block " href={value==='explore'? `/test-series/${courseKey}/${stringToSlug(cohortOption)}/${modeDataModal?.data[selectedMode].slug}`: `${baseUrl}/study//test-series?childUrl=/test-series/${categoryId}/mode/${modeDataModal?.data[selectedMode]._id}`}>
+                    <Button className="py-4 px-12 w-full">Continue</Button>
                     </Link>
                     </DialogClose> 
                     </div>

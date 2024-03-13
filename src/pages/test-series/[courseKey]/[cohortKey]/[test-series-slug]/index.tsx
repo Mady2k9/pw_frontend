@@ -218,9 +218,9 @@ export default function TestSeriesDescription(props: InferGetServerSidePropsType
                 </div>
             </div>
         </div>
-        <div className="container sm:py-6 py-4">
-        {props?.pageData?.faqs && props?.pageData?.faqs?.length > 0 && <FAQ items={props?.pageData?.faqs} pageSource={PAGE_SOURCE} />}
-        </div>
+        {props?.pageData?.faqs && props?.pageData?.faqs?.length > 0 && <div className="container sm:py-6 py-4">
+        <FAQ items={props?.pageData?.faqs} pageSource={PAGE_SOURCE} />
+        </div>}
         {
             props?.pageData?.testModeId?.price &&
             <div className={'fixed md:hidden bottom-0 px-4 left-0 right-0 py-2 flex items-center card-shadow bg-white'}>
