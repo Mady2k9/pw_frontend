@@ -10,7 +10,7 @@ import OfflineTag from '@/assets/images/offlineTag.webp';
 import PriceDisplay from '@/widgets/PriceDisplay';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import { CalendarDays, Star } from 'lucide-react';
+import Star from '../../assets/images/star.png'
 import formatDate from '@/lib/date.utils';
 import StudentIcon from '@/components/icons/student';
 import { useRouter } from 'next/router';
@@ -40,7 +40,7 @@ interface TestSeriesCardProps {
   page_source: string;
   testSeriesId?: string;
   categoryId?: string;
-  cohortOption?: string | null;
+  cohortOption?: string;
   exploreLink?: string;
 }
 
@@ -60,8 +60,8 @@ export default function TestSeriesCard({
   page_source,
   testSeriesId = '',
   categoryId,
-  cohortOption,
   exploreLink,
+  cohortOption,
 }: TestSeriesCardProps) {
 
   const encodedUrl = useMemo(() => {
@@ -92,18 +92,27 @@ export default function TestSeriesCard({
   useEffect(() => {
     data()
   }, [])
-  return <div
-    className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
-      [styles.commonItemCardWrapperOnline]: mode === 'Online',
-      [styles.commonItemCardWrapperOffline]: mode === 'Offline',
-    })}>
-    <div className={cn(' bg-white w-full rounded-md p-3 space-y-2 relative')}>
+  const Tag: 'Online' | 'Offline' | null = useMemo(() => {
+    if (mode === 'Online') {
+      return 'Online';
+    }
+    if (mode === 'Offline') {
+      return 'Offline';
+    }
+    return null;
+  }, [mode]);
+  return  <div
+  className={cn(' w-full p-[1px] rounded-md bg-gradient-to-b from-blue-500 to-white', styles.commonItemCardWrapper, {
+    [styles.commonItemCardWrapperOnline]: Tag === 'Online',
+    [styles.commonItemCardWrapperOffline]: Tag === 'Offline',
+  })}> 
+  <div className={cn(' bg-white w-full rounded-md p-4 space-y-2 relative')}>
       {
-        mode && <Image src={mode === 'Online' ? OnlineTag.src : OfflineTag.src} alt={mode}
+        Tag && <Image src={Tag === 'Online' ? OnlineTag.src : OfflineTag.src} alt={Tag}
                        className={'absolute -left-2.5 -top-2.5 w-[100px] h-10'} />
       }
       <div className={'flex item' +
-        's-start gap-2 !mt-2'}>
+        's-start gap-2 '}>
         <h4 className={'md:text-lg h-[56px] line-clamp-2 font-semibold flex-1'}>
           {title}
         </h4>
@@ -136,7 +145,8 @@ export default function TestSeriesCard({
             {
               features.map((m, index) => {
                 return <div key={index} className={'flex gap-2 py-1 h-[24px] overflow-hidden items-center'}>
-                  <Star className={'w-4 min-w-4 h-4 fill-amber-500 line-clamp-1 stroke-amber-500 stroke-2'} />
+                  {/* <Star className={'w-4 min-w-4 h-4 fill-amber-500 line-clamp-1 stroke-amber-500 stroke-2'} /> */}
+                  <Image src={Star.src} className='w-4 min-w-4 h-4 bg-center  bg-no-repeat bg-contain'/>
                   <span key={index}
                         className={'line-clamp-1'}>{m.text ? <HtmlContentWidget content={m.text} /> : ''
                   } {m.text?.toLowerCase().replace(/_/g, ' ')} </span>
@@ -178,5 +188,5 @@ export default function TestSeriesCard({
         </Link>}
       </div>
     </div>
-  </div>;
+    </div>
 }

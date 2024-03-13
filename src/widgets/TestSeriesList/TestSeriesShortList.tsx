@@ -71,7 +71,7 @@ useEffect(()=>{setCard(testSeries?.slice(0,6) || []);
             return <div key={index} className={' max-w-[360px] w-full min-w-[300px]'}>
               <TestSeriesCard
               exploreLink={`/test-series/${courseKey}/${stringToSlug(cohort.option)}/${item?.slug}`}
-              buyNowLink={`${baseUrl}/study/auth?encoded_redirect_url=${stringToBase64(`${baseUrl}/test-series?childUrl=/test-series/${item.categoryId}/mode/${item.categoryModeId}`)}`}
+              buyNowLink={`${baseUrl}/study/test-series?childUrl=/test-series/${item?.categoryId}/mode/${item?.categoryModeId}`}
               mode={item.modeType}
                 amount={item?.price}
                 discount={item.discount}
@@ -85,7 +85,7 @@ useEffect(()=>{setCard(testSeries?.slice(0,6) || []);
                 testSeriesId={item.categoryModeId || ''}
                 categoryId={item.categoryId}
                 cohortOption={cohort.option}
-              />
+                />
             </div>;
           })
         }

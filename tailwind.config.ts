@@ -28,7 +28,7 @@ const config = {
         light: '#3D3D3D',
         lighter: '#757575',
         success: '#17662F',
-        
+        primaryindigo:'#D2CCFF',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -52,7 +52,7 @@ const config = {
           light:'#D9DCE1',
           medium:'#b7b7b7'
         },
-       
+
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
