@@ -3,7 +3,7 @@ import { ITestSeries } from "./test-series";
 
 export interface IPageData {
     description: string;
-    testCatCount?:number;
+    testCatCount:number;
     tabs: any[];
     updatedBy: string;
     seoSchema: ISeoSchema[];
@@ -18,6 +18,8 @@ export interface IPageData {
     seoTags: ISeoTags;
     widgetJson: IWidgetJson;
     testCats : Record<string, any[]>
+    testPass:  Record<string, any[]>
+    testPassCount: number;
     testModeId: ItestModeId;
     slug: string
 }

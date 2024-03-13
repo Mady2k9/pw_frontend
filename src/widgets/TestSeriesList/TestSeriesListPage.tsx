@@ -11,6 +11,7 @@ import { ICohortOptions, IPageData } from '@/api/interfaces/page';
 import { BatchLoadingGrid } from '@/widgets/BatchList/BatchLoadingGrid';
 import TestCohortSlider from './TestCohortSlider';
 import HtmlContentWidget from '../HtmlContentWidget/HtmlContentWidget';
+import TestPassList from './TestPassList';
 
 const PAGE_SOURCE = 'Listing page'
 const cohortToCohortTabs = ({ courseKey, cohortOptions }: {
@@ -85,6 +86,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
   // const Widgets = useMemo(() => {
   //   return getWidgets(props);
   // }, [props]);
+
   const activeCohort = useMemo(() => {
     return props.options?.find((option: ICohortOptions) => (stringToSlug(option.option) === activeTab));
   }, [activeTab, props.options]);
@@ -117,7 +119,7 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
     {
       sectionContents === 'ALL' &&
       <div className={'mt-4 md:mt-6 space-y-8'}>
-        {
+         {
           props.options?.map((cohortOption, index) => {
             if (!props.testCats?.[cohortOption.cohortId]) {
               return <></>;
@@ -129,11 +131,26 @@ export default function TestSeriesListPage(props: IPageData & { params: any }) {
             showMoreLink={`/test-series/${courseKey}/${stringToSlug(cohortOption.option as string)}`} page_source={PAGE_SOURCE} />;
           })
         }
+         {
+          props.options?.map((cohortOption, index) => {
+            if (!props.testCats?.[cohortOption.cohortId]) {
+              return <></>;
+            }
+            return <TestCohortSlider key={index}
+            cohort={cohortOption}
+            title={`${cohortOption.option} ${slugToString(courseKey as string).toUpperCase()} Courses`}
+            testSeries={props.testCats[cohortOption.cohortId] || []}
+            showMoreLink={`/test-series/${courseKey}/${stringToSlug(cohortOption.option as string)}`} page_source={PAGE_SOURCE} />;
+          })
+        }
+       
       </div>
     }
     {
       sectionContents === 'COHORT' &&
       <div className={' overflow-visible mt-4 md:mt-6 space-y-8'}>
+       {props.testPass[activeCohort!.cohortId]?.length > 0 &&  <TestPassList cohort={activeCohort!} testPass={props.testPass[activeCohort!.cohortId as any]} page_source={PAGE_SOURCE} testPassCount={props.testPassCount}  />
+       }
         <TestSeriesShortList testSeries={props.testCats[activeCohort!.cohortId as any]} cohort={activeCohort!} page_source={PAGE_SOURCE} testCatCount={props.testCatCount} />
       </div>
     }

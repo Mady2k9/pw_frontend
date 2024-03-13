@@ -29,12 +29,13 @@ export default function TestSeriesShortList({
                                               page_source,
                                               testCatCount,
                                             }: BatchShortListProps) {
+                                              
   const router = useRouter();
   const courseKey = router.query.courseKey as string;
   const [card, setCard] = useState(testSeries);
   const [page, setPage] = useState(2)
   const [loading, setLoading] = useState(false);
-  const [showLoadMore, setShowLoadMore] = useState(true);
+  const [showLoadMore, setShowLoadMore] = useState(testSeries.length > 6);
   const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
   const getCard = async () => {
     let query: any = {
@@ -55,13 +56,13 @@ export default function TestSeriesShortList({
     });
   };
 useEffect(()=>{setCard(testSeries?.slice(0,6) || []);
-   setShowLoadMore(true);
+   setShowLoadMore(testSeries.length > 6);
    setLoading(false);
   setPage(2)} , [testSeries] )
   return <div className={''}>
     <h4 className={'container text-xl md:text-3xl  font-bold'}>{title}</h4>
   {testCatCount &&   <div className={'container text-[16px] font-medium pb-6 text-lighter'}><span className={''}>Showing <b
-      className={'text-headings'}>‘{testCatCount}’</b> Total Batches</span></div>}
+      className={'text-headings'}>‘{testCatCount}’</b> Total Test Series</span></div>}
     <div className={'container w-full sm:pl-1.5'}>
 
     <div className={cn('grid grid-cols-1 sm:grid-cols-2 place-items-center sm:place-items-start lg:grid-cols-3 gap-4 md:gap-6 md:px-2 w-full')}>

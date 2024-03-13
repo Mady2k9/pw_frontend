@@ -25,6 +25,7 @@ export default function TestCohortSlider({
   const router = useRouter();
   const courseKey = router.query.courseKey as string;
   const baseUrl = process.env.NEXT_PUBLIC_APP_BASE_URL;
+
   return <div className={''} id={'short-list-wrapper' + cohort.cohortId}>
     <div className={'container '}>
       <h4 className={'text-xl md:text-[32px] leading-[48px] font-bold'}>{title}</h4>
