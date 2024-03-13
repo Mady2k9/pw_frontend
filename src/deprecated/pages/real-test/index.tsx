@@ -6,6 +6,9 @@ import TestBenefits from '@/deprecated/shared/Components/PwRealTest/TestBenefits
 import BannerSection from '@/deprecated/shared/Components/PwRealTest/BannerSection/BannerSection';
 import TestSchedule from '@/deprecated/shared/Components/PwRealTest/TestSchedule/TestSchedule';
 import Header from '@/deprecated/shared/Components/Molecules/Header/header';
+import PwRealTestEventTracker from '@/lib/PwRealTestEventTracker/PwRealTestEventTracker';
+import { useEffect } from 'react';
+
 
 const data = [
   {
@@ -144,6 +147,9 @@ const data = [
 ];
 
 const Home = ({ headerData }: { headerData: any }) => {
+  useEffect(() => {
+    PwRealTestEventTracker.RealTestLandingPage()
+  }, [])
   return (
     <>
       <div className="bg-[#F8F8F8]">

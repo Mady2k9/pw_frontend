@@ -22,7 +22,9 @@ export enum EventType {
     'Test_Series_Explore_Click' = 'testseries_explore_click',
     'Test_Series_Buy_Click' = 'testseries_buy_click',
     'Test_Click' = 'test_click',
-    'Test_View_Schedule' = 'test_view_schedule'
+    'Test_View_Schedule' = 'test_view_schedule',
+    'REAl_TEST_REGISTRATION_CLICK' = "real_test_registration_click",
+    'REAL_TESTLANDING_PAGE' = "real_test_landing_page",
   }
   
   export interface PwEvent {

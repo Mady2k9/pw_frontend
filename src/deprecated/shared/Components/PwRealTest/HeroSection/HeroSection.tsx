@@ -3,8 +3,13 @@ import { Image } from '@/components/ui/image';
 import calendar from '../../../../assets/Images/PwRealTest/calendar.webp';
 import alakpanday from '../../../../assets/Images/PwRealTest/alakpanday.webp';
 import herogif from '../../../../assets/Images/PwRealTest/herogif.gif';
+import PwRealTestEventTracker from '@/lib/PwRealTestEventTracker/PwRealTestEventTracker';
 
 function HeroSection() {
+  const handleGaEvent= ()=>{
+  
+    PwRealTestEventTracker.RealTestRegistrationClick()
+  }
   return (
     <div className="mx-auto max-w-6xl xl:px-0 px-3 xl:mt-6 mt-4 md:mt-6">
       <div className="bg-gradient-to-r from-[#140D52] to-[#312596] flex justify-between md:px-8 px-4 rounded-lg h-[327px]">
@@ -41,7 +46,7 @@ function HeroSection() {
                 <img src={alakpanday.src} alt='alakpanday' className="w-[147px]" />
               </div>
               <a href='https://realtest.pw.live'>
-              <div className="font-semibold text-lg text-center w-[100%] cursor-pointer">
+              <div className="font-semibold text-lg text-center w-[100%] cursor-pointer" onClick={handleGaEvent}>
                Register for REAL Test
               </div>
               </a>
