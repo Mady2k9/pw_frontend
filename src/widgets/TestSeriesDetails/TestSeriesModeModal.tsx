@@ -32,7 +32,7 @@ export default function TestSeriesModeModal({trigger , modeDataModal, cohortOpti
                 trigger
             }
         </DialogTrigger>
-        <DialogContent className="max-w-[720px]">
+        <DialogContent className="max-w-[720px] bottom-0 sm:bottom-auto sm:data-[state=closed]:slide-out-to-top-[48%] data-[state=closed]:slide-out-to-bottom-[48%] data-[state=open]:slide-in-from-left-1/2 sm:data-[state=open]:slide-in-from-top-[48%] data-[state=open]:slide-in-from-bottom-[48%]">
             <DialogHeader >
                 <DialogTitle className={'text-base font-bold sm:text-xl border-b text-left pb-2'}>Test Series Mode</DialogTitle>
                 <DialogDescription className={'pt-2 flex flex-col'}>
