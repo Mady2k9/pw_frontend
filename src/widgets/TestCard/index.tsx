@@ -23,22 +23,22 @@ export default function TestCard(test:TestCardProps) {
         <div className="flex items-center">
             <div className="flex-1 flex flex-col items-start gap-2 md:gap-3">
                 {test?.isFree && <Badge variant={'success'}>Free</Badge>}
-                <h3 className={'text-lg font-bold break-all'}>{test?.name}</h3>
-                <div className={'flex items-center'}>
-                    <div className={'flex items-center gap-2 border-r border-light pr-2'}>
-                        <NotebookText className={'w-4 h-4 stroke-light'}/>
+                <h3 className={'sm:text-lg text-base font-bold break-all'}>{test?.name}</h3>
+                <div className={'flex items-center flex-wrap gap-2'}>
+                <NotebookText className={'w-4 h-4 stroke-light'}/>
+                    <div className={'flex items-center gap-2 border-r border-light pr-2 text-sm sm:text-base'}>
                         <span>{test?.totalQuestions} Questions</span>
                     </div>
-                    <div className={'flex items-center gap-2 border-r border-light pr-2.5 pl-2'}>
-                        <span>{test?.totalMarks} Marks</span>
+                    <div className={'flex items-center gap-2 border-r border-light pr-2.5 pl-2 text-sm sm:text-base'}>
+                        <span >{test?.totalMarks} Marks</span>
                     </div>
-                    <div className={'flex items-center gap-2  pl-2.5'}>
+                    <div className={'flex items-center gap-2  pl-2.5 text-sm sm:text-base'}>
                         <span>{test?.maxDuration} Mins</span>
                     </div>
                 </div>
                 <div className={'flex items-center gap-2'}>
-                    <CalendarDays className={'w-4 h-4'}/>
-                    <span>Starts on {formatDateAndTime(test?.startTime)}</span>
+                    <CalendarDays className={'w-4 h-4 '}/>
+                    <span className="text-sm sm:text-base">Starts on {formatDateAndTime(test?.startTime)}</span>
                 </div>
             </div>
             <Link href={test?.url} >

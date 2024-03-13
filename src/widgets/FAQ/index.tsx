@@ -24,7 +24,7 @@ export default function FAQ({items,pageSource}: FAQProps) {
             <Accordion type="single" collapsible>
                 {
 
-                    items.map((item, index) => {
+                    items?.map((item, index) => {
                         return <AccordionItem value={index + ''}
                                               className={'mb-4 border-none rounded-xl overflow-hidden'} key={index}>
                             <AccordionTrigger className={'bg-[#F1F5FE] px-4 hover:bg-[#deeaf8] transitionAll200'}>
